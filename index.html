@@ -87,6 +87,16 @@
     a:not(.btn):not(.btn-outline) { text-decoration: underline; color: #a5f3fc; }
     .btn-outline { color: var(--text); }
     /* End hotfix */
+      /* === Contrast fix v2 (force light text) === */
+    :root{ --muted:#cbd5e1; }
+    body{ color: var(--text) !important; }
+    .wrap, .card, .step, .feat, .price, .price *:not(.btn):not(.tick), .features *, .steps *, .faq *, .contact *, .foot, .foot * {
+      color: var(--text) !important;
+    }
+    .muted{ color: var(--muted) !important; }
+    a:not(.btn):not(.btn-outline){ color:#a5f3fc !important; text-decoration: underline; }
+    .btn-outline{ color: var(--text) !important; }
+    /* End contrast fix */
   </style>
   <script type="application/ld+json">
   {
