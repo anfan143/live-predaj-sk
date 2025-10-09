@@ -15,7 +15,29 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{$1}
+    :root{$1; --space-1:8px; --space-2:12px; --space-3:16px; --space-4:24px; --space-5:32px; --space-6:48px; --radius:16px; }
+    /* Typo & spacing */
+    html{ font-size:17px; }
+    body{ line-height:1.7; letter-spacing:.1px; }
+    h1{ font-size: clamp(28px, 4.5vw, 48px); font-weight:800; }
+    .section{ padding: var(--space-6) 0; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:0 var(--space-3); }
+    /* Cards cleanup */
+    .card, .step, .feat, .price { border-radius: var(--radius); background: linear-gradient(180deg, rgba(17,22,42,.9), rgba(12,18,34,.8)); border:1px solid rgba(148,163,184,.14); box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+    .price .num{ font-size:34px; }
+    /* Nav cleanup + hover */
+    .nav{ position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px); background:rgba(11,16,32,.75); border-bottom:1px solid rgba(148,163,184,.15); transition: background .2s ease, box-shadow .2s ease; }
+    .nav.scrolled{ background:rgba(11,16,32,.95); box-shadow:0 6px 20px rgba(0,0,0,.35); }
+    .menu a{ opacity:.9; }
+    .menu a:hover{ opacity:1; text-decoration:underline; }
+    /* Buttons */
+    .btn{ padding:12px 18px; border-radius:12px; }
+    .btn-outline{ padding:12px 18px; border-radius:12px; }
+    /* Dividers */
+    .divider{ height:1px; background: linear-gradient(90deg, transparent, rgba(148,163,184,.25), transparent); margin: var(--space-5) 0; }
+    /* Grids on mobile */
+    @media (max-width: 980px){ .grid2{ grid-template-columns:1fr; } .steps{grid-template-columns:1fr 1fr} .features{grid-template-columns:1fr 1fr} .price-grid{grid-template-columns:1fr} .contact{grid-template-columns:1fr} }
+    @media (max-width:560px){ .steps,.features{grid-template-columns:1fr} .cta{ gap: var(--space-2);} }
     .notice{margin-top:10px; padding:10px 12px; border-radius:10px; font-size:14px; border:1px solid rgba(148,163,184,.25); background:rgba(17,22,42,.6)}
     .notice.ok{border-color:rgba(34,197,94,.45); background:rgba(16,185,129,.15); color:#d1fae5}
     .notice.err{border-color:rgba(248,113,113,.45); background:rgba(239,68,68,.15); color:#fee2e2}
@@ -126,27 +148,6 @@
   <link rel="canonical" href="https://anfan143.github.io/live-predaj-sk/" />
   <meta name="robots" content="index,follow" />
   <link rel="alternate" hreflang="sk" href="https://anfan143.github.io/live-predaj-sk/" />
-  <style id="final-override-pack">
-  /* === FINAL OVERRIDE: light text everywhere on dark bg === */
-  :root { --text:#e2e8f0; --muted:#cbd5e1; }
-  html, body { color: var(--text) !important; }
-  *, *::before, *::after { color: inherit !important; }
-
-  /* ensure “muted” stays readable */
-  .muted, .muted * { color: var(--muted) !important; }
-
-  /* links */
-  a:not(.btn):not(.btn-outline) { color:#a5f3fc !important; text-decoration: underline; }
-
-  /* outline buttons, badges and chips */
-  .btn-outline { color: var(--text) !important; border-color: rgba(148,163,184,.5) !important; }
-  .badge, .logo-chip { color:#cbd5e1 !important; border-color: rgba(148,163,184,.35) !important; }
-
-  /* FAQ summaries, headings, cards */
-  summary, h1, h2, h3, h4, h5, h6 { color: var(--text) !important; }
-  .card, .step, .feat, .price, .screen, .foot { color: var(--text) !important; }
-</style>
-
 </head>
 <body>
   <!-- NAV -->
@@ -165,7 +166,7 @@
   </nav>
 
   <!-- HERO -->
-  <header class="hero wrap">
+  <header class="hero wrap" style="padding-bottom:var(--space-4)">
     <div class="grid2">
       <div>
         <span class="kicker">Live shopping pre SK trh – rýchly štart bez chaosu</span>
@@ -272,6 +273,7 @@
       </div>
     </div>
   </section>
+  <div class="divider"></div>
 
   <!-- EXTRA CTA under pricing -->
   <section class="wrap" style="padding-top:0">
@@ -295,6 +297,7 @@
       </div>
     </div>
   </section>
+  <div class="divider"></div>
 
   <!-- WHO / REQUIREMENTS -->
   <section class="section wrap">
@@ -305,6 +308,7 @@
       <div class="feat"><h3>KPI & meranie</h3><p class="muted">Dohodneme KPI (objednávky/leady), kupóny a UTM. Report do 48 h po livku s odporúčaniami, ktoré produkty/ponuky posunúť nabudúce.</p></div>
     </div>
   </section>
+  <div class="divider"></div>
 
   <!-- FAQ -->
   <section id="faq" class="section wrap">
@@ -435,6 +439,11 @@
     function cookieYes(){ localStorage.setItem(cookieKey, 'yes'); bar.style.display='none'; }
     function cookieNo(){ localStorage.setItem(cookieKey, 'no'); bar.style.display='none'; }
     showBar();
+
+    // Nav scroll state
+    const nav = document.querySelector('.nav');
+    const onScroll = () => { if(window.scrollY>8){ nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); } };
+    onScroll(); window.addEventListener('scroll', onScroll);
   </script>
 </body>
 </html>
