@@ -126,6 +126,27 @@
   <link rel="canonical" href="https://anfan143.github.io/live-predaj-sk/" />
   <meta name="robots" content="index,follow" />
   <link rel="alternate" hreflang="sk" href="https://anfan143.github.io/live-predaj-sk/" />
+  <style id="final-override-pack">
+  /* === FINAL OVERRIDE: light text everywhere on dark bg === */
+  :root { --text:#e2e8f0; --muted:#cbd5e1; }
+  html, body { color: var(--text) !important; }
+  *, *::before, *::after { color: inherit !important; }
+
+  /* ensure “muted” stays readable */
+  .muted, .muted * { color: var(--muted) !important; }
+
+  /* links */
+  a:not(.btn):not(.btn-outline) { color:#a5f3fc !important; text-decoration: underline; }
+
+  /* outline buttons, badges and chips */
+  .btn-outline { color: var(--text) !important; border-color: rgba(148,163,184,.5) !important; }
+  .badge, .logo-chip { color:#cbd5e1 !important; border-color: rgba(148,163,184,.35) !important; }
+
+  /* FAQ summaries, headings, cards */
+  summary, h1, h2, h3, h4, h5, h6 { color: var(--text) !important; }
+  .card, .step, .feat, .price, .screen, .foot { color: var(--text) !important; }
+</style>
+
 </head>
 <body>
   <!-- NAV -->
