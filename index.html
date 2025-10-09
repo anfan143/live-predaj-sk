@@ -82,6 +82,11 @@
     @media (max-width: 560px){
       .steps,.features{grid-template-columns:1fr}
     }
+      /* === Contrast hotfix (forces light text on dark bg) === */
+    body, h1,h2,h3,h4,h5,h6, p, li, dt, dd, summary, label, small { color: var(--text); }
+    a:not(.btn):not(.btn-outline) { text-decoration: underline; color: #a5f3fc; }
+    .btn-outline { color: var(--text); }
+    /* End hotfix */
   </style>
   <script type="application/ld+json">
   {
