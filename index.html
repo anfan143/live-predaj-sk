@@ -15,10 +15,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#0b1020; --card:#11162a; --muted:#94a3b8; --text:#e2e8f0; --brand:#22d3ee; --brand-2:#38bdf8;
-      --max: 1120px; --radius: 16px; --shadow: 0 10px 30px rgba(0,0,0,.25);
-    }
+    :root{$1}
+    .notice{margin-top:10px; padding:10px 12px; border-radius:10px; font-size:14px; border:1px solid rgba(148,163,184,.25); background:rgba(17,22,42,.6)}
+    .notice.ok{border-color:rgba(34,197,94,.45); background:rgba(16,185,129,.15); color:#d1fae5}
+    .notice.err{border-color:rgba(248,113,113,.45); background:rgba(239,68,68,.15); color:#fee2e2}
     *{box-sizing:border-box}
     html,body{margin:0; padding:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--text); background:linear-gradient(180deg,#0b1020 0%,#0a0f1c 60%, #0b1020 100%);}    
     a{color:inherit}
@@ -129,6 +129,7 @@
         <div class="cta">
           <a class="btn" href="#cennik">Pozrieť balíky</a>
           <a class="btn-outline" href="#ako">Ako to funguje</a>
+          <a class="btn-outline" href="https://wa.me/421951265627" aria-label="Napísať na WhatsApp">Napísať na WhatsApp</a>
         </div>
         <div class="badges">
           <span class="badge">SK lokalizácia</span>
@@ -227,6 +228,16 @@
     </div>
   </section>
 
+  <!-- EXTRA CTA under pricing -->
+  <section class="wrap" style="padding-top:0">
+    <div class="card" style="padding:18px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <div class="muted">Nevieš, ktorý balík je pre teba? Napíš nám na WhatsApp a pošleme odporúčanie podľa sortimentu.</div>
+      <div>
+        <a class="btn" href="https://wa.me/421951265627" aria-label="WhatsApp kontakt">WhatsApp konzultácia</a>
+      </div>
+    </div>
+  </section>
+
   <!-- SOCIAL PROOF / LOGOS -->
   <section class="section wrap">
     <div class="card" style="padding:22px">
@@ -274,6 +285,9 @@
     <div class="contact">
       <div class="card" style="padding:18px">
         <form id="contactForm">
+          <input type="hidden" name="_subject" value="LivePredaj.sk – nový dopyt" />
+          <input type="text" name="_hp" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px" aria-hidden="true" />
+          <div id="formNotice" class="notice" aria-live="polite" hidden></div>
           <input type="hidden" name="_subject" value="LivePredaj.sk – nový dopyt" />
           <input type="text" name="_hp" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px" aria-hidden="true" />
           <input name="meno" placeholder="Meno a priezvisko" required />
@@ -337,18 +351,25 @@
 
       try {
         const res = await fetch(FORM_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(data),
-        });
-        if (res.ok) {
-          alert('Ďakujeme! Ozveme sa na: ' + (data.email || 'váš kontakt'));
-          form.reset();
-        } else {
-          alert('Formulár sa nepodarilo odoslať. Skúste znova alebo napíšte na WhatsApp.');
-        }
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const box = document.getElementById('formNotice');
+      box.hidden = false;
+      if (res.ok) {
+        box.className = 'notice ok';
+        box.textContent = 'Ďakujeme! Potvrdzovací e‑mail alebo odpoveď príde čoskoro.';
+        form.reset();
+      } else {
+        box.className = 'notice err';
+        box.textContent = 'Formulár sa nepodarilo odoslať. Skúste znova alebo napíšte na WhatsApp.';
+      }
       } catch(err){
-        alert('Ups, nastala chyba siete. Skúste znova, prosím.');
+        const box = document.getElementById('formNotice');
+        box.hidden = false;
+        box.className = 'notice err';
+        box.textContent = 'Ups, nastala chyba siete. Skúste znova, prosím.';
       }
     });
 
