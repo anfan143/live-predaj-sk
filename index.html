@@ -97,6 +97,15 @@
     a:not(.btn):not(.btn-outline){ color:#a5f3fc !important; text-decoration: underline; }
     .btn-outline{ color: var(--text) !important; }
     /* End contrast fix */
+      /* === Global typography reset (final) === */
+    :root{ --text:#e2e8f0; --muted:#cbd5e1; }
+    html, body { color: var(--text) !important; }
+    * { color: inherit !important; }
+    h1,h2,h3,h4,h5,h6,p,li,dt,dd,summary,small,label,span,div,strong,b,em { color: inherit !important; }
+    .muted { color: var(--muted) !important; }
+    a:not(.btn):not(.btn-outline){ color:#a5f3fc !important; text-decoration: underline; }
+    .btn-outline{ color: var(--text) !important; }
+    /* === End global reset === */
   </style>
   <script type="application/ld+json">
   {
