@@ -148,6 +148,8 @@
   <link rel="canonical" href="https://anfan143.github.io/live-predaj-sk/" />
   <meta name="robots" content="index,follow" />
   <link rel="alternate" hreflang="sk" href="https://anfan143.github.io/live-predaj-sk/" />
+  <!-- Plausible (privacy-friendly analytics, no cookies) -->
+  <script defer data-domain="anfan143.github.io" src="https://plausible.io/js/plausible.js"></script>
 </head>
 <body>
   <!-- NAV -->
@@ -159,7 +161,7 @@
         <a href="#sluzby">Služby</a>
         <a href="#cennik">Cenník</a>
         <a href="#faq">FAQ</a>
-        <a href="https://wa.me/421951265627" class="btn-outline" aria-label="Napísať na WhatsApp">WhatsApp</a>
+        <a href="https://wa.me/421951265627?text=Zauj%C3%ADmam%20sa%20o%20live%20predaj%20%28web%29" class="btn-outline" aria-label="Napísať na WhatsApp" data-plausible-event="nav_whatsapp">WhatsApp</a>
         <a href="#kontakt" class="btn">Nezáväzná ponuka</a>
       </div>
     </div>
@@ -173,9 +175,9 @@
         <h1>Zvýšte tržby a komunitu vďaka pravidelným livestreamom na TikToku, Facebooku a YouTube.</h1>
         <p class="lead">Navrhneme formát, pripravíme produkty a ponuky, odmoderujeme stream a doručíme klipy + prehľad tržieb. Prvý live vieme spustiť už do 7–10 dní od briefu.</p>
         <div class="cta">
-          <a class="btn" href="#cennik">Pozrieť balíky</a>
-          <a class="btn-outline" href="#ako">Ako to funguje</a>
-          <a class="btn-outline" href="https://wa.me/421951265627" aria-label="Napísať na WhatsApp">Napísať na WhatsApp</a>
+          <a class="btn" href="#cennik" data-plausible-event="hero_cta_packages">Pozrieť balíky</a>
+          <a class="btn-outline" href="#ako" data-plausible-event="hero_cta_how">Ako to funguje</a>
+          <a class="btn-outline" href="https://wa.me/421951265627?text=Chcem%20WhatsApp%20konzult%C3%A1ciu%20%28web-hero%29" aria-label="Napísať na WhatsApp" data-plausible-event="hero_whatsapp">Napísať na WhatsApp</a>
         </div>
         <div class="badges">
           <span class="badge">SK lokalizácia</span>
@@ -246,7 +248,7 @@
           <li><span class="tick">✓</span><span>Publikovanie na 1 platformu</span></li>
         </ul>
         <small class="muted">Bez viazanosti, vhodné na otestovanie formátu.</small>
-        <a class="btn" href="#kontakt" aria-label="Objednať Starter">Objednať</a>
+        <a class="btn" href="#kontakt" aria-label="Objednať Starter" data-plausible-event="pricing_starter">Objednať</a>
       </div>
       <div class="price" style="border-color: rgba(34,211,238,.45)">
         <span class="tag">Rast</span>
@@ -259,7 +261,7 @@
           <li><span class="tick">✓</span><span>Odporúčania pre ďalší rast</span></li>
         </ul>
         <small class="muted">Najlepší pomer výkon/cena pre prvé 2–3 mesiace.</small>
-        <a class="btn" href="#kontakt" aria-label="Objednať Pro">Objednať</a>
+        <a class="btn" href="#kontakt" aria-label="Objednať Pro" data-plausible-event="pricing_pro">Objednať</a>
       </div>
       <div class="price">
         <span class="tag">Program</span>
@@ -272,7 +274,7 @@
           <li><span class="tick">✓</span><span>Koordinácia s influencermi</span></li>
         </ul>
         <small class="muted">Program na škálovanie – plán tém, remarketing, spolupráce.</small>
-        <a class="btn" href="#kontakt" aria-label="Dopyt na retainer">Dopyt</a>
+        <a class="btn" href="#kontakt" aria-label="Dopyt na retainer" data-plausible-event="pricing_retainer">Dopyt</a>
       </div>
     </div>
   </section>
@@ -283,7 +285,7 @@
     <div class="card" style="padding:18px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
       <div class="muted">Nevieš, ktorý balík je pre teba? Napíš nám na WhatsApp a pošleme odporúčanie podľa sortimentu.</div>
       <div>
-        <a class="btn" href="https://wa.me/421951265627" aria-label="WhatsApp kontakt">WhatsApp konzultácia</a>
+        <a class="btn" href="https://wa.me/421951265627?text=Konzult%C3%A1cia%20k%20bal%C3%ADku%20%28po%20cenn%C3%ADku%29" aria-label="WhatsApp kontakt" data-plausible-event="postpricing_whatsapp">WhatsApp konzultácia</a>
       </div>
     </div>
   </section>
@@ -360,8 +362,8 @@
         <p class="muted" style="margin:0">Začnite pilotom, vyhodnotíme dáta a navrhneme plán rastu.</p>
       </div>
       <div style="display:flex; gap:12px; flex-wrap:wrap">
-        <a class="btn" href="#kontakt">Nezáväzná ponuka</a>
-        <a class="btn-outline" href="https://wa.me/421951265627">WhatsApp konzultácia</a>
+        <a class="btn" href="#kontakt" data-plausible-event="final_cta_contact">Nezáväzná ponuka</a>
+        <a class="btn-outline" href="https://wa.me/421951265627?text=Z%C3%A1vere%C4%8Dn%C3%A1%20konzult%C3%A1cia%20%28final%20CTA%29" data-plausible-event="final_cta_whatsapp">WhatsApp konzultácia</a>
       </div>
     </div>
   </section>
@@ -518,6 +520,28 @@
     function cookieYes(){ localStorage.setItem(cookieKey, 'yes'); bar.style.display='none'; }
     function cookieNo(){ localStorage.setItem(cookieKey, 'no'); bar.style.display='none'; }
     showBar();
+
+    // --- Plausible custom events helper ---
+    window.plausible = window.plausible || function(){(window.plausible.q = window.plausible.q || []).push(arguments)}
+    document.querySelectorAll('[data-plausible-event]').forEach(el=>{
+      el.addEventListener('click',()=>{
+        const name = el.getAttribute('data-plausible-event');
+        plausible(name);
+      });
+    });
+
+    // --- FAQ structured data ---
+    const faqLd = {
+      "@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+        {"@type":"Question","name":"Potrebujem e‑shop?","acceptedAnswer":{"@type":"Answer","text":"Nie nutne. Vieme smerovať nákup na formulár alebo WhatsApp; e‑shop však zlepší mieru konverzie a meranie."}},
+        {"@type":"Question","name":"Na ktorých sieťach je to najefektívnejšie?","acceptedAnswer":{"@type":"Answer","text":"Pre Slovensko zvyčajne TikTok a Facebook; YouTube pomáha s evergreen dosahom a SEO."}},
+        {"@type":"Question","name":"Viete zabezpečiť techniku a priestor?","acceptedAnswer":{"@type":"Answer","text":"Áno. Dodáme kamery, svetlá, mikrofóny a mini štúdio, alebo prídeme k vám on‑site."}},
+        {"@type":"Question","name":"Koľko trvá príprava prvého live?","acceptedAnswer":{"@type":"Answer","text":"Obvykle 7–10 pracovných dní od briefu podľa dostupnosti termínov."}}
+      ]};
+    const tag = document.createElement('script');
+    tag.type='application/ld+json';
+    tag.textContent = JSON.stringify(faqLd);
+    document.head.appendChild(tag);
 
     // Nav scroll state
     const nav = document.querySelector('.nav');
