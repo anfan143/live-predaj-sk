@@ -128,6 +128,14 @@
     a:not(.btn):not(.btn-outline){ color:#a5f3fc !important; text-decoration: underline; }
     .btn-outline{ color: var(--text) !important; }
     /* === End global reset === */
+      /* Sticky mobile bar */
+    .stickybar{ position:fixed; bottom:12px; left:12px; right:12px; z-index:60; display:flex; gap:10px; justify-content:space-between; align-items:center; padding:10px; border-radius:14px; background:rgba(11,16,32,.9); border:1px solid rgba(148,163,184,.25); box-shadow:0 10px 30px rgba(0,0,0,.35); }
+    .stickybar .btn, .stickybar .btn-outline{ flex:1; text-align:center; }
+    @media (min-width: 820px){ .stickybar{ display:none; } }
+
+    /* Inline legal sections */
+    .legal{ max-width:var(--max); margin: 0 auto; padding: var(--space-6) var(--space-3); }
+    .legal h3{ margin-top:0 }
   </style>
   <script type="application/ld+json">
   {
@@ -150,6 +158,22 @@
   <link rel="alternate" hreflang="sk" href="https://anfan143.github.io/live-predaj-sk/" />
   <!-- Plausible (privacy-friendly analytics, no cookies) -->
   <script defer data-domain="anfan143.github.io" src="https://plausible.io/js/plausible.js"></script>
+  <!-- Organization schema (fill in when ready) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "LivePredaj.sk",
+    "url": "https://anfan143.github.io/live-predaj-sk/",
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "telephone": "+421951265627",
+      "areaServed": "SK",
+      "availableLanguage": ["sk", "en"]
+    }]
+  }
+  </script>
 </head>
 <body>
   <!-- NAV -->
@@ -455,9 +479,19 @@
   <footer class="foot">
     <div class="wrap" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
       <div>© <span id="year"></span> LivePredaj.sk</div>
-      <div class="muted">IČO / fakturácia na vyžiadanie • <a href="#" class="muted">Podmienky</a> • <a href="#" class="muted">Ochrana súkromia</a></div>
+      <div class="muted">IČO / fakturácia na vyžiadanie • <a href="#podmienky" class="muted">Podmienky</a> • <a href="#sukromie" class="muted">Ochrana súkromia</a></div>
     </div>
   </footer>
+
+  <!-- Inline legal sections (anchor targets) -->
+  <section id="podmienky" class="legal">
+    <h3>Podmienky používania (skrátené)</h3>
+    <p class="muted">Služby live predaja poskytujeme na základe objednávky a potvrdenej ponuky. Ceny sú bez DPH, ak nie je uvedené inak. Záznamy a klipy slúžia pre vaše marketingové účely; za obsah živého vysielania nesiete zodpovednosť vy ako objednávateľ (správnosť cien, súlad s platformami a právom).</p>
+  </section>
+  <section id="sukromie" class="legal">
+    <h3>Ochrana súkromia (stručne)</h3>
+    <p class="muted">Web nepoužíva marketingové cookies. Kontaktné údaje z formulára spracúvame výlučne na účel vybavenia dopytu. Prevádzkovateľom je LivePredaj.sk; ak budete chcieť údaje upraviť alebo vymazať, napíšte nám cez formulár alebo WhatsApp.</p>
+  </section>
 
   <!-- COOKIE BAR (opt‑in for analytics, demo only) -->
   <div id="cookieBar" class="cookie" role="dialog" aria-live="polite">
@@ -548,5 +582,10 @@
     const onScroll = () => { if(window.scrollY>8){ nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); } };
     onScroll(); window.addEventListener('scroll', onScroll);
   </script>
+  <!-- Sticky mobile CTA bar -->
+  <div class="stickybar" role="region" aria-label="Rýchly kontakt">
+    <a class="btn" href="#kontakt" data-plausible-event="sticky_contact">Nezáväzná ponuka</a>
+    <a class="btn-outline" href="https://wa.me/421951265627?text=Z%C3%A1ujem%20o%20live%20predaj%20%28sticky%20bar%29" data-plausible-event="sticky_whatsapp">WhatsApp</a>
+  </div>
 </body>
 </html>
