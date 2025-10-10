@@ -226,6 +226,90 @@
     }]
   }
   </script>
+  <style id="ui-consistency-patch">
+  :root{
+    --surface:#ffffff;
+    --surface-subtle:#f8fafc;
+    --border:#e2e8f0;
+    --radius:14px;
+    --shadow:0 8px 24px rgba(15,23,42,.06);
+  }
+
+  /* Layout background */
+  [data-theme="light"] body{ background: var(--surface-subtle); }
+
+  /* Cards & sections – jednotný vzhľad */
+  .card,.step,.feat,.price,.screen,
+  details{
+    background: var(--surface) !important;
+    border:1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    box-shadow: var(--shadow) !important;
+  }
+  .price .num{ font-size:34px; }
+
+  /* FAQ (details/summary) */
+  details{ padding: 0 !important; overflow:hidden; }
+  summary{
+    padding:14px 16px;
+    list-style:none;
+    cursor:pointer;
+    font-weight:600;
+    background: var(--surface);
+    outline:none;
+  }
+  details > *:not(summary){ padding: 0 16px 16px; }
+  details[open]{ border-color: #cbd5e1 !important; }
+  summary::-webkit-details-marker{ display:none; }
+
+  /* Jednotné pilulky/štítky */
+  .badge,.logo-chip,.kicker{
+    background:#eef2f7 !important;
+    border:1px solid var(--border) !important;
+    color:#0f172a !important;
+    border-radius:999px !important;
+  }
+
+  /* CTA a outline tlačidlá – konzistentné */
+  .btn{
+    background: var(--accent) !important;
+    color: var(--accent-text) !important;
+    border:none !important;
+    border-radius:12px !important;
+    box-shadow: 0 10px 20px rgba(37,99,235,.15);
+  }
+  .btn:hover{ background: var(--accent-hover) !important; }
+  .btn-outline{
+    background: transparent !important;
+    color:#0f172a !important;
+    border:1px solid var(--border) !important;
+    border-radius:12px !important;
+    box-shadow: none !important;
+  }
+
+  /* Nav – odstrániť „divné“ orámovanie, fokus len pre klávesnicu */
+  .menu a{ border:none !important; box-shadow:none !important; }
+  a, button, [role="button"], summary{
+    outline: none;
+  }
+  a:focus-visible, button:focus-visible, [role="button"]:focus-visible, summary:focus-visible{
+    outline:3px solid rgba(37,99,235,.35);
+    outline-offset:2px;
+    border-radius:10px;
+  }
+
+  /* Divider v svetlej téme */
+  .divider{ background: linear-gradient(90deg, transparent, rgba(2,6,23,.08), transparent) !important; }
+
+  /* Jemnejší hero screen */
+  .screen{ background:#fff !important; }
+
+  /* Linky nech sú linky, nie CTA */
+  a:not(.btn):not(.btn-outline){
+    color: var(--link) !important;
+    text-decoration: underline;
+  }
+</style>
 </head>
 <body>
   <a href="#main" class="skip" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">Preskočiť na obsah</a>
