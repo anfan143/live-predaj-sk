@@ -160,6 +160,47 @@
     .skip:focus{ position:static; width:auto; height:auto; padding:8px 12px; border-radius:10px; background:#fff; color:#0f172a; z-index:1000 }
   </style>
 
+  /* === HERO – nové štýly === */
+.kicker-red{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:8px 14px; border-radius:999px;
+  background:#ef4444; color:#ffffff; border:1px solid #dc2626;
+  font-weight:800; letter-spacing:.2px; text-transform:uppercase;
+  box-shadow:0 6px 16px rgba(239,68,68,.15);
+}
+
+.whiteboard{
+  background:#ffffff; border:2px solid #e2e8f0; border-radius:16px;
+  padding:18px 20px; box-shadow:0 10px 28px rgba(2,6,23,.06);
+}
+.whiteboard h1{ margin:0; color:#0f172a; }
+.whiteboard .hl{ color:#0ea5e9; font-weight:900; }
+
+/* veľký „outlinovaný“ claim */
+.outline-claim{
+  display:inline-block; margin-top:14px;
+  padding:14px 16px; border-radius:12px; font-weight:800; text-align:left;
+  border:2px solid #0f172a; color:#0f172a; background:transparent;
+}
+[data-theme="dark"] .outline-claim{ border-color:#ffffff; color:#ffffff; }
+
+/* karta so živým rohom „NAŽIVO“ */
+.live-card{ position:relative; }
+.live-badge{
+  position:absolute; top:10px; right:10px;
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 10px; border-radius:999px;
+  background:#ffffff; border:1px solid #e2e8f0; box-shadow:0 6px 14px rgba(2,6,23,.08);
+  font-weight:800; color:#0f172a;
+}
+.live-badge .dot{ width:10px; height:10px; border-radius:999px; background:#ef4444; box-shadow:0 0 0 3px rgba(239,68,68,.18); }
+[data-theme="dark"] .live-badge{ background:rgba(11,16,32,.9); border-color:rgba(148,163,184,.25); color:#e2e8f0 }
+
+/* zoznam pod platformami */
+.hero-plainlist{ list-style:none; padding:0; margin:14px 0 0 0; }
+.hero-plainlist li{ display:flex; gap:8px; align-items:flex-start; margin:8px 0; }
+.hero-plainlist .tick{ margin-top:2px; }
+
   <!-- JSON-LD: Services -->
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"ProfessionalService","name":"LivePredaj.sk","areaServed":"SK","serviceType":["TikTok Live predaj","Facebook Live","YouTube Live","Live shopping produkcia"],"offers":{"@type":"AggregateOffer","priceCurrency":"EUR","lowPrice":"149","highPrice":"1490"}}
@@ -236,45 +277,79 @@
   <div class="nav-sep" aria-hidden="true"></div>
 
   <!-- HERO -->
-  <header id="main" class="hero wrap">
-    <div class="grid2">
-      <div>
-        <span class="kicker">Live shopping pre SK trh – rýchly štart bez chaosu</span>
-        <h1>Zvýšte tržby a komunitu vďaka pravidelným livestreamom na TikToku, Facebooku a YouTube.</h1>
-        <p class="lead muted">Navrhneme formát, pripravíme produkty a ponuky, odmoderujeme stream a doručíme klipy + prehľad tržieb. Prvý live vieme spustiť už do 7–10 dní od briefu.</p>
-        <div class="cta" style="display:flex; gap:12px; margin-top:20px; flex-wrap:wrap">
-          <a class="btn" href="#cennik" data-plausible-event="hero_cta_packages" aria-label="Spustiť pilot do 7–10 dní">Spustiť pilot do 7–10 dní</a>
-          <a class="btn-wa" href="https://wa.me/421951265627?text=Chcem%20WhatsApp%20konzult%C3%A1ciu%20%28web-hero%29" aria-label="Napísať na WhatsApp" data-plausible-event="hero_whatsapp">WhatsApp konzultácia</a>
-          <a class="btn" style="background:#0f766e" href="#ako" data-plausible-event="hero_cta_how">Ako to funguje</a>
-        </div>
-        <div class="badges">
-          <span class="badge">SK lokalizácia</span>
-          <span class="badge">Možnosť fakturácie s DPH</span>
-          <span class="badge">Expresný štart do 7 dní*</span>
-        </div>
-        <p class="muted" style="margin-top:8px; font-size:13px">*podľa dostupnosti termínov a podkladov</p>
+  <!-- HERO -->
+<header id="main" class="hero wrap">
+  <div class="grid2">
+    <!-- ĽAVÝ STĹPEC -->
+    <div>
+      <!-- NOVÁ červená kapsula -->
+      <span class="kicker-red">LIVE shopping → PREDAJ NAŽIVO</span>
+
+      <!-- „Whiteboard“ s nadpisom -->
+      <div class="whiteboard" style="margin-top:12px;">
+        <h1>
+          Zvýšte <span class="hl">tržby</span> a <span class="hl">komunitu</span>
+          vďaka pravidelnému živému vysielaniu na
+          <strong>Facebooku, YouTube, Instagrame a TikToku</strong>.
+        </h1>
       </div>
 
-      <div class="card" style="padding:16px">
-        <div class="screen">
-          <div>
-            <div style="text-align:center; font-size:20px; letter-spacing:.4px; font-weight:800">Ukážkový layout LIVE</div>
-            <div class="logos" style="margin-top:12px">
-              <span class="logo-chip">TikTok</span>
-              <span class="logo-chip">Facebook</span>
-              <span class="logo-chip">YouTube</span>
-              <span class="logo-chip">Instagram</span>
-            </div>
+      <!-- Nový úvodný odsek -->
+      <p class="lead" style="font-style:italic; margin-top:16px;">
+        Budeme vašou službou a asistentom pri zvyšovaní predajov vašich produktov pomocou živých vysielaní.
+        Máme skúsenosti, ako sa dostať k novým zákazníkom, ktorí vás doteraz nepoznali.
+        U nás si môžete vybrať služby a produkty podľa vašich financií, technických znalostí a túžby rásť.
+      </p>
+
+      <!-- Veľký „outlinovaný“ claim -->
+      <div class="outline-claim">
+        Váš prvý predaj <strong>NAŽIVO</strong> vieme spustiť do 7 dní od kontaktovania našich odborníkov.
+      </div>
+
+      <!-- CTA -->
+      <div class="cta" style="display:flex; gap:12px; margin-top:20px; flex-wrap:wrap">
+        <a class="btn" href="#cennik" data-plausible-event="hero_cta_packages" aria-label="Spustiť pilot do 7–10 dní">Spustiť pilot do 7–10 dní</a>
+        <a class="btn-wa" href="https://wa.me/421951265627?text=Chcem%20WhatsApp%20konzult%C3%A1ciu%20%28web-hero%29" aria-label="Napísať na WhatsApp" data-plausible-event="hero_whatsapp">WhatsApp konzultácia</a>
+        <a class="btn" style="background:#0f766e" href="#ako" data-plausible-event="hero_cta_how">Ako to funguje</a>
+      </div>
+
+      <!-- odznaky pod CTA -->
+      <div class="badges">
+        <span class="badge">SK lokalizácia</span>
+        <span class="badge">Možnosť fakturácie s DPH</span>
+        <span class="badge">Expresný štart do 7 dní*</span>
+      </div>
+      <p class="muted" style="margin-top:8px; font-size:13px">*podľa dostupnosti termínov a podkladov</p>
+    </div>
+
+    <!-- PRAVÝ STĹPEC – ukážka -->
+    <div class="card live-card" style="padding:16px">
+      <!-- roh NAŽIVO -->
+      <span class="live-badge"><span class="dot"></span> NAŽIVO</span>
+
+      <div class="screen" style="padding:10px;">
+        <div>
+          <div style="text-align:center; font-size:20px; letter-spacing:.4px; font-weight:800">Ukážkový layout LIVE</div>
+          <div class="logos" style="margin-top:12px">
+            <!-- zoradené: Facebook, YouTube, Instagram, TikTok -->
+            <span class="logo-chip">Facebook</span>
+            <span class="logo-chip">YouTube</span>
+            <span class="logo-chip">Instagram</span>
+            <span class="logo-chip">TikTok</span>
           </div>
         </div>
-        <div class="badges" style="margin-top:12px">
-          <span class="badge">Viackamerový setup</span>
-          <span class="badge">Live chat moderácia</span>
-          <span class="badge">Checkout linky</span>
-        </div>
       </div>
+
+      <!-- namiesto pôvodných „badges“ – stručný zoznam výhod -->
+      <ul class="hero-plainlist">
+        <li><span class="tick">✓</span><span>Jednoduché nastavenie</span></li>
+        <li><span class="tick">✓</span><span>Zákazník má prístup k vašim produktom z pohodlia domova</span></li>
+        <li><span class="tick">✓</span><span>Nákup zrealizuje priamo počas živého vysielania – LIVE predaj</span></li>
+      </ul>
     </div>
-  </header>
+  </div>
+</header>
+
 
   <!-- HOW IT WORKS -->
   <section id="ako" class="section wrap">
