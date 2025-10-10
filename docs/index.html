@@ -19,7 +19,7 @@
       --accent:#2563eb; /* primary CTA (blue-600) */
       --accent-hover:#1d4ed8; /* blue-700 */
       --accent-text:#ffffff; /* ensures ≥4.5:1 on accent */
-      --link:#0ea5e9; /* info links */
+      --link:#1d4ed8; /* info links */
       --border:#e2e8f0;
     }
     /* Typo & spacing */
@@ -226,89 +226,10 @@
     }]
   }
   </script>
-  <style id="ui-consistency-patch">
-  :root{
-    --surface:#ffffff;
-    --surface-subtle:#f8fafc;
-    --border:#e2e8f0;
-    --radius:14px;
-    --shadow:0 8px 24px rgba(15,23,42,.06);
-  }
-
-  /* Layout background */
-  [data-theme="light"] body{ background: var(--surface-subtle); }
-
-  /* Cards & sections – jednotný vzhľad */
-  .card,.step,.feat,.price,.screen,
-  details{
-    background: var(--surface) !important;
-    border:1px solid var(--border) !important;
-    border-radius: var(--radius) !important;
-    box-shadow: var(--shadow) !important;
-  }
-  .price .num{ font-size:34px; }
-
-  /* FAQ (details/summary) */
-  details{ padding: 0 !important; overflow:hidden; }
-  summary{
-    padding:14px 16px;
-    list-style:none;
-    cursor:pointer;
-    font-weight:600;
-    background: var(--surface);
-    outline:none;
-  }
-  details > *:not(summary){ padding: 0 16px 16px; }
-  details[open]{ border-color: #cbd5e1 !important; }
-  summary::-webkit-details-marker{ display:none; }
-
-  /* Jednotné pilulky/štítky */
-  .badge,.logo-chip,.kicker{
-    background:#eef2f7 !important;
-    border:1px solid var(--border) !important;
-    color:#0f172a !important;
-    border-radius:999px !important;
-  }
-
-  /* CTA a outline tlačidlá – konzistentné */
-  .btn{
-    background: var(--accent) !important;
-    color: var(--accent-text) !important;
-    border:none !important;
-    border-radius:12px !important;
-    box-shadow: 0 10px 20px rgba(37,99,235,.15);
-  }
-  .btn:hover{ background: var(--accent-hover) !important; }
-  .btn-outline{
-    background: transparent !important;
-    color:#0f172a !important;
-    border:1px solid var(--border) !important;
-    border-radius:12px !important;
-    box-shadow: none !important;
-  }
-
-  /* Nav – odstrániť „divné“ orámovanie, fokus len pre klávesnicu */
-  .menu a{ border:none !important; box-shadow:none !important; }
-  a, button, [role="button"], summary{
-    outline: none;
-  }
-  a:focus-visible, button:focus-visible, [role="button"]:focus-visible, summary:focus-visible{
-    outline:3px solid rgba(37,99,235,.35);
-    outline-offset:2px;
-    border-radius:10px;
-  }
-
-  /* Divider v svetlej téme */
-  .divider{ background: linear-gradient(90deg, transparent, rgba(2,6,23,.08), transparent) !important; }
-
-  /* Jemnejší hero screen */
-  .screen{ background:#fff !important; }
-
-  /* Linky nech sú linky, nie CTA */
-  a:not(.btn):not(.btn-outline){
-    color: var(--link) !important;
-    text-decoration: underline;
-  }
+<style id="consistency-tweak-2">
+  .menu a { border:none !important; box-shadow:none !important; }
+  details { background:#fff !important; border:1px solid #e2e8f0 !important; border-radius:14px !important; }
+  summary { background:#fff !important; }
 </style>
 </head>
 <body>
@@ -337,7 +258,7 @@
         <h1>Zvýšte tržby a komunitu vďaka pravidelným livestreamom na TikToku, Facebooku a YouTube.</h1>
         <p class="lead">Navrhneme formát, pripravíme produkty a ponuky, odmoderujeme stream a doručíme klipy + prehľad tržieb. Prvý live vieme spustiť už do 7–10 dní od briefu.</p>
         <div class="cta">
-          <a class="btn" href="#cennik" data-plausible-event="hero_cta_packages">Pozrieť balíky</a>
+          <a class="btn" href="#cennik" data-plausible-event="hero_cta_packages" aria-label="Spustiť pilot do 7–10 dní">Spustiť pilot do 7–10 dní</a>
           <a class="btn-outline" href="#ako" data-plausible-event="hero_cta_how">Ako to funguje</a>
           <a class="btn-outline" href="https://wa.me/421951265627?text=Chcem%20WhatsApp%20konzult%C3%A1ciu%20%28web-hero%29" aria-label="Napísať na WhatsApp" data-plausible-event="hero_whatsapp">Napísať na WhatsApp</a>
         </div>
