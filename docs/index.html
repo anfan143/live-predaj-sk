@@ -27,31 +27,26 @@
 
   <style>
     :root{
-      /* Layout scale & palette */
       --max: 1100px;
       --space-1:8px; --space-2:12px; --space-3:16px; --space-4:24px; --space-5:32px; --space-6:48px;
       --radius:14px;
       --shadow:0 8px 24px rgba(15,23,42,.06);
       --brand:#22d3ee; --brand-2:#3b82f6;
 
-      /* Text & links (light defaults) */
       --text:#0f172a;
       --muted:#475569;
       --link:#1d4ed8;
 
-      /* CTA */
       --accent:#2563eb;
       --accent-hover:#1d4ed8;
       --accent-text:#ffffff;
 
       --border:#e2e8f0;
 
-      /* WhatsApp */
       --wa:#25D366;
       --wa-dark:#1DA955;
     }
 
-    /* Base */
     *{box-sizing:border-box}
     html,body{margin:0; padding:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;}
     body{line-height:1.7; letter-spacing:.1px;}
@@ -60,34 +55,30 @@
     .section{ padding: var(--space-6) 0; }
     a{ color: inherit; }
 
-    /* NAV */
+    /* NAV (clean links, no pill bubbles) */
     .nav{ position:sticky; top:0; z-index:60; backdrop-filter:saturate(180%) blur(10px); transition: background .2s ease, box-shadow .2s ease; }
     [data-theme="light"] .nav{ background:rgba(255,255,255,.85); border-bottom:1px solid var(--border); }
     [data-theme="dark"] .nav{ background:rgba(11,16,32,.6); border-bottom:1px solid rgba(148,163,184,.15); }
     .nav.scrolled{ box-shadow:0 6px 20px rgba(0,0,0,.08); }
     .nav .inner{ display:flex; align-items:center; justify-content:space-between; height:64px; gap:16px; }
-    /* brand (left) */
+
     .brand{ display:flex; align-items:center; gap:12px; min-width:0; }
-    .brandmark{ flex:0 0 auto; filter: drop-shadow(0 6px 18px rgba(34,211,238,.35)); border-radius:8px; }
-    .brand-copy{ display:flex; align-items:center; flex-wrap:wrap; gap:6px; }
-    .brand-copy strong{ white-space:nowrap; }
-    .brand .tagline{ font-weight:500; }
-    @media (max-width:980px){ .brand .tagline{ display:none; } }
-    /* middle menu pills */
-    .menu{ display:flex; gap:10px; flex:1 1 auto; justify-content:center; }
-    .nav-pill{
-      display:inline-block; padding:10px 14px; border:1px solid var(--border);
-      border-radius:999px; background:#fff; text-decoration:none; font-weight:600;
+    .brandmark-img{ height:28px; width:auto; border-radius:6px; box-shadow:0 6px 18px rgba(34,211,238,.35); }
+    .brandmark-fallback{ display:none; }
+    .brand-copy{ display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+    .brand-copy strong{ white-space:nowrap; font-weight:800; }
+    .brand-copy em{ font-style:italic; color:var(--muted); }
+
+    .menu{ display:flex; gap:22px; flex:1 1 auto; justify-content:center; }
+    .menu a{
+      font-weight:700; text-decoration:none; padding:8px 2px; border-bottom:2px solid transparent;
     }
-    [data-theme="dark"] .nav-pill{ background:rgba(17,22,42,.6); border-color:rgba(148,163,184,.22); }
-    .nav-pill:hover{ text-decoration:underline; }
-    /* right actions */
+    .menu a:hover, .menu a:focus{ border-bottom-color: var(--link); }
+
     .actions{ display:flex; gap:10px; align-items:center; }
     .btn{ display:inline-block; padding:12px 16px; border-radius:12px; font-weight:700; text-decoration:none; background:var(--accent); color:var(--accent-text) !important; border:none; box-shadow:0 10px 20px rgba(37,99,235,.15); }
     .btn:hover{ background:var(--accent-hover); }
     .btn:focus-visible{ outline:3px solid rgba(37,99,235,.35); outline-offset:2px; }
-    .btn-outline{ display:inline-block; padding:12px 16px; border-radius:12px; font-weight:600; text-decoration:none; border:1px solid var(--border); background:transparent; }
-    .btn-outline:hover{ background:rgba(2,6,23,.04); }
     .btn-wa{
       display:inline-flex; gap:8px; align-items:center;
       padding:12px 16px; border-radius:12px; font-weight:700; text-decoration:none;
@@ -99,10 +90,10 @@
       background:#fff; cursor:pointer; font-size:16px; line-height:1;
     }
     [data-theme="dark"] .theme-toggle{ background:rgba(17,22,42,.6); border-color:rgba(148,163,184,.22); }
-    /* top separator under nav */
+
     .nav-sep{ height:10px; background:linear-gradient(180deg, rgba(2,6,23,.08), transparent); }
 
-    /* Pills / badges */
+    /* Badges / chips */
     .badges{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px }
     .badge,.logo-chip,.kicker{ font-size:12px; padding:6px 10px; border:1px solid var(--border); border-radius:999px; background:#eef2f7; color:#0f172a }
     .kicker{ font-weight:700 }
@@ -126,7 +117,7 @@
     .logos{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; opacity:.9; justify-content:center }
     .logo-chip{ padding:8px 12px }
 
-    /* FAQ (details/summary) */
+    /* FAQ */
     details{ padding:0; overflow:hidden }
     summary{ padding:14px 16px; list-style:none; cursor:pointer; font-weight:700; }
     summary::-webkit-details-marker{ display:none; }
@@ -138,12 +129,10 @@
     [data-theme="dark"] input,[data-theme="dark"] textarea{ background:#0b1224; border:1px solid rgba(148,163,184,.18); color:#e2e8f0; padding:12px 14px; border-radius:12px }
     textarea{ min-height:120px; resize:vertical }
 
-    /* Footer & divider */
     .foot{ padding:28px 0; border-top:1px solid var(--border); font-size:14px; color:#64748b }
     .divider{ height:1px; background: linear-gradient(90deg, transparent, rgba(2,6,23,.08), transparent); margin: var(--space-5) 0; }
 
-    /* Links (not CTA) */
-    a:not(.btn):not(.btn-outline):not(.btn-wa){ color:var(--link); text-decoration:underline; }
+    a:not(.btn):not(.btn-wa){ color:var(--link); text-decoration:underline; }
     a:focus-visible, button:focus-visible, summary:focus-visible{ outline:3px solid rgba(37,99,235,.35); outline-offset:2px; border-radius:10px }
 
     /* Sticky mobile bar */
@@ -159,62 +148,39 @@
     }
     [data-theme="dark"] .badge,[data-theme="dark"] .logo-chip,[data-theme="dark"] .kicker{ background:rgba(34,211,238,.1); border-color:rgba(148,163,184,.25); color:#e2e8f0 }
 
-    /* Reduced motion */
     @media (prefers-reduced-motion: reduce){ *{ transition:none !important; animation:none !important; } }
 
-    /* Mobile */
     @media (max-width: 980px){
       .grid2{ grid-template-columns:1fr }
       .steps{ grid-template-columns:1fr 1fr }
       .features{ grid-template-columns:1fr 1fr }
       .price-grid{ grid-template-columns:1fr }
       .contact{ grid-template-columns:1fr }
-      .menu{ display:none; } /* ak budeš chcieť hamburger, doplníme */
+      .menu{ display:none; } /* (ak budeš chcieť hamburger, doplníme) */
     }
     @media (max-width:560px){
       .steps,.features{ grid-template-columns:1fr }
     }
 
-    /* Skip link visible on focus */
     .skip:focus{ position:static; width:auto; height:auto; padding:8px 12px; border-radius:10px; background:#fff; color:#0f172a; z-index:1000 }
   </style>
 
   <!-- JSON-LD: Services -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "LivePredaj.sk",
-    "areaServed": "SK",
-    "serviceType": ["TikTok Live predaj", "Facebook Live", "YouTube Live", "Live shopping produkcia"],
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "149", "highPrice": "1490" }
-  }
+  {"@context":"https://schema.org","@type":"ProfessionalService","name":"LivePredaj.sk","areaServed":"SK","serviceType":["TikTok Live predaj","Facebook Live","YouTube Live","Live shopping produkcia"],"offers":{"@type":"AggregateOffer","priceCurrency":"EUR","lowPrice":"149","highPrice":"1490"}}
   </script>
 
-  <!-- Favicon & SEO basics -->
   <link rel="icon" href="/favicon.ico" />
   <link rel="canonical" href="https://anfan143.github.io/live-predaj-sk/" />
   <meta name="robots" content="index,follow" />
   <link rel="alternate" hreflang="sk" href="https://anfan143.github.io/live-predaj-sk/" />
 
-  <!-- Plausible (privacy-friendly analytics, no cookies) -->
+  <!-- Plausible -->
   <script defer data-domain="anfan143.github.io" src="https://plausible.io/js/plausible.js"></script>
 
   <!-- Organization schema -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "LivePredaj.sk",
-    "url": "https://anfan143.github.io/live-predaj-sk/",
-    "contactPoint": [{
-      "@type": "ContactPoint",
-      "contactType": "sales",
-      "telephone": "+421951265627",
-      "areaServed": "SK",
-      "availableLanguage": ["sk", "en"]
-    }]
-  }
+  {"@context":"https://schema.org","@type":"Organization","name":"LivePredaj.sk","url":"https://anfan143.github.io/live-predaj-sk/","contactPoint":[{"@type":"ContactPoint","contactType":"sales","telephone":"+421951265627","areaServed":"SK","availableLanguage":["sk","en"]}]}
   </script>
 </head>
 <body>
@@ -225,33 +191,25 @@
     <div class="wrap inner">
       <!-- BRAND -->
       <div class="brand">
-        <!-- mini logo (LIVE + košík) -->
-        <svg class="brandmark" width="28" height="28" viewBox="0 0 64 64" aria-hidden="true">
-          <defs>
-            <linearGradient id="lg" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#3b82f6"/>
-            </linearGradient>
-          </defs>
+        <!-- Nahráš súbor na docs/assets/logo-live-nazivo.png; fallback SVG sa ukáže, ak obrázok ešte nie je -->
+        <img src="assets/logo-live-nazivo.png" alt="LIVE naživo – košík" class="brandmark-img" onerror="this.style.display='none';document.getElementById('brand_fallback').style.display='block';">
+        <svg id="brand_fallback" class="brandmark-fallback" width="28" height="28" viewBox="0 0 64 64" aria-hidden="true">
+          <defs><linearGradient id="lg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs>
           <rect x="2" y="2" rx="14" ry="14" width="60" height="60" fill="url(#lg)"/>
           <polygon points="22,18 22,46 42,32" fill="#ffffff" opacity="0.95"/>
-          <g fill="none" stroke="#0b1323" stroke-width="3.5" opacity="0.75">
-            <path d="M18 50h30l6-26H22z"/>
-            <circle cx="28" cy="54" r="3.8"/><circle cx="45" cy="54" r="3.8"/>
-          </g>
         </svg>
-
         <div class="brand-copy">
-          <strong>Live predaj pre vaše produkty</strong>
-          <span class="muted tagline">– Nikdy bližšie k zákazníkovi.</span>
+          <strong>LIVE predaj pre Vaše produkty</strong>
+          <em>Vaša cesta k zákazníkovi</em>
         </div>
       </div>
 
       <!-- MENU (stred) -->
       <div class="menu">
-        <a class="nav-pill" href="#ako">Ako to funguje</a>
-        <a class="nav-pill" href="#sluzby">Služby</a>
-        <a class="nav-pill" href="#cennik">Cenník</a>
-        <a class="nav-pill" href="#faq">FAQ</a>
+        <a href="#ako">Ako to funguje</a>
+        <a href="#sluzby">Služby</a>
+        <a href="#cennik">Cenník</a>
+        <a href="#faq">FAQ</a>
       </div>
 
       <!-- ACTIONS (vpravo) -->
@@ -259,7 +217,7 @@
         <a href="#kontakt" class="btn" data-plausible-event="nav_contact">Nezáväzná ponuka</a>
         <a href="https://wa.me/421951265627?text=Zauj%C3%ADmam%20sa%20o%20live%20predaj%20%28web%29"
            class="btn-wa" aria-label="Napísať na WhatsApp" data-plausible-event="nav_whatsapp">
-          <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" class="wa-ico">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" style="display:block">
             <path d="M20.5 3.5A10 10 0 0 0 3.2 16.7L2 22l5.4-1.2A10 10 0 1 0 20.5 3.5Z" fill="#fff" opacity="0.15"/>
             <path d="M12.0 4a8 8 0 0 0-6.9 11.9L4.4 19l3.2-.7A8 8 0 1 0 12 4Zm4.6 11.3c-.2.6-1.1 1-1.6 1.1-.4.1-1 .1-1.6-.1-.4-.1-1-.3-1.7-.7a10.9 10.9 0 0 1-3.2-2.8c-.4-.5-.8-1.1-1-1.7-.3-.6-.4-1.1-.4-1.6 0-.5.2-1 .5-1.4.2-.4.5-.6.8-.6h.6c.2 0 .4 0 .5.4l.7 1.7c.1.2.1.4 0 .6l-.4.7c-.1.1 0 .3.1.5.2.3.5.7.9 1.1.6.6 1.1 1 1.6 1.2.2.1.4.1.5.1l.5-.1.5.2 1.6.7c.2.1.3.2.4.3 0 .1 0 .3 0 .4Z" fill="#ffffff"/>
           </svg>
@@ -280,8 +238,8 @@
         <p class="lead muted">Navrhneme formát, pripravíme produkty a ponuky, odmoderujeme stream a doručíme klipy + prehľad tržieb. Prvý live vieme spustiť už do 7–10 dní od briefu.</p>
         <div class="cta" style="display:flex; gap:12px; margin-top:20px; flex-wrap:wrap">
           <a class="btn" href="#cennik" data-plausible-event="hero_cta_packages" aria-label="Spustiť pilot do 7–10 dní">Spustiť pilot do 7–10 dní</a>
-          <a class="btn-outline" href="#ako" data-plausible-event="hero_cta_how">Ako to funguje</a>
-          <a class="btn-outline" href="https://wa.me/421951265627?text=Chcem%20WhatsApp%20konzult%C3%A1ciu%20%28web-hero%29" aria-label="Napísať na WhatsApp" data-plausible-event="hero_whatsapp">Napísať na WhatsApp</a>
+          <a class="btn-wa" href="https://wa.me/421951265627?text=Chcem%20WhatsApp%20konzult%C3%A1ciu%20%28web-hero%29" aria-label="Napísať na WhatsApp" data-plausible-event="hero_whatsapp">WhatsApp konzultácia</a>
+          <a class="btn" style="background:#0f766e" href="#ako" data-plausible-event="hero_cta_how">Ako to funguje</a>
         </div>
         <div class="badges">
           <span class="badge">SK lokalizácia</span>
@@ -386,17 +344,15 @@
 
   <div class="divider"></div>
 
-  <!-- EXTRA CTA under pricing -->
+  <!-- EXTRA CTA -->
   <section class="wrap" style="padding-top:0">
     <div class="card" style="padding:18px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
       <div class="muted">Nevieš, ktorý balík je pre teba? Napíš nám na WhatsApp a pošleme odporúčanie podľa sortimentu.</div>
-      <div>
-        <a class="btn" href="https://wa.me/421951265627?text=Konzult%C3%A1cia%20k%20bal%C3%ADku%20%28po%20cenn%C3%ADku%29" aria-label="WhatsApp kontakt" data-plausible-event="postpricing_whatsapp">WhatsApp konzultácia</a>
-      </div>
+      <div><a class="btn" href="https://wa.me/421951265627?text=Konzult%C3%A1cia%20k%20bal%C3%ADku%20%28po%20cenn%C3%ADku%29" aria-label="WhatsApp kontakt" data-plausible-event="postpricing_whatsapp">WhatsApp konzultácia</a></div>
     </div>
   </section>
 
-  <!-- WHY NOW / GUARANTEE / OBJECTIONS -->
+  <!-- WHY / GUARANTEE / OBJECTIONS -->
   <section class="section wrap">
     <h2>Prečo teraz</h2>
     <div class="features">
@@ -437,7 +393,7 @@
 
   <div class="divider"></div>
 
-  <!-- MINI CASE PLACEHOLDER -->
+  <!-- MINI CASE -->
   <section class="section wrap">
     <h2>Mini príklad (placeholder)</h2>
     <div class="grid2">
@@ -467,7 +423,7 @@
       </div>
       <div style="display:flex; gap:12px; flex-wrap:wrap">
         <a class="btn" href="#kontakt" data-plausible-event="final_cta_contact">Nezáväzná ponuka</a>
-        <a class="btn-outline" href="https://wa.me/421951265627?text=Z%C3%A1vere%C4%8Dn%C3%A1%20konzult%C3%A1cia%20%28final%20CTA%29" data-plausible-event="final_cta_whatsapp">WhatsApp konzultácia</a>
+        <a class="btn-wa" href="https://wa.me/421951265627?text=Z%C3%A1vere%C4%8Dn%C3%A1%20konzult%C3%A1cia%20%28final%20CTA%29" data-plausible-event="final_cta_whatsapp">WhatsApp konzultácia</a>
       </div>
     </div>
   </section>
@@ -518,10 +474,8 @@
       <div class="card" style="padding:18px">
         <form id="contactForm">
           <div id="formNotice" class="notice" aria-live="polite" hidden></div>
-          <!-- Honeypot + subject -->
           <input type="hidden" name="_subject" value="LivePredaj.sk – nový dopyt" />
           <input type="text" name="_hp" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px" aria-hidden="true" />
-          <!-- Fields -->
           <input name="meno" placeholder="Meno a priezvisko" required />
           <input name="firma" placeholder="Firma (nepovinné)" />
           <input type="email" name="email" placeholder="E-mail" required />
@@ -551,7 +505,7 @@
     </div>
   </footer>
 
-  <!-- Inline legal sections -->
+  <!-- Legal short sections -->
   <section id="podmienky" class="wrap" style="padding:var(--space-6) var(--space-3)">
     <h3>Podmienky používania (skrátené)</h3>
     <p class="muted">Služby live predaja poskytujeme na základe objednávky a potvrdenej ponuky. Ceny sú bez DPH, ak nie je uvedené inak. Záznamy a klipy slúžia pre vaše marketingové účely; za obsah živého vysielania nesiete zodpovednosť vy ako objednávateľ (správnosť cien, súlad s platformami a právom).</p>
@@ -561,7 +515,7 @@
     <p class="muted">Web nepoužíva marketingové cookies. Kontaktné údaje z formulára spracúvame výlučne na účel vybavenia dopytu. Prevádzkovateľom je LivePredaj.sk; ak budete chcieť údaje upraviť alebo vymazať, napíšte nám cez formulár alebo WhatsApp.</p>
   </section>
 
-  <!-- COOKIE BAR (opt-in pre demo) -->
+  <!-- COOKIE BAR (opt-in demo) -->
   <div id="cookieBar" class="stickybar" role="dialog" aria-live="polite" style="max-width:560px; left:50%; transform:translateX(-50%);">
     <div style="display:flex; gap:12px; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap">
       <div>
@@ -569,7 +523,7 @@
         <div><small class="muted">Pomôže nám to zlepšovať web. Nepoužívame marketingové cookies.</small></div>
       </div>
       <div style="display:flex; gap:10px">
-        <button class="btn-outline" onclick="cookieNo()">Nesúhlasím</button>
+        <button class="btn" style="background:#334155" onclick="cookieNo()">Nesúhlasím</button>
         <button class="btn" onclick="cookieYes()">Súhlasím</button>
       </div>
     </div>
@@ -578,22 +532,19 @@
   <!-- Sticky mobile CTA bar -->
   <div class="stickybar" role="region" aria-label="Rýchly kontakt">
     <a class="btn" href="#kontakt" data-plausible-event="sticky_contact">Nezáväzná ponuka</a>
-    <a class="btn-outline" href="https://wa.me/421951265627?text=Z%C3%A1ujem%20o%20live%20predaj%20%28sticky%20bar%29" data-plausible-event="sticky_whatsapp">WhatsApp</a>
+    <a class="btn-wa" href="https://wa.me/421951265627?text=Z%C3%A1ujem%20o%20live%20predaj%20%28sticky%20bar%29" data-plausible-event="sticky_whatsapp">WhatsApp</a>
   </div>
 
   <script>
-    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Formspree endpoint
     const FORM_ENDPOINT = 'https://formspree.io/f/xjkaendy';
 
-    // Form handler
     const form = document.getElementById('contactForm');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const data = Object.fromEntries(new FormData(form).entries());
-      if (data._hp) return; // honeypot
+      if (data._hp) return;
 
       const box = document.getElementById('formNotice');
       try {
@@ -618,7 +569,6 @@
       }
     });
 
-    // Cookie bar
     const cookieKey = 'livepredaj_cookie_consent_v1';
     const bar = document.getElementById('cookieBar');
     function showBar(){ if(!localStorage.getItem(cookieKey)) bar.style.display = 'flex'; }
@@ -626,7 +576,6 @@
     function cookieNo(){ localStorage.setItem(cookieKey, 'no'); bar.style.display='none'; }
     showBar();
 
-    // Theme toggle (label & persist)
     const root = document.documentElement;
     const btn = document.getElementById('themeToggle');
     const setLabel = () => btn && (btn.textContent = (root.getAttribute('data-theme')==='dark' ? '🌙' : '☀️'));
@@ -638,26 +587,19 @@
       setLabel();
     });
 
-    // Plausible custom events helper
     window.plausible = window.plausible || function(){(window.plausible.q = window.plausible.q || []).push(arguments)}
     document.querySelectorAll('[data-plausible-event]').forEach(el=>{
       el.addEventListener('click',()=> plausible(el.getAttribute('data-plausible-event')));
     });
 
-    // FAQ structured data
-    const faqLd = {
-      "@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-        {"@type":"Question","name":"Potrebujem e-shop?","acceptedAnswer":{"@type":"Answer","text":"Nie nutne. Vieme smerovať nákup na formulár alebo WhatsApp; e-shop však zlepší mieru konverzie a meranie."}},
-        {"@type":"Question","name":"Na ktorých sieťach je to najefektívnejšie?","acceptedAnswer":{"@type":"Answer","text":"Pre Slovensko zvyčajne TikTok a Facebook; YouTube pomáha s evergreen dosahom a SEO."}},
-        {"@type":"Question","name":"Viete zabezpečiť techniku a priestor?","acceptedAnswer":{"@type":"Answer","text":"Áno. Dodáme kamery, svetlá, mikrofóny a mini štúdio, alebo prídeme k vám on-site."}},
-        {"@type":"Question","name":"Koľko trvá príprava prvého live?","acceptedAnswer":{"@type":"Answer","text":"Obvykle 7–10 pracovných dní od briefu podľa dostupnosti termínov."}}
-      ]};
-    const tag = document.createElement('script');
-    tag.type='application/ld+json';
-    tag.textContent = JSON.stringify(faqLd);
-    document.head.appendChild(tag);
+    const faqLd = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Potrebujem e-shop?","acceptedAnswer":{"@type":"Answer","text":"Nie nutne. Vieme smerovať nákup na formulár alebo WhatsApp; e-shop však zlepší mieru konverzie a meranie."}},
+      {"@type":"Question","name":"Na ktorých sieťach je to najefektívnejšie?","acceptedAnswer":{"@type":"Answer","text":"Pre Slovensko zvyčajne TikTok a Facebook; YouTube pomáha s evergreen dosahom a SEO."}},
+      {"@type":"Question","name":"Viete zabezpečiť techniku a priestor?","acceptedAnswer":{"@type":"Answer","text":"Áno. Dodáme kamery, svetlá, mikrofóny a mini štúdio, alebo prídeme k vám on-site."}},
+      {"@type":"Question","name":"Koľko trvá príprava prvého live?","acceptedAnswer":{"@type":"Answer","text":"Obvykle 7–10 pracovných dní od briefu podľa dostupnosti termínov."}}
+    ]};
+    const tag = document.createElement('script'); tag.type='application/ld+json'; tag.textContent = JSON.stringify(faqLd); document.head.appendChild(tag);
 
-    // Nav scroll state → tieň pri skrolle
     const nav = document.querySelector('.nav');
     const onScroll = () => { if(window.scrollY>8){ nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); } };
     onScroll(); window.addEventListener('scroll', onScroll);
