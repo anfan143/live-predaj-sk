@@ -18,35 +18,27 @@
   <style>
     /* ---------- Design tokens ---------- */
     :root{
-      --accent:#2563eb;
-      --accent-hover:#1d4ed8;
-      --accent-text:#ffffff;
-      --link:#1d4ed8;
-      --border:#e2e8f0;
-      --text:#0f172a;
-      --muted:#475569;
-      --brand:#0ea5e9;
-      --radius:14px;
-      --max:1200px;
-      --space-2:8px; --space-3:12px; --space-4:16px; --space-5:24px; --space-6:32px;
+      --accent:#2563eb; --accent-hover:#1d4ed8; --accent-text:#ffffff;
+      --link:#1d4ed8; --border:#e2e8f0; --text:#0f172a; --muted:#475569;
+      --brand:#0ea5e9; --brand-2:#22d3ee;
+      --radius:16px; --max:1200px; --gutter:24px;
+      --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px;
       --shadow:0 10px 30px rgba(2,6,23,.10);
     }
     [data-theme="dark"]{
-      --text:#e2e8f0;
-      --muted:#cbd5e1;
-      --border:rgba(148,163,184,.22);
+      --text:#e2e8f0; --muted:#cbd5e1; --border:rgba(148,163,184,.22);
       --link:#93c5fd;
     }
 
     /* ---------- Base ---------- */
     *{box-sizing:border-box}
-    html,body{margin:0; padding:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--text); background:#f8fafc;}
+    html,body{margin:0; padding:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--text); background:#f8fafc;}
     [data-theme="dark"] body{ background:linear-gradient(180deg,#0b1020 0%,#0a0f1c 60%, #0b1020 100%); }
     a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 var(--s4)}
     .section{padding:56px 0}
-    h1{font-size: clamp(28px, 4.5vw, 54px); line-height:1.05; margin:14px 0 16px}
-    h2{font-size: clamp(24px, 3.2vw, 34px); margin:0 0 8px}
+    h1{font-size: clamp(28px, 4.2vw, 48px); line-height:1.08; margin:0 0 12px}
+    h2{font-size: clamp(24px, 3vw, 34px); margin:0 0 8px}
     .muted{color:var(--muted)}
 
     /* ---------- Navbar ---------- */
@@ -55,93 +47,68 @@
     [data-theme="dark"] .nav{ background:rgba(11,16,32,.65); border-bottom:1px solid rgba(148,163,184,.15) }
     .nav .inner{display:flex; align-items:center; justify-content:space-between; height:72px}
     .brand{display:flex; align-items:center; gap:14px;}
-    .logoimg{height:40px; width:auto; border-radius:10px; box-shadow:0 6px 22px rgba(14,165,233,.28)}
+    .logoimg{height:44px; width:auto; border-radius:10px; box-shadow:0 6px 22px rgba(14,165,233,.28)}
     .brand-title{font-weight:900; letter-spacing:.2px}
     .brand-title .live{color:#ef4444}
-    .brand-sub{font-style:italic; color:var(--muted); margin-top:2px}
+    .brand-sub{font-style:italic; color:var(--muted); margin-top:2px; font-weight:500}
     .brand-stack{display:flex; flex-direction:column; line-height:1.05}
-
-    .menu{display:flex; align-items:center; gap:18px; font-weight:600}
+    .menu{display:flex; align-items:center; gap:18px; font-weight:700}
     .menu a:not(.btn):not(.btn-outline):not(.btn-wa){ text-decoration:underline; color:var(--link) }
 
-    /* Buttons */
-    .btn{display:inline-block; padding:12px 18px; border-radius:12px; font-weight:700; text-decoration:none; background:var(--accent); color:var(--accent-text); box-shadow:0 8px 22px rgba(37,99,235,.25); border:0}
+    /* ---------- Buttons (unified height) ---------- */
+    .btn, .btn-outline, .btn-wa{
+      display:inline-flex; align-items:center; justify-content:center;
+      height:48px; padding:0 18px; border-radius:12px; font-weight:800; text-decoration:none;
+    }
+    .btn{background:var(--accent); color:var(--accent-text); border:0; box-shadow:0 8px 22px rgba(37,99,235,.22)}
     .btn:hover{ background:var(--accent-hover) }
-    .btn-outline{padding:12px 18px; border-radius:12px; border:1px solid var(--border); text-decoration:none}
-    .btn-wa{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:12px; font-weight:800; text-decoration:none; background:#22c55e; color:#052e16; border:0; box-shadow:0 8px 22px rgba(34,197,94,.25)}
+    .btn-outline{border:1px solid var(--border)}
+    .btn-wa{background:#22c55e; color:#052e16; border:0; gap:10px; box-shadow:0 8px 22px rgba(34,197,94,.22)}
     .btn-wa svg{ width:18px; height:18px }
-
-    /* Theme button */
     .theme-btn{display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:12px; border:1px solid var(--border); cursor:pointer}
     [data-theme="light"] .theme-btn{ background:#0f172a; color:#fff }
     [data-theme="dark"] .theme-btn{ background:#fff; color:#0f172a }
 
-    /* Divider */
-    .divider{ height:1px; background: linear-gradient(90deg, transparent, rgba(2,6,23,.1), transparent); margin: var(--space-5) 0; }
-    [data-theme="dark"] .divider{ background: linear-gradient(90deg, transparent, rgba(148,163,184,.25), transparent); }
-
-    /* Cards / elements */
+    /* ---------- Cards / chips / helpers ---------- */
     .card{background:#ffffff; border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow)}
-    [data-theme="dark"] .card{ background:linear-gradient(180deg, rgba(17,22,42,.8), rgba(12,18,34,.7)); border:1px solid rgba(148,163,184,.12) }
+    [data-theme="dark"] .card{ background:linear-gradient(180deg, rgba(17,22,42,.82), rgba(12,18,34,.76)); border:1px solid rgba(148,163,184,.12) }
+    .chip{font-size:12px; padding:6px 10px; border:1px solid var(--border); border-radius:999px; background:#fff; color:#334155}
+    [data-theme="dark"] .chip{ border-color:rgba(148,163,184,.22); background:transparent; color:#cbd5e1 }
+    .divider{ height:1px; background: linear-gradient(90deg, transparent, rgba(2,6,23,.1), transparent); margin: var(--s5) 0; }
+    [data-theme="dark"] .divider{ background: linear-gradient(90deg, transparent, rgba(148,163,184,.25), transparent); }
+    .tick{width:18px; height:18px; border-radius:6px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); display:inline-grid; place-items:center; font-size:12px; color:#03131b; font-weight:900}
 
-    .screen{aspect-ratio:16/10; border-radius:14px; border:1px solid var(--border); background:#fff; display:grid; place-items:center; }
-    [data-theme="dark"] .screen{ background:linear-gradient(180deg, #0f172a 0%, #0b1020 100%); border-color:rgba(148,163,184,.2); color:#a5f3fc }
+    /* ---------- HERO (profi layout) ---------- */
+    .kicker-red{display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px;
+      background:#ef4444; color:#fff; border:1px solid #dc2626; font-weight:900; letter-spacing:.2px; text-transform:uppercase; box-shadow:0 6px 16px rgba(239,68,68,.15)}
+    .hero-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:var(--gutter); align-items:start; }
+    @media (max-width:980px){ .hero-grid{ grid-template-columns:1fr } }
+    .hero-left{ padding:22px; }
+    .hero-left h1{ max-width:22ch; } /* kratší riadok = lepšia čitateľnosť */
+    .hero-lead{ max-width:60ch; margin:12px 0 0 0; font-style:italic }
+    .callout{ margin-top:14px; padding:14px 16px; border-radius:12px; font-weight:800; border:2px solid #0f172a; color:#0f172a; background:#fff }
+    [data-theme="dark"] .callout{ border-color:#fff; color:#fff; background:transparent }
 
-    .badges{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
-    .badge{font-size:12px; padding:6px 10px; border:1px solid var(--border); border-radius:999px; color:#334155; background:#fff}
-    [data-theme="dark"] .badge{ border-color:rgba(148,163,184,.22); color:#cbd5e1; background:transparent }
-
-    .grid2{display:grid; grid-template-columns:1.15fr 1fr; gap:24px}
-    @media (max-width: 980px){ .grid2{grid-template-columns:1fr;} }
-
-    /* ---------- HERO – nové štýly ---------- */
-    .kicker-red{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:8px 14px; border-radius:999px;
-      background:#ef4444; color:#ffffff; border:1px solid #dc2626;
-      font-weight:800; letter-spacing:.2px; text-transform:uppercase;
-      box-shadow:0 6px 16px rgba(239,68,68,.15);
-    }
-    .whiteboard{
-      background:#ffffff; border:2px solid #e2e8f0; border-radius:16px;
-      padding:18px 20px; box-shadow:0 10px 28px rgba(2,6,23,.06);
-    }
-    .whiteboard h1{ margin:0; color:#0f172a; }
-    .whiteboard .hl{ color:#0ea5e9; font-weight:900; }
-    [data-theme="dark"] .whiteboard{ background:#0e162e; border-color:rgba(148,163,184,.28); }
-    [data-theme="dark"] .whiteboard h1{ color:#e2e8f0 }
-
-    .outline-claim{
-      display:inline-block; margin-top:14px;
-      padding:14px 16px; border-radius:12px; font-weight:800; text-align:left;
-      border:2px solid #0f172a; color:#0f172a; background:transparent;
-    }
-    [data-theme="dark"] .outline-claim{ border-color:#ffffff; color:#ffffff; }
-
-    .live-card{ position:relative; }
-    .live-badge{
-      position:absolute; top:10px; right:10px;
-      display:inline-flex; align-items:center; gap:8px;
-      padding:6px 10px; border-radius:999px;
-      background:#ffffff; border:1px solid #e2e8f0; box-shadow:0 6px 14px rgba(2,6,23,.08);
-      font-weight:800; color:#0f172a;
-    }
-    .live-badge .dot{ width:10px; height:10px; border-radius:999px; background:#ef4444; box-shadow:0 0 0 3px rgba(239,68,68,.18); }
+    .hero-right{ padding:0 }
+    .live-badge{ position:absolute; top:12px; right:12px; display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border-radius:999px; background:#fff; border:1px solid var(--border); font-weight:900; color:#0f172a; box-shadow:0 6px 14px rgba(2,6,23,.08)}
+    .live-badge .dot{ width:10px; height:10px; border-radius:999px; background:#ef4444; box-shadow:0 0 0 3px rgba(239,68,68,.18) }
     [data-theme="dark"] .live-badge{ background:rgba(11,16,32,.9); border-color:rgba(148,163,184,.25); color:#e2e8f0 }
 
-    .hero-plainlist{ list-style:none; padding:0; margin:14px 0 0 0; }
-    .hero-plainlist li{ display:flex; gap:8px; align-items:flex-start; margin:8px 0; }
-    .tick{width:18px; height:18px; border-radius:6px; background:linear-gradient(135deg,#0ea5e9,#22d3ee); display:inline-grid; place-items:center; font-size:12px; color:#03131b; font-weight:900}
+    .hero-card{ position:relative; overflow:hidden }
+    .hero-head{ padding:16px; border-bottom:1px solid var(--border); background:linear-gradient(180deg, rgba(2,6,23,.03), transparent) }
+    [data-theme="dark"] .hero-head{ border-bottom-color:rgba(148,163,184,.2); background:linear-gradient(180deg, rgba(255,255,255,.04), transparent) }
+    .hero-body{ padding:16px }
+    .hero-logos{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+    .hero-list{ list-style:none; padding:0; margin:0 }
+    .hero-list li{ display:flex; gap:8px; align-items:flex-start; margin:10px 0 }
 
-    /* Steps / features / pricing (skrátene – dizajn zosúladený) */
+    /* ---------- Sections (short) ---------- */
     .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
     @media (max-width:980px){ .steps{grid-template-columns:1fr 1fr} }
     @media (max-width:560px){ .steps{grid-template-columns:1fr} }
-    .step{padding:18px; border-radius:16px}
     .features{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
     @media (max-width:980px){ .features{grid-template-columns:1fr 1fr} }
     @media (max-width:560px){ .features{grid-template-columns:1fr} }
-    .feat{padding:18px; border-radius:16px}
     .price-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
     @media (max-width:980px){ .price-grid{grid-template-columns:1fr} }
     .price{padding:22px; border-radius:18px}
@@ -149,7 +116,6 @@
     [data-theme="dark"] .price .tag{ color:#a5f3fc; border-color:rgba(34,211,238,.25) }
     .price .num{font-size:32px; font-weight:800}
 
-    /* FAQ / contact / footer */
     .faq{display:grid; grid-template-columns:1fr; gap:12px}
     details{padding:16px 18px; border-radius:14px}
     [data-theme="light"] details{ background:#fff; border:1px solid #e2e8f0 }
@@ -164,7 +130,7 @@
     .foot{padding:28px 0; border-top:1px solid var(--border); font-size:14px; color:var(--muted)}
     [data-theme="dark"] .foot{ border-top:1px solid rgba(148,163,184,.15) }
 
-    /* Sticky mobile CTA bar */
+    /* Sticky mobile CTA */
     .stickybar{ position:fixed; bottom:12px; left:12px; right:12px; z-index:60; display:flex; gap:10px; justify-content:space-between; align-items:center; padding:10px; border-radius:14px; background:#ffffff; border:1px solid var(--border); box-shadow:0 10px 30px rgba(2,6,23,.08); }
     .stickybar .btn, .stickybar .btn-outline{ flex:1; text-align:center; }
     @media (min-width: 820px){ .stickybar{ display:none; } }
@@ -177,7 +143,7 @@
     [data-theme="dark"] .cookie{ background:#0c1326; border-color:rgba(148,163,184,.22); color:#cbd5e1 }
   </style>
 
-  <!-- Plausible (privacy-friendly analytics) -->
+  <!-- Plausible -->
   <script defer data-domain="anfan143.github.io" src="https://plausible.io/js/plausible.js"></script>
 
   <!-- Structured data -->
@@ -210,7 +176,6 @@
         <a href="#faq">FAQ</a>
         <a href="#kontakt" class="btn">Nezáväzná ponuka</a>
         <a class="btn-wa" href="https://wa.me/421951265627?text=Zauj%C3%ADmam%20sa%20o%20live%20predaj%20%28web%29" aria-label="WhatsApp">
-          <!-- WA icon -->
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 .02 5.35.02 11.97c0 2.11.55 4.17 1.6 5.99L0 24l6.2-1.6a11.98 11.98 0 0 0 5.8 1.48h.01c6.62 0 11.97-5.35 11.97-11.97 0-3.2-1.25-6.21-3.46-8.43ZM12 21.5c-1.93 0-3.82-.52-5.47-1.5l-.39-.23-3.68.94.98-3.59-.25-.37a9.96 9.96 0 0 1-1.55-5.28C1.64 6.46 6.49 1.63 12 1.63c2.63 0 5.1 1.02 6.96 2.88A9.8 9.8 0 0 1 21.37 12c0 5.51-4.84 9.5-9.37 9.5Zm5.43-7.07c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.66.15-.2.3-.76.95-.93 1.14-.17.2-.34.22-.64.08-.3-.15-1.25-.46-2.39-1.46-.88-.75-1.48-1.67-1.65-1.96-.17-.3-.02-.45.13-.6.13-.13.3-.34.45-.5.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.53-.07-.15-.66-1.59-.91-2.18-.24-.58-.49-.5-.66-.5-.17 0-.38-.02-.59-.02-.2 0-.53.08-.8.38-.27.3-1.05 1.03-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.13 3.25 5.16 4.56.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35Z"/></svg>
           WhatsApp
         </a>
@@ -219,67 +184,64 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header id="main" class="hero wrap">
-    <div class="grid2">
-
-      <!-- ĽAVÝ STĹPEC -->
-      <div>
+  <!-- HERO (profi layout) -->
+  <header id="main" class="wrap" style="padding:var(--s6) 0 var(--s5) 0">
+    <div class="hero-grid">
+      <!-- ĽAVÁ KARTA -->
+      <div class="card hero-left">
         <span class="kicker-red">LIVE shopping → PREDAJ NAŽIVO</span>
-
-        <div class="whiteboard" style="margin-top:12px;">
-          <h1>
-            Zvýšte <span class="hl">tržby</span> a <span class="hl">komunitu</span>
-            vďaka pravidelnému živému vysielaniu na
-            <strong>Facebooku, YouTube, Instagrame a TikToku</strong>.
-          </h1>
-        </div>
-
-        <p class="lead" style="font-style:italic; margin-top:16px;">
+        <h1>
+          Zvýšte <span style="color:#0ea5e9; font-weight:900">tržby</span> a
+          <span style="color:#0ea5e9; font-weight:900">komunitu</span>
+          vďaka pravidelnému živému vysielaniu na
+          <strong>Facebooku, YouTube, Instagrame a TikToku</strong>.
+        </h1>
+        <p class="hero-lead">
           Budeme vašou službou a asistentom pri zvyšovaní predajov vašich produktov pomocou živých vysielaní.
           Máme skúsenosti, ako sa dostať k novým zákazníkom, ktorí vás doteraz nepoznali.
           U nás si môžete vybrať služby a produkty podľa vašich financií, technických znalostí a túžby rásť.
         </p>
 
-        <div class="outline-claim">
-          Váš prvý predaj <strong>NAŽIVO</strong> vieme spustiť do 7 dní od kontaktovania našich odborníkov.
-        </div>
+        <div class="callout">Váš prvý predaj <strong>NAŽIVO</strong> vieme spustiť do 7 dní od kontaktovania našich odborníkov.</div>
 
-        <div class="badges">
-          <span class="badge">SK lokalizácia</span>
-          <span class="badge">Možnosť fakturácie s DPH</span>
-          <span class="badge">Expresný štart do 7 dní*</span>
-        </div>
-        <p class="muted" style="margin-top:8px; font-size:13px">*podľa dostupnosti termínov a podkladov</p>
+        <div class="divider"></div>
 
-        <div class="cta" style="display:flex; gap:12px; margin-top:18px; flex-wrap:wrap">
-          <a class="btn" href="#cennik" data-plausible-event="hero_cta_packages" aria-label="Spustiť pilot do 7–10 dní">Spustiť pilot do 7–10 dní</a>
-          <a class="btn-wa" href="https://wa.me/421951265627?text=Chcem%20WhatsApp%20konzult%C3%A1ciu%20%28web-hero%29" aria-label="Napísať na WhatsApp" data-plausible-event="hero_whatsapp">WhatsApp konzultácia</a>
+        <div style="display:flex; gap:12px; flex-wrap:wrap">
+          <a class="btn" href="#cennik" data-plausible-event="hero_cta_packages">Spustiť pilot do 7–10 dní</a>
+          <a class="btn-wa" href="https://wa.me/421951265627?text=Chcem%20WhatsApp%20konzult%C3%A1ciu%20%28web-hero%29" data-plausible-event="hero_whatsapp">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:18px;height:18px"><path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 .02 5.35.02 11.97c0 2.11.55 4.17 1.6 5.99L0 24l6.2-1.6a11.98 11.98 0 0 0 5.8 1.48h.01c6.62 0 11.97-5.35 11.97-11.97 0-3.2-1.25-6.21-3.46-8.43Z"/></svg>
+            WhatsApp konzultácia
+          </a>
           <a class="btn-outline" href="#ako" data-plausible-event="hero_cta_how">Ako to funguje</a>
         </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+          <span class="chip">SK lokalizácia</span>
+          <span class="chip">Možnosť fakturácie s DPH</span>
+          <span class="chip">Expresný štart do 7 dní*</span>
+        </div>
+        <p class="muted" style="margin-top:6px; font-size:13px">*podľa dostupnosti termínov a podkladov</p>
       </div>
 
-      <!-- PRAVÝ STĹPEC – ukážka -->
-      <div class="card live-card" style="padding:16px">
+      <!-- PRAVÁ KARTA -->
+      <div class="card hero-card">
         <span class="live-badge"><span class="dot"></span> NAŽIVO</span>
-
-        <div class="screen" style="padding:10px;">
-          <div>
-            <div style="text-align:center; font-size:20px; letter-spacing:.4px; font-weight:800">Ukážkový layout LIVE</div>
-            <div class="logos" style="justify-content:center; margin-top:12px">
-              <span class="badge">Facebook</span>
-              <span class="badge">YouTube</span>
-              <span class="badge">Instagram</span>
-              <span class="badge">TikTok</span>
-            </div>
+        <div class="hero-head">
+          <div style="text-align:center; font-weight:900">Ukážkový layout LIVE</div>
+          <div class="hero-logos" style="margin-top:12px">
+            <span class="chip">Facebook</span>
+            <span class="chip">YouTube</span>
+            <span class="chip">Instagram</span>
+            <span class="chip">TikTok</span>
           </div>
         </div>
-
-        <ul class="hero-plainlist">
-          <li><span class="tick">✓</span><span>Jednoduché nastavenie</span></li>
-          <li><span class="tick">✓</span><span>Zákazník má prístup k vašim produktom z pohodlia domova</span></li>
-          <li><span class="tick">✓</span><span>Nákup zrealizuje priamo počas živého vysielania – LIVE predaj</span></li>
-        </ul>
+        <div class="hero-body">
+          <ul class="hero-list">
+            <li><span class="tick">✓</span><span>Jednoduché nastavenie</span></li>
+            <li><span class="tick">✓</span><span>Zákazník má prístup k vašim produktom z pohodlia domova</span></li>
+            <li><span class="tick">✓</span><span>Nákup zrealizuje priamo počas živého vysielania – LIVE predaj</span></li>
+          </ul>
+        </div>
       </div>
     </div>
   </header>
@@ -289,10 +251,10 @@
     <h2>Ako to funguje</h2>
     <p class="muted">Transparentne, na výsledok. Každý krok má jasný výstup.</p>
     <div class="steps">
-      <div class="card step"><h3>1. Brief & cieľ</h3><p class="muted">30–45 min: sortiment, marže, sklad, akcie, persona. KPI a kalendár.</p></div>
-      <div class="card step"><h3>2. Scenár & ponuky</h3><p class="muted">Osnova streamu, sekvencia produktov, CTA, kupóny, overlaye.</p></div>
-      <div class="card step"><h3>3. Produkcia & live</h3><p class="muted">Moderovanie, live chat, pinovanie odkazov, meranie UTM.</p></div>
-      <div class="card step"><h3>4. Klipy & reporting</h3><p class="muted">3–10 strihov + report: dosah, kliky, tržby, odporúčania.</p></div>
+      <div class="card" style="padding:18px"><h3>1. Brief & cieľ</h3><p class="muted">30–45 min: sortiment, marže, sklad, akcie, persona. KPI a kalendár.</p></div>
+      <div class="card" style="padding:18px"><h3>2. Scenár & ponuky</h3><p class="muted">Osnova streamu, sekvencia produktov, CTA, kupóny, overlaye.</p></div>
+      <div class="card" style="padding:18px"><h3>3. Produkcia & live</h3><p class="muted">Moderovanie, live chat, pinovanie odkazov, meranie UTM.</p></div>
+      <div class="card" style="padding:18px"><h3>4. Klipy & reporting</h3><p class="muted">3–10 strihov + report: dosah, kliky, tržby, odporúčania.</p></div>
     </div>
   </section>
 
@@ -300,12 +262,12 @@
   <section id="sluzby" class="section wrap">
     <h2>Služby</h2>
     <div class="features">
-      <div class="card feat"><h3>Kompletná produkcia live</h3><p class="muted">Kamera, zvuk, svetlá, grafika, testy. Aj mobilné vysielanie v predajni.</p></div>
-      <div class="card feat"><h3>Moderovanie & chat</h3><p class="muted">Tempo, námietky, motivácia k nákupu. Chat obsluhujeme my.</p></div>
-      <div class="card feat"><h3>Klipy po streame</h3><p class="muted">Výrezy 9:16 so subtitles a hookom. Názvy, popisy, hashtagy.</p></div>
-      <div class="card feat"><h3>Prepojenie s e-shopom</h3><p class="muted">UTM, kódy, QR. Jednoduchá objednávka aj bez e-shopu.</p></div>
-      <div class="card feat"><h3>On-site / štúdio</h3><p class="muted">U vás alebo v našom mini štúdiu. Rekvizity a staging.</p></div>
-      <div class="card feat"><h3>Poradenstvo & tréning</h3><p class="muted">Scenár, ponuky, cross-sell, práca s chatom, KPI a reporting.</p></div>
+      <div class="card" style="padding:18px"><h3>Kompletná produkcia live</h3><p class="muted">Kamera, zvuk, svetlá, grafika, testy. Aj mobilné vysielanie v predajni.</p></div>
+      <div class="card" style="padding:18px"><h3>Moderovanie & chat</h3><p class="muted">Tempo, námietky, motivácia k nákupu. Chat obsluhujeme my.</p></div>
+      <div class="card" style="padding:18px"><h3>Klipy po streame</h3><p class="muted">Výrezy 9:16 so subtitles a hookom. Názvy, popisy, hashtagy.</p></div>
+      <div class="card" style="padding:18px"><h3>Prepojenie s e-shopom</h3><p class="muted">UTM, kódy, QR. Jednoduchá objednávka aj bez e-shopu.</p></div>
+      <div class="card" style="padding:18px"><h3>On-site / štúdio</h3><p class="muted">U vás alebo v našom mini štúdiu. Rekvizity a staging.</p></div>
+      <div class="card" style="padding:18px"><h3>Poradenstvo & tréning</h3><p class="muted">Scenár, ponuky, cross-sell, práca s chatom, KPI a reporting.</p></div>
     </div>
   </section>
 
@@ -371,7 +333,7 @@
       </div>
       <div class="card" style="padding:18px">
         <h3>GDPR & transparentnosť</h3>
-        <ul class="hero-plainlist">
+        <ul class="hero-list" style="margin-top:10px">
           <li><span class="tick">✓</span><span>Meranie konverzií pomocou UTM a kódov</span></li>
           <li><span class="tick">✓</span><span>Bez cookies tretích strán na webe</span></li>
           <li><span class="tick">✓</span><span>Zmluvy o spracúvaní údajov (ak treba)</span></li>
@@ -388,10 +350,10 @@
     </div>
   </footer>
 
-  <!-- LEGAL (anchors) -->
+  <!-- LEGAL anchors -->
   <section id="podmienky" class="wrap" style="padding:24px 0">
     <h3>Podmienky používania (skrátené)</h3>
-    <p class="muted">Služby live predaja poskytujeme na základe objednávky a potvrdenej ponuky. Ceny sú bez DPH, ak nie je uvedené inak. Za obsah živého vysielania nesie zodpovednosť objednávateľ (správnosť cien, súlad s platformami a právom).</p>
+    <p class="muted">Služby live predaja poskytujeme na základe objednávky a potvrdenej ponuky. Ceny sú bez DPH, ak nie je uvedené inak. Za obsah živého vysielania zodpovedá objednávateľ (správnosť cien, súlad s platformami a právom).</p>
   </section>
   <section id="sukromie" class="wrap" style="padding:0 0 24px 0">
     <h3>Ochrana súkromia (stručne)</h3>
@@ -416,15 +378,13 @@
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Formspree endpoint
+    // Formspree
     const FORM_ENDPOINT = 'https://formspree.io/f/xjkaendy';
-
     const form = document.getElementById('contactForm');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const data = Object.fromEntries(new FormData(form).entries());
-      if (data._hp) return; // honeypot
-
+      if (data._hp) return;
       const box = document.getElementById('formNotice');
       try {
         const res = await fetch(FORM_ENDPOINT, {
@@ -433,19 +393,9 @@
           body: JSON.stringify(data),
         });
         box.hidden = false;
-        if (res.ok) {
-          box.className = 'notice ok';
-          box.textContent = 'Ďakujeme! Odpovieme čoskoro.';
-          form.reset();
-        } else {
-          box.className = 'notice err';
-          box.textContent = 'Formulár sa nepodarilo odoslať. Skúste znova alebo napíšte na WhatsApp.';
-        }
-      } catch (err) {
-        box.hidden = false;
-        box.className = 'notice err';
-        box.textContent = 'Ups, nastala chyba siete. Skúste znova, prosím.';
-      }
+        if (res.ok) { box.className = 'notice ok'; box.textContent = 'Ďakujeme! Odpovieme čoskoro.'; form.reset(); }
+        else { box.className = 'notice err'; box.textContent = 'Formulár sa nepodarilo odoslať. Skúste znova alebo napíšte na WhatsApp.'; }
+      } catch { box.hidden = false; box.className = 'notice err'; box.textContent = 'Ups, nastala chyba siete. Skúste znova, prosím.'; }
     });
 
     // Cookie bar
@@ -456,7 +406,7 @@
     function cookieNo(){ localStorage.setItem(cookieKey, 'no'); bar.style.display='none'; }
     showBar();
 
-    // Theme toggle (sun/moon with contrasting capsule)
+    // Theme toggle
     const root = document.documentElement;
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
