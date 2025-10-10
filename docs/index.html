@@ -136,6 +136,28 @@
     /* Inline legal sections */
     .legal{ max-width:var(--max); margin: 0 auto; padding: var(--space-6) var(--space-3); }
     .legal h3{ margin-top:0 }
+      /* === THEME: Light overrides (default) === */
+    :root{ --text:#0f172a; --muted:#475569; }
+    [data-theme="light"] body{ background: #f8fafc; }
+    [data-theme="light"] .nav{ background: rgba(255,255,255,.85); border-bottom-color: #e2e8f0; }
+    [data-theme="light"] .nav.scrolled{ background: rgba(255,255,255,.95); box-shadow: 0 6px 20px rgba(0,0,0,.08); }
+    [data-theme="light"] .card, [data-theme="light"] .step, [data-theme="light"] .feat, [data-theme="light"] .price, [data-theme="light"] .screen{
+      background: #ffffff; border-color:#e2e8f0; box-shadow: 0 8px 24px rgba(15,23,42,.06);
+    }
+    [data-theme="light"] .badge, [data-theme="light"] .logo-chip{ border-color:#e2e8f0; color:#334155 !important; }
+    [data-theme="light"] .btn{ color:#fff !important; }
+    [data-theme="light"] a:not(.btn):not(.btn-outline){ color:#0ea5e9 !important; text-decoration: underline; }
+    [data-theme="light"] .btn-outline{ color:#0f172a !important; border-color:#cbd5e1 !important; }
+    [data-theme="light"] .divider{ background: linear-gradient(90deg, transparent, rgba(2,6,23,.1), transparent); }
+    [data-theme="light"] .foot{ border-top:1px solid #e2e8f0; }
+    [data-theme="light"] .cookie{ background:#ffffff; border-color:#e2e8f0; color:#0f172a }
+    [data-theme="light"] .notice.ok{ color:#065f46; background:#ecfdf5; border-color:#a7f3d0 }
+    [data-theme="light"] .notice.err{ color:#991b1b; background:#fef2f2; border-color:#fecaca }
+    [data-theme="light"] .stickybar{ background:#ffffff; border-color:#e2e8f0; box-shadow: 0 10px 30px rgba(2,6,23,.08) }
+
+    /* Scope previous dark-forced overrides only to dark theme to avoid conflicts */
+    [data-theme="dark"] body, [data-theme="dark"] .wrap, [data-theme="dark"] .card, [data-theme="dark"] .step, [data-theme="dark"] .feat, [data-theme="dark"] .price, [data-theme="dark"] .price *:not(.btn):not(.tick), [data-theme="dark"] .features *, [data-theme="dark"] .steps *, [data-theme="dark"] .faq *, [data-theme="dark"] .contact *, [data-theme="dark"] .foot, [data-theme="dark"] .foot * { color: #e2e8f0 !important; }
+    [data-theme="dark"] .muted{ color:#cbd5e1 !important }
   </style>
   <script type="application/ld+json">
   {
@@ -186,6 +208,7 @@
         <a href="#cennik">Cenník</a>
         <a href="#faq">FAQ</a>
         <a href="https://wa.me/421951265627?text=Zauj%C3%ADmam%20sa%20o%20live%20predaj%20%28web%29" class="btn-outline" aria-label="Napísať na WhatsApp" data-plausible-event="nav_whatsapp">WhatsApp</a>
+        <button id="themeToggle" class="btn-outline" style="cursor:pointer" aria-label="Prepnúť tému" title="Prepnúť tému">🌓 Téma</button>
         <a href="#kontakt" class="btn">Nezáväzná ponuka</a>
       </div>
     </div>
@@ -554,6 +577,22 @@
     function cookieYes(){ localStorage.setItem(cookieKey, 'yes'); bar.style.display='none'; }
     function cookieNo(){ localStorage.setItem(cookieKey, 'no'); bar.style.display='none'; }
     showBar();
+
+    // --- Theme toggle ---
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initial = savedTheme || (prefersDark ? 'dark' : 'light');
+    root.setAttribute('data-theme', initial);
+    const btn = document.getElementById('themeToggle');
+    const setLabel = () => btn && (btn.textContent = (root.getAttribute('data-theme')==='dark' ? '🌙 Tmavá' : '☀️ Svetlá'));
+    setLabel();
+    btn && btn.addEventListener('click', ()=>{
+      const next = root.getAttribute('data-theme')==='dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      setLabel();
+    });
 
     // --- Plausible custom events helper ---
     window.plausible = window.plausible || function(){(window.plausible.q = window.plausible.q || []).push(arguments)}
