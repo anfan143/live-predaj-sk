@@ -15,7 +15,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{$1; --space-1:8px; --space-2:12px; --space-3:16px; --space-4:24px; --space-5:32px; --space-6:48px; --radius:16px; }
+    :root{$1; /* ACCENT & palette for accessibility */
+      --accent:#2563eb; /* primary CTA (blue-600) */
+      --accent-hover:#1d4ed8; /* blue-700 */
+      --accent-text:#ffffff; /* ensures ≥4.5:1 on accent */
+      --link:#0ea5e9; /* info links */
+      --border:#e2e8f0;
+    }
     /* Typo & spacing */
     html{ font-size:17px; }
     body{ line-height:1.7; letter-spacing:.1px; }
@@ -158,6 +164,30 @@
     /* Scope previous dark-forced overrides only to dark theme to avoid conflicts */
     [data-theme="dark"] body, [data-theme="dark"] .wrap, [data-theme="dark"] .card, [data-theme="dark"] .step, [data-theme="dark"] .feat, [data-theme="dark"] .price, [data-theme="dark"] .price *:not(.btn):not(.tick), [data-theme="dark"] .features *, [data-theme="dark"] .steps *, [data-theme="dark"] .faq *, [data-theme="dark"] .contact *, [data-theme="dark"] .foot, [data-theme="dark"] .foot * { color: #e2e8f0 !important; }
     [data-theme="dark"] .muted{ color:#cbd5e1 !important }
+      /* Buttons – single accent reserved for primary CTAs */
+    .btn{ background: var(--accent); color: var(--accent-text) !important; border:none; }
+    .btn:hover{ background: var(--accent-hover); }
+    .btn:focus{ outline:3px solid rgba(37,99,235,.35); outline-offset:2px; }
+    .btn-outline{ background:transparent; border:1px solid var(--border); }
+    .btn-outline:hover{ background:rgba(2,6,23,.04); }
+
+    /* Links (distinct from CTA) */
+    a:not(.btn):not(.btn-outline){ color: var(--link) !important; text-decoration: underline; }
+
+    /* Ensure big headings keep contrast in light */
+    [data-theme="light"] h1,[data-theme="light"] h2,[data-theme="light"] h3{ color:#0f172a !important }
+
+    /* High-contrast badges */
+    .badge,.logo-chip{ background:transparent; border:1px solid #cbd5e1 }
+
+    /* Focus styles for accessibility */
+    a,button,[role="button"],summary:focus{ outline:3px solid rgba(37,99,235,.35); outline-offset:2px }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){ *{ transition:none !important; animation:none !important; } }
+
+    /* Skip link visible on focus */
+    .skip:focus{ position:static; width:auto; height:auto; padding:8px 12px; border-radius:10px; background:#fff; color:#0f172a; z-index:1000 }
   </style>
   <script type="application/ld+json">
   {
@@ -198,6 +228,7 @@
   </script>
 </head>
 <body>
+  <a href="#main" class="skip" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">Preskočiť na obsah</a>
   <!-- NAV -->
   <nav class="nav">
     <div class="wrap inner">
@@ -215,7 +246,7 @@
   </nav>
 
   <!-- HERO -->
-  <header class="hero wrap" style="padding-bottom:var(--space-4)">
+  <header id="main" class="hero wrap" style="padding-bottom:var(--space-4)">
     <div class="grid2">
       <div>
         <span class="kicker">Live shopping pre SK trh – rýchly štart bez chaosu</span>
