@@ -153,6 +153,11 @@
 
     /* Skip link visible on focus */
     .skip:focus{ position:static; width:auto; height:auto; padding:8px 12px; border-radius:10px; background:#fff; color:#0f172a; z-index:1000 }
+    /* Brand – krátka sloganová veta v navigácii */
+.brand .tagline{ margin-left:6px; font-weight:500; }
+/* Na užších obrazovkách slogan skryjeme, nech menu dýcha */
+@media (max-width: 980px){ .brand .tagline{ display:none; } }
+
   </style>
 
   <!-- JSON-LD: Services -->
@@ -198,19 +203,27 @@
 
   <!-- NAV -->
   <nav class="nav">
-    <div class="wrap inner">
-      <div class="brand"><span class="logo" aria-hidden="true"></span> LIVE predaj <span class="muted" style="font-weight:500">/ Slovensko</span></div>
-      <div class="menu">
-        <a href="#ako">Ako to funguje</a>
-        <a href="#sluzby">Služby</a>
-        <a href="#cennik">Cenník</a>
-        <a href="#faq">FAQ</a>
-        <a href="https://wa.me/421951265627?text=Zauj%C3%ADmam%20sa%20o%20live%20predaj%20%28web%29" class="btn-outline" aria-label="Napísať na WhatsApp" data-plausible-event="nav_whatsapp">WhatsApp</a>
-        <button id="themeToggle" class="btn-outline" style="cursor:pointer" aria-label="Prepnúť tému" title="Prepnúť tému">☀️ Svetlá</button>
-        <a href="#kontakt" class="btn">Nezáväzná ponuka</a>
-      </div>
+  <div class="wrap inner">
+    <!-- BRAND (vľavo) -->
+    <div class="brand">
+      <span class="logo" aria-hidden="true"></span>
+      <strong>Live predaj pre vaše produkty</strong>
+      <span class="muted">· Slovensko</span>
+      <span class="muted tagline">– Nikdy bližšie k zákazníkovi.</span>
     </div>
-  </nav>
+
+    <!-- MENU (vpravo) -->
+    <div class="menu">
+      <a href="#ako">Ako to funguje</a>
+      <a href="#sluzby">Služby</a>
+      <a href="#cennik">Cenník</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://wa.me/421951265627?text=Zauj%C3%ADmam%20sa%20o%20live%20predaj%20%28web%29" class="btn-outline" aria-label="Napísať na WhatsApp" data-plausible-event="nav_whatsapp">WhatsApp</a>
+      <button id="themeToggle" class="btn-outline" style="cursor:pointer" aria-label="Prepnúť tému" title="Prepnúť tému">☀️ Svetlá</button>
+      <a href="#kontakt" class="btn">Nezáväzná ponuka</a>
+    </div>
+  </div>
+</nav>
 
   <!-- HERO -->
   <header id="main" class="hero wrap">
