@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LIVE predaj – TikTok, Facebook, YouTube | Slovensko</title>
+  <title>LIVE predaj – Facebook, YouTube, Instagram, TikTok | Slovensko</title>
   <meta name="description" content="Predávajte naživo na Facebooku, YouTube, Instagrame a TikToku. Pripravíme vysielanie, techniku, moderovanie, klipy a reporting. Prvý pilot do 7 dní." />
   <meta name="theme-color" content="#0f172a" />
 
@@ -28,15 +28,12 @@
       --ok:#16a34a;          /* WhatsApp zelená */
       --ok-hover:#148a3f;
 
-      --red:#ef4444;         /* „NAŽIVO“, akcenty */
-      --red-ink:#b91c1c;
-
+      --red:#ef4444;         /* „NAŽIVO“ */
       --chip:#e2e8f0;
       --border:#e2e8f0;
-      --glass:rgba(255,255,255,.7);
+      --glass:rgba(255,255,255,.72);
 
-      /* layout */
-      --max:1100px;
+      --max:1200px;
       --r:18px;
       --shadow: 0 18px 40px rgba(2,6,23,.18);
     }
@@ -49,7 +46,7 @@
       --muted:#475569;
       --ink:#0f172a;
       --muted-ink:#475569;
-      --glass:rgba(255,255,255,.85);
+      --glass:rgba(255,255,255,.9);
       --shadow: 0 12px 28px rgba(2,6,23,.08);
     }
 
@@ -59,93 +56,91 @@
     a{ color:inherit; text-decoration:none }
     img{ max-width:100%; display:block }
     :focus-visible{ outline:3px solid rgba(37,99,235,.35); outline-offset:2px }
-
-    /* Obal */
     .wrap{ max-width:var(--max); margin:0 auto; padding:0 20px }
 
     /* NAV */
     .nav{ position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px); background:var(--glass); border-bottom:1px solid rgba(2,6,23,.08)}
-    .nav .inner{ display:flex; align-items:center; justify-content:space-between; gap:16px; height:72px }
-    .brand{ display:flex; align-items:center; gap:14px }
-    .logo{ display:flex; align-items:center; }
-    .logo img{ height:42px; width:auto; /* neorezávať */ border-radius:0 }  /* požiadavka: bez zaoblenia loga */
-    .title{ line-height:1 }
-    .title strong{ font-size:22px; font-weight:800; color:var(--ink) }
-    .title .sub{ font-size:14px; color:var(--muted-ink) }
+    .nav .inner{ display:flex; align-items:center; justify-content:space-between; gap:14px; min-height:72px; }
+    .brand{ display:flex; align-items:center; gap:12px; min-width:0 }
+    .logo img{ height:42px; width:auto; border-radius:0 } /* bez zaoblenia loga */
+    .title{ line-height:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+    .title strong{ font-size:21px; font-weight:800; color:var(--ink) }
+    .title .sub{ font-size:13px; color:var(--muted-ink) }
 
-    .menu{ display:flex; gap:10px; align-items:center; flex-wrap:wrap }
-
-    /* tlačidlá */
-    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 18px; border-radius:14px; font-weight:700; box-shadow:var(--shadow); border:0; cursor:pointer }
-    .btn-cta{ background:var(--accent); color:var(--accent-text) }
+    .menu{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:flex-end; min-width:0 }
+    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:11px 16px; border-radius:14px; font-weight:700; border:0; cursor:pointer; white-space:nowrap }
+    .btn-cta{ background:var(--accent); color:var(--accent-text); box-shadow:var(--shadow) }
     .btn-cta:hover{ background:var(--accent-hover) }
-    .btn-ok{ background:var(--ok); color:#fff }
+    .btn-ok{ background:var(--ok); color:#fff; box-shadow:var(--shadow) }
     .btn-ok:hover{ background:var(--ok-hover) }
     .btn-outline{ background:transparent; border:1px solid rgba(2,6,23,.12); color:var(--ink) }
-    .btn-outline:hover{ background:rgba(2,6,23,.06); color:var(--ink) }  /* už nevybiela text */
+    .btn-outline:hover{ background:rgba(2,6,23,.06); color:var(--ink) } /* v svetlej téme text nevybieli */
+
+    .theme{ width:42px; height:42px; border-radius:12px; display:grid; place-items:center; border:1px solid rgba(2,6,23,.12); background:transparent; cursor:pointer }
+    .theme:hover{ background:rgba(2,6,23,.06) }
 
     /* HERO */
-    .hero{ padding:48px 0 8px }
-    .grid{ display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:22px } /* minmax(0..) zabráni overflow v Edge */
+    .hero{ padding:44px 0 6px }
+    .grid{ display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr); gap:22px } /* minmax(0..) = bez overflow */
     .kicker{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:#fee2e2; color:#7f1d1d; border:1px solid #fecaca; font-weight:800 }
     .kicker .arrow{ color:#ef4444 }
-
-    h1{ font-size: clamp(30px, 5.2vw, 56px); line-height:1.05; margin:14px 0 16px; color:var(--ink) }
-    .h1-acc1{ color:#2563eb }
-    .lead{ font-size: clamp(16px, 2.1vw, 19px); color:var(--muted-ink) }
-
+    h1{ font-size: clamp(28px, 4.2vw, 46px); line-height:1.08; margin:16px 0 12px; color:var(--ink) }
+    .h1-acc{ color:#2563eb }
+    .lead{ font-size: clamp(16px, 2vw, 19px); color:var(--muted-ink) }
     .cta{ display:flex; gap:12px; margin-top:16px; flex-wrap:wrap }
 
-    .badge-row{ display:flex; gap:8px; flex-wrap:wrap; margin-top:14px }
-    .chip{ font-size:13px; padding:8px 12px; border-radius:999px; background:#eef2ff; color:#1e40af; border:1px solid #c7d2fe }
+    .cta-box{ margin:18px 0 6px; padding:14px 16px; border-radius:16px; border:1px solid rgba(2,6,23,.08); background:var(--bg-2); box-shadow:var(--shadow) }
+    .cta-box b{ color:var(--ink) }
 
-    /* Mock okno (pravá karta) */
+    /* Mock okno */
     .mock{ border-radius:20px; border:1px solid rgba(2,6,23,.08); background:var(--bg-2); box-shadow:var(--shadow); padding:18px; position:relative }
-    .live-badge{ position:absolute; top:14px; right:14px; background:#fff; color:#b91c1c; border:1px solid #fecaca; border-radius:999px; padding:6px 12px; display:inline-flex; align-items:center; gap:8px; font-weight:700; z-index:2 }
+    .live-badge{ position:absolute; top:14px; right:14px; background:#fff; color:#b91c1c; border:1px solid #fecaca; border-radius:999px; padding:6px 12px; display:inline-flex; align-items:center; gap:8px; font-weight:800; z-index:2 }
     .live-badge .dot{ width:8px; height:8px; border-radius:50%; background:var(--red) }
-    .screen{ margin-top:18px; border-radius:14px; border:1px solid rgba(2,6,23,.08); background:linear-gradient(180deg,#ffffff,#f8fafc); min-height:210px; display:grid; place-items:center } /* bez prerušovaných čiar */
+    .screen{ margin-top:18px; border-radius:14px; border:1px solid rgba(2,6,23,.08); background:linear-gradient(180deg,#ffffff,#f8fafc); min-height:210px; display:grid; place-items:center }
     .platforms{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center }
-    .platforms .chip{ background:#f1f5f9; border-color:#e2e8f0; color:#0f172a }
+    .chip{ font-size:13px; padding:8px 12px; border-radius:999px; background:#f1f5f9; border:1px solid #e2e8f0; color:#0f172a }
 
-    /* CHECKS pod oknom */
     .checks{ margin-top:14px; border-radius:16px; border:1px solid rgba(2,6,23,.08); background:var(--bg-2); box-shadow:var(--shadow); padding:14px }
     .check{ display:flex; gap:10px; align-items:flex-start; color:var(--muted-ink); margin:8px 0 }
     .check .ico{ width:24px; height:24px; border-radius:8px; background:#ecfeff; border:1px solid #bae6fd; display:grid; place-items:center; color:#0284c7; font-weight:800; flex:0 0 24px }
 
-    /* CTA biely box (pilot + WA) */
-    .cta-box{ margin:20px 0 8px; padding:14px 16px; border-radius:16px; border:1px solid rgba(2,6,23,.08); background:var(--bg-2); box-shadow:var(--shadow) }
-    .cta-box b{ color:var(--ink) }
-
-    /* Sekcia: Ako to funguje */
+    /* Sekcie */
     .section{ padding:56px 0 }
     .section h2{ margin:0 0 8px; font-size: clamp(24px, 3.2vw, 34px); color:var(--ink) }
-    .section .note{ color:var(--muted-ink); font-weight:600 } /* zvýraznené, ale nie príliš krikľavé */
+    .section .note{ color:var(--muted-ink); font-weight:600 }
 
+    /* Ako to funguje */
     .steps{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; margin-top:16px }
     .step{ padding:18px; border-radius:18px; border:1px solid rgba(2,6,23,.08); background:var(--bg-2); box-shadow:var(--shadow); transition:transform .18s ease, box-shadow .18s ease }
-    .step:hover{ transform:translateY(-4px); box-shadow:0 22px 44px rgba(2,6,23,.15) } /* jemné „vyskočenie“ */
+    .step:hover{ transform:translateY(-4px); box-shadow:0 22px 44px rgba(2,6,23,.15) }
     .step-h{ display:flex; align-items:center; gap:12px; margin-bottom:8px }
     .ic{ width:44px; height:44px; border-radius:12px; background:#eef2ff; border:1px solid #c7d2fe; display:grid; place-items:center; font-size:22px; color:#1e40af; flex:0 0 44px }
     .step h3{ margin:0; font-size:20px; color:var(--ink) }
     .step p{ margin:8px 0 0; color:var(--muted-ink) }
-    .step b{ color:var(--ink) } /* kľúčové slová */
+    .step b{ color:var(--ink) }
 
-    /* „Na vrch“ plávajúce tlačidlo */
+    /* karty služieb/cenníka/faq */
+    .cards{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:14px }
+    .card{ padding:18px; border-radius:18px; border:1px solid rgba(2,6,23,.08); background:var(--bg-2); box-shadow:var(--shadow) }
+    .price{ font-size:28px; font-weight:800; color:var(--ink) }
+
+    /* back to top */
     .to-top{ position:fixed; right:18px; bottom:18px; z-index:60; opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease }
     .to-top.show{ opacity:1; pointer-events:auto; transform:translateY(0) }
     .to-top .btn-outline{ backdrop-filter:saturate(180%) blur(8px); background:var(--glass) }
 
-    /* Light/dark prepínač vpravo v nav */
-    .theme{ width:44px; height:44px; border-radius:12px; display:grid; place-items:center; border:1px solid rgba(2,6,23,.12); background:transparent; cursor:pointer }
-    .theme:hover{ background:rgba(2,6,23,.06) }
-
     /* Responsívne */
-    @media (max-width: 980px){
+    @media (max-width: 1080px){
+      .title strong{ font-size:19px }
       .grid{ grid-template-columns:1fr }
+    }
+    @media (max-width: 980px){
       .steps{ grid-template-columns:1fr 1fr }
+      .cards{ grid-template-columns:1fr 1fr }
     }
     @media (max-width: 560px){
       .steps{ grid-template-columns:1fr }
+      .cards{ grid-template-columns:1fr }
     }
   </style>
 </head>
@@ -154,11 +149,8 @@
   <!-- NAV -->
   <nav class="nav" role="navigation">
     <div class="wrap inner">
-      <a href="#top" class="brand">
-        <span class="logo">
-          <!-- cesta v GitHub Pages: /live-predaj-sk/assets/... -->
-          <img src="/live-predaj-sk/assets/logo-live-nazivo.png" alt="LIVE naživo logo">
-        </span>
+      <a href="#top" class="brand" aria-label="Domov">
+        <span class="logo"><img src="/live-predaj-sk/assets/logo-live-nazivo.png" alt="LIVE naživo logo"></span>
         <span class="title">
           <strong>LIVE predaj pre Vaše produkty</strong><br>
           <span class="sub">Vaša cesta k zákazníkovi</span>
@@ -184,8 +176,8 @@
       <div class="grid">
         <div>
           <span class="kicker">LIVE SHOPPING <span class="arrow">→</span> PREDAJ NAŽIVO</span>
-          <h1>Zvýšte <span class="h1-acc1">tržby</span> a <span class="h1-acc1">komunitu</span> vďaka pravidelnému živému vysielaniu na Facebooku, YouTube, Instagrame a TikToku.</h1>
-          <p class="lead"><em>Budeme vašou službou a asistentom</em> pri zvyšovaní predajov vašich produktov pomocou živých vysielaní. Máme skúsenosti, ako sa dostať k novým zákazníkom, ktorí vás doteraz nepoznali. U nás si môžete vybrať služby a produkty podľa vašich financií, technických znalostí a túžby rásť.</p>
+          <h1>Zvýšte <span class="h1-acc">tržby</span> a <span class="h1-acc">komunitu</span> vďaka pravidelnému živému vysielaniu na Facebooku, YouTube, Instagrame a TikToku.</h1>
+          <p class="lead"><em>Budeme vašou službou a asistentom</em> pri zvyšovaní predajov vašich produktov pomocou živých vysielaní. Máme skúsenosti, ako sa dostať k novým zákazníkom, ktorí vás doteraz nepoznali. U nás si vyberiete služby a produkty podľa financií, znalostí a túžby rásť.</p>
 
           <div class="cta-box"><b>Váš prvý predaj NAŽIVO</b> vieme spustiť do <b>7 dní</b> od kontaktovania našich odborníkov.</div>
 
@@ -230,7 +222,7 @@
             <div class="ic" aria-hidden="true">🧩</div>
             <h3>Vy si volíte <b>produkty</b></h3>
           </div>
-          <p>Produkty a ceny sú na vás. My pomôžeme doladiť <b>ponuky</b> (zľavy, balíčky, kódy) a <b>cieľ</b> vysielania.</p>
+          <p>Produkty a ceny sú na vás. Pomôžeme doladiť <b>ponuky</b> (zľavy, balíčky, kódy) a <b>cieľ</b> vysielania.</p>
         </article>
 
         <article class="step">
@@ -259,12 +251,40 @@
       </div>
     </section>
 
-    <!-- (Tu môžu nasledovať sekcie Služby, Cenník, FAQ...) -->
+    <!-- SLUZBY (placeholder – aby nemizli) -->
+    <section id="sluzby" class="section" aria-labelledby="sluzby-h">
+      <h2 id="sluzby-h">Služby</h2>
+      <div class="cards">
+        <div class="card"><h3>Kompletná produkcia</h3><p>Kamera, zvuk, svetlá, grafika, overlaye, testy a vysielanie.</p></div>
+        <div class="card"><h3>Moderovanie & chat</h3><p>Tempo, námietky, motivácia k nákupu, odpovede v chate.</p></div>
+        <div class="card"><h3>Klipy & reporting</h3><p>Výrezy 9:16 so subtitles + report s odporúčaniami.</p></div>
+      </div>
+    </section>
+
+    <!-- CENNIK (placeholder) -->
+    <section id="cennik" class="section" aria-labelledby="cennik-h">
+      <h2 id="cennik-h">Cenník (orientačne)</h2>
+      <div class="cards">
+        <div class="card"><h3>Starter</h3><div class="price">€149</div><p>1× live • 3 klipy • základné overlaye.</p></div>
+        <div class="card"><h3>Pro</h3><div class="price">€490</div><p>1× live • 6 klipov • dvojkamera • vlastné overlaye.</p></div>
+        <div class="card"><h3>Program</h3><div class="price">od €1 490/mes</div><p>4× live/mes. • 20+ klipov • remarketing.</p></div>
+      </div>
+    </section>
+
+    <!-- FAQ (placeholder) -->
+    <section id="faq" class="section" aria-labelledby="faq-h">
+      <h2 id="faq-h">FAQ</h2>
+      <div class="cards">
+        <div class="card"><h3>Potrebujem e-shop?</h3><p>Nie nutne – vieme použiť formulár alebo WhatsApp, e-shop zvýši meranie a konverzie.</p></div>
+        <div class="card"><h3>Koľko trvá príprava?</h3><p>Typicky 7–10 pracovných dní podľa dostupnosti termínov.</p></div>
+        <div class="card"><h3>Viete dodať techniku?</h3><p>Áno, kamery, svetlá, mikrofóny aj mini štúdio; alebo on-site u vás.</p></div>
+      </div>
+    </section>
 
     <!-- KONTAKT -->
     <section id="kontakt" class="section" aria-labelledby="kontakt-h">
       <h2 id="kontakt-h">Dopyt / kontakt</h2>
-      <div class="mock">
+      <div class="card">
         <form id="contactForm" style="display:grid; gap:10px">
           <input type="hidden" name="_subject" value="LivePredaj.sk – nový dopyt" />
           <input type="text" name="_hp" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px" aria-hidden="true" />
@@ -309,7 +329,7 @@
       tBtn.textContent = next === 'dark' ? '🌙' : '☀️';
     });
 
-    /* Back to top zobrazovanie */
+    /* Back to top */
     const toTop = document.getElementById('toTop');
     const onScroll = () => {
       if (window.scrollY > 240) toTop.classList.add('show');
@@ -318,7 +338,7 @@
     onScroll();
     window.addEventListener('scroll', onScroll);
 
-    /* Formspree – tvoj endpoint */
+    /* Formspree endpoint */
     const FORM_ENDPOINT = 'https://formspree.io/f/xjkaendy';
     const form = document.getElementById('contactForm');
     form.addEventListener('submit', async (e) => {
@@ -335,31 +355,24 @@
         box.hidden = false;
         if(res.ok){
           box.textContent = 'Ďakujeme! Ozveme sa čoskoro.';
-          box.style.background = '#dcfce7'; box.style.borderColor = '#86efac'; box.style.color = '#166534';
+          box.style.background = '#dcfce7'; box.style.border = '1px solid #86efac'; box.style.color = '#166534'; box.style.padding='8px 12px'; box.style.borderRadius='999px';
           form.reset();
         }else{
           box.textContent = 'Nepodarilo sa odoslať. Skúste znova alebo napíšte na WhatsApp.';
-          box.style.background = '#fee2e2'; box.style.borderColor = '#fecaca'; box.style.color = '#7f1d1d';
+          box.style.background = '#fee2e2'; box.style.border = '1px solid #fecaca'; box.style.color = '#7f1d1d'; box.style.padding='8px 12px'; box.style.borderRadius='999px';
         }
       }catch(err){
         box.hidden = false;
         box.textContent = 'Ups, nastala chyba siete. Skúste znova, prosím.';
-        box.style.background = '#fee2e2'; box.style.borderColor = '#fecaca'; box.style.color = '#7f1d1d';
+        box.style.background = '#fee2e2'; box.style.border = '1px solid #fecaca'; box.style.color = '#7f1d1d'; box.style.padding='8px 12px'; box.style.borderRadius='999px';
       }
     });
 
-    /* Plynulé skrolovanie pre anchor odkazy vo vnútri stránky */
+    /* Plynulé skrolovanie pre interné odkazy */
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click', e=>{
         const id = a.getAttribute('href').slice(1);
         const el = document.getElementById(id);
         if(el){
           e.preventDefault();
-          el.scrollIntoView({behavior:'smooth', block:'start'});
-          history.pushState(null,'','#'+id);
-        }
-      })
-    });
-  </script>
-</body>
-</html>
+          el.scrollInto
