@@ -3,13 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LivePredaj.sk – TikTok, Facebook, YouTube | Slovensko</title>
-  <meta name="description" content="LivePredaj.sk – predaj naživo pre slovenský trh. Kompletný servis: scenár, technika, moderovanie, klipy, prepojenie s e-shopom, reporting a fakturácia." />
-  <meta name="keywords" content="live predaj, tiktok live, facebook live, youtube live, livestream shop, Slovensko, predaj naživo" />
-  <meta property="og:title" content="LivePredaj.sk – TikTok, Facebook, YouTube" />
-  <meta property="og:description" content="Spustíme vám live predaj: tvorba obsahu, moderovanie, technika, klipy, reporting." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://anfan143.github.io/live-predaj-sk/assets/logo-live-nazivo.png" />
+  <title>LIVE predaj – TikTok, Facebook, YouTube | Slovensko</title>
+  <meta name="description" content="Predávajte naživo na Facebooku, YouTube, Instagrame a TikToku. Pripravíme vysielanie, techniku, moderovanie, klipy a reporting. Prvý pilot do 7 dní." />
   <meta name="theme-color" content="#0f172a" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,320 +13,352 @@
 
   <style>
     :root{
-      /* paleta */
+      /* farby */
       --bg: #0b1020;
-      --bg-2: #0a0f1c;
-      --surface: rgba(17,22,42,.78);
-      --surface-2: rgba(17,22,42,.62);
-      --text: #e2e8f0;
+      --bg-2:#0a0f1c;
+      --text:#e2e8f0;
       --muted:#cbd5e1;
-      --border:#1f2937;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --ink:#0f172a;
+      --muted-ink:#475569;
 
-      --accent:#2563eb;          /* primárne CTA */
-      --accent-700:#1d4ed8;
-      --accent-text:#fff;
-      --link:#0ea5e9;
+      --accent:#2563eb;      /* CTA modrá */
+      --accent-hover:#1d4ed8;
+      --accent-text:#ffffff;
 
-      --danger:#e11d48;          /* jednotná červená */
-      --danger-700:#be123c;
+      --ok:#16a34a;          /* WhatsApp zelená */
+      --ok-hover:#148a3f;
 
-      --radius: 18px;
-      --max: 1200px;
-      --space-2: 8px;
-      --space-3: 16px;
-      --space-4: 24px;
-      --space-5: 32px;
-      --space-6: 48px;
+      --red:#ef4444;         /* „NAŽIVO“, akcenty */
+      --red-ink:#b91c1c;
+
+      --chip:#e2e8f0;
+      --border:#e2e8f0;
+      --glass:rgba(255,255,255,.7);
+
+      /* layout */
+      --max:1100px;
+      --r:18px;
+      --shadow: 0 18px 40px rgba(2,6,23,.18);
     }
 
-    /* light */
+    /* Svetlá téma */
     [data-theme="light"]{
       --bg:#f8fafc;
-      --bg-2:#f1f5f9;
-      --surface:#ffffff;
-      --surface-2:#ffffff;
+      --bg-2:#ffffff;
       --text:#0f172a;
       --muted:#475569;
-      --border:#e2e8f0;
-      --shadow: 0 10px 30px rgba(2,6,23,.08);
+      --ink:#0f172a;
+      --muted-ink:#475569;
+      --glass:rgba(255,255,255,.85);
+      --shadow: 0 12px 28px rgba(2,6,23,.08);
     }
 
-    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);color:var(--text);}
+    /* Reset & typografia */
+    *{ box-sizing: border-box }
+    html,body{ margin:0; padding:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--text); background:var(--bg); overflow-x:hidden }
+    a{ color:inherit; text-decoration:none }
+    img{ max-width:100%; display:block }
+    :focus-visible{ outline:3px solid rgba(37,99,235,.35); outline-offset:2px }
 
-    a{color:inherit;text-decoration:none}
-    a.underline{color:var(--link);text-decoration:underline}
+    /* Obal */
+    .wrap{ max-width:var(--max); margin:0 auto; padding:0 20px }
 
-    .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--space-3)}
+    /* NAV */
+    .nav{ position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px); background:var(--glass); border-bottom:1px solid rgba(2,6,23,.08)}
+    .nav .inner{ display:flex; align-items:center; justify-content:space-between; gap:16px; height:72px }
+    .brand{ display:flex; align-items:center; gap:14px }
+    .logo{ display:flex; align-items:center; }
+    .logo img{ height:42px; width:auto; /* neorezávať */ border-radius:0 }  /* požiadavka: bez zaoblenia loga */
+    .title{ line-height:1 }
+    .title strong{ font-size:22px; font-weight:800; color:var(--ink) }
+    .title .sub{ font-size:14px; color:var(--muted-ink) }
 
-    /* nav */
-    .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.03);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--border)}
-    [data-theme="light"] .nav{background:rgba(255,255,255,.85)}
-    .nav .inner{display:flex;align-items:center;justify-content:space-between;height:72px}
-    .brand{display:flex;gap:12px;align-items:center}
-    .brand img{width:44px;height:44px;border-radius:12px;box-shadow:0 8px 28px rgba(14,165,233,.35);object-fit:cover}
-    .brand .title{font-weight:800;font-size:22px}
-    .brand .tagline{color:var(--muted);font-weight:600;font-size:14px;margin-top:2px}
+    .menu{ display:flex; gap:10px; align-items:center; flex-wrap:wrap }
 
-    .menu{display:flex;gap:12px;align-items:center}
-    .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border);border-radius:999px;background:transparent;font-weight:600}
-    .chip:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(2,6,23,.15)}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:14px;background:var(--accent);color:var(--accent-text);font-weight:700;border:none}
-    .btn:hover{background:var(--accent-700);transform:translateY(-1px);box-shadow:0 14px 30px rgba(37,99,235,.28)}
-    .btn-green{background:#22c55e}
-    .btn-green:hover{background:#16a34a}
+    /* tlačidlá */
+    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 18px; border-radius:14px; font-weight:700; box-shadow:var(--shadow); border:0; cursor:pointer }
+    .btn-cta{ background:var(--accent); color:var(--accent-text) }
+    .btn-cta:hover{ background:var(--accent-hover) }
+    .btn-ok{ background:var(--ok); color:#fff }
+    .btn-ok:hover{ background:var(--ok-hover) }
+    .btn-outline{ background:transparent; border:1px solid rgba(2,6,23,.12); color:var(--ink) }
+    .btn-outline:hover{ background:rgba(2,6,23,.06); color:var(--ink) }  /* už nevybiela text */
 
-    .theme{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;border:1px solid var(--border);background:transparent;font-size:20px}
-    .theme:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(2,6,23,.12)}
+    /* HERO */
+    .hero{ padding:48px 0 8px }
+    .grid{ display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:22px } /* minmax(0..) zabráni overflow v Edge */
+    .kicker{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:#fee2e2; color:#7f1d1d; border:1px solid #fecaca; font-weight:800 }
+    .kicker .arrow{ color:#ef4444 }
 
-    /* hero */
-    .hero{padding:56px 0 18px}
-    .kicker{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;border:1px solid color-mix(in oklab, var(--danger) 40%, transparent);background:color-mix(in oklab, var(--danger) 18%, transparent);color:var(--danger);font-weight:800;letter-spacing:.2px}
-    .grid2{display:grid;grid-template-columns:1.2fr 1fr;gap:22px}
-    h1{font-size: clamp(28px, 4.8vw, 60px);line-height:1.06;margin:16px 0 14px}
-    .em-blue{color:#2f6df6}
-    .em-green{color:#10b981}
-    .lead{font-size:18px;color:var(--muted)}
-    .callout{margin-top:16px;padding:14px 16px;border-radius:14px;background:var(--surface);border:1px solid var(--border);font-weight:600}
+    h1{ font-size: clamp(30px, 5.2vw, 56px); line-height:1.05; margin:14px 0 16px; color:var(--ink) }
+    .h1-acc1{ color:#2563eb }
+    .lead{ font-size: clamp(16px, 2.1vw, 19px); color:var(--muted-ink) }
 
-    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+    .cta{ display:flex; gap:12px; margin-top:16px; flex-wrap:wrap }
 
-    /* demo card */
-    .card{background:var(--surface);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow)}
-    .screen{aspect-ratio:16/10;border:1px dashed var(--border);border-radius:16px;margin:14px;padding:12px;display:grid;place-items:center}
-    .live-dot{position:absolute;right:16px;top:16px;display:inline-flex;align-items:center;gap:8px;border:1px solid color-mix(in oklab,var(--danger) 35%,transparent);background:color-mix(in oklab,var(--danger) 14%,transparent);color:var(--danger);padding:8px 12px;border-radius:999px;font-weight:700}
+    .badge-row{ display:flex; gap:8px; flex-wrap:wrap; margin-top:14px }
+    .chip{ font-size:13px; padding:8px 12px; border-radius:999px; background:#eef2ff; color:#1e40af; border:1px solid #c7d2fe }
 
-    /* HOW IT WORKS */
-    .section{padding:42px 0}
-    .section h2{font-size: clamp(24px, 3vw, 36px);margin:0 0 8px}
-    .section .lead-strong{color:var(--text);font-weight:600;margin:0 0 18px}
+    /* Mock okno (pravá karta) */
+    .mock{ border-radius:20px; border:1px solid rgba(2,6,23,.08); background:var(--bg-2); box-shadow:var(--shadow); padding:18px; position:relative }
+    .live-badge{ position:absolute; top:14px; right:14px; background:#fff; color:#b91c1c; border:1px solid #fecaca; border-radius:999px; padding:6px 12px; display:inline-flex; align-items:center; gap:8px; font-weight:700; z-index:2 }
+    .live-badge .dot{ width:8px; height:8px; border-radius:50%; background:var(--red) }
+    .screen{ margin-top:18px; border-radius:14px; border:1px solid rgba(2,6,23,.08); background:linear-gradient(180deg,#ffffff,#f8fafc); min-height:210px; display:grid; place-items:center } /* bez prerušovaných čiar */
+    .platforms{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center }
+    .platforms .chip{ background:#f1f5f9; border-color:#e2e8f0; color:#0f172a }
 
-    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .step{background:var(--surface-2);border:1px solid var(--border);border-radius:18px;padding:18px;transition:.2s ease;position:relative}
-    .step:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(2,6,23,.28)}
-    .step .hdr{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-    .ico{width:34px;height:34px;border-radius:10px;display:inline-grid;place-items:center;background:color-mix(in oklab,var(--accent) 14%, transparent);border:1px solid color-mix(in oklab,var(--accent) 30%, transparent)}
-    .ico svg{width:18px;height:18px}
-    .step h3{margin:0;font-size:18px}
-    .step p{margin:10px 0 0;color:var(--muted)}
-    .bullet{display:flex;align-items:flex-start;gap:10px;margin:8px 0}
-    .bullet .dot{width:18px;height:18px;border-radius:8px;display:grid;place-items:center;background:color-mix(in oklab,var(--accent) 16%,transparent);border:1px solid color-mix(in oklab,var(--accent) 28%,transparent)}
+    /* CHECKS pod oknom */
+    .checks{ margin-top:14px; border-radius:16px; border:1px solid rgba(2,6,23,.08); background:var(--bg-2); box-shadow:var(--shadow); padding:14px }
+    .check{ display:flex; gap:10px; align-items:flex-start; color:var(--muted-ink); margin:8px 0 }
+    .check .ico{ width:24px; height:24px; border-radius:8px; background:#ecfeff; border:1px solid #bae6fd; display:grid; place-items:center; color:#0284c7; font-weight:800; flex:0 0 24px }
 
-    /* buttons fixed colors on hover */
-    .chip:hover, .btn:hover, .btn-green:hover{color:var(--accent-text)}
+    /* CTA biely box (pilot + WA) */
+    .cta-box{ margin:20px 0 8px; padding:14px 16px; border-radius:16px; border:1px solid rgba(2,6,23,.08); background:var(--bg-2); box-shadow:var(--shadow) }
+    .cta-box b{ color:var(--ink) }
 
-    /* responsive */
+    /* Sekcia: Ako to funguje */
+    .section{ padding:56px 0 }
+    .section h2{ margin:0 0 8px; font-size: clamp(24px, 3.2vw, 34px); color:var(--ink) }
+    .section .note{ color:var(--muted-ink); font-weight:600 } /* zvýraznené, ale nie príliš krikľavé */
+
+    .steps{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; margin-top:16px }
+    .step{ padding:18px; border-radius:18px; border:1px solid rgba(2,6,23,.08); background:var(--bg-2); box-shadow:var(--shadow); transition:transform .18s ease, box-shadow .18s ease }
+    .step:hover{ transform:translateY(-4px); box-shadow:0 22px 44px rgba(2,6,23,.15) } /* jemné „vyskočenie“ */
+    .step-h{ display:flex; align-items:center; gap:12px; margin-bottom:8px }
+    .ic{ width:44px; height:44px; border-radius:12px; background:#eef2ff; border:1px solid #c7d2fe; display:grid; place-items:center; font-size:22px; color:#1e40af; flex:0 0 44px }
+    .step h3{ margin:0; font-size:20px; color:var(--ink) }
+    .step p{ margin:8px 0 0; color:var(--muted-ink) }
+    .step b{ color:var(--ink) } /* kľúčové slová */
+
+    /* „Na vrch“ plávajúce tlačidlo */
+    .to-top{ position:fixed; right:18px; bottom:18px; z-index:60; opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease }
+    .to-top.show{ opacity:1; pointer-events:auto; transform:translateY(0) }
+    .to-top .btn-outline{ backdrop-filter:saturate(180%) blur(8px); background:var(--glass) }
+
+    /* Light/dark prepínač vpravo v nav */
+    .theme{ width:44px; height:44px; border-radius:12px; display:grid; place-items:center; border:1px solid rgba(2,6,23,.12); background:transparent; cursor:pointer }
+    .theme:hover{ background:rgba(2,6,23,.06) }
+
+    /* Responsívne */
     @media (max-width: 980px){
-      .grid2{grid-template-columns:1fr}
-      .steps{grid-template-columns:1fr 1fr}
+      .grid{ grid-template-columns:1fr }
+      .steps{ grid-template-columns:1fr 1fr }
     }
     @media (max-width: 560px){
-      .steps{grid-template-columns:1fr}
+      .steps{ grid-template-columns:1fr }
     }
   </style>
-
-  <!-- Plausible -->
-  <script defer data-domain="anfan143.github.io" src="https://plausible.io/js/plausible.js"></script>
 </head>
 <body>
+
   <!-- NAV -->
-  <nav class="nav">
+  <nav class="nav" role="navigation">
     <div class="wrap inner">
-      <div class="brand">
-        <img src="./assets/logo-live-nazivo.png" alt="LIVE naživo logo" />
-        <div>
-          <div class="title">LIVE predaj pre Vaše produkty</div>
-          <div class="tagline">Vaša cesta k zákazníkovi</div>
-        </div>
-      </div>
+      <a href="#top" class="brand">
+        <span class="logo">
+          <!-- cesta v GitHub Pages: /live-predaj-sk/assets/... -->
+          <img src="/live-predaj-sk/assets/logo-live-nazivo.png" alt="LIVE naživo logo">
+        </span>
+        <span class="title">
+          <strong>LIVE predaj pre Vaše produkty</strong><br>
+          <span class="sub">Vaša cesta k zákazníkovi</span>
+        </span>
+      </a>
+
       <div class="menu">
-        <a class="chip" href="#ako">Ako to funguje</a>
-        <a class="chip" href="#sluzby">Služby</a>
-        <a class="chip" href="#cennik">Cenník</a>
-        <a class="chip" href="#faq">FAQ</a>
-        <a class="btn" href="#kontakt">Nezáväzná ponuka</a>
-        <a class="btn btn-green" href="https://wa.me/421951265627?text=Z%C3%A1ujem%20o%20live%20predaj" aria-label="WhatsApp">WhatsApp</a>
+        <a class="btn btn-outline" href="#ako">Ako to funguje</a>
+        <a class="btn btn-outline" href="#sluzby">Služby</a>
+        <a class="btn btn-outline" href="#cennik">Cenník</a>
+        <a class="btn btn-outline" href="#faq">FAQ</a>
+        <a class="btn btn-cta" href="#kontakt">Nezáväzná ponuka</a>
+        <a class="btn btn-ok" href="https://wa.me/421951265627?text=Z%C3%A1ujem%20o%20live%20predaj%20%28web%29" rel="noopener">WhatsApp</a>
         <button id="themeToggle" class="theme" aria-label="Prepnúť tému" title="Prepnúť tému">☀️</button>
       </div>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header class="wrap hero">
-    <div class="grid2">
-      <div>
-        <span class="kicker">LIVE SHOPPING → PREDAJ NAŽIVO</span>
-        <h1>Zvýšte <span class="em-blue">tržby</span> a <span class="em-green">komunitu</span> vďaka pravidelnému živému vysielaniu na Facebooku, YouTube, Instagrame a TikToku.</h1>
-        <p class="lead">Budeme vašou <strong>službou a asistentom</strong> pri zvyšovaní predajov pomocou živých vysielaní. Máme skúsenosti, ako sa dostať k <strong>novým zákazníkom</strong>, ktorí vás doteraz nepoznali.</p>
+  <main id="top" class="wrap">
 
-        <div class="callout">Váš prvý predaj NAŽIVO vieme spustiť do <strong>7 dní</strong> od kontaktovania našich odborníkov.</div>
+    <!-- HERO -->
+    <header class="hero" aria-label="Úvod">
+      <div class="grid">
+        <div>
+          <span class="kicker">LIVE SHOPPING <span class="arrow">→</span> PREDAJ NAŽIVO</span>
+          <h1>Zvýšte <span class="h1-acc1">tržby</span> a <span class="h1-acc1">komunitu</span> vďaka pravidelnému živému vysielaniu na Facebooku, YouTube, Instagrame a TikToku.</h1>
+          <p class="lead"><em>Budeme vašou službou a asistentom</em> pri zvyšovaní predajov vašich produktov pomocou živých vysielaní. Máme skúsenosti, ako sa dostať k novým zákazníkom, ktorí vás doteraz nepoznali. U nás si môžete vybrať služby a produkty podľa vašich financií, technických znalostí a túžby rásť.</p>
 
-        <div class="cta">
-          <a class="btn" href="#cennik">Spustiť pilot do 7 dní</a>
-          <a class="btn btn-green" href="https://wa.me/421951265627?text=Konzult%C3%A1cia%20k%20pilotn%C3%A9mu%20live">WhatsApp konzultácia</a>
-          <a class="chip" href="#ako">Ako to funguje</a>
-        </div>
-      </div>
+          <div class="cta-box"><b>Váš prvý predaj NAŽIVO</b> vieme spustiť do <b>7 dní</b> od kontaktovania našich odborníkov.</div>
 
-      <div class="card" style="position:relative;padding:6px">
-        <span class="live-dot"><span style="display:inline-block;width:8px;height:8px;border-radius:999px;background:var(--danger)"></span>NAŽIVO</span>
-        <div class="screen">
-          <div style="text-align:center;font-weight:800;color:var(--muted)">Ukážkový layout LIVE</div>
-          <div style="position:absolute;bottom:18px;left:18px;right:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-            <span class="chip">Facebook</span>
-            <span class="chip">YouTube</span>
-            <span class="chip">Instagram</span>
-            <span class="chip">TikTok</span>
+          <div class="cta">
+            <a class="btn btn-cta" href="#kontakt">Spustiť pilot do 7 dní</a>
+            <a class="btn btn-ok" href="https://wa.me/421951265627?text=Konzult%C3%A1cia%20k%20live%20predaju%20%28web%29" rel="noopener">WhatsApp konzultácia</a>
+            <a class="btn btn-outline" href="#ako">Ako to funguje</a>
           </div>
         </div>
-        <div style="padding:12px 16px">
-          <div class="bullet"><span class="dot">✓</span><span><strong>Jednoduché</strong> nastavenie</span></div>
-          <div class="bullet"><span class="dot">✓</span><span>Zákazník nakupuje <strong>pohodlne z domu</strong></span></div>
-          <div class="bullet"><span class="dot">✓</span><span>Nákup prebehne počas vysielania – <strong>LIVE predaj</strong></span></div>
-        </div>
+
+        <aside class="mock" aria-label="Ukážkové okno LIVE">
+          <span class="live-badge"><span class="dot"></span> NAŽIVO</span>
+          <div class="screen">
+            <div>
+              <div style="text-align:center; font-weight:800; color:var(--ink); margin-bottom:10px">Ukážkový layout LIVE</div>
+              <div class="platforms">
+                <span class="chip">Facebook</span>
+                <span class="chip">YouTube</span>
+                <span class="chip">Instagram</span>
+                <span class="chip">TikTok</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="checks">
+            <div class="check"><span class="ico">✓</span><div><b>Jednoduché nastavenie</b></div></div>
+            <div class="check"><span class="ico">✓</span><div><b>Zákazník nakupuje</b> pohodlne z domu</div></div>
+            <div class="check"><span class="ico">✓</span><div><b>Nákup prebehne priamo</b> počas živého vysielania – LIVE predaj</div></div>
+          </div>
+        </aside>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- HOW IT WORKS -->
-  <section id="ako" class="wrap section">
-    <h2>Ako to funguje</h2>
-    <p class="lead-strong">Predávajte naživo bez zložitého nastavovania. <strong>My pripravíme</strong> všetko, vy ste <strong>v centre pozornosti</strong>.</p>
+    <!-- AKO TO FUNGUJE -->
+    <section id="ako" class="section" aria-labelledby="ako-h">
+      <h2 id="ako-h">Ako to funguje</h2>
+      <div class="note">Predávajte naživo bez zložitého nastavovania. <b>My pripravíme, vy ste v centre pozornosti.</b></div>
 
-    <div class="steps">
-      <!-- 1 -->
-      <div class="step">
-        <div class="hdr">
-          <span class="ico" aria-hidden="true">
-            <!-- box icon -->
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M3 7l9 4 9-4M3 7l9-4 9 4M3 7v10l9 4 9-4V7" stroke="currentColor" stroke-width="1.6" />
-            </svg>
-          </span>
-          <h3>Vy si volíte <strong>produkty</strong></h3>
-        </div>
-        <p>Produkty a ceny sú na vás. My pomôžeme doladiť <strong>ponuky</strong> (zľavy, balíčky, kódy) a cieľ vysielania.</p>
+      <div class="steps">
+        <article class="step">
+          <div class="step-h">
+            <div class="ic" aria-hidden="true">🧩</div>
+            <h3>Vy si volíte <b>produkty</b></h3>
+          </div>
+          <p>Produkty a ceny sú na vás. My pomôžeme doladiť <b>ponuky</b> (zľavy, balíčky, kódy) a <b>cieľ</b> vysielania.</p>
+        </article>
+
+        <article class="step">
+          <div class="step-h">
+            <div class="ic" aria-hidden="true">🧰</div>
+            <h3>Pripravíme <b>vysielanie</b></h3>
+          </div>
+          <p>Nastavíme udalosť/stránku, <b>grafiku</b>, odkazy na nákup a upozornenia pre zákazníkov. Dostanete plán „krok za krokom“.</p>
+        </article>
+
+        <article class="step">
+          <div class="step-h">
+            <div class="ic" aria-hidden="true">🎤</div>
+            <h3>Predaj živým <b>vysielaním</b> (LIVE)</h3>
+          </div>
+          <p><b>Technika & podpora</b> počas vysielania. <span style="display:flex; gap:10px; align-items:center; margin-top:6px"><span class="ic" style="width:28px;height:28px;font-size:16px">🎥</span> <span>Ak nechcete vystupovať, vieme zabezpečiť <b>moderovanie</b> alebo asistenciu.</span></span></p>
+        </article>
+
+        <article class="step">
+          <div class="step-h">
+            <div class="ic" aria-hidden="true">📊</div>
+            <h3>Spoločne <b>vyhodnotíme</b> výsledky</h3>
+          </div>
+          <p>Pozrieme sa, čo LIVE priniesol: <b>dosah</b>, interakcie, objednávky, vplyv na tržby a povedomie.</p>
+        </article>
       </div>
+    </section>
 
-      <!-- 2 -->
-      <div class="step">
-        <div class="hdr">
-          <span class="ico" aria-hidden="true">
-            <!-- wand -->
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M3 21l10-10M14 7l4-4M14 3v4M12 5h4" stroke="currentColor" stroke-width="1.6"/>
-            </svg>
-          </span>
-          <h3>Pripravíme <strong>vysielanie</strong></h3>
-        </div>
-        <p>Nastavíme udalosť/stránku, grafiku, odkazy na nákup a upozornenia pre zákazníkov. Dostanete plán <strong>„krok za krokom“</strong>.</p>
+    <!-- (Tu môžu nasledovať sekcie Služby, Cenník, FAQ...) -->
+
+    <!-- KONTAKT -->
+    <section id="kontakt" class="section" aria-labelledby="kontakt-h">
+      <h2 id="kontakt-h">Dopyt / kontakt</h2>
+      <div class="mock">
+        <form id="contactForm" style="display:grid; gap:10px">
+          <input type="hidden" name="_subject" value="LivePredaj.sk – nový dopyt" />
+          <input type="text" name="_hp" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px" aria-hidden="true" />
+          <div id="formNotice" class="chip" hidden aria-live="polite"></div>
+
+          <input name="meno" placeholder="Meno a priezvisko" required />
+          <input name="firma" placeholder="Firma (nepovinné)" />
+          <input type="email" name="email" placeholder="E-mail" required />
+          <input name="tel" placeholder="Telefón" />
+          <textarea name="sprava" placeholder="Čo chcete predávať? Koľko livestreamov mesačne?" required style="min-height:120px; resize:vertical"></textarea>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
+            <button class="btn btn-cta" type="submit">Odoslať dopyt</button>
+            <a class="btn btn-ok" href="https://wa.me/421951265627?text=Z%C3%A1ujem%20o%20nez%C3%A1v%C3%A4zn%C3%BA%20ponuku%20%28kontakt%29" rel="noopener">WhatsApp</a>
+          </div>
+
+          <small style="color:var(--muted-ink)">Odoslaním súhlasíte so spracovaním údajov na účel kontaktovania.</small>
+        </form>
       </div>
+    </section>
 
-      <!-- 3 -->
-      <div class="step">
-        <div class="hdr">
-          <span class="ico" aria-hidden="true">
-            <!-- live icon -->
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M5 12a7 7 0 0 1 7-7m0 14a7 7 0 0 1-7-7M19 5l2 2M19 19l2-2M12 8v8" stroke="currentColor" stroke-width="1.6"/>
-            </svg>
-          </span>
-          <h3>Predaj živým vysielaním (<strong>LIVE</strong>)</h3>
-        </div>
+  </main>
 
-        <div class="bullet"><span class="dot">✓</span><span><strong>Technika & podpora</strong> počas vysielania.</span></div>
-        <div class="bullet"><span class="dot">👤</span><span><strong>Moderovanie</strong> alebo <strong>asistencia</strong>, ak nechcete vystupovať.</span></div>
-      </div>
-
-      <!-- 4 -->
-      <div class="step">
-        <div class="hdr">
-          <span class="ico" aria-hidden="true">
-            <!-- chart -->
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M4 20V4M20 20H4M7 16v-4M12 20v-8M17 20v-6" stroke="currentColor" stroke-width="1.6"/>
-            </svg>
-          </span>
-          <h3>Spoločne vyhodnotíme <strong>výsledky</strong></h3>
-        </div>
-        <p>Pozrieme sa, čo LIVE priniesol: <strong>dosah</strong>, interakcie, objednávky, vplyv na tržby a povedomie.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- (ďalšie sekcie ako služby/cenník/FAQ/kontakt môžeš ponechať z predchádzajúcej verzie – obsah nezmenený) -->
-
-  <!-- KONTAKT (Formspree) -->
-  <section id="kontakt" class="wrap section">
-    <h2>Dopyt / kontakt</h2>
-    <div class="card" style="padding:18px">
-      <form id="contactForm" style="display:grid;gap:10px;max-width:580px">
-        <input type="hidden" name="_subject" value="LivePredaj.sk – nový dopyt" />
-        <input type="text" name="_hp" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true" />
-        <input name="meno" placeholder="Meno a priezvisko" required />
-        <input name="firma" placeholder="Firma (nepovinné)" />
-        <input type="email" name="email" placeholder="E-mail" required />
-        <input name="tel" placeholder="Telefón" />
-        <textarea name="sprava" placeholder="Čo chcete predávať? Koľko livestreamov mesačne?" required></textarea>
-        <button class="btn" type="submit">Odoslať dopyt</button>
-        <div id="formNotice" class="callout" style="display:none"></div>
-      </form>
-    </div>
-  </section>
-
-  <footer class="wrap" style="padding:28px 0;color:var(--muted);border-top:1px solid var(--border)">
-    © <span id="year"></span> LivePredaj.sk • Bez cookies tretích strán
-  </footer>
+  <!-- Back to top -->
+  <div class="to-top" id="toTop">
+    <a href="#top" class="btn btn-outline" aria-label="Prejsť na vrch">↑ Nahor</a>
+  </div>
 
   <script>
-    // rok
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Téma
+    /* Téma */
     const root = document.documentElement;
-    const btnTheme = document.getElementById('themeToggle');
+    const tBtn = document.getElementById('themeToggle');
     const saved = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initial = saved || (prefersDark ? 'dark' : 'light');
-    root.setAttribute('data-theme', initial);
-    btnTheme.textContent = initial === 'dark' ? '🌙' : '☀️';
-
-    btnTheme.addEventListener('click', () => {
+    const theme = saved || (prefersDark ? 'dark' : 'light');
+    root.setAttribute('data-theme', theme);
+    tBtn.textContent = theme === 'dark' ? '🌙' : '☀️';
+    tBtn.addEventListener('click', () => {
       const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
-      btnTheme.textContent = next === 'dark' ? '🌙' : '☀️';
+      tBtn.textContent = next === 'dark' ? '🌙' : '☀️';
     });
 
-    // Formspree
+    /* Back to top zobrazovanie */
+    const toTop = document.getElementById('toTop');
+    const onScroll = () => {
+      if (window.scrollY > 240) toTop.classList.add('show');
+      else toTop.classList.remove('show');
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+
+    /* Formspree – tvoj endpoint */
     const FORM_ENDPOINT = 'https://formspree.io/f/xjkaendy';
     const form = document.getElementById('contactForm');
-    const notice = document.getElementById('formNotice');
-
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const data = Object.fromEntries(new FormData(form).entries());
       if (data._hp) return; // honeypot
-
+      const box = document.getElementById('formNotice');
       try{
         const res = await fetch(FORM_ENDPOINT, {
-          method:'POST',
-          headers:{'Content-Type':'application/json','Accept':'application/json'},
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(data)
         });
-        notice.style.display = 'block';
+        box.hidden = false;
         if(res.ok){
-          notice.textContent = 'Ďakujeme! Ozveme sa čoskoro.';
-          notice.style.borderColor = 'rgba(34,197,94,.35)';
+          box.textContent = 'Ďakujeme! Ozveme sa čoskoro.';
+          box.style.background = '#dcfce7'; box.style.borderColor = '#86efac'; box.style.color = '#166534';
+          form.reset();
         }else{
-          notice.textContent = 'Nepodarilo sa odoslať. Skúste znova alebo napíšte na WhatsApp.';
-          notice.style.borderColor = 'rgba(239,68,68,.35)';
+          box.textContent = 'Nepodarilo sa odoslať. Skúste znova alebo napíšte na WhatsApp.';
+          box.style.background = '#fee2e2'; box.style.borderColor = '#fecaca'; box.style.color = '#7f1d1d';
         }
       }catch(err){
-        notice.style.display = 'block';
-        notice.textContent = 'Chyba siete. Skúste neskôr.';
-        notice.style.borderColor = 'rgba(239,68,68,.35)';
+        box.hidden = false;
+        box.textContent = 'Ups, nastala chyba siete. Skúste znova, prosím.';
+        box.style.background = '#fee2e2'; box.style.borderColor = '#fecaca'; box.style.color = '#7f1d1d';
       }
+    });
+
+    /* Plynulé skrolovanie pre anchor odkazy vo vnútri stránky */
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){
+          e.preventDefault();
+          el.scrollIntoView({behavior:'smooth', block:'start'});
+          history.pushState(null,'','#'+id);
+        }
+      })
     });
   </script>
 </body>
