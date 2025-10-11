@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>LivePredaj.sk – TikTok, Facebook, YouTube | Slovensko</title>
-  <meta name="description" content="LivePredaj.sk – predaj naživo pre slovenský trh. Kompletný servis: scenár, technika, moderovanie, klipy, prepojenie s e-shopom, reporting a fakturácia." />
+  <meta name="description" content="LivePredaj.sk – predaj naživo pre slovenský trh. Kompletný servis: scenár, technika, moderovanie, klipy, prepojenie s e-shopom, reporting." />
   <meta name="keywords" content="live predaj, tiktok live, facebook live, youtube live, livestream shop, Slovensko, predaj naživo" />
   <meta property="og:title" content="LivePredaj.sk – TikTok, Facebook, YouTube" />
   <meta property="og:description" content="Spustíme vám live predaj: tvorba obsahu, moderovanie, technika, klipy, reporting." />
@@ -37,7 +37,7 @@
       --danger-700:#be123c;
 
       --radius: 18px;
-      --max: 1200px;
+      --max: 1120px;             /* mierne užšie kvôli Edge 100 % */
       --space-2: 8px;
       --space-3: 16px;
       --space-4: 24px;
@@ -71,38 +71,65 @@
     .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--space-3)}
 
     /* nav */
-    .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.03);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--border)}
+    .nav{
+      position:sticky;top:0;z-index:50;
+      background:rgba(255,255,255,.03);
+      backdrop-filter:saturate(180%) blur(12px);
+      border-bottom:1px solid var(--border)
+    }
     [data-theme="light"] .nav{background:rgba(255,255,255,.85)}
     .nav .inner{display:flex;align-items:center;justify-content:space-between;height:72px}
     .brand{display:flex;gap:12px;align-items:center}
-    /* (1) logo bez zaoblenia */
-    .brand img{width:44px;height:44px;border-radius:0;box-shadow:0 8px 28px rgba(14,165,233,.35);object-fit:contain;background:#fff}
+    .brand img{
+      width:48px;height:48px; /* NEokrúhľovať logo */
+      border-radius:0;
+      object-fit:contain
+    }
     .brand .title{font-weight:800;font-size:22px}
     .brand .tagline{color:var(--muted);font-weight:600;font-size:14px;margin-top:2px}
 
     .menu{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
     .chip{
       display:inline-flex;align-items:center;gap:8px;
-      padding:10px 14px;border:1px solid var(--border);border-radius:999px;
-      background:transparent;font-weight:600;transition:transform .15s ease, box-shadow .15s ease;
+      padding:10px 14px;border:1px solid var(--border);
+      border-radius:999px;background:transparent;font-weight:600
     }
-    .chip:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(2,6,23,.15)}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:14px;background:var(--accent);color:var(--accent-text);font-weight:700;border:none;transition:transform .15s ease, box-shadow .15s ease, background .15s}
+    .chip:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(2,6,23,.12)}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:12px 18px;border-radius:14px;background:var(--accent);
+      color:var(--accent-text);font-weight:700;border:none
+    }
     .btn:hover{background:var(--accent-700);transform:translateY(-1px);box-shadow:0 14px 30px rgba(37,99,235,.28)}
     .btn-green{background:#22c55e}
     .btn-green:hover{background:#16a34a}
 
-    .theme{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;border:1px solid var(--border);background:transparent;font-size:20px}
+    .theme{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:44px;height:44px;border-radius:12px;border:1px solid var(--border);
+      background:transparent;font-size:20px
+    }
     .theme:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(2,6,23,.12)}
 
     /* hero */
     .hero{padding:56px 0 18px}
-    .kicker{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;border:1px solid color-mix(in oklab, var(--danger) 40%, transparent);background:color-mix(in oklab, var(--danger) 18%, transparent);color:var(--danger);font-weight:800;letter-spacing:.2px}
-    .grid2{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:22px}
+    .kicker{
+      display:inline-flex;align-items:center;gap:10px;padding:8px 12px;
+      border-radius:999px;border:1px solid color-mix(in oklab, var(--danger) 40%, transparent);
+      background:color-mix(in oklab, var(--danger) 18%, transparent);color:var(--danger);
+      font-weight:800;letter-spacing:.2px
+    }
+
+    .grid2{
+      display:grid;
+      grid-template-columns: minmax(0,1.05fr) minmax(0,0.95fr);
+      gap:28px;align-items:start
+    }
+
     h1{
-      font-size: clamp(28px, 4.8vw, 60px);
-      line-height:1.06;margin:16px 0 14px;
-      overflow-wrap:anywhere; /* (6) robustné zalamovanie v Edge */
+      font-size: clamp(28px, 3.8vw, 52px);
+      line-height:1.04;letter-spacing:-0.2px;overflow-wrap:anywhere;
+      margin:16px 0 14px
     }
     .em-blue{color:#2f6df6}
     .em-green{color:#10b981}
@@ -113,43 +140,63 @@
 
     /* demo card */
     .card{background:var(--surface);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow)}
-    /* (4) plná hranica, nie dashed – nič nepretína badge NAŽIVO */
-    .screen{aspect-ratio:16/10;border:1px solid var(--border);border-radius:16px;margin:14px;padding:12px;display:grid;place-items:center;position:relative}
-    .live-dot{position:absolute;right:16px;top:16px;display:inline-flex;align-items:center;gap:8px;border:1px solid color-mix(in oklab,var(--danger) 35%,transparent);background:color-mix(in oklab,var(--danger) 14%,transparent);color:var(--danger);padding:8px 12px;border-radius:999px;font-weight:700}
+    .screen{
+      aspect-ratio:16/10;border:1px solid var(--border); /* solid – žiadna prerušovaná čiara */
+      border-radius:16px;margin:12px;padding:12px;
+      display:grid;place-items:center;position:relative
+    }
+    .live-dot{
+      position:absolute;right:16px;top:16px;
+      display:inline-flex;align-items:center;gap:8px;
+      border:1px solid color-mix(in oklab,var(--danger) 35%,transparent);
+      background:color-mix(in oklab,var(--danger) 14%,transparent);
+      color:var(--danger);padding:8px 12px;border-radius:999px;font-weight:700
+    }
 
     /* HOW IT WORKS */
     .section{padding:42px 0}
     .section h2{font-size: clamp(24px, 3vw, 36px);margin:0 0 8px}
-    .section .lead-strong{color:var(--text);font-weight:600;margin:0 0 18px}
+    .section .lead-strong{color:var(--text);font-weight:700;margin:0 0 18px}
 
     .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
     .step{background:var(--surface-2);border:1px solid var(--border);border-radius:18px;padding:18px;transition:.2s ease;position:relative}
     .step:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(2,6,23,.28)}
     .step .hdr{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-    .ico{width:34px;height:34px;border-radius:10px;display:inline-grid;place-items:center;background:color-mix(in oklab,var(--accent) 14%, transparent);border:1px solid color-mix(in oklab,var(--accent) 30%, transparent);font-size:18px}
+    .ico{width:40px;height:40px;border-radius:12px;display:inline-grid;place-items:center;background:color-mix(in oklab,var(--accent) 14%, transparent);border:1px solid color-mix(in oklab,var(--accent) 30%, transparent)}
+    .ico svg{width:20px;height:20px}
     .step h3{margin:0;font-size:18px}
     .step p{margin:10px 0 0;color:var(--muted)}
     .bullet{display:flex;align-items:flex-start;gap:10px;margin:8px 0}
     .bullet .dot{width:18px;height:18px;border-radius:8px;display:grid;place-items:center;background:color-mix(in oklab,var(--accent) 16%,transparent);border:1px solid color-mix(in oklab,var(--accent) 28%,transparent)}
 
-    /* (3) Hover fix – chips nech nekazia farbu textu v svetlej téme */
-    .chip:hover{color:inherit;background:transparent}
+    /* Služby / Cenník / FAQ */
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .tile{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+    .price{font-weight:800;font-size:26px;margin:8px 0}
+
+    /* CTA hover kontrast – čipy nechávame s pôvodným textom */
+    .btn:hover,.btn-green:hover{color:var(--accent-text)}
+    /* (NE)prepisuj čipy – zostanú čitateľné aj v light téme */
+    /* .chip:hover { color: inherit; }  – implicitné */
+
+    /* Plávajúci návrat hore */
+    .to-top{
+      position:fixed;right:18px;bottom:18px;z-index:60;
+      display:none;align-items:center;gap:8px;
+      padding:10px 14px;border-radius:999px;border:1px solid var(--border);
+      background:var(--surface);backdrop-filter:saturate(180%) blur(6px)
+    }
+    .to-top.show{display:inline-flex}
 
     /* responsive */
     @media (max-width: 980px){
       .grid2{grid-template-columns:1fr}
       .steps{grid-template-columns:1fr 1fr}
+      .grid3{grid-template-columns:1fr}
     }
     @media (max-width: 560px){
       .steps{grid-template-columns:1fr}
     }
-
-    /* (2) plávajúce tlačidlo Nahor */
-    .to-top{
-      position:fixed;right:16px;bottom:16px;z-index:60;
-      opacity:0;pointer-events:none;transition:opacity .2s ease;
-    }
-    .to-top.show{opacity:1;pointer-events:auto}
   </style>
 
   <!-- Plausible -->
@@ -159,15 +206,14 @@
   <!-- NAV -->
   <nav class="nav">
     <div class="wrap inner">
-      <a class="brand" href="#top" aria-label="Domov">
+      <div class="brand">
         <img src="./assets/logo-live-nazivo.png" alt="LIVE naživo logo" />
         <div>
           <div class="title">LIVE predaj pre Vaše produkty</div>
           <div class="tagline">Vaša cesta k zákazníkovi</div>
         </div>
-      </a>
+      </div>
       <div class="menu">
-        <!-- (2) Domov v menu -->
         <a class="chip" href="#top">Domov</a>
         <a class="chip" href="#ako">Ako to funguje</a>
         <a class="chip" href="#sluzby">Služby</a>
@@ -185,8 +231,15 @@
     <div class="grid2">
       <div>
         <span class="kicker">LIVE SHOPPING → PREDAJ NAŽIVO</span>
-        <h1>Zvýšte <span class="em-blue">tržby</span> a <span class="em-green">komunitu</span> vďaka pravidelnému živému vysielaniu na Facebooku, YouTube, Instagrame a TikToku.</h1>
-        <p class="lead">Budeme vašou <strong>službou a asistentom</strong> pri zvyšovaní predajov pomocou živých vysielaní. Máme skúsenosti, ako sa dostať k <strong>novým zákazníkom</strong>, ktorí vás doteraz nepoznali.</p>
+        <h1>
+          Zvýšte <span class="em-blue">tržby</span> a <span class="em-green">komunitu</span>
+          vďaka pravidelnému živému vysielaniu na
+          Facebooku, YouTube, Instagrame a TikToku.
+        </h1>
+        <p class="lead">
+          Budeme vašou <strong>službou a asistentom</strong> pri zvyšovaní predajov pomocou živých vysielaní.
+          Máme skúsenosti, ako sa dostať k <strong>novým zákazníkom</strong>, ktorí vás doteraz nepoznali.
+        </p>
 
         <div class="callout">Váš prvý predaj NAŽIVO vieme spustiť do <strong>7 dní</strong> od kontaktovania našich odborníkov.</div>
 
@@ -226,16 +279,26 @@
       <!-- 1 -->
       <div class="step">
         <div class="hdr">
-          <span class="ico" aria-hidden="true">📦</span>
+          <span class="ico" aria-hidden="true">
+            <!-- box icon -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M3 7l9 4 9-4M3 7l9-4 9 4M3 7v10l9 4 9-4V7" stroke="currentColor" stroke-width="1.6" />
+            </svg>
+          </span>
           <h3>Vy si volíte <strong>produkty</strong></h3>
         </div>
-        <p>Produkty a ceny sú na vás. Pomôžeme doladiť <strong>ponuky</strong> (zľavy, balíčky, kódy) a cieľ vysielania.</p>
+        <p>Produkty a ceny sú na vás. My pomôžeme doladiť <strong>ponuky</strong> (zľavy, balíčky, kódy) a cieľ vysielania.</p>
       </div>
 
       <!-- 2 -->
       <div class="step">
         <div class="hdr">
-          <span class="ico" aria-hidden="true">🛠️</span>
+          <span class="ico" aria-hidden="true">
+            <!-- wand -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M3 21l10-10M14 7l4-4M14 3v4M12 5h4" stroke="currentColor" stroke-width="1.6"/>
+            </svg>
+          </span>
           <h3>Pripravíme <strong>vysielanie</strong></h3>
         </div>
         <p>Nastavíme udalosť/stránku, grafiku, odkazy na nákup a upozornenia pre zákazníkov. Dostanete plán <strong>„krok za krokom“</strong>.</p>
@@ -244,9 +307,15 @@
       <!-- 3 -->
       <div class="step">
         <div class="hdr">
-          <span class="ico" aria-hidden="true">📡</span>
+          <span class="ico" aria-hidden="true">
+            <!-- camera/live -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 7h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Zm12 3 4-2v8l-4-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
           <h3>Predaj živým vysielaním (<strong>LIVE</strong>)</h3>
         </div>
+
         <div class="bullet"><span class="dot">🎥</span><span><strong>Technika & podpora</strong> počas vysielania.</span></div>
         <div class="bullet"><span class="dot">👤</span><span><strong>Moderovanie</strong> alebo <strong>asistencia</strong>, ak nechcete vystupovať.</span></div>
       </div>
@@ -254,7 +323,12 @@
       <!-- 4 -->
       <div class="step">
         <div class="hdr">
-          <span class="ico" aria-hidden="true">📊</span>
+          <span class="ico" aria-hidden="true">
+            <!-- chart -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 20V4M20 20H4M7 16v-4M12 20v-8M17 20v-6" stroke="currentColor" stroke-width="1.6"/>
+            </svg>
+          </span>
           <h3>Spoločne vyhodnotíme <strong>výsledky</strong></h3>
         </div>
         <p>Pozrieme sa, čo LIVE priniesol: <strong>dosah</strong>, interakcie, objednávky, vplyv na tržby a povedomie.</p>
@@ -262,9 +336,82 @@
     </div>
   </section>
 
-  <!-- (ďalšie sekcie – môžeš doplniť obsah, ak bol v staršej verzii; jadro zostáva) -->
+  <!-- SLUŽBY -->
+  <section id="sluzby" class="wrap section">
+    <h2>Služby</h2>
+    <div class="grid3">
+      <div class="tile">
+        <h3>Kompletná produkcia live</h3>
+        <p>Kamera, svetlá, zvuk, grafika, testy. Aj mobilné vysielanie v predajni.</p>
+      </div>
+      <div class="tile">
+        <h3>Moderovanie & chat</h3>
+        <p>Tempo, námietky, motivácia k nákupu. Chat obsluhujeme my.</p>
+      </div>
+      <div class="tile">
+        <h3>Klipy po streame</h3>
+        <p>Výrezy 9:16 so subtitles a hookom. Názvy, popisy, hashtagy.</p>
+      </div>
+      <div class="tile">
+        <h3>Prepojenie s e-shopom</h3>
+        <p>UTM, kódy, QR. Jednoduchá objednávka aj bez e-shopu.</p>
+      </div>
+      <div class="tile">
+        <h3>On-site / štúdio</h3>
+        <p>U vás alebo v našom mini štúdiu. Rekvizity a staging.</p>
+      </div>
+      <div class="tile">
+        <h3>Poradenstvo & tréning</h3>
+        <p>Scenár, ponuky, cross-sell, práca s chatom, KPI a reporting.</p>
+      </div>
+    </div>
+  </section>
 
-  <!-- KONTAKT (Formspree) -->
+  <!-- CENNÍK -->
+  <section id="cennik" class="wrap section">
+    <h2>Cenník balíkov</h2>
+    <div class="grid3">
+      <div class="tile">
+        <span class="price">€149</span>
+        <h3>Starter Live</h3>
+        <p>1× 45–60 min live • 3 klipy • základné overlaye</p>
+        <a class="btn" href="#kontakt">Objednať</a>
+      </div>
+      <div class="tile">
+        <span class="price">€490</span>
+        <h3>Pro Live</h3>
+        <p>1× 60–90 min live • 6 klipov • dvojkamera • vlastné overlaye</p>
+        <a class="btn" href="#kontakt">Objednať</a>
+      </div>
+      <div class="tile">
+        <span class="price">od €1 490 / mes.</span>
+        <h3>Studio / Retainer</h3>
+        <p>4× live/mes. • 20+ klipov • kampane • A/B ponuky • remarketing</p>
+        <a class="btn" href="#kontakt">Dopyt</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="wrap section">
+    <h2>Časté otázky (FAQ)</h2>
+    <div class="grid3">
+      <div class="tile">
+        <h3>Potrebujem e-shop?</h3>
+        <p>Nie nutne. Môžeme smerovať nákup na formulár alebo WhatsApp; e-shop zlepší konverziu a meranie.</p>
+      </div>
+      <div class="tile">
+        <h3>Najefektívnejšie siete?</h3>
+        <p>TikTok a Facebook; YouTube pomáha s evergreen dosahom a SEO. Ideálne je kombinovať aspoň dve.</p>
+      </div>
+      <div class="tile">
+        <h3>Technika a priestor?</h3>
+        <p>Dodáme kamery, svetlá, mikrofóny a mini štúdio, alebo prídeme k vám on-site.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
   <section id="kontakt" class="wrap section">
     <h2>Dopyt / kontakt</h2>
     <div class="card" style="padding:18px">
@@ -286,10 +433,8 @@
     © <span id="year"></span> LivePredaj.sk • Bez cookies tretích strán
   </footer>
 
-  <!-- (2) Plávajúce tlačidlo Nahor -->
-  <div id="toTop" class="to-top">
-    <a href="#top" class="chip">↑ Nahor</a>
-  </div>
+  <!-- Scroll to top -->
+  <a href="#top" id="toTop" class="to-top">↑ Hore</a>
 
   <script>
     // rok
@@ -342,10 +487,14 @@
       }
     });
 
-    // „Nahor“ – ukazuj po scrollnutí
+    // Scroll to top btn
     const toTop = document.getElementById('toTop');
-    const onScroll = () => { if (window.scrollY > 240) toTop.classList.add('show'); else toTop.classList.remove('show'); };
-    onScroll(); window.addEventListener('scroll', onScroll);
+    const onScroll = () => {
+      if (window.scrollY > 320) toTop.classList.add('show');
+      else toTop.classList.remove('show');
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll);
   </script>
 </body>
 </html>
