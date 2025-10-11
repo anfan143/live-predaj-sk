@@ -78,6 +78,25 @@
     [data-theme="dark"] .divider{ background: linear-gradient(90deg, transparent, rgba(148,163,184,.25), transparent); }
     .tick{width:18px; height:18px; border-radius:6px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); display:inline-grid; place-items:center; font-size:12px; color:#03131b; font-weight:900}
 
+    /* --- Modern tiles for steps & services --- */
+.tile{
+  background: linear-gradient(180deg,#ffffff 0%,#fbfdff 100%);
+  border:1px solid var(--border);
+  border-radius:20px;
+  box-shadow: 0 6px 18px rgba(2,6,23,.06);
+  padding:20px;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+[data-theme="dark"] .tile{
+  background: linear-gradient(180deg, rgba(20,26,44,.9), rgba(14,20,36,.86));
+  border-color: rgba(148,163,184,.18);
+  box-shadow: 0 10px 26px rgba(0,0,0,.28);
+}
+.tile:hover{ transform: translateY(-2px); box-shadow: 0 12px 28px rgba(2,6,23,.10); }
+[data-theme="dark"] .tile:hover{ box-shadow: 0 16px 36px rgba(0,0,0,.38); }
+.tile h3{ margin:0 0 8px; font-size:18px; letter-spacing:.2px }
+.tile p{ margin:0; color:var(--muted) }
+
     /* ---------- HERO (profi layout) ---------- */
     .kicker-red{display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px;
       background:#ef4444; color:#fff; border:1px solid #dc2626; font-weight:900; letter-spacing:.2px; text-transform:uppercase; box-shadow:0 6px 16px rgba(239,68,68,.15)}
@@ -246,30 +265,72 @@
     </div>
   </header>
 
-  <!-- HOW IT WORKS -->
-  <section id="ako" class="section wrap">
-    <h2>Ako to funguje</h2>
-    <p class="muted">Transparentne, na výsledok. Každý krok má jasný výstup.</p>
-    <div class="steps">
-      <div class="card" style="padding:18px"><h3>1. Brief & cieľ</h3><p class="muted">30–45 min: sortiment, marže, sklad, akcie, persona. KPI a kalendár.</p></div>
-      <div class="card" style="padding:18px"><h3>2. Scenár & ponuky</h3><p class="muted">Osnova streamu, sekvencia produktov, CTA, kupóny, overlaye.</p></div>
-      <div class="card" style="padding:18px"><h3>3. Produkcia & live</h3><p class="muted">Moderovanie, live chat, pinovanie odkazov, meranie UTM.</p></div>
-      <div class="card" style="padding:18px"><h3>4. Klipy & reporting</h3><p class="muted">3–10 strihov + report: dosah, kliky, tržby, odporúčania.</p></div>
+ <!-- HOW IT WORKS -->
+<section id="ako" class="section wrap">
+  <h2>Ako to funguje</h2>
+  <p class="muted">Transparentne a zrozumiteľne. Každý krok má jasný výstup.</p>
+
+  <div class="steps">
+    <div class="tile">
+      <h3>1. Úvodný call a ciele</h3>
+      <p>30–45 min spolu: čo predávate, marže, sklad, akcie, kúpne persony. Spoločne si nastavíme KPI a termíny.</p>
     </div>
-  </section>
+
+    <div class="tile">
+      <h3>2. Scenár a ponuky</h3>
+      <p>Pripravíme kostru vysielania, poradie produktov, Q&amp;A, CTA, kupóny a jednoduché overlaye. Pošleme na schválenie.</p>
+    </div>
+
+    <div class="tile">
+      <h3>3. Technika a vysielanie</h3>
+      <p>Otestujeme pripojenie a zvuk, moderujeme vysielanie, pinujeme odkazy, sledujeme chat a UTM.</p>
+    </div>
+
+    <div class="tile">
+      <h3>4. Klipy a čísla</h3>
+      <p>Do 48 h dostanete 3–10 strihov (Reels/Shorts) a prehľad: dosah, kliky, objednávky a odporúčania na zlepšenie.</p>
+    </div>
+  </div>
+</section>
+
 
   <!-- SERVICES -->
-  <section id="sluzby" class="section wrap">
-    <h2>Služby</h2>
-    <div class="features">
-      <div class="card" style="padding:18px"><h3>Kompletná produkcia live</h3><p class="muted">Kamera, zvuk, svetlá, grafika, testy. Aj mobilné vysielanie v predajni.</p></div>
-      <div class="card" style="padding:18px"><h3>Moderovanie & chat</h3><p class="muted">Tempo, námietky, motivácia k nákupu. Chat obsluhujeme my.</p></div>
-      <div class="card" style="padding:18px"><h3>Klipy po streame</h3><p class="muted">Výrezy 9:16 so subtitles a hookom. Názvy, popisy, hashtagy.</p></div>
-      <div class="card" style="padding:18px"><h3>Prepojenie s e-shopom</h3><p class="muted">UTM, kódy, QR. Jednoduchá objednávka aj bez e-shopu.</p></div>
-      <div class="card" style="padding:18px"><h3>On-site / štúdio</h3><p class="muted">U vás alebo v našom mini štúdiu. Rekvizity a staging.</p></div>
-      <div class="card" style="padding:18px"><h3>Poradenstvo & tréning</h3><p class="muted">Scenár, ponuky, cross-sell, práca s chatom, KPI a reporting.</p></div>
+<section id="sluzby" class="section wrap">
+  <h2>Služby</h2>
+
+  <div class="features">
+    <div class="tile">
+      <h3>Produkcia na kľúč</h3>
+      <p>Kameru, svetlá, zvuk aj grafiku prinesieme my. Vieme vysielať aj priamo z vašej predajne.</p>
     </div>
-  </section>
+
+    <div class="tile">
+      <h3>Moderovanie a chat</h3>
+      <p>Držíme tempo, riešime námietky, motivujeme k nákupu. Chat obsluhujeme za vás.</p>
+    </div>
+
+    <div class="tile">
+      <h3>Klipy po streame</h3>
+      <p>Rýchle výrezy 9:16 s titulkami a hookom. Pridáme názvy, popisy a hashtagy.</p>
+    </div>
+
+    <div class="tile">
+      <h3>Prepojenie s e-shopom</h3>
+      <p>UTM linky, zľavové kódy a QR. Jednoduchá objednávka funguje aj bez e-shopu.</p>
+    </div>
+
+    <div class="tile">
+      <h3>U vás alebo v štúdiu</h3>
+      <p>Prídeme na miesto, alebo vysielame z nášho mini štúdia. Zabezpečíme staging a rekvizity.</p>
+    </div>
+
+    <div class="tile">
+      <h3>Poradenstvo a tréning</h3>
+      <p>Naučíme tím: scenár, ponuky, cross-sell, práca s chatom. Nastavíme KPI a reporting.</p>
+    </div>
+  </div>
+</section>
+
 
   <!-- PRICING -->
   <section id="cennik" class="section wrap">
