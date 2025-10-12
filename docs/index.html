@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>LivePredaj.sk – TikTok, Facebook, YouTube | Slovensko</title>
   <meta name="description" content="LivePredaj.sk – predaj naživo pre slovenský trh. Kompletný servis: scenár, technika, moderovanie, klipy, prepojenie s e-shopom, reporting a fakturácia." />
+  <meta name="keywords" content="live predaj, tiktok live, facebook live, youtube live, livestream shop, Slovensko, predaj naživo" />
   <meta property="og:title" content="LivePredaj.sk – TikTok, Facebook, YouTube" />
   <meta property="og:description" content="Spustíme vám live predaj: tvorba obsahu, moderovanie, technika, klipy, reporting." />
   <meta property="og:type" content="website" />
@@ -17,20 +18,20 @@
 
   <style>
     :root{
-      /* paleta */
+      /* základná paleta (dark default) */
       --bg: #0b1020;
       --bg-2: #0a0f1c;
       --surface: rgba(17,22,42,.78);
       --surface-2: rgba(17,22,42,.62);
       --text: #e2e8f0;
       --muted:#cbd5e1;
-      --muted-strong:#94a3b8;
       --border:#1f2937;
       --shadow: 0 10px 30px rgba(0,0,0,.35);
 
-      --accent:#2563eb;          /* CTA */
+      --accent:#2563eb;          /* primárne CTA */
       --accent-700:#1d4ed8;
       --accent-text:#fff;
+      --link:#0ea5e9;
 
       --danger:#e11d48;          /* jednotná červená */
       --danger-700:#be123c;
@@ -43,7 +44,8 @@
       --space-5: 32px;
       --space-6: 48px;
     }
-    /* light */
+
+    /* light téma */
     [data-theme="light"]{
       --bg:#f8fafc;
       --bg-2:#f1f5f9;
@@ -51,23 +53,29 @@
       --surface-2:#ffffff;
       --text:#0f172a;
       --muted:#475569;
-      --muted-strong:#334155;
       --border:#e2e8f0;
       --shadow: 0 10px 30px rgba(2,6,23,.08);
     }
 
     html,body{
-      margin:0;
-      padding:0;
+      margin:0;padding:0;
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       background:linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);
       color:var(--text);
     }
+
     a{color:inherit;text-decoration:none}
+    a.underline{color:var(--link);text-decoration:underline}
+
     .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--space-3)}
 
-    /* NAV – nechávam tak, nič nemením */
-    .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.03);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--border)}
+    /* NAV (fixná, responsívna) */
+    .nav{
+      position:sticky;top:0;z-index:50;
+      background:rgba(255,255,255,.03);
+      backdrop-filter:saturate(180%) blur(12px);
+      border-bottom:1px solid var(--border)
+    }
     [data-theme="light"] .nav{background:rgba(255,255,255,.85)}
     .nav .inner{display:flex;align-items:center;justify-content:space-between;height:72px}
     .brand{display:flex;gap:12px;align-items:center}
@@ -75,46 +83,78 @@
     .brand .title{font-weight:800;font-size:22px}
     .brand .tagline{color:var(--muted);font-weight:600;font-size:14px;margin-top:2px}
 
-    .menu{display:flex;gap:12px;align-items:center}
-    .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border);border-radius:999px;background:transparent;font-weight:600}
-    .chip:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(2,6,23,.15)}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:14px;background:var(--accent);color:var(--accent-text);font-weight:700;border:none}
+    .menu{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 14px;border:1px solid var(--border);
+      border-radius:999px;background:transparent;
+      font-weight:700; color:var(--text);
+      transition:.2s ease;
+    }
+
+    /* FIX: hover/active/focus – text zostáva čitateľný v oboch témach */
+    .chip:hover,
+    .chip:focus,
+    .chip:active,
+    .chip:focus-visible{
+      color:var(--text);
+      background: color-mix(in oklab, var(--bg-2) 85%, var(--surface));
+      box-shadow:0 10px 24px rgba(2,6,23,.18);
+      transform: translateY(-1px);
+      outline: none;
+    }
+    /* jemnejšie v light téme */
+    [data-theme="light"] .chip:hover,
+    [data-theme="light"] .chip:focus,
+    [data-theme="light"] .chip:active,
+    [data-theme="light"] .chip:focus-visible{
+      color: var(--text);
+      background: color-mix(in oklab, #ffffff 88%, var(--bg-2));
+      box-shadow:0 10px 24px rgba(2,6,23,.10);
+    }
+
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:12px 18px;border-radius:14px;
+      background:var(--accent);color:var(--accent-text);
+      font-weight:800;border:none;transition:.2s ease
+    }
     .btn:hover{background:var(--accent-700);transform:translateY(-1px);box-shadow:0 14px 30px rgba(37,99,235,.28)}
     .btn-green{background:#22c55e}
     .btn-green:hover{background:#16a34a}
-    .theme{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;border:1px solid var(--border);background:transparent;font-size:20px}
+
+    .theme{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:44px;height:44px;border-radius:12px;
+      border:1px solid var(--border);background:transparent;font-size:20px;
+      transition:.2s ease
+    }
     .theme:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(2,6,23,.12)}
 
-    /* HERO – upravené */
+    /* HERO (mierne kompaktnejšie – ~15 % menší hlavný nadpis) */
     .hero{padding:56px 0 18px}
-    .kicker{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;border:1px solid color-mix(in oklab, var(--danger) 40%, transparent);background:color-mix(in oklab, var(--danger) 18%, transparent);color:var(--danger);font-weight:800;letter-spacing:.2px}
-    .grid2{
-      display:grid;
-      grid-template-columns:1.2fr 1fr;
-      gap:24px;
-      align-items:stretch;           /* kľúčové – pravý panel sa na výšku dorovná */
+    .kicker{
+      display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;
+      border:1px solid color-mix(in oklab, var(--danger) 40%, transparent);
+      background:color-mix(in oklab, var(--danger) 18%, transparent);color:var(--danger);
+      font-weight:800;letter-spacing:.2px
     }
-    /* ~15% menší nadpis, stále výrazný */
-    h1{
-      font-size: clamp(26px, 4.1vw, 51px);
-      line-height:1.06;
-      margin:16px 0 14px
-    }
+    .grid2{display:grid;grid-template-columns:1.2fr 1fr;gap:22px}
+    /* bolo ~ 60px – zmenšené ~ 15% */
+    h1{font-size: clamp(26px, 4.1vw, 51px);line-height:1.06;margin:16px 0 14px}
     .em-blue{color:#2f6df6}
     .em-green{color:#10b981}
     .lead{font-size:18px;color:var(--muted)}
     .callout{margin-top:16px;padding:14px 16px;border-radius:14px;background:var(--surface);border:1px solid var(--border);font-weight:600}
+
     .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
 
-    /* demo card (pravá strana) – kompaktnejšie */
-    .card{
-      background:var(--surface);
-      border:1px solid var(--border);
-      border-radius:20px;
-      box-shadow:var(--shadow);
-      display:flex;
-      flex-direction:column;
-      min-height: 420px;             /* menej na výšku */
+    /* demo karta (whiteboard) – upravená výška, aby lícovala s ľavou stranou */
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow)}
+    .screen{
+      aspect-ratio:16/11; /* mierne nižšia ako predtým */
+      border:1px dashed var(--border);border-radius:16px;
+      margin:14px;padding:12px;display:grid;place-items:center;position:relative
     }
     .live-dot{
       position:absolute;right:16px;top:16px;display:inline-flex;align-items:center;gap:8px;
@@ -122,36 +162,12 @@
       background:color-mix(in oklab,var(--danger) 14%,transparent);
       color:var(--danger);padding:8px 12px;border-radius:999px;font-weight:700
     }
-    .screen{
-      flex: 1 1 auto;
-      display:grid;place-items:center;
-      border:1px dashed var(--border);
-      border-radius:16px;margin:14px;padding:10px;
-      aspect-ratio:16/9;               /* trochu nižšie */
-    }
-    .screen-title{font-weight:800;color:var(--muted-strong)}
-    .screen-footer{
-      padding:10px 16px 14px;
-      display:flex;
-      gap:10px;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-    .chip-soft{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:10px 14px;border:1px solid var(--border);
-      border-radius:999px;background:transparent;font-weight:600
-    }
-    .chip-soft svg{width:16px;height:16px}
 
-    .bullet{display:flex;align-items:flex-start;gap:10px;margin:8px 0}
-    .bullet .dot{width:18px;height:18px;border-radius:8px;display:grid;place-items:center;background:color-mix(in oklab,var(--accent) 16%,transparent);border:1px solid color-mix(in oklab,var(--accent) 28%,transparent)}
-    .bullets{padding:2px 16px 16px}
-
-    /* HOW IT WORKS – nechávam */
+    /* HOW IT WORKS */
     .section{padding:42px 0}
     .section h2{font-size: clamp(24px, 3vw, 36px);margin:0 0 8px}
     .section .lead-strong{color:var(--text);font-weight:600;margin:0 0 18px}
+
     .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
     .step{background:var(--surface-2);border:1px solid var(--border);border-radius:18px;padding:18px;transition:.2s ease;position:relative}
     .step:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(2,6,23,.28)}
@@ -160,14 +176,15 @@
     .ico svg{width:18px;height:18px}
     .step h3{margin:0;font-size:18px}
     .step p{margin:10px 0 0;color:var(--muted)}
+    .bullet{display:flex;align-items:flex-start;gap:10px;margin:8px 0}
+    .bullet .dot{width:18px;height:18px;border-radius:8px;display:grid;place-items:center;background:color-mix(in oklab,var(--accent) 16%,transparent);border:1px solid color-mix(in oklab,var(--accent) 28%,transparent)}
 
-    /* univerzálne „bezpečné“ hover farby pre biele pozadie */
-    .chip:hover, .btn:hover, .btn-green:hover{color:var(--accent-text)}
+    /* fix farby tlačidiel na hover (konzistentné) */
+    .chip:hover, .btn:hover, .btn-green:hover{color:var(--text)}
 
-    /* responsive */
+    /* responzívne */
     @media (max-width: 980px){
       .grid2{grid-template-columns:1fr}
-      .card{min-height:360px}
       .steps{grid-template-columns:1fr 1fr}
     }
     @media (max-width: 560px){
@@ -178,17 +195,17 @@
   <!-- Plausible -->
   <script defer data-domain="anfan143.github.io" src="https://plausible.io/js/plausible.js"></script>
 </head>
-<body>
-  <!-- NAV (bez zmeny) -->
+<body id="top">
+  <!-- NAV -->
   <nav class="nav">
     <div class="wrap inner">
-      <div class="brand">
+      <a href="#top" class="brand" aria-label="Domov">
         <img src="./assets/logo-live-nazivo.png" alt="LIVE naživo logo" />
         <div>
           <div class="title">LIVE predaj pre Vaše produkty</div>
           <div class="tagline">Vaša cesta k zákazníkovi</div>
         </div>
-      </div>
+      </a>
       <div class="menu">
         <a class="chip" href="#ako">Ako to funguje</a>
         <a class="chip" href="#sluzby">Služby</a>
@@ -201,10 +218,9 @@
     </div>
   </nav>
 
-  <!-- HERO – upravené podľa požiadaviek -->
+  <!-- HERO -->
   <header class="wrap hero">
     <div class="grid2">
-      <!-- ľavý stĺpec -->
       <div>
         <span class="kicker">LIVE SHOPPING → PREDAJ NAŽIVO</span>
         <h1>Zvýšte <span class="em-blue">tržby</span> a <span class="em-green">komunitu</span> vďaka pravidelnému živému vysielaniu na Facebooku, YouTube, Instagrame a TikToku.</h1>
@@ -219,52 +235,52 @@
         </div>
       </div>
 
-      <!-- pravý stĺpec (whiteboard) -->
-      <div class="card" style="position:relative;">
+      <div class="card" style="position:relative;padding:6px">
         <span class="live-dot"><span style="display:inline-block;width:8px;height:8px;border-radius:999px;background:var(--danger)"></span>NAŽIVO</span>
-
         <div class="screen">
-          <div class="screen-title">Ukážka živého predaja</div>
+          <div style="text-align:center;font-weight:800;color:var(--muted)">Ukážka živého predaja</div>
+
+          <!-- platform icons -->
+          <div style="position:absolute;bottom:18px;left:18px;right:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+            <span class="chip" title="Facebook">
+              <!-- FB SVG -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.07C22 6.51 17.52 2 12 2S2 6.51 2 12.07c0 4.99 3.66 9.13 8.44 9.93v-7.02H7.9v-2.91h2.54V9.41c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.86h2.78l-.44 2.91h-2.34V22c4.78-.8 8.44-4.94 8.44-9.93Z"/></svg>
+              Facebook
+            </span>
+            <span class="chip" title="YouTube">
+              <!-- YT SVG -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 7.2s-.23-1.63-.94-2.35c-.9-.94-1.9-.94-2.36-.99C16.98 3.5 12 3.5 12 3.5h0s-4.98 0-8.2.36c-.46.05-1.46.05-2.36.99C.73 5.57.5 7.2.5 7.2S.27 9.04.27 10.88v1.23c0 1.84.23 3.68.23 3.68s.23 1.63.94 2.35c.9.94 2.08.91 2.61 1.01 1.9.18 8 .36 8 .36s4.98 0 8.2-.36c.46-.05 1.46-.05 2.36-.99.71-.72.94-2.35.94-2.35s.23-1.84.23-3.68v-1.23c0-1.84-.23-3.68-.23-3.68ZM9.75 14.9V7.98l6.01 3.46-6.01 3.46Z"/></svg>
+              YouTube
+            </span>
+            <span class="chip" title="Instagram">
+              <!-- IG SVG -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 12 18.5 5.5 5.5 0 0 1 12 7.5Zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm5.75-.75a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>
+              Instagram
+            </span>
+            <span class="chip" title="TikTok">
+              <!-- TikTok SVG (simplified) -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 8.5c-2.5 0-4.7-1.8-5.1-4.3h-2.8v11a3.2 3.2 0 1 1-2.3-3.1v-2.9a6 6 0 1 0 5.6 5.9V9a7.3 7.3 0 0 0 4.6 1.5V8.5Z"/></svg>
+              TikTok
+            </span>
+          </div>
         </div>
 
-        <div class="bullets">
+        <div style="padding:12px 16px">
           <div class="bullet"><span class="dot">✓</span><span><strong>Jednoduché</strong> nastavenie</span></div>
           <div class="bullet"><span class="dot">✓</span><span>Zákazník nakupuje <strong>pohodlne z domu</strong></span></div>
           <div class="bullet"><span class="dot">✓</span><span>Nákup prebehne počas vysielania – <strong>LIVE predaj</strong></span></div>
-        </div>
-
-        <div class="screen-footer">
-          <!-- Facebook -->
-          <span class="chip-soft" title="Facebook">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.5 1.6-1.5h1.6V5c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4v2H8v3h2.3v8h3.2z"/></svg>
-            Facebook
-          </span>
-          <!-- YouTube -->
-          <span class="chip-soft" title="YouTube">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.1s-.2-1.6-.8-2.3c-.7-.8-1.5-.8-1.9-.9C17.9 3.5 12 3.5 12 3.5h0s-5.9 0-8.3.4c-.4.1-1.2.1-1.9.9C.2 5.5 0 7.1 0 7.1S-.2 8.9 0 10.7v2.6s.2 1.6.8 2.3c.7.8 1.6.8 2 1 1.5.1 8.2.4 9.2.4 0 0 5.9 0 8.3-.4.4-.1 1.2-.1 1.9-.9.6-.7.8-2.3.8-2.3s.2-1.8.2-3.7-.2-3.6-.2-3.6zM9.6 12.8V7.8l5.3 2.5-5.3 2.5z"/></svg>
-            YouTube
-          </span>
-          <!-- Instagram -->
-          <span class="chip-soft" title="Instagram">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zM18 6.8a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/></svg>
-            Instagram
-          </span>
-          <!-- TikTok -->
-          <span class="chip-soft" title="TikTok">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 7.8a6.9 6.9 0 0 1-4.6-1.7v7.3a6 6 0 1 1-6-6c.4 0 .8 0 1.1.1V9a3.9 3.9 0 1 0 2.9 3.7V2h2.5a4.4 4.4 0 0 0 1.1 2.5A4.4 4.4 0 0 0 21 6V7.8z"/></svg>
-            TikTok
-          </span>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- HOW IT WORKS (skrátene – bez zásahu) -->
+  <!-- HOW IT WORKS -->
   <section id="ako" class="wrap section">
     <h2>Ako to funguje</h2>
     <p class="lead-strong">Predávajte naživo bez zložitého nastavovania. <strong>My pripravíme</strong> všetko, vy ste <strong>v centre pozornosti</strong>.</p>
 
     <div class="steps">
+      <!-- 1 -->
       <div class="step">
         <div class="hdr">
           <span class="ico" aria-hidden="true">
@@ -275,6 +291,7 @@
         <p>Produkty a ceny sú na vás. My pomôžeme doladiť <strong>ponuky</strong> (zľavy, balíčky, kódy) a cieľ vysielania.</p>
       </div>
 
+      <!-- 2 -->
       <div class="step">
         <div class="hdr">
           <span class="ico" aria-hidden="true">
@@ -282,9 +299,10 @@
           </span>
           <h3>Pripravíme <strong>vysielanie</strong></h3>
         </div>
-        <p>Nastavíme udalosť/stránku, grafiku, odkazy na nákup a upozornenia. Dostanete plán <strong>„krok za krokom“</strong>.</p>
+        <p>Nastavíme udalosť/stránku, grafiku, odkazy na nákup a upozornenia pre zákazníkov. Dostanete plán <strong>„krok za krokom“</strong>.</p>
       </div>
 
+      <!-- 3 -->
       <div class="step">
         <div class="hdr">
           <span class="ico" aria-hidden="true">
@@ -292,9 +310,11 @@
           </span>
           <h3>Predaj živým vysielaním (<strong>LIVE</strong>)</h3>
         </div>
-        <p><strong>Technika & podpora</strong> počas vysielania. <strong>Moderovanie</strong> alebo <strong>asistencia</strong>.</p>
+        <div class="bullet"><span class="dot">✓</span><span><strong>Technika & podpora</strong> počas vysielania.</span></div>
+        <div class="bullet"><span class="dot">👤</span><span><strong>Moderovanie</strong> alebo <strong>asistencia</strong>, ak nechcete vystupovať.</span></div>
       </div>
 
+      <!-- 4 -->
       <div class="step">
         <div class="hdr">
           <span class="ico" aria-hidden="true">
@@ -307,7 +327,7 @@
     </div>
   </section>
 
-  <!-- KONTAKT (ponechané) -->
+  <!-- KONTAKT -->
   <section id="kontakt" class="wrap section">
     <h2>Dopyt / kontakt</h2>
     <div class="card" style="padding:18px">
@@ -333,7 +353,7 @@
     // rok
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Téma (svetlý/tmavý režim)
+    // Téma
     const root = document.documentElement;
     const btnTheme = document.getElementById('themeToggle');
     const saved = localStorage.getItem('theme');
@@ -341,6 +361,7 @@
     const initial = saved || (prefersDark ? 'dark' : 'light');
     root.setAttribute('data-theme', initial);
     btnTheme.textContent = initial === 'dark' ? '🌙' : '☀️';
+
     btnTheme.addEventListener('click', () => {
       const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', next);
@@ -352,6 +373,7 @@
     const FORM_ENDPOINT = 'https://formspree.io/f/xjkaendy';
     const form = document.getElementById('contactForm');
     const notice = document.getElementById('formNotice');
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const data = Object.fromEntries(new FormData(form).entries());
