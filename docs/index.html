@@ -354,66 +354,74 @@
 <section id="sluzby" aria-label="Služby">
   <div class="wrap inner">
     <h2>Služby</h2>
-    <p>Vyberte si len to, čo potrebujete. Každú službu prispôsobíme vášmu obchodu.</p>
+    <p>Vyberte si balíček, ktorý potrebujete. Každú službu prispôsobíme podľa vašich potrieb.</p>
 
-    <!-- Lokálne, bezpečne ohraničené štýly len pre túto sekciu -->
+    <!-- Lokálne štýly len pre túto sekciu -->
     <style>
-      #sluzby .grid { display:grid; gap:24px; grid-template-columns: repeat(3, minmax(0,1fr)); }
-      @media (max-width: 960px){ #sluzby .grid { grid-template-columns: 1fr; } }
-      #sluzby .card {
-        background:#fff; border:1px solid rgba(0,0,0,.08); border-radius:16px; padding:20px;
-      }
-      /* ak používaš tmavý režim, karty ostanú čitateľné */
+      #sluzby .grid { display:grid; gap:24px; grid-template-columns:repeat(3,minmax(0,1fr)); }
+      @media (max-width: 960px){ #sluzby .grid { grid-template-columns:1fr; } }
+      #sluzby .card{ background:#fff; border:1px solid rgba(0,0,0,.08); border-radius:16px; padding:20px; }
       @media (prefers-color-scheme: dark){
-        #sluzby .card { background:#0b1324; border-color: rgba(255,255,255,.08); }
+        #sluzby .card{ background:#0b1324; border-color:rgba(255,255,255,.08); }
       }
-      #sluzby .card h3 { margin:0 0 6px; font-weight:700; }
-      #sluzby .card p.sub { margin:0 0 10px; color:#5b6472; font-size:0.95rem; }
-      #sluzby ul { margin:10px 0 0; padding-left:18px; }
-      #sluzby li { margin:6px 0; }
-      #sluzby .cta {
-        display:inline-block; margin-top:14px; padding:10px 14px; border-radius:12px;
-        background:#111827; color:#fff; text-decoration:none;
-      }
-      @media (prefers-color-scheme: dark){ #sluzby .cta { background:#fff; color:#0b1324; } }
+      #sluzby h3{ margin:0 0 6px; font-weight:800; }
+      #sluzby .sub{ margin:0 0 10px; color:#5b6472; font-size:.95rem; }
+      #sluzby ul{ margin:10px 0 0; padding-left:18px; }
+      #sluzby li{ margin:6px 0; }
+      #sluzby .result{ margin-top:10px; font-weight:600; }
+      #sluzby .cta{ display:inline-block; margin-top:14px; padding:10px 14px; border-radius:12px; background:#111827; color:#fff; text-decoration:none; }
+      @media (prefers-color-scheme: dark){ #sluzby .cta{ background:#fff; color:#0b1324; } }
+      #sluzby .hint{ margin-top:24px; font-size:.93rem; color:#5b6472; }
+      #sluzby .section-sub{ margin:18px 0 6px; font-weight:800; font-size:1.15rem; }
     </style>
 
+    <div class="section-sub">Balíčky služieb</div>
     <div class="grid">
-      <!-- 1: Štart LIVE -->
+      <!-- ŠTART -->
       <article class="card">
-        <h3>Štart LIVE</h3>
+        <h3>Štart</h3>
         <p class="sub">Rýchle nastavenie a prvé vysielanie bez stresu.</p>
         <ul>
-          <li>Technické nastavenie Facebook / YouTube / TikTok</li>
-          <li>Scéna, svetlá, mikrofón – základné usporiadanie</li>
-          <li>Krátke zaučenie pred prvým vysielaním</li>
+          <li>Technické nastavenie vysielania (Facebook, YouTube, TikTok, Instagram)</li>
+          <li>Základná technika: svetlá, mikrofón, kamera – rozumné usporiadanie</li>
+          <li>Krátke zaučenie pred prvým LIVE, jednoduché tipy „čo áno/čo nie“</li>
         </ul>
+        <p class="result">Výsledok: Spustíte prvý LIVE sebavedome a bez zbytočného chaosu.</p>
         <a class="cta" href="#kontakt">Mám záujem</a>
       </article>
 
-      <!-- 2: Štandard LIVE -->
+      <!-- ŠTANDARD -->
       <article class="card">
-        <h3>Štandard LIVE</h3>
-        <p class="sub">Spolupráca na ponuke + moderovanie počas vysielania.</p>
+        <h3>Štandard</h3>
+        <p class="sub">Balíček Štart + pomoc s ponukou a priebehom predaja počas LIVE.</p>
         <ul>
-          <li>Spolupráca na výbere produktov a zliav</li>
-          <li>Nastavenie vysielania + jednoduché grafické prvky</li>
-          <li>Moderovanie a odpovede na otázky počas LIVE</li>
+          <li>Spoločne vyberieme produkty a zľavy, ktoré dávajú zmysel vašim zákazníkom</li>
+          <li>Nastavíme priebeh vysielania „krok za krokom“, aby predaj plynul prirodzene</li>
+          <li>Počas vysielania sme po ruke (odpovede na otázky/moderovanie podľa dohody)</li>
+          <li>Pripravíme všetky detaily, aby vás nič neprekvapilo</li>
         </ul>
+        <p class="result">Výsledok: LIVE má hlavu a pätu, viete čo kedy povedať a ako nasmerovať zákazníka k nákupu.</p>
         <a class="cta" href="#kontakt">Mám záujem</a>
       </article>
 
-      <!-- 3: Kompletný servis -->
+      <!-- KOMPLET -->
       <article class="card">
-        <h3>Kompletný servis</h3>
-        <p class="sub">Od vysielania po výsledky a zlepšovanie predaja.</p>
+        <h3>Komplet</h3>
+        <p class="sub">Balíček Štart + Štandard + moderovanie/štúdio + výsledky a zlepšovanie.</p>
         <ul>
-          <li>Prepojenie s e-shopom (kódy, pin produktov, report)</li>
-          <li>Strih krátkych klipov po vysielaní</li>
-          <li>Odporúčania na zlepšenie a plán ďalších LIVE</li>
+          <li>Prepojenie s e-shopom (kódy, „pin“ produktov, prehľad objednávok, jednoduchý report)</li>
+          <li>Moderovanie naším tímom a možnosť využiť naše štúdio, ak nemáte vlastné priestory</li>
+          <li>Balíček krátkych videí po vysielaní na vaše siete (reels/shorts)</li>
+          <li>Sledovanie výsledkov predaja, jasné odporúčania a plán ďalších LIVE</li>
         </ul>
+        <p class="result">Výsledok: Kompletný servis od A po Z – vysielame, striháme, vyhodnocujeme a posúvame predaj ďalej.</p>
         <a class="cta" href="#kontakt">Mám záujem</a>
       </article>
+    </div>
+
+    <div class="hint">
+      <p>„Cena je orientačná, finálnu ponuku prispôsobíme vášmu obchodu.“<br>
+      „Začíname rýchlym 15-min. callom, kde si potvrdíme ciele a termíny.“</p>
     </div>
   </div>
 </section>
