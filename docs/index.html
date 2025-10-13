@@ -356,61 +356,29 @@
     <h2>Služby</h2>
     <p>Vyberte si balíček, ktorý potrebujete. Každú službu prispôsobíme podľa vašich potrieb.</p>
 
-    <!-- Lokálne štýly len pre túto sekciu -->
     <style>
-      #sluzby .grid { display:grid; gap:24px; grid-template-columns:repeat(3,minmax(0,1fr)); }
-      @media (max-width: 960px){ #sluzby .grid { grid-template-columns:1fr; } }
-
-      /* zrušiť globálne blednutie len tu */
-      #sluzby, #sluzby * { opacity: 1 !important; filter: none !important; mix-blend-mode: normal !important; }
-
-      #sluzby .card{
-        position:relative; background:#ffffff; border:1px solid rgba(0,0,0,.08);
-        border-radius:16px; padding:20px;
-        transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-      }
-      #sluzby .card:hover{ transform:translateY(-4px) scale(1.01); box-shadow:0 16px 40px rgba(2,6,23,.16); }
-      #sluzby .card.recommended{ border-color:rgba(45,212,191,.5); box-shadow:0 18px 46px rgba(45,212,191,.15); }
-      #sluzby .card.recommended:hover{ box-shadow:0 22px 56px rgba(45,212,191,.2); }
-
-      /* Dark mode – rovnaké tmavé karty a svetlé texty */
-      [data-theme="dark"] #sluzby .card{
-        background: var(--surface) !important;
-        border-color: var(--border) !important;
-      }
-      [data-theme="dark"] #sluzby h3,
-      [data-theme="dark"] #sluzby strong { color:#ffffff !important; }
-      [data-theme="dark"] #sluzby .sub,
-      [data-theme="dark"] #sluzby .micro,
-      [data-theme="dark"] #sluzby .result,
-      [data-theme="dark"] #sluzby .card p,
-      [data-theme="dark"] #sluzby .card li { color:#e5e7eb !important; }
-
-      /* svetlá téma – neutrálne farby textu */
-      #sluzby h3{ margin:0 0 6px; font-weight:800; color:#0f172a; }
-      #sluzby .sub{ margin:0 0 10px; color:#5b6472; font-size:.95rem; }
-      #sluzby ul{ margin:10px 0 0; padding-left:18px; }
-      #sluzby li{ margin:6px 0; color:#0f172a; }
-      #sluzby .result{ margin-top:10px; font-weight:600; color:#0f172a; }
-      #sluzby .micro{ margin-top:6px; font-size:.9rem; color:#5b6472; }
-      #sluzby .section-sub{ margin:18px 0 6px; font-weight:800; font-size:1.15rem; }
-
-      /* CTA – plné, čierne (všetky) */
-      #sluzby .cta{
-        display:inline-block; margin-top:14px; padding:10px 14px; border-radius:12px;
-        background:#111827; color:#ffffff; text-decoration:none;
-        transition:transform .12s ease, box-shadow .12s ease, background .12s;
-        border:1.6px solid #111827;
-      }
-      #sluzby .cta:hover{ transform:translateY(-1px); box-shadow:0 10px 22px rgba(2,6,23,.18); }
-
-      /* Štandard – vynútiť plnú čiernu (nie outline) */
-      #sluzby #cta-standard{
-        background:#111827 !important;
-        color:#ffffff !important;
-        border:1.6px solid #111827 !important;
-        box-shadow:none !important;
-      }
+      #sluzby .grid{display:grid;gap:24px;grid-template-columns:repeat(3,minmax(0,1fr))}
+      @media (max-width:960px){#sluzby .grid{grid-template-columns:1fr}}
+      #sluzby,#sluzby *{opacity:1!important;filter:none!important;mix-blend-mode:normal!important}
+      #sluzby .card{position:relative;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:20px;transition:.18s}
+      #sluzby .card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 16px 40px rgba(2,6,23,.16)}
+      #sluzby .card.recommended{border-color:rgba(45,212,191,.5);box-shadow:0 18px 46px rgba(45,212,191,.15)}
+      #sluzby .card.recommended:hover{box-shadow:0 22px 56px rgba(45,212,191,.2)}
+      [data-theme="dark"] #sluzby .card{background:var(--surface)!important;border-color:var(--border)!important}
+      [data-theme="dark"] #sluzby h3,[data-theme="dark"] #sluzby strong{color:#fff!important}
+      [data-theme="dark"] #sluzby .sub,[data-theme="dark"] #sluzby .micro,[data-theme="dark"] #sluzby .result,[data-theme="dark"] #sluzby .card p,[data-theme="dark"] #sluzby .card li{color:#e5e7eb!important}
+      #sluzby h3{margin:0 0 6px;font-weight:800;color:#0f172a}
+      #sluzby .sub{margin:0 0 10px;color:#5b6472;font-size:.95rem}
+      #sluzby ul{margin:10px 0 0;padding-left:18px}
+      #sluzby li{margin:6px 0;color:#0f172a}
+      #sluzby .result{margin-top:10px;font-weight:600;color:#0f172a}
+      #sluzby .micro{margin-top:6px;font-size:.9rem;color:#5b6472}
+      #sluzby .section-sub{margin:18px 0 6px;font-weight:800;font-size:1.15rem}
+      #sluzby .price{margin-top:12px;font-weight:800}
+      [data-theme="dark"] #sluzby .price{color:#fff}
+      #sluzby .cta{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:12px;background:#111827;color:#fff;text-decoration:none;transition:.12s;border:1.6px solid #111827}
+      #sluzby .cta:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(2,6,23,.18)}
+      #sluzby #cta-standard{background:#111827!important;color:#fff!important;border:1.6px solid #111827!important;box-shadow:none!important}
     </style>
 
     <div class="section-sub">Balíčky služieb</div>
@@ -425,11 +393,12 @@
           <li>Krátke zaučenie pred prvým vysielaním</li>
         </ul>
         <p class="result"><em>Výsledok:</em> Spustíte prvé živé vysielanie pokojne a bez chaosu.</p>
+        <div class="price">Cena: od 159 €</div>
         <a class="cta" href="#kontakt">Spustiť prvé vysielanie</a>
         <div class="micro">Nezáväzne. Do 24 h sa ozveme a dohodneme jednoduchý postup.</div>
       </article>
 
-      <!-- ŠTANDARD (plné čierne CTA) -->
+      <!-- ŠTANDARD -->
       <article class="card recommended">
         <h3>Štandard</h3>
         <p class="sub"><strong>Štart + pomoc s ponukou a priebehom predaja.</strong></p>
@@ -439,6 +408,7 @@
           <li>Počas vysielania sme k dispozícii (odpovede/moderovanie podľa dohody)</li>
         </ul>
         <p class="result"><em>Výsledok:</em> Vysielanie má hlavu a pätu — viete, čo kedy povedať a ako viesť zákazníka k nákupu.</p>
+        <div class="price">Cena: od 289 €</div>
         <a id="cta-standard" class="cta" href="#kontakt">Pripraviť vysielanie krok po kroku</a>
         <div class="micro">Krátky úvodný hovor a checklist. Všetko vysvetlíme jednoducho a bez tlaku.</div>
       </article>
@@ -453,9 +423,29 @@
           <li>Krátke videá po vysielaní (reels/shorts) + odporúčania na ďalšie zlepšenie</li>
         </ul>
         <p class="result"><em>Výsledok:</em> Kompletný servis od A po Z — vysielame, vyhodnocujeme a posúvame predaj ďalej.</p>
+        <div class="price">Cena: od 599 €</div>
         <a class="cta" href="#kontakt">Chcem kompletný servis</a>
         <div class="micro">Postaráme sa o techniku aj obsah. Spolu si dohodneme termín a jasné kroky.</div>
       </article>
+    </div>
+  </div>
+</section>
+  
+<!-- FAQ -->
+<section id="faq" class="wrap section" aria-label="Časté otázky">
+  <h2>FAQ</h2>
+  <div class="grid" style="display:grid;gap:14px;grid-template-columns:repeat(3,minmax(0,1fr));">
+    <div class="card" style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px;">
+      <h3 style="margin:0 0 6px;font-size:18px;">Koľko trvá príprava?</h3>
+      <p style="margin:0;color:var(--muted);">Zvyčajne 2–6 hodín podľa balíka. Termín dohodneme po krátkom hovore.</p>
+    </div>
+    <div class="card" style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px;">
+      <h3 style="margin:0 0 6px;font-size:18px;">Potrebujem vlastné priestory?</h3>
+      <p style="margin:0;color:var(--muted);">Stačí tichá miestnosť alebo časť priestoru vo vašom obchode. V balíku Komplet vieme použiť aj naše štúdio.</p>
+    </div>
+    <div class="card" style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px;">
+      <h3 style="margin:0 0 6px;font-size:18px;">Nikdy som nevysielal. Zvládnem to?</h3>
+      <p style="margin:0;color:var(--muted);">Áno. V balíku Štart vás rýchlo zaučíme a prvé vysielanie urobíme spolu. Môžete sa na nás spoľahnúť.</p>
     </div>
   </div>
 </section>
