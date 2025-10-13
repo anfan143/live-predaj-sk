@@ -350,48 +350,74 @@
     </div>
   </section>
 
-  <!-- SLUŽBY -->
+ <!-- SLUŽBY -->
 <section id="sluzby" aria-label="Služby">
   <div class="wrap inner">
     <h2>Služby</h2>
-    <p>Vyberte si len to, čo potrebujete. Každú službu vieme prispôsobiť vášmu obchodu.</p>
+    <p>Vyberte si len to, čo potrebujete. Každú službu prispôsobíme vášmu obchodu.</p>
 
-    <div class="steps">
-      <!-- Štart LIVE -->
-      <article>
+    <!-- Lokálne, bezpečne ohraničené štýly len pre túto sekciu -->
+    <style>
+      #sluzby .grid { display:grid; gap:24px; grid-template-columns: repeat(3, minmax(0,1fr)); }
+      @media (max-width: 960px){ #sluzby .grid { grid-template-columns: 1fr; } }
+      #sluzby .card {
+        background:#fff; border:1px solid rgba(0,0,0,.08); border-radius:16px; padding:20px;
+      }
+      /* ak používaš tmavý režim, karty ostanú čitateľné */
+      @media (prefers-color-scheme: dark){
+        #sluzby .card { background:#0b1324; border-color: rgba(255,255,255,.08); }
+      }
+      #sluzby .card h3 { margin:0 0 6px; font-weight:700; }
+      #sluzby .card p.sub { margin:0 0 10px; color:#5b6472; font-size:0.95rem; }
+      #sluzby ul { margin:10px 0 0; padding-left:18px; }
+      #sluzby li { margin:6px 0; }
+      #sluzby .cta {
+        display:inline-block; margin-top:14px; padding:10px 14px; border-radius:12px;
+        background:#111827; color:#fff; text-decoration:none;
+      }
+      @media (prefers-color-scheme: dark){ #sluzby .cta { background:#fff; color:#0b1324; } }
+    </style>
+
+    <div class="grid">
+      <!-- 1: Štart LIVE -->
+      <article class="card">
         <h3>Štart LIVE</h3>
+        <p class="sub">Rýchle nastavenie a prvé vysielanie bez stresu.</p>
         <ul>
           <li>Technické nastavenie Facebook / YouTube / TikTok</li>
           <li>Scéna, svetlá, mikrofón – základné usporiadanie</li>
           <li>Krátke zaučenie pred prvým vysielaním</li>
         </ul>
-        <p><a href="#kontakt">Mám záujem</a></p>
+        <a class="cta" href="#kontakt">Mám záujem</a>
       </article>
 
-      <!-- Štandard LIVE -->
-      <article>
+      <!-- 2: Štandard LIVE -->
+      <article class="card">
         <h3>Štandard LIVE</h3>
+        <p class="sub">Spolupráca na ponuke + moderovanie počas vysielania.</p>
         <ul>
           <li>Spolupráca na výbere produktov a zliav</li>
-          <li>Nastavenie vysielania + grafické prvky</li>
+          <li>Nastavenie vysielania + jednoduché grafické prvky</li>
           <li>Moderovanie a odpovede na otázky počas LIVE</li>
         </ul>
-        <p><a href="#kontakt">Mám záujem</a></p>
+        <a class="cta" href="#kontakt">Mám záujem</a>
       </article>
 
-      <!-- Kompletný servis -->
-      <article>
+      <!-- 3: Kompletný servis -->
+      <article class="card">
         <h3>Kompletný servis</h3>
+        <p class="sub">Od vysielania po výsledky a zlepšovanie predaja.</p>
         <ul>
           <li>Prepojenie s e-shopom (kódy, pin produktov, report)</li>
           <li>Strih krátkych klipov po vysielaní</li>
-          <li>Odporúčania na zlepšenie a plán ďalších live</li>
+          <li>Odporúčania na zlepšenie a plán ďalších LIVE</li>
         </ul>
-        <p><a href="#kontakt">Mám záujem</a></p>
+        <a class="cta" href="#kontakt">Mám záujem</a>
       </article>
     </div>
   </div>
 </section>
+
 
   <!-- KONTAKT -->
   <section id="kontakt" class="wrap section">
