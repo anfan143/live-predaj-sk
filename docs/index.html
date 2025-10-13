@@ -361,7 +361,7 @@
       #sluzby .grid { display:grid; gap:24px; grid-template-columns:repeat(3,minmax(0,1fr)); }
       @media (max-width: 960px){ #sluzby .grid { grid-template-columns:1fr; } }
 
-      /* Zákaz blednutia v tejto sekcii (niekde globálne znižuješ opacity) */
+      /* fix: zrušiť akékoľvek globálne blednutie len v tejto sekcii */
       #sluzby, #sluzby * { opacity: 1 !important; filter: none !important; }
 
       #sluzby .card{
@@ -373,20 +373,22 @@
       #sluzby .card.recommended{ border-color:rgba(45,212,191,.5); box-shadow:0 18px 46px rgba(45,212,191,.15); }
       #sluzby .card.recommended:hover{ box-shadow:0 22px 56px rgba(45,212,191,.2); }
 
+      /* dark: žiadne blednutie – výraznejšie farby pre texty */
       @media (prefers-color-scheme: dark){
-        #sluzby .card{ background:#0b1324; border-color:rgba(255,255,255,.08); color:#e5e7eb; }
-        #sluzby h3{ color:#ffffff; }
-        #sluzby .sub{ color:#cbd5e1; }
-        #sluzby .micro{ color:#94a3b8; }
+        #sluzby .card{ background:#0b1324; border-color:rgba(255,255,255,.08); }
+        #sluzby h3, #sluzby strong { color:#ffffff !important; }
+        #sluzby .sub, #sluzby p, #sluzby li, #sluzby .result, #sluzby .micro { color:#e5e7eb !important; }
       }
 
-      #sluzby h3{ margin:0 0 6px; font-weight:800; }
+      #sluzby h3{ margin:0 0 6px; font-weight:800; color:#0f172a; }
       #sluzby .sub{ margin:0 0 10px; color:#5b6472; font-size:.95rem; }
       #sluzby ul{ margin:10px 0 0; padding-left:18px; }
-      #sluzby li{ margin:6px 0; }
-      #sluzby .result{ margin-top:10px; font-weight:600; }
+      #sluzby li{ margin:6px 0; color:#0f172a; }
+      #sluzby .result{ margin-top:10px; font-weight:600; color:#0f172a; }
+      #sluzby .micro{ margin-top:6px; font-size:.9rem; color:#5b6472; }
+      #sluzby .section-sub{ margin:18px 0 6px; font-weight:800; font-size:1.15rem; }
 
-      /* CTA tlačidlá – plné, čierne */
+      /* CTA – plné, čierne */
       #sluzby .cta{
         display:inline-block; margin-top:14px; padding:10px 14px; border-radius:12px;
         background:#111827; color:#ffffff; text-decoration:none;
@@ -395,15 +397,16 @@
       }
       #sluzby .cta:hover{ transform:translateY(-1px); box-shadow:0 10px 22px rgba(2,6,23,.18); }
 
-      /* Outline verzia – vždy čierny okraj aj text (aj v dark mode) */
-      #sluzby .cta--outline{
-        background:transparent !important;
-        color:#111827 !important;
+      /* CTA – outline pre Štandard: vždy čierny okraj aj text, aj v dark */
+      #sluzby #cta-standard{
         border:1.6px solid #111827 !important;
+        color:#111827 !important;
+        background:transparent !important;
       }
-      #sluzby .cta--outline:hover{ background:rgba(17,24,39,.06) !important; }
-
-      #sluzby .section-sub{ margin:18px 0 6px; font-weight:800; font-size:1.15rem; }
+      #sluzby #cta-standard:hover{ background:rgba(17,24,39,.06) !important; }
+      @media (prefers-color-scheme: dark){
+        #sluzby #cta-standard{ border-color:#111827 !important; color:#111827 !important; }
+      }
     </style>
 
     <div class="section-sub">Balíčky služieb</div>
@@ -422,7 +425,7 @@
         <div class="micro">Nezáväzne. Do 24 h sa ozveme a dohodneme jednoduchý postup.</div>
       </article>
 
-      <!-- ŠTANDARD (outline, čierny okraj) -->
+      <!-- ŠTANDARD -->
       <article class="card recommended">
         <h3>Štandard</h3>
         <p class="sub"><strong>Štart + pomoc s ponukou a priebehom predaja.</strong></p>
@@ -432,11 +435,10 @@
           <li>Počas vysielania sme k dispozícii (odpovede/moderovanie podľa dohody)</li>
         </ul>
         <p class="result"><em>Výsledok:</em> Vysielanie má hlavu a pätu — viete, čo kedy povedať a ako viesť zákazníka k nákupu.</p>
-        <a class="cta cta--outline" href="#kontakt"
-   style="border:1.6px solid #111827 !important; color:#111827 !important; background:transparent !important;">
-  Pripraviť vysielanie krok po kroku
-</a>
-
+        <a id="cta-standard" class="cta" href="#kontakt"
+           style="border:1.6px solid #111827 !important; color:#111827 !important; background:transparent !important;">
+          Pripraviť vysielanie krok po kroku
+        </a>
         <div class="micro">Krátky úvodný hovor a checklist. Všetko vysvetlíme jednoducho a bez tlaku.</div>
       </article>
 
