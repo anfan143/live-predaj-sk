@@ -484,15 +484,27 @@
   <h2>FAQ (najčastejšie otázky)</h2>
 
   <style>
-    #faq { scroll-margin-top: 90px; }
-    #faq .grid{ display:grid; gap:14px; grid-template-columns:repeat(3,minmax(0,1fr)); }
-    @media (max-width:960px){ #faq .grid{ grid-template-columns:1fr; } }
-    #faq .qa{ background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:16px; }
-    #faq h3{ margin:0 0 6px; font-size:18px; }
-    #faq p{ margin:0; color:var(--muted); }
+    #faq{scroll-margin-top:90px}
+    /* kompaktnejší layout */
+    #faq .grid{display:grid;gap:10px;grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width:960px){#faq .grid{grid-template-columns:1fr}}
+    #faq .qa{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px}
+    #faq h3{margin:0 0 4px;font-size:17px}
+    #faq p{margin:0;color:var(--muted);line-height:1.45}
 
-    /* zvýraznenie kľúčových slov v celej FAQ sekcii */
-    #faq .hl { color: var(--brand-blue); font-weight: 700; }
+    /* zvýraznenie kľúčových slov – jednotná farba pre FAQ */
+    #faq .hl{color:var(--brand-blue);font-weight:700}
+
+    /* rozbalenie – kompaktné tlačidlo */
+    #faq details{margin-top:12px}
+    #faq summary{
+      cursor:pointer;list-style:none;user-select:none;
+      background:var(--surface);border:1px solid var(--border);
+      border-radius:12px;padding:10px 12px;font-weight:700
+    }
+    #faq summary::-webkit-details-marker{display:none}
+    #faq .more{margin-top:10px;display:grid;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))}
+    @media (max-width:960px){#faq .more{grid-template-columns:1fr}}
   </style>
 
   <!-- TOP 5 -->
@@ -514,57 +526,53 @@
 
     <div class="qa">
       <h3>4) Aké platformy podporujete?</h3>
-      <p><span class="hl">Facebook, YouTube, TikTok a Instagram.</span> Zvolíme tú, kde sú vaši zákazníci.</p>
+      <p><span class="hl">Facebook, YouTube, TikTok a Instagram</span>. Zvolíme tú, kde sú vaši zákazníci.</p>
     </div>
 
     <div class="qa">
       <h3>5) Nemáme techniku. Viete ju dodať?</h3>
-      <p>Áno. Základná technika je súčasťou balíkov (kúpa alebo prenájom). Máme aj <span class="hl">vlastné štúdio</span>, ak nemáte vhodné priestory.</p>
+      <p>Áno. Základná technika je súčasťou balíkov (kúpa/prenájom). Máme aj <span class="hl">vlastné štúdio</span>, ak nemáte vhodné priestory.</p>
     </div>
   </div>
 
-  <!-- Zvyšné otázky -->
-  <div class="grid" style="margin-top:14px;">
-    <div class="qa">
-      <h3>6) Kto odpovedá zákazníkom počas vysielania?</h3>
-      <p>Ideálne niekto z <span class="hl">vášho tímu</span> (pozná sklad, ceny, dopravu). Pri balíku Komplet vieme reakcie a jemné moderovanie pokryť aj my.</p>
+  <!-- Ďalšie otázky (rozbalenie) -->
+  <details>
+    <summary>➕ Zobraziť ďalšie otázky</summary>
+    <div class="more">
+      <div class="qa">
+        <h3>6) Kto odpovedá zákazníkom počas vysielania?</h3>
+        <p>Ideálne niekto z <span class="hl">vášho tímu</span> (pozná sklad, ceny, dopravu). Pri balíku Komplet vieme reakcie a jemné moderovanie pokryť aj my.</p>
+      </div>
+      <div class="qa">
+        <h3>7) Ako dlho trvá samotné vysielanie?</h3>
+        <p>Najčastejšie <span class="hl">45–90 minút</span>. Dĺžku prispôsobíme ponuke a záujmu divákov.</p>
+      </div>
+      <div class="qa">
+        <h3>8) Dostaneme záznam a krátke klipy?</h3>
+        <p>Áno. Pri balíku Komplet máte v cene <span class="hl">3 krátke videá</span>; pri ostatných balíkoch si ich viete doobjednať.</p>
+      </div>
+      <div class="qa">
+        <h3>9) Čo ak sa počas vysielania niečo pokazí?</h3>
+        <p>Máme pripravený <span class="hl">plán B</span> (záložné pripojenie, jednoduchší režim, dočasne len audio). Po akcii spolu prejdeme príčinu a <span class="hl">pred ďalším vysielaním</span> ju odstránime.</p>
+      </div>
+      <div class="qa">
+        <h3>10) Ako rýchlo vieme začať od prvého kontaktu?</h3>
+        <p>Zvyčajne <span class="hl">do 3–10 dní</span> podľa dostupnosti. Balík Štart vieme spustiť aj skôr.</p>
+      </div>
+      <div class="qa">
+        <h3>11) Aké výsledky uvidíme?</h3>
+        <p>Sledujeme <span class="hl">dosah</span>, počet divákov, interakcie a orientačné <span class="hl">objednávky z vysielania</span>. Pri Komplete dostanete stručný report a odporúčania.</p>
+      </div>
+      <div class="qa">
+        <h3>12) Môžeme vysielať mimo pracovných hodín alebo cez víkend?</h3>
+        <p>Áno. Termín prispôsobíme; často fungujú <span class="hl">„hluché“ hodiny</span> v predajni. (Možný príplatok za večer/víkend.)</p>
+      </div>
+      <div class="qa">
+        <h3>13) Kto vlastní obsah (záznam, klipy)?</h3>
+        <p>Obsah je <span class="hl">váš</span>. My ho použijeme len s vaším <span class="hl">súhlasom</span> (napr. ako referenciu).</p>
+      </div>
     </div>
-
-    <div class="qa">
-      <h3>7) Ako dlho trvá samotné vysielanie?</h3>
-      <p>Najčastejšie <span class="hl">45–90 minút</span>. Dĺžku prispôsobíme ponuke a záujmu divákov.</p>
-    </div>
-
-    <div class="qa">
-      <h3>8) Dostaneme záznam a krátke klipy?</h3>
-      <p>Áno. Pri balíku Komplet máte v cene <span class="hl">3 krátke videá</span> na sociálne siete; pri ostatných balíkoch si ich viete doobjednať.</p>
-    </div>
-
-    <div class="qa">
-      <h3>9) Čo ak sa počas vysielania niečo pokazí (internet, technika)?</h3>
-      <p>Máme pripravený <span class="hl">plán B</span> – záložné pripojenie, jednoduchší režim, prípadne dočasne len audio. Po akcii spolu prejdeme príčinu a <span class="hl">pred ďalším vysielaním</span> ju odstránime.</p>
-    </div>
-
-    <div class="qa">
-      <h3>10) Ako rýchlo vieme začať od prvého kontaktu?</h3>
-      <p>Zvyčajne <span class="hl">do 3–10 dní</span> podľa dostupnosti. Balík Štart vieme spustiť aj skôr.</p>
-    </div>
-
-    <div class="qa">
-      <h3>11) Aké výsledky uvidíme?</h3>
-      <p>Sledujeme <span class="hl">dosah</span>, počet divákov, interakcie a orientačné <span class="hl">objednávky z vysielania</span>. Pri Komplete dostanete stručný report a odporúčania.</p>
-    </div>
-
-    <div class="qa">
-      <h3>12) Môžeme vysielať mimo pracovných hodín alebo cez víkend?</h3>
-      <p>Áno. Termín prispôsobíme vám – často sa osvedčia <span class="hl">„hluché“ hodiny</span> v predajni. (Prípadný príplatok za večer/víkend podľa cenníka.)</p>
-    </div>
-
-    <div class="qa">
-      <h3>13) Kto vlastní obsah (záznam, klipy)?</h3>
-      <p>Obsah je <span class="hl">váš</span>. My ho môžeme použiť len s vaším <span class="hl">súhlasom</span> (napr. ako referenciu).</p>
-    </div>
-  </div>
+  </details>
 </section>
 
 
