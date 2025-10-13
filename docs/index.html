@@ -361,13 +361,14 @@
       #sluzby .grid { display:grid; gap:24px; grid-template-columns:repeat(3,minmax(0,1fr)); }
       @media (max-width: 960px){ #sluzby .grid { grid-template-columns:1fr; } }
 
+      /* Zákaz blednutia v tejto sekcii (niekde globálne znižuješ opacity) */
+      #sluzby, #sluzby * { opacity: 1 !important; filter: none !important; }
+
       #sluzby .card{
         position:relative; background:#ffffff; border:1px solid rgba(0,0,0,.08);
         border-radius:16px; padding:20px;
         transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-        opacity:1; /* zamedzí blednutiu v tmavej téme */
       }
-      #sluzby .card *{ opacity:1; } /* poistka proti globálnym štýlom so zníženou opacity */
       #sluzby .card:hover{ transform:translateY(-4px) scale(1.01); box-shadow:0 16px 40px rgba(2,6,23,.16); }
       #sluzby .card.recommended{ border-color:rgba(45,212,191,.5); box-shadow:0 18px 46px rgba(45,212,191,.15); }
       #sluzby .card.recommended:hover{ box-shadow:0 22px 56px rgba(45,212,191,.2); }
@@ -385,24 +386,22 @@
       #sluzby li{ margin:6px 0; }
       #sluzby .result{ margin-top:10px; font-weight:600; }
 
-      /* CTA tlačidlá – plné */
+      /* CTA tlačidlá – plné, čierne */
       #sluzby .cta{
         display:inline-block; margin-top:14px; padding:10px 14px; border-radius:12px;
-        background:#111827; color:#fff; text-decoration:none;
+        background:#111827; color:#ffffff; text-decoration:none;
         transition:transform .12s ease, box-shadow .12s ease, background .12s;
         border:1.6px solid #111827;
       }
       #sluzby .cta:hover{ transform:translateY(-1px); box-shadow:0 10px 22px rgba(2,6,23,.18); }
 
-      /* Outline verzia – čierny okraj aj v tmavom režime */
+      /* Outline verzia – vždy čierny okraj aj text (aj v dark mode) */
       #sluzby .cta--outline{
-        background:transparent; color:#111827; border:1.6px solid #111827;
+        background:transparent !important;
+        color:#111827 !important;
+        border:1.6px solid #111827 !important;
       }
-      #sluzby .cta--outline:hover{ background:rgba(17,24,39,.06); }
-      @media (prefers-color-scheme: dark){
-        #sluzby .cta--outline{ color:#111827; border-color:#111827; background:transparent; }
-        #sluzby .cta--outline:hover{ background:rgba(17,24,39,.14); }
-      }
+      #sluzby .cta--outline:hover{ background:rgba(17,24,39,.06) !important; }
 
       #sluzby .section-sub{ margin:18px 0 6px; font-weight:800; font-size:1.15rem; }
     </style>
