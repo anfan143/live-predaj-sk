@@ -130,6 +130,18 @@
     .bullet{display:flex;align-items:flex-start;gap:10px;margin:8px 0;color:var(--text)}
     .bullet .dot{width:22px;height:22px;border-radius:8px;display:grid;place-items:center;background:color-mix(in oklab,var(--accent) 16%,transparent);border:1px solid color-mix(in oklab,var(--accent) 28%,transparent)}
 
+    /* kompaktnejší rytmus pre bullets v boxe #step-live */
+#step-live .bullet { margin: 6px 0; line-height: 1.45; }
+
+/* malé ikon-badge pre techniku/moderovanie (svetlá aj tmavá téma) */
+.icon-badge{
+  width:22px; height:22px; border-radius:8px;
+  display:grid; place-items:center;
+  background:color-mix(in oklab,var(--accent) 14%, transparent);
+  border:1px solid color-mix(in oklab,var(--accent) 28%, transparent);
+}
+.icon-badge svg{ width:14px; height:14px; opacity:.9 }
+
     /* HOW IT WORKS – NOVÁ verzia */
     .section{padding:46px 0}
     .section h2{font-size: clamp(24px, 2.8vw, 36px);margin:0 0 10px}
@@ -271,38 +283,42 @@
         <p>Nastavíme stránku/udalosti, grafiku, nákupné odkazy a upozornenia. Dostanete jasný plán <strong>„krok za krokom“</strong>.</p>
       </div>
 
-      <!-- 3 -->
-      <div class="step">
-        <div class="hdr">
-          <span class="ico" aria-hidden="true">
-            <!-- live / broadcast -->
-            <svg viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="2.5" stroke="currentColor" stroke-width="1.6"/>
-              <path d="M5.5 8.5a7 7 0 0 0 0 7M18.5 8.5a7 7 0 0 1 0 7M3.5 6.5a10 10 0 0 0 0 11M20.5 6.5a10 10 0 0 1 0 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-          </span>
-          <h3>Predaj živým vysielaním (<strong>LIVE PREDAJ</strong>)</h3>
-        </div>
+     <!-- 3 -->
+<div class="step" id="step-live">
+  <div class="hdr">
+    <span class="ico" aria-hidden="true">
+      <!-- „live“ vysielanie (waves) -->
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M5 12a7 7 0 0 1 7-7m0 14a7 7 0 0 1-7-7M19 5l2 2M19 19l2-2M12 8v8" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+    </span>
+    <h3>Predaj živým vysielaním (<strong>LIVE PREDAJ</strong>)</h3>
+  </div>
 
-        <div class="bullet">
-          <span class="dot" aria-hidden="true">
-            <!-- technika / headset -->
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M12 3a7 7 0 0 0-7 7v4a3 3 0 0 0 3 3h1v-6H7a5 5 0 0 1 10 0h-2v6h1a3 3 0 0 0 3-3v-4a7 7 0 0 0-7-7z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-          <span><strong>Technika & podpora</strong> pred aj počas vysielania.</span>
-        </div>
+  <!-- bullet 1: technika & podpora -->
+  <div class="bullet">
+    <span class="icon-badge" aria-hidden="true">
+      <!-- kamera / technika -->
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M4 7h10a2 2 0 0 1 2 2v1l4-2v8l-4-2v1a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    <span><strong>Technika &amp; podpora</strong> pred aj počas vysielania.</span>
+  </div>
 
-        <div class="bullet">
-          <span class="dot" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm-7 7a7 7 0 1 1 14 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-          </span>
-          <span><strong>Moderovanie & asistencia</strong> — vy si zvolíte, či chcete stream moderovať vy, alebo to zabezpečíme za vás.</span>
-        </div>
-      </div>
+  <!-- bullet 2: moderovanie & asistencia -->
+  <div class="bullet">
+    <span class="icon-badge" aria-hidden="true">
+      <!-- moderátor / headset -->
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M4 12a8 8 0 1 1 16 0v5a2 2 0 0 1-2 2h-2M6 19H5a2 2 0 0 1-2-2v-5M18 14h1.5M4.5 14H6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    <span>
+      <strong>Moderovanie &amp; asistencia</strong> — vy si zvolíte, či chcete stream moderovať vy, alebo to zabezpečíme za vás.
+    </span>
+  </div>
+</div>
 
       <!-- 4 -->
       <div class="step">
