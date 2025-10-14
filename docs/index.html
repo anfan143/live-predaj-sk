@@ -10,7 +10,7 @@
   <meta property="og:title" content="LivePredaj.sk – TikTok, Facebook, YouTube" />
   <meta property="og:description" content="Spustíme vám live predaj: tvorba obsahu, moderovanie, technika, klipy, reporting." />
   <meta property="og:type" content="website" />
-  <!-- Lokálny og:image (pridaj súbor 1200x630 do assets/) -->
+  <!-- Lokálny og:image (1200x630 v /assets) -->
   <meta property="og:image" content="assets/og-cover.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -106,7 +106,7 @@
       transform:translateY(-1px);
       box-shadow:0 10px 24px rgba(2,6,23,.12);
     }
-    /* UX: aktívna sekcia v nav */
+    /* UX: aktívna sekcia v nav (6.1) */
     .chip.active{
       border-color: color-mix(in oklab, var(--accent) 70%, var(--border));
       background: color-mix(in oklab, var(--accent) 15%, var(--surface));
@@ -121,7 +121,7 @@
     .theme{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;border:1px solid var(--border);background:transparent;font-size:20px}
     .theme:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(2,6,23,.12)}
 
-    /* HERO (DRAFT 2 + drobné fixy) */
+    /* HERO (DRAFT 2 + fixy) */
     .hero{padding:56px 0 18px}
     .kicker{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;border:1px solid color-mix(in oklab, var(--danger) 40%, transparent);background:color-mix(in oklab, var(--danger) 18%, transparent);color:var(--danger);font-weight:800;letter-spacing:.2px}
     .grid2{display:grid;grid-template-columns:1.17fr 1fr;gap:22px;align-items:start}
@@ -151,7 +151,7 @@
     /* kompaktnejší rytmus pre bullets v boxe #step-live */
     #step-live .bullet { margin: 6px 0; line-height: 1.45; }
 
-    /* malé ikon-badge pre techniku/moderovanie (svetlá aj tmavá téma) */
+    /* malé ikon-badge pre techniku/moderovanie */
     .icon-badge{
       width:22px; height:22px; border-radius:8px;
       display:grid; place-items:center;
@@ -201,7 +201,8 @@
   <nav class="nav">
     <div class="wrap inner">
       <div class="brand">
-        <img src="./assets/logo-live-nazivo.png" alt="LIVE naživo logo" />
+        <!-- výkon: presné rozmery + async decoding + LCP hint -->
+        <img src="./assets/logo-live-nazivo.png" alt="LIVE naživo logo" width="44" height="44" decoding="async" fetchpriority="high" />
         <div>
           <div class="title">LIVE predaj pre Vaše produkty</div>
           <div class="tagline">Vaša cesta k zákazníkovi</div>
@@ -566,10 +567,12 @@
         <input name="meno" placeholder="Meno a priezvisko" required />
         <input name="firma" placeholder="Firma (nepovinné)" />
         <input type="email" name="email" placeholder="E-mail" required />
-        <input name="tel" placeholder="Telefón" />
+        <input type="tel" name="tel" placeholder="Telefón (nepovinné)" />
         <textarea name="sprava" placeholder="Čo chcete predávať? Koľko livestreamov mesačne?" required></textarea>
-        <button class="btn" type="submit">Odoslať dopyt</button>
-        <div id="formNotice" class="callout" style="display:none"></div>
+        <button class="btn" type="submit" id="submitBtn">Odoslať dopyt</button>
+
+        <!-- vylepšený notice (success/error) -->
+        <div id="formNotice" class="callout" style="display:none; border-left:4px solid transparent;"></div>
       </form>
     </div>
   </section>
@@ -584,31 +587,11 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Nikdy sme nevysielali. Zvládneme to?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Áno. V balíku Štart vás rýchlo zaučíme a prvé vysielanie urobíme spolu – krok za krokom." }
-      },
-      {
-        "@type": "Question",
-        "name": "Koľko trvá príprava prvého vysielania?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Zvyčajne 2–6 hodín podľa balíka. Termín si dohodneme po krátkom 15-minútovom hovore." }
-      },
-      {
-        "@type": "Question",
-        "name": "Potrebujem e-shop, aby to fungovalo?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Nie, nepotrebujete. E-shop je výhoda (vieme pripínať produkty priamo do vysielania); bez e-shopu dáme zákazníkom jasné pokyny, ako objednať (správa, formulár, telefón)." }
-      },
-      {
-        "@type": "Question",
-        "name": "Aké platformy podporujete?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Facebook, YouTube, TikTok a Instagram. Zvolíme tú, kde sú vaši zákazníci." }
-      },
-      {
-        "@type": "Question",
-        "name": "Nemáme techniku. Viete ju dodať?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Áno. Základná technika je súčasťou balíkov (kúpa/prenájom). Máme aj vlastné štúdio, ak nemáte vhodné priestory." }
-      }
+      { "@type": "Question", "name": "Nikdy sme nevysielali. Zvládneme to?", "acceptedAnswer": { "@type": "Answer", "text": "Áno. V balíku Štart vás rýchlo zaučíme a prvé vysielanie urobíme spolu – krok za krokom." } },
+      { "@type": "Question", "name": "Koľko trvá príprava prvého vysielania?", "acceptedAnswer": { "@type": "Answer", "text": "Zvyčajne 2–6 hodín podľa balíka. Termín si dohodneme po krátkom 15-minútovom hovore." } },
+      { "@type": "Question", "name": "Potrebujem e-shop, aby to fungovalo?", "acceptedAnswer": { "@type": "Answer", "text": "Nie, nepotrebujete. E-shop je výhoda (vieme pripínať produkty priamo do vysielania); bez e-shopu dáme zákazníkom jasné pokyny, ako objednať (správa, formulár, telefón)." } },
+      { "@type": "Question", "name": "Aké platformy podporujete?", "acceptedAnswer": { "@type": "Answer", "text": "Facebook, YouTube, TikTok a Instagram. Zvolíme tú, kde sú vaši zákazníci." } },
+      { "@type": "Question", "name": "Nemáme techniku. Viete ju dodať?", "acceptedAnswer": { "@type": "Answer", "text": "Áno. Základná technika je súčasťou balíkov (kúpa/prenájom). Máme aj vlastné štúdio, ak nemáte vhodné priestory." } }
     ]
   }
   </script>
@@ -632,65 +615,81 @@
       btnTheme.textContent = next === 'dark' ? '🌙' : '☀️';
     });
 
-    // Formspree
+    // Formspree + validácia tel. + lepší banner
     const FORM_ENDPOINT = 'https://formspree.io/f/xjkaendy';
     const form = document.getElementById('contactForm');
     const notice = document.getElementById('formNotice');
+    const submitBtn = document.getElementById('submitBtn');
+
+    function showNotice(type, msg){
+      notice.style.display = 'block';
+      notice.textContent = msg;
+      // štýl podľa typu
+      if(type === 'success'){
+        notice.style.borderColor = 'rgba(34,197,94,.35)';
+        notice.style.background = 'color-mix(in oklab, rgba(34,197,94,.25) 20%, var(--surface))';
+      }else{
+        notice.style.borderColor = 'rgba(239,68,68,.35)';
+        notice.style.background = 'color-mix(in oklab, rgba(239,68,68,.25) 20%, var(--surface))';
+      }
+      // plynulé prerolovanie k hláške
+      notice.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const data = Object.fromEntries(new FormData(form).entries());
       if (data._hp) return; // honeypot
+
+      // Telefón – ak je vyplnený, validuj formát (číslice, medzery, +, 7-20 znakov)
+      const tel = (data.tel || '').trim();
+      if(tel && !/^[\+\d][\d\s\-()]{6,19}$/.test(tel)){
+        showNotice('error', 'Prosím, zadajte telefón v tvare napr. +421 900 000 000 alebo nechajte pole prázdne.');
+        return;
+      }
+
       try{
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Odosielam…';
+
         const res = await fetch(FORM_ENDPOINT, {
           method:'POST',
           headers:{'Content-Type':'application/json','Accept':'application/json'},
           body: JSON.stringify(data)
         });
-        notice.style.display = 'block';
+
         if(res.ok){
-          notice.textContent = 'Ďakujeme! Ozveme sa čoskoro.';
-          notice.style.borderColor = 'rgba(34,197,94,.35)';
+          form.reset();
+          showNotice('success', 'Ďakujeme! Ozveme sa čoskoro.');
         }else{
-          notice.textContent = 'Nepodarilo sa odoslať. Skúste znova alebo napíšte na WhatsApp.';
-          notice.style.borderColor = 'rgba(239,68,68,.35)';
+          showNotice('error', 'Nepodarilo sa odoslať. Skúste znova alebo napíšte na WhatsApp.');
         }
       }catch(err){
-        notice.style.display = 'block';
-        notice.textContent = 'Chyba siete. Skúste neskôr.';
-        notice.style.borderColor = 'rgba(239,68,68,.35)';
+        showNotice('error', 'Chyba siete. Skúste neskôr.');
+      }finally{
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Odoslať dopyt';
       }
     });
 
-    // UX: scroll-spy (zvýrazní aktívnu sekciu v top lište)
+    // UX: scroll-spy (6.1) – zvýrazní aktívnu sekciu v top lište
     const menuLinks = Array.from(document.querySelectorAll('.menu [data-nav]'));
-    const idMap = {
-      'ako': '#ako',
-      'sluzby': '#sluzby',
-      'cennik': '#cennik',
-      'faq': '#faq',
-      'kontakt': '#kontakt'
-    };
+    const idMap = { 'ako':'#ako','sluzby':'#sluzby','cennik':'#cennik','faq':'#faq','kontakt':'#kontakt' };
     const targets = Object.values(idMap).map(sel => document.querySelector(sel)).filter(Boolean);
 
-    const setActive = (id) => {
-      menuLinks.forEach(a => a.classList.toggle('active', a.dataset.nav === id));
-    };
+    const setActive = (id) => menuLinks.forEach(a => a.classList.toggle('active', a.dataset.nav === id));
 
-    // prvé nastavenie podľa hash
     if (location.hash) {
       const key = Object.keys(idMap).find(k => idMap[k] === location.hash);
       if (key) setActive(key);
     }
 
-    // intersection observer
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const id = entry.target.id || (entry.target.getAttribute('id') ? entry.target.id : null);
-          // špeciálne: ak je to #cennik (je to kotva v rámci #sluzby), mapuj na 'cennik'
           const key = id === 'cennik' ? 'cennik' : id;
           if (key && idMap[key]) setActive(key);
-          // ak je to #sluzby a nie je viditeľná #cennik, zvýrazni 'sluzby'
           if (id === 'sluzby') setActive('sluzby');
         }
       });
