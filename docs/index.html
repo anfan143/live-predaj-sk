@@ -4,436 +4,605 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>LivePredaj.sk – TikTok, Facebook, YouTube | Slovensko</title>
-  <meta name="description" content="LivePredaj.sk – predaj naživo pre slovenský trh. Kompletný servis: technika, moderovanie, klipy, prepojenie s e‑shopom, reporting a fakturácia." />
+  <meta name="description" content="LivePredaj.sk – predaj naživo pre slovenský trh. Kompletný servis: scenár, technika, moderovanie, klipy, prepojenie s e-shopom, reporting a fakturácia." />
   <meta property="og:title" content="LivePredaj.sk – TikTok, Facebook, YouTube" />
   <meta property="og:description" content="Spustíme vám live predaj: tvorba obsahu, moderovanie, technika, klipy, reporting." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://anfan143.github.io/live-predaj-sk/assets/logo-live-nazivo.png" />
+  <meta property="og:image" content="assets/og-cover.png" />
   <meta name="theme-color" content="#0f172a" />
-  <!-- SEO/Twitter doplnené v 7.2+ -->
-  <meta property="og:site_name" content="LivePredaj.sk" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="LivePredaj.sk – TikTok, Facebook, YouTube" />
-  <meta name="twitter:description" content="Spustíme vám live predaj: technika, moderovanie, e‑shop integrácia, klipy a reporting." />
-  <meta name="twitter:image" content="https://anfan143.github.io/live-predaj-sk/assets/logo-live-nazivo.png" />
-  <!-- <link rel="canonical" href="https://livepredaj.sk/"> TODO: po potvrdení finálnej domény -->
-  <script type="application/ld+json">{
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "LivePredaj.sk",
-    "url": "",
-    "logo": "https://anfan143.github.io/live-predaj-sk/assets/logo-live-nazivo.png",
-    "sameAs": []
-  }</script>
 
-  <link rel="icon" href="/assets/logo-live-nazivo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
+    /* ====== Téma / paleta – zjednotené farby ====== */
     :root{
-      --bg:#0b1224; /* tmavý základ */
-      --card:#0f172a; /* slate-900 */
-      --muted:#94a3b8; /* slate-400 */
-      --text:#e5e7eb; /* gray-200 */
-      --accent:#22d3ee; /* cyan-400 */
-      --accent-2:#a78bfa; /* violet-400 */
-      --ok:#34d399; /* green-400 */
-      --danger:#f87171; /* red-400 */
-      --border:rgba(148,163,184,.25);
-      --header-h:64px;
-      --radius:16px;
-      --maxw:1200px;
+      --bg: #0b1020;
+      --bg-2: #0a0f1c;
+      --surface: rgba(17,22,42,.78);
+      --surface-2: rgba(17,22,42,.62);
+      --text: #e6edf6;
+      --muted:#b6c2d6;
+      --border:#233047;
+      --shadow: 0 12px 36px rgba(0,0,0,.35);
+
+      /* akcenty – konzistentné naprieč webom */
+      --accent:#2563eb;         /* primary */
+      --accent-700:#1d4ed8;
+      --accent-text:#fff;
+
+      --brand-green:#10b981;
+      --brand-blue:#2f6df6;
+
+      --danger:#e11d48;
+      --danger-700:#be123c;
+
+      --radius: 18px;
+      --max: 1200px;
+      --s-2: 8px;
+      --s-3: 14px;
+      --s-4: 20px;
+      --s-5: 28px;
+      --s-6: 44px;
+
+      /* farebné čipy platforiem */
+      --fb:#1877F2;
+      --yt:#FF0033;
+      --ig:#C13584;
+      --tt:#010101;
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:linear-gradient(180deg,#0b1224 0%,#0a0f1c 100%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.55}
-    img{max-width:100%;height:auto;display:block}
+    [data-theme="light"]{
+      --bg:#f7fbff;
+      --bg-2:#f2f6fb;
+      --surface:#ffffff;
+      --surface-2:#ffffff;
+      --text:#0f172a;
+      --muted:#5b6b7f;
+      --border:#e7eef7;
+      --shadow: 0 10px 28px rgba(2,6,23,.08);
+    }
+
+    html,body{
+      margin:0; padding:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+      scroll-behavior:smooth;
+    }
     a{color:inherit;text-decoration:none}
-    a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-    .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
-    header{position:sticky;top:0;z-index:50;background:rgba(15,23,42,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);height:var(--header-h)}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:var(--header-h)}
-    .brand{display:flex;gap:12px;align-items:center;font-weight:700}
-    .brand img{width:36px;height:36px;border-radius:10px;border:1px solid var(--border)}
-    .brand span{font-size:clamp(16px,2vw,20px)}
-    .menu{display:flex;gap:18px;align-items:center}
-    .menu a{padding:10px 12px;border-radius:10px;color:var(--muted);font-weight:600}
-    .menu a:hover{color:#fff;background:rgba(148,163,184,.1)}
-    .menu a.active{color:#fff;background:rgba(148,163,184,.14)}
-    .cta{display:flex;gap:10px;align-items:center}
-    .btn{display:inline-flex;align-items:center;gap:10px;background:#111827;border:1px solid var(--border);color:#fff;padding:10px 14px;border-radius:12px;font-weight:700}
-    .btn:hover{border-color:var(--accent);box-shadow:0 0 0 3px rgba(34,211,238,.15)}
-    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0b1224}
-    .btn.ghost{background:transparent}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
 
-    /* IG / WhatsApp ikony */
-    .social{display:flex;gap:12px;align-items:center}
-    .icon{width:28px;height:28px;display:inline-grid;place-items:center;border-radius:10px;border:1px solid var(--border);background:#0b1328}
-    .icon:hover{border-color:var(--accent)}
-    .icon svg{width:18px;height:18px}
+    /* ====== NAV ====== */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.03);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--border)}
+    [data-theme="light"] .nav{background:rgba(255,255,255,.9)}
+    .nav .inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand img{width:44px;height:44px;border-radius:10px;object-fit:cover;box-shadow:0 8px 26px rgba(14,165,233,.28)}
+    .brand .title{font-weight:800;font-size:22px;letter-spacing:.1px}
+    .brand .tagline{color:var(--muted);font-weight:600;font-size:14px;margin-top:2px}
+    .menu{display:flex;gap:12px;align-items:center}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border);border-radius:999px;background:transparent;font-weight:600;transition:.15s}
+    .chip:hover{background: color-mix(in oklab, var(--accent) 12%, var(--surface));transform:translateY(-1px);box-shadow:0 10px 24px rgba(2,6,23,.12)}
+    .chip.active{border-color: color-mix(in oklab, var(--accent) 60%, transparent)}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:14px;background:var(--accent);color:var(--accent-text);font-weight:700;border:none;transition:.15s}
+    .btn:hover{background:var(--accent-700);transform:translateY(-1px);box-shadow:0 14px 28px rgba(37,99,235,.26)}
+    .btn-green{background:#22c55e}.btn-green:hover{background:#16a34a}
+    .theme{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;border:1px solid var(--border);background:transparent;font-size:20px}
+    .theme:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(2,6,23,.12)}
 
-    /* Hero */
-    .hero{position:relative;padding:56px 0 24px}
-    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
-    .h1{font-size:clamp(28px,4vw,44px);line-height:1.12;margin:0 0 10px}
-    .lead{color:var(--muted);font-size:clamp(15px,2vw,18px)}
-    .hero-card{margin-top:28px;background:radial-gradient(1200px 400px at -10% -20%,rgba(34,211,238,.25),transparent 50%),radial-gradient(1000px 400px at 120% -10%,rgba(167,139,250,.2),transparent 55%),#0c152b;border:1px solid var(--border);border-radius:calc(var(--radius) + 8px);padding:18px 18px;display:flex;gap:12px;align-items:center}
-    .hero-badge{font-size:12px;color:#0b1224;background:linear-gradient(135deg,var(--ok),var(--accent));padding:6px 10px;border-radius:999px;font-weight:800;letter-spacing:.3px}
+    /* ====== HERO ====== */
+    .hero{padding:56px 0 18px}
+    .kicker{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;border:1px solid color-mix(in oklab, var(--danger) 40%, transparent);background:color-mix(in oklab, var(--danger) 18%, transparent);color:var(--danger);font-weight:800;letter-spacing:.2px}
+    .grid2{display:grid;grid-template-columns:1.17fr 1fr;gap:22px;align-items:start}
+    h1{font-size: clamp(28px, 4.1vw, 54px);line-height:1.08;margin:16px 0 14px}
+    .em-blue{color:var(--brand-blue)} .em-green{color:var(--brand-green)}
+    .lead{font-size:18px;color:var(--muted)}
+    .callout{margin-top:16px;padding:14px 16px;border-radius:14px;background:var(--surface);border:1px solid var(--border);font-weight:600}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
 
-    /* "Whiteboard" prekrývajúca karta */
-    .whiteboard{position:relative;margin:-22px auto 0;translate:0 20px;z-index:1}
-    .whiteboard .card{background:#0e1833;border:1px solid var(--border);border-radius:20px;padding:14px 16px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    .tag{font-size:12px;color:var(--muted);border:1px dashed var(--border);padding:6px 10px;border-radius:999px}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow)}
+    .screen{position:relative;aspect-ratio:16/10;border:1px dashed var(--border);border-radius:16px;margin:14px;padding:12px 12px 56px;display:grid;place-items:center}
+    .live-dot{position:absolute;right:16px;top:16px;display:inline-flex;align-items:center;gap:8px;border:1px solid color-mix(in oklab,var(--danger) 35%,transparent);background:color-mix(in oklab,var(--danger) 14%,transparent);color:var(--danger);padding:8px 12px;border-radius:999px;font-weight:800}
 
-    /* Sekcie */
-    section{scroll-margin-top:calc(var(--header-h) + 14px);padding:64px 0;border-top:1px solid rgba(148,163,184,.08)}
-    .section-title{font-size:clamp(22px,3vw,30px);margin:0 0 16px}
-    .muted{color:var(--muted)}
+    /* platform chips – farebné */
+    .platforms{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;padding:0 16px 2px}
+    .p-chip{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:8px 12px;font-weight:600;border:1px solid var(--border);background:transparent}
+    .p-chip svg{width:16px;height:16px}
+    .p-chip.fb{background: color-mix(in oklab, var(--fb) 12%, #fff); border-color: color-mix(in oklab, var(--fb) 30%, transparent); color: var(--fb);}
+    .p-chip.yt{background: color-mix(in oklab, var(--yt) 12%, #fff); border-color: color-mix(in oklab, var(--yt) 30%, transparent); color: var(--yt);}
+    /* IG chip: brand gradient + biela ikonka/label (upravené) */
+    .p-chip.ig{
+      background: linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
+      color:#fff;
+      border-color: transparent;
+    }
+    .p-chip.tt{background: color-mix(in oklab, var(--tt) 10%, #fff); border-color: color-mix(in oklab, var(--tt) 28%, transparent); color: var(--tt);}
 
-    /* Ako to funguje */
-    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .step{background:#0d1730;border:1px solid var(--border);border-radius:16px;padding:16px}
-    .step h3{margin:0 0 8px;font-size:16px}
+    .bullet{display:flex;align-items:flex-start;gap:10px;margin:8px 0;color:var(--text)}
+    .bullet .dot{width:22px;height:22px;border-radius:8px;display:grid;place-items:center;background:color-mix(in oklab,var(--accent) 16%,transparent);border:1px solid color-mix(in oklab,var(--accent) 28%,transparent)}
+    #step-live .bullet { margin:6px 0; line-height:1.45; }
+    .icon-badge{ width:22px;height:22px;border-radius:8px;display:grid;place-items:center;background:color-mix(in oklab,var(--accent) 14%, transparent);border:1px solid color-mix(in oklab,var(--accent) 28%, transparent); }
+    .icon-badge svg{ width:14px;height:14px;opacity:.9 }
 
-    /* Služby */
-    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .feature{background:#0d1730;border:1px solid var(--border);border-radius:16px;padding:16px}
-    .feature h3{margin:0 0 6px;font-size:16px}
+    /* ====== Sekcie / scroll offset ====== */
+    .section{padding:46px 0}
+    .section h2{font-size: clamp(24px, 2.8vw, 36px);margin:0 0 10px}
+    .section .lead-strong{color:var(--text);font-weight:600;margin:0 0 18px}
+    /* aby sa po skoku nikdy neodrezal nadpis */
+    #ako, #sluzby, #cennik, #faq, #kontakt { scroll-margin-top: 90px; }
 
-    /* Cenník */
-    .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .plan{background:#0d1730;border:1px solid var(--border);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:10px}
-    .price{font-weight:900;font-size:24px}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .step{background:var(--surface-2);border:1px solid var(--border);border-radius:18px;padding:18px;transition:.2s ease;position:relative}
+    .step:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(2,6,23,.28)}
+    .hdr{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+    .ico{width:36px;height:36px;border-radius:10px;display:inline-grid;place-items:center;background:color-mix(in oklab,var(--accent) 12%, transparent);border:1px solid color-mix(in oklab,var(--accent) 28%,transparent)}
+    .ico svg{width:18px;height:18px}
+    .step h3{margin:0;font-size:18px}
+    .step p{margin:10px 0 0;color:var(--muted)}
 
-    /* FAQ */
-    details{background:#0d1730;border:1px solid var(--border);border-radius:14px;padding:12px}
-    details+details{margin-top:10px}
-    summary{cursor:pointer;font-weight:700}
-
-    /* Kontakt / formulár */
-    .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
-    form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    label{font-size:12px;color:var(--muted)}
-    input,textarea{width:100%;padding:12px 12px;border-radius:12px;border:1px solid var(--border);background:#0b1328;color:#fff;font:inherit}
-    textarea{min-height:120px;grid-column:1/-1}
-    .full{grid-column:1/-1}
-    .form-row{display:flex;gap:12px}
-    .hint{font-size:12px;color:var(--muted)}
-
-    /* Prevencia presahujúcich polí a dlhých reťazcov */
-    .container,section,.feature,.plan,.step,form,input,textarea{overflow-wrap:anywhere;word-break:break-word}
-
-    /* Footer */
-    footer{padding:28px 0;border-top:1px solid var(--border);color:var(--muted)}
-
-    /* Responzívne */
     @media (max-width: 980px){
-      .hero-grid{grid-template-columns:1fr}
-      .contact-grid{grid-template-columns:1fr}
-      .steps{grid-template-columns:repeat(2,1fr)}
-      .features{grid-template-columns:repeat(2,1fr)}
-      .plans{grid-template-columns:1fr}
-      .menu{display:none}
+      .grid2{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr 1fr}
     }
     @media (max-width: 560px){
-      .steps,.features{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr}
     }
-    @media (prefers-reduced-motion: reduce){
-      html{scroll-behavior:auto}
+
+    /* ====== Služby / Cenník (z Draft 7) ====== */
+    #sluzby .grid{ display:grid; gap:24px; grid-template-columns:repeat(3,minmax(0,1fr)); align-items:stretch; }
+    @media (max-width:960px){ #sluzby .grid{ grid-template-columns:1fr; } }
+    #sluzby, #sluzby *{ opacity:1!important; filter:none!important; mix-blend-mode:normal!important; }
+    #sluzby .card{
+      display:flex; flex-direction:column;
+      background:#fff; border:1px solid rgba(0,0,0,.08);
+      border-radius:16px; padding:20px;
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
     }
-    /* Skip link */
-    .skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip:focus{left:12px;top:12px;width:auto;height:auto;padding:8px 10px;background:#fff;color:#000;border-radius:8px;z-index:9999}
+    #sluzby .card:hover{ transform:translateY(-4px) scale(1.01); box-shadow:0 16px 40px rgba(2,6,23,.16); }
+    #sluzby .card.recommended{ border-color:rgba(45,212,191,.5); box-shadow:0 18px 46px rgba(45,212,191,.15); }
+    [data-theme="dark"] #sluzby .card{ background:var(--surface)!important; border-color:var(--border)!important; }
+    [data-theme="dark"] #sluzby h3,[data-theme="dark"] #sluzby strong{ color:#fff!important; }
+    [data-theme="dark"] #sluzby .sub,[data-theme="dark"] #sluzby .micro,[data-theme="dark"] #sluzby .result,[data-theme="dark"] #sluzby .card p,[data-theme="dark"] #sluzby .card li{ color:#e5e7eb!important; }
+    #sluzby h3{ margin:0 0 6px; font-weight:800; color:#0f172a; }
+    #sluzby .sub{ margin:0 0 10px; color:#5b6472; font-size:.95rem; }
+    #sluzby ul{ margin:10px 0 0; padding-left:18px; }
+    #sluzby li{ margin:6px 0; color:#0f172a; }
+    #sluzby .result{ margin-top:10px; font-weight:600; color:#0f172a; }
+    #sluzby .micro{ margin-top:6px; font-size:.9rem; color:#5b6472; }
+    #sluzby .section-sub{ margin:18px 0 6px; font-weight:800; font-size:1.15rem; }
+    #sluzby .footer{ margin-top:auto; }
+    #sluzby .price{
+      display:inline-block; margin-top:14px;
+      font-weight:900; font-size:1.08rem; letter-spacing:.2px;
+      padding:8px 12px; border-radius:12px;
+      color:#111827; background:rgba(17,24,39,.06);
+      border:1px solid rgba(17,24,39,.12);
+    }
+    [data-theme="dark"] #sluzby .price{
+      color:#fff; background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.12);
+    }
+    #sluzby .cta{
+      display:inline-block; margin-top:12px; padding:10px 14px; border-radius:12px;
+      background:#111827; color:#fff; border:1.6px solid #111827;
+      text-decoration:none; transition:transform .12s ease, box-shadow .12s ease, background .12s;
+    }
+    #sluzby .cta:hover{ transform:translateY(-1px); box-shadow:0 10px 22px rgba(2,6,23,.18); }
 
-    /* Cookie banner */
-    .cookie-banner{position:fixed;left:12px;right:12px;bottom:12px;background:#0e1833;border:1px solid var(--border);border-radius:14px;padding:12px 14px;display:flex;gap:12px;align-items:center;justify-content:space-between;box-shadow:0 10px 30px rgba(0,0,0,.3);z-index:60}
-    .cookie-banner p{margin:0;color:var(--muted);font-size:14px}
-    .cookie-actions{display:flex;gap:10px}
+    /* ====== FAQ (kompakt + top5 + details) – ostáva z Draft 7 ====== */
+    #faq{scroll-margin-top:90px}
+    #faq .grid{display:grid;gap:10px;grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width:960px){#faq .grid{grid-template-columns:1fr}}
+    #faq .qa{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px}
+    #faq h3{margin:0 0 4px;font-size:17px}
+    #faq p{margin:0;color:var(--muted);line-height:1.45}
+    #faq .hl{color:var(--brand-blue);font-weight:700}
+    #faq details{margin-top:12px}
+    #faq summary{cursor:pointer;list-style:none;user-select:none;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 12px;font-weight:700}
+    #faq summary::-webkit-details-marker{display:none}
+    #faq .more{margin-top:10px;display:grid;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))}
+    @media (max-width:960px){#faq .more{grid-template-columns:1fr}}
 
+    /* ====== Kontakt – NOVÝ GRID, nič nepresahuje ====== */
+    #kontakt .k-grid{
+      display:grid; grid-template-columns:1fr 360px; gap:22px;
+      align-items:start;
+    }
+    @media (max-width: 900px){
+      #kontakt .k-grid{ grid-template-columns:1fr; }
+    }
+    #kontakt form{ display:grid; gap:12px; width:100%; }
+    #kontakt input, #kontakt textarea{
+      width:100%; border:1px solid var(--border); background:#fff; color:#0f172a;
+      padding:14px 16px; border-radius:12px; font-size:16px;
+    }
+    [data-theme="dark"] #kontakt input, [data-theme="dark"] #kontakt textarea{
+      background:var(--surface); color:var(--text);
+    }
+    #kontakt label{ font-weight:700; margin-top:6px; }
+    #kontakt .side{
+      position:sticky; top:96px; background:var(--surface);
+      border:1px solid var(--border); border-radius:16px; padding:18px;
+    }
+    #kontakt .wbtn{ display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#0b1b0f;font-weight:800;border:none;border-radius:12px;padding:12px 16px; }
+    #kontakt .note{ margin-top:10px; color:var(--muted); }
+    #kontakt .policy{ margin-top:16px; color:var(--muted); font-size:.95rem; }
   </style>
+
+  <!-- Plausible -->
+  <script defer data-domain="anfan143.github.io" src="https://plausible.io/js/plausible.js"></script>
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon-180.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png" />
 </head>
 <body>
-  <a href="#top" class="skip">Preskočiť na obsah</a>
-  <header>
-    <div class="container nav" role="navigation" aria-label="Hlavná navigácia">
-      <a class="brand" href="#top" aria-label="LivePredaj domov">
-        <img src="/assets/logo-live-nazivo.png" alt="LivePredaj logo" />
-        <span>LivePredaj.sk</span>
-      </a>
-      <nav class="menu" aria-label="Sekcie">
-        <a href="#sluzby">Služby</a>
-        <a href="#ako">Ako to funguje</a>
-        <a href="#cennik">Cenník</a>
-        <a href="#faq">FAQ</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
-      <div class="cta">
-        <div class="social" aria-label="Sociálne siete">
-          <!-- Odkazy aktuálne smerujú na Kontakt – vymeň za IG/WhatsApp URL, keď budú pripravené. -->
-          <a class="icon" href="#kontakt" aria-label="Instagram">
-            <!-- IG SVG -->
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></svg>
-          </a>
-          <a class="icon" href="#kontakt" aria-label="WhatsApp">
-            <!-- WhatsApp SVG -->
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.1 3.9A9.8 9.8 0 0 0 3.9 20.1L2 22l2.2-.6a9.8 9.8 0 1 0 15.9-17.5Z" stroke="currentColor" stroke-width="1.6"/><path d="M8.1 10.2c.2 1.7 2.6 4 4.2 4.6 1.6.6 1.8.1 2.6-.6.5-.5.4-.8.2-1.1-.2-.3-.7-.4-1.1-.6-.3-.2-.5.1-.7.3-.2.2-.4.4-.7.3-1-.4-2.2-1.5-2.6-2.6 0-.3.2-.5.3-.7.2-.2.5-.4.3-.7-.2-.4-.3-.9-.6-1.1-.3-.2-.6-.3-1.1.2-.7.8-1.2 1-1 2Z" fill="currentColor"/></svg>
-          </a>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="wrap inner">
+      <div class="brand">
+        <img src="./assets/logo-live-nazivo.png" alt="LIVE naživo logo" />
+        <div>
+          <div class="title">LIVE predaj pre Vaše produkty</div>
+          <div class="tagline">Vaša cesta k zákazníkovi</div>
         </div>
-        <a class="btn primary" href="#kontakt">Nezáväzná konzultácia</a>
+      </div>
+      <div class="menu">
+        <a class="chip" href="#ako" data-nav="ako">Ako to funguje</a>
+        <a class="chip" href="#sluzby" data-nav="sluzby">Služby</a>
+        <a class="chip" href="#cennik" data-nav="sluzby">Cenník</a>
+        <a class="chip" href="#faq" data-nav="faq">FAQ</a>
+        <a class="btn" href="#kontakt" data-nav="kontakt">Nezáväzná ponuka</a>
+        <a class="btn btn-green" href="https://wa.me/421951265627?text=Z%C3%A1ujem%20o%20live%20predaj">WhatsApp</a>
+        <button id="themeToggle" class="theme" aria-label="Prepnúť tému" title="Prepnúť tému">☀️</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="wrap hero">
+    <div class="grid2">
+      <div>
+        <span class="kicker">LIVE SHOPPING → PREDAJ NAŽIVO</span>
+        <h1>Zvýšte <span class="em-blue">tržby</span> a <span class="em-green">komunitu</span> vďaka pravidelnému živému vysielaniu na Facebooku, YouTube, Instagrame a TikToku.</h1>
+        <p class="lead">Budeme vašou <strong>službou a asistentom</strong> pri zvyšovaní predajov pomocou živých vysielaní. Máme skúsenosti, ako sa dostať k <strong>novým zákazníkom</strong>, ktorí vás doteraz nepoznali.</p>
+
+        <div class="callout">Váš prvý predaj NAŽIVO vieme spustiť do <strong>7 dní</strong> od kontaktovania našich odborníkov.</div>
+
+        <div class="cta">
+          <a class="btn" href="#cennik">Spustiť pilot do 7 dní</a>
+          <a class="btn btn-green" href="https://wa.me/421951265627?text=Konzult%C3%A1cia%20k%20pilotn%C3%A9mu%20live">WhatsApp konzultácia</a>
+          <a class="chip" href="#ako">Ako to funguje</a>
+        </div>
+      </div>
+
+      <div class="card" style="position:relative;padding:6px">
+        <span class="live-dot"><span style="display:inline-block;width:8px;height:8px;border-radius:999px;background:var(--danger)"></span>NAŽIVO</span>
+        <div class="screen">
+          <div style="text-align:center;font-weight:800;color:var(--muted)">Ukážka živého predaja</div>
+
+          <div class="platforms" style="position:absolute;bottom:10px;left:14px;right:14px;">
+            <span class="p-chip fb">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 3h4v4h-3c-.6 0-1 .4-1 1v3h4l-1 4h-3v8h-4v-8H6v-4h3V8a5 5 0 0 1 4-5z"/></svg>
+              Facebook
+            </span>
+            <span class="p-chip yt">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.5s-.2-1.7-.9-2.4c-.8-.9-1.7-.9-2.1-1C16.9 3.7 12 3.7 12 3.7s-4.9 0-8 .4c-.4.1-1.3.1-2.1 1C.2 5.8 0 7.5 0 7.5s-.2 1.9 0 3.8c.2 1.8.9 2.4.9 2.4.8.9 1.9.9 2.4 1 1.8.2 7.7.4 7.7.4s4.9 0 8-.4c.4-.1 1.3-.1 2.1-1 .7-.7.9-2.4.9-2.4s.2-1.9 0-3.8zM9.5 13.5V6.6l6.2 3.4-6.2 3.5z"/></svg>
+              YouTube
+            </span>
+            <span class="p-chip ig">
+              <!-- UPRAVENÉ IG SVG: obrys + bodka, funguje na bielej farbe textu -->
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="2.75" y="2.75" width="18.5" height="18.5" rx="5"
+                      stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="12" cy="12" r="4.25" stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/>
+              </svg>
+              Instagram
+            </span>
+            <span class="p-chip tt">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 3c.6 1.8 2.2 3.2 4 3.6v3.1c-1.6-.1-3.2-.6-4.6-1.5v6.8A6.1 6.1 0 1 1 9 9.2v3.2a3 3 0 1 0 2 2.8V3h5z"/></svg>
+              TikTok
+            </span>
+          </div>
+        </div>
+
+        <div style="padding:10px 16px 16px">
+          <div class="bullet"><span class="dot">✓</span><span><strong>Jednoduché</strong> nastavenie</span></div>
+          <div class="bullet"><span class="dot">✓</span><span>Zákazník nakupuje <strong>pohodlne z domu</strong></span></div>
+          <div class="bullet"><span class="dot">✓</span><span>Nákup prebehne počas vysielania – <strong>LIVE predaj</strong></span></div>
+        </div>
       </div>
     </div>
   </header>
 
-  <main id="top">
-    <section class="hero container" aria-label="Úvod">
-      <div class="hero-grid">
-        <div>
-          <h1 class="h1">Spustíme váš <span style="background:linear-gradient(135deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent">LIVE predaj</span> – predaj živým vysielaním</h1>
-          <p class="lead">Pre malé a stredné obchody na Slovensku. Zariadime, koľko si vyberiete: technika, nastavenie streamu, moderovanie, klipy, prepojenie s e‑shopom a reporting. Bez stresu, krok za krokom.</p>
-          <div class="hero-card">
-            <span class="hero-badge">Nové • vyladené</span>
-            <span class="muted">IG/WhatsApp ikony pridané • opravené „presahy“ polí • hladký scroll na sekcie</span>
-          </div>
+  <!-- AKO TO FUNGUJE -->
+  <section id="ako" class="wrap section">
+    <h2>Ako to funguje</h2>
+    <p class="lead-strong">Predávajte naživo bez zbytočného nastavovania. <strong>My pripravíme</strong> všetko, vy ste <strong>v centre pozornosti</strong>.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="hdr">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 7l9 4 9-4M3 7l9-4 9 4M3 7v10l9 4 9-4V7" stroke="currentColor" stroke-width="1.6"/></svg>
+          </span>
+          <h3>Vy si volíte <strong>produkty</strong></h3>
         </div>
-        <div>
-          <picture>
-            <source srcset="/assets/hero.webp" type="image/webp" />
-            <img src="/assets/hero.jpg" alt="Ukážka rozhrania live predaja s produktmi a chatom" loading="eager" />
-          </picture>
+        <p>Produkty a ceny sú na vás. Spoločne doladíme <strong>ponuky</strong> (zľavy, balíčky, kódy) a cieľ vysielania.</p>
+      </div>
+
+      <div class="step">
+        <div class="hdr">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="4" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M8 20h8M12 16v4" stroke="currentColor" stroke-width="1.6" />
+              <path d="M17.5 9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" stroke="currentColor" stroke-width="1.6"/>
+            </svg>
+          </span>
+          <h3>Pripravíme <strong>vysielanie</strong></h3>
+        </div>
+        <p>Nastavíme stránku/udalosti, grafiku, nákupné odkazy a upozornenia. Dostanete jasný plán <strong>„krok za krokom“</strong>.</p>
+      </div>
+
+      <div class="step" id="step-live">
+        <div class="hdr">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="7" width="10" height="10" rx="2"></rect>
+              <polygon points="13,9 18,12 13,15"></polygon>
+              <path d="M20 9a6 6 0 0 1 0 6"></path>
+              <path d="M22 7a9 9 0 0 1 0 10"></path>
+            </svg>
+          </span>
+          <h3>Predaj živým vysielaním (<strong>LIVE PREDAJ</strong>)</h3>
+        </div>
+        <div class="bullet">
+          <span class="icon-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 7h10a2 2 0 0 1 2 2v1l4-2v8l-4-2v1a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span><strong>Technika &amp; podpora</strong> pred aj počas vysielania.</span>
+        </div>
+        <div class="bullet">
+          <span class="icon-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 12a8 8 0 1 1 16 0v5a2 2 0 0 1-2 2h-2M6 19H5a2 2 0 0 1-2-2v-5M18 14h1.5M4.5 14H6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span><strong>Moderovanie &amp; asistencia</strong> — vy si zvolíte, či chcete stream moderovať vy, alebo to zabezpečíme za vás.</span>
         </div>
       </div>
-    </section>
 
-    <div class="container whiteboard" aria-hidden="true">
-      <div class="card">
-        <span class="tag">Rýchle nasadenie (2–6 h podľa balíka)</span>
-        <span class="tag">Facebook • YouTube • TikTok • Instagram</span>
-        <span class="tag">S aj bez e‑shopu</span>
-        <span class="tag">Reporty a fakturácia</span>
+      <div class="step">
+        <div class="hdr">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 20V4M20 20H4M7 16v-4M12 20v-8M17 20v-6" stroke="currentColor" stroke-width="1.6"/></svg>
+          </span>
+          <h3>Spoločne vyhodnotíme <strong>výsledky</strong></h3>
+        </div>
+        <p>Pozrieme sa, čo LIVE priniesol: dosah, interakcie, objednávky, vplyv na tržby a povedomie značky.</p>
       </div>
     </div>
+  </section>
 
-    <section id="ako" class="container" aria-label="Ako to funguje">
-      <h2 class="section-title">Ako to funguje</h2>
-      <p class="muted">Pomôžeme do takej miery, akú si vyberiete. Ak nemáte skúsenosti, postaráme sa aj o techniku a prvé vysielanie urobíme spolu.</p>
-      <div class="steps" role="list">
-        <div class="step" role="listitem"><h3>1) Krátky hovor (15 min)</h3><p>Upresníme cieľ, platformu a rozsah pomoci.</p></div>
-        <div class="step" role="listitem"><h3>2) Príprava ponuky</h3><p>Nebudeme vás zahlcovať „scenárom“ – vyberieme produkty a spravíme jednoduchý plán.</p></div>
-        <div class="step" role="listitem"><h3>3) Technika a nastavenie</h3><p>Streamer, svetlá, mikrofón, overlaye, napojenie na e‑shop (ak je).</p></div>
-        <div class="step" role="listitem"><h3>4) Live vysielanie</h3><p>Moderovanie a interakcia so zákazníkmi. Pripínanie produktov.</p></div>
-        <div class="step" role="listitem"><h3>5) Klipy + reporting</h3><p>Vystrihneme highlighty a pošleme stručný report predaja.</p></div>
-        <div class="step" role="listitem"><h3>6) Ďalší rast</h3><p>Čo fungovalo zopakujeme, čo nie upravíme. Jednoducho.</p></div>
-      </div>
-    </section>
+  <!-- SLUŽBY / CENNÍK -->
+  <section id="sluzby" aria-label="Služby">
+    <a id="cennik"></a>
+    <div class="wrap inner">
+      <h2>Služby</h2>
+      <p>Vyberte si balíček, ktorý potrebujete. Každú službu prispôsobíme podľa vašich potrieb.</p>
 
-    <section id="sluzby" class="container" aria-label="Služby">
-      <h2 class="section-title">S čím pomáhame</h2>
-      <div class="features">
-        <div class="feature"><h3>Technika</h3><p>Kamera/mobil, zvuk, svetlá, stabilita pripojenia.</p></div>
-        <div class="feature"><h3>Moderovanie</h3><p>Priame otázky, práca s chatom, tempo predaja.</p></div>
-        <div class="feature"><h3>E‑shop integrácia</h3><p>Pripínanie produktov priamo do streamu.</p></div>
-        <div class="feature"><h3>Obsah a overlaye</h3><p>Grafika, CTA, odpočítavania, „pin“ produktov.</p></div>
-        <div class="feature"><h3>Klipy a Reels</h3><p>Výrezy najlepších momentov pre IG/TikTok.</p></div>
-        <div class="feature"><h3>Analytika</h3><p>Stručný report po každom vysielaní.</p></div>
-      </div>
-    </section>
-
-    <section id="cennik" class="container" aria-label="Cenník">
-      <h2 class="section-title">Balíky</h2>
-      <div class="plans">
-        <div class="plan">
-          <h3>Štart</h3>
-          <div class="price">na dopyt</div>
-          <p class="muted">Rýchle zaučenie a prvé vysielanie spolu.</p>
-          <ul>
-            <li>15 min konzultácia</li>
-            <li>Nastavenie profilu a streamu</li>
-            <li>Jednoduché overlaye</li>
-          </ul>
-          <a class="btn" href="#kontakt">Mám záujem</a>
-        </div>
-        <div class="plan">
-          <h3>Pro</h3>
-          <div class="price">na dopyt</div>
-          <p class="muted">Technika + moderovanie + klipy.</p>
-          <ul>
-            <li>Live moderovanie</li>
-            <li>Prepojenie s e‑shopom</li>
-            <li>3× video výrez po streame</li>
-          </ul>
-          <a class="btn" href="#kontakt">Mám záujem</a>
-        </div>
-        <div class="plan">
-          <h3>Full Service</h3>
-          <div class="price">na dopyt</div>
-          <p class="muted">Kompletná starostlivosť bez starostí.</p>
-          <ul>
-            <li>Obsahový plán na mesiac</li>
-            <li>Technika + tím</li>
-            <li>Reporting a odporúčania</li>
-          </ul>
-          <a class="btn" href="#kontakt">Mám záujem</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq" class="container" aria-label="Najčastejšie otázky">
-      <h2 class="section-title">FAQ (najčastejšie otázky)</h2>
-      <details>
-        <summary>Nikdy sme nevysielali. Zvládneme to?</summary>
-        <p>Áno. V balíku Štart vás rýchlo zaučíme a prvé vysielanie urobíme spolu krok za krokom.</p>
-      </details>
-      <details>
-        <summary>Koľko trvá príprava prvého vysielania?</summary>
-        <p>Bežne 2–6 hodín podľa balíka. Termín si dohodneme po krátkom úvodnom hovore (15 min).</p>
-      </details>
-      <details>
-        <summary>Potrebujem e‑shop, aby to fungovalo?</summary>
-        <p>Nie je nutný. S e‑shopom vieme pripínať produkty priamo do vysielania (pohodlnejší nákup). Bez e‑shopu dáme jasné pokyny, ako objednať (správy, formulár, telefón).</p>
-      </details>
-      <details>
-        <summary>Aké platformy podporujete?</summary>
-        <p>Facebook, YouTube, TikTok a Instagram. Vyberieme tú, kde sú vaši zákazníci.</p>
-      </details>
-      <details>
-        <summary>Nemáme techniku. Viete ju dodať?</summary>
-        <p>Áno. Základná technika je v cene vybraných balíkov, alebo ju zabezpečíme podľa potreby.</p>
-      </details>
-    </section>
-
-    <section id="kontakt" class="container" aria-label="Kontakt">
-      <h2 class="section-title">Napíšte nám</h2>
-      <div class="contact-grid">
-        <div>
-          <p class="muted">Krátko opíšte, čo predávate a kde by ste chceli vysielať. Ozveme sa do 24 hodín.</p>
-          <form name="contact" method="post" data-netlify="true" netlify-honeypot="bot-field" onsubmit="return handleSubmit(event)">
-            <input type="hidden" name="form-name" value="contact" />
-            <p class="hidden" hidden><label>Nechajte prázdne: <input name="bot-field" /></label></p>
-
-            <div class="full">
-              <label for="meno">Meno a priezvisko</label>
-              <input id="meno" name="meno" autocomplete="name" required />
-            </div>
-            <div>
-              <label for="email">E‑mail</label>
-              <input id="email" type="email" name="email" autocomplete="email" required />
-            </div>
-            <div>
-              <label for="tel">Telefón</label>
-              <input id="tel" type="tel" name="tel" autocomplete="tel" placeholder="+421 xxx xxx xxx" />
-            </div>
-            <div class="full">
-              <label for="firma">Firma (nepovinné)</label>
-              <input id="firma" name="firma" autocomplete="organization" />
-            </div>
-            <div class="full">
-              <label for="sprava">Správa</label>
-              <textarea id="sprava" name="sprava" placeholder="Produkty, platforma, čas…"></textarea>
-            </div>
-            <div class="form-row full">
-              <button class="btn primary" type="submit">Odoslať</button>
-              <a class="btn ghost" href="#top">Späť hore</a>
-            </div>
-            <div id="form-status" class="hint full" role="status" aria-live="polite" style="display:none">Ďakujeme, správa bola odoslaná.</div>
-            <p class="hint full">Preferujete WhatsApp alebo IG? Kliknite hore na ikonu – odpíšeme rýchlo. (URL doplníme.)</p>
-          </form>
-        </div>
-        <aside aria-label="Rýchly kontakt">
-          <div class="feature">
-            <h3>Rýchly kontakt</h3>
-            <p class="muted">E‑mail: <a href="mailto:ahoj@livepredaj.sk">ahoj@livepredaj.sk</a></p>
-            <!-- TODO: nahraď číslo po potvrdení -->
-            <p class="muted">WhatsApp: <span title="Doplniť číslo">+421 xxx xxx xxx</span></p>
-            <p class="muted">Instagram: <span title="Doplniť handle">@livepredaj</span></p>
+      <div class="section-sub">Balíčky služieb</div>
+      <div class="grid">
+        <article class="card">
+          <div>
+            <h3>Štart</h3>
+            <p class="sub"><strong>Rýchle nastavenie a prvé vysielanie bez stresu.</strong></p>
+            <ul>
+              <li>Nastavíme techniku a účty (Facebook, YouTube, TikTok, Instagram)</li>
+              <li>Pripravíme základ: svetlá, mikrofón, kamera</li>
+              <li>Krátke zaučenie pred prvým vysielaním</li>
+            </ul>
+            <p class="result"><em>Výsledok:</em> Spustíte prvé živé vysielanie pokojne a bez chaosu.</p>
           </div>
-        </aside>
-      </div>
-    </section>
-  </main>
+          <div class="footer">
+            <div class="price">Cena: od 159 €</div>
+            <a class="cta" href="#kontakt">Spustiť prvé vysielanie</a>
+            <div class="micro">Nezáväzne. Do 24 h sa ozveme a dohodneme jednoduchý postup.</div>
+          </div>
+        </article>
 
-  <footer>
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-      <div style="display:flex;align-items:center;gap:10px">
-        <img src="/assets/logo-live-nazivo.png" alt="LivePredaj logo" width="22" height="22" style="border-radius:6px;border:1px solid var(--border)"/>
-        <span>© <span id="y"></span> LivePredaj.sk</span>
-      </div>
-      <div class="social">
-        <a class="icon" href="#kontakt" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></svg>
-        </a>
-        <a class="icon" href="#kontakt" aria-label="WhatsApp">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.1 3.9A9.8 9.8 0 0 0 3.9 20.1L2 22l2.2-.6a9.8 9.8 0 1 0 15.9-17.5Z" stroke="currentColor" stroke-width="1.6"/><path d="M8.1 10.2c.2 1.7 2.6 4 4.2 4.6 1.6.6 1.8.1 2.6-.6.5-.5.4-.8.2-1.1-.2-.3-.7-.4-1.1-.6-.3-.2-.5.1-.7.3-.2.2-.4.4-.7.3-1-.4-2.2-1.5-2.6-2.6 0-.3.2-.5.3-.7.2-.2.5-.4.3-.7-.2-.4-.3-.9-.6-1.1-.3-.2-.6-.3-1.1.2-.7.8-1.2 1-1 2Z" fill="currentColor"/></svg>
-        </a>
+        <article class="card recommended">
+          <div>
+            <h3>Štandard</h3>
+            <p class="sub"><strong>Štart + pomoc s ponukou a priebehom predaja.</strong></p>
+            <ul>
+              <li>Spoločne vyberieme produkty a zľavy, ktoré dávajú zmysel vašim zákazníkom</li>
+              <li>Pripravíme plán vysielania krok za krokom</li>
+              <li>Počas vysielania sme k dispozícii (odpovede/moderovanie podľa dohody)</li>
+            </ul>
+            <p class="result"><em>Výsledok:</em> Vysielanie má hlavu a pätu — viete, čo kedy povedať a ako viesť zákazníka k nákupu.</p>
+          </div>
+          <div class="footer">
+            <div class="price">Cena: od 289 €</div>
+            <a id="cta-standard" class="cta" href="#kontakt">Pripraviť vysielanie krok po kroku</a>
+            <div class="micro">Krátky úvodný hovor a checklist. Všetko vysvetlíme jednoducho a bez tlaku.</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
+            <h3>Komplet</h3>
+            <p class="sub"><strong>Štart + Štandard + moderovanie/štúdio + výsledky.</strong></p>
+            <ul>
+              <li>Prepojíme s e-shopom (pripnuté produkty, prehľad objednávok, jednoduchý prehľad výsledkov)</li>
+              <li>Moderovanie naším tímom a možnosť využiť naše štúdio</li>
+              <li>Krátke videá po vysielaní (reels/shorts) + odporúčania na ďalšie zlepšenie</li>
+            </ul>
+            <p class="result"><em>Výsledok:</em> Kompletný servis od A po Z — vysielame, vyhodnocujeme a posúvame predaj ďalej.</p>
+          </div>
+          <div class="footer">
+            <div class="price">Cena: od 599 €</div>
+            <a class="cta" href="#kontakt">Chcem kompletný servis</a>
+            <div class="micro">Postaráme sa o techniku aj obsah. Spolu si dohodneme termín a jasné kroky.</div>
+          </div>
+        </article>
       </div>
     </div>
+  </section>
+
+  <!-- FAQ (ponechané z Draft 7) -->
+  <section id="faq" class="wrap section" aria-label="FAQ (najčastejšie otázky)">
+    <h2>FAQ (najčastejšie otázky)</h2>
+
+    <div class="grid">
+      <div class="qa"><h3>1) Nikdy sme nevysielali. Zvládneme to?</h3><p>Áno. V balíku <span class="hl">Štart</span> vás rýchlo zaučíme a prvé vysielanie urobíme spolu – krok za krokom.</p></div>
+      <div class="qa"><h3>2) Koľko trvá príprava prvého vysielania?</h3><p>Zvyčajne <span class="hl">2–6 hodín</span> podľa balíka. Termín si dohodneme po krátkom <span class="hl">15-minútovom</span> hovore.</p></div>
+      <div class="qa"><h3>3) Potrebujem e-shop, aby to fungovalo?</h3><p>Nie, nepotrebujete. <span class="hl">E-shop</span> je výhoda (vieme pripínať produkty priamo do vysielania); bez e-shopu dáme zákazníkom jasné pokyny, ako objednať (správa, formulár, telefón).</p></div>
+      <div class="qa"><h3>4) Aké platformy podporujete?</h3><p><span class="hl">Facebook, YouTube, TikTok a Instagram</span>. Zvolíme tú, kde sú vaši zákazníci.</p></div>
+      <div class="qa"><h3>5) Nemáme techniku. Viete ju dodať?</h3><p>Áno. Základná technika je súčasťou balíkov (kúpa/prenájom). Máme aj <span class="hl">vlastné štúdio</span>, ak nemáte vhodné priestory.</p></div>
+    </div>
+
+    <details>
+      <summary>➕ Zobraziť ďalšie otázky</summary>
+      <div class="more">
+        <div class="qa"><h3>6) Kto odpovedá zákazníkom počas vysielania?</h3><p>Ideálne niekto z <span class="hl">vášho tímu</span> (pozná sklad, ceny, dopravu). Pri balíku Komplet vieme reakcie a jemné moderovanie pokryť aj my.</p></div>
+        <div class="qa"><h3>7) Ako dlho trvá samotné vysielanie?</h3><p>Najčastejšie <span class="hl">45–90 minút</span>. Dĺžku prispôsobíme ponuke a záujmu divákov.</p></div>
+        <div class="qa"><h3>8) Dostaneme záznam a krátke klipy?</h3><p>Áno. Pri balíku Komplet máte v cene <span class="hl">3 krátke videá</span>; pri ostatných balíkoch si ich viete doobjednať.</p></div>
+        <div class="qa"><h3>9) Čo ak sa počas vysielania niečo pokazí?</h3><p>Máme pripravený <span class="hl">plán B</span> (záložné pripojenie, jednoduchší režim, dočasne len audio). Po akcii spolu prejdeme príčinu a <span class="hl">pred ďalším vysielaním</span> ju odstránime.</p></div>
+        <div class="qa"><h3>10) Ako rýchlo vieme začať od prvého kontaktu?</h3><p>Zvyčajne <span class="hl">do 3–10 dní</span> podľa dostupnosti. Balík Štart vieme spustiť aj skôr.</p></div>
+        <div class="qa"><h3>11) Aké výsledky uvidíme?</h3><p>Sledujeme <span class="hl">dosah</span>, počet divákov, interakcie a orientačné <span class="hl">objednávky z vysielania</span>. Pri Komplete dostanete stručný report a odporúčania.</p></div>
+        <div class="qa"><h3>12) Môžeme vysielať mimo pracovných hodín alebo cez víkend?</h3><p>Áno. Termín prispôsobíme; často fungujú <span class="hl">„hluché“ hodiny</span> v predajni. (Možný príplatok za večer/víkend.)</p></div>
+        <div class="qa"><h3>13) Kto vlastní obsah (záznam, klipy)?</h3><p>Obsah je <span class="hl">váš</span>. My ho použijeme len s vaším <span class="hl">súhlasom</span> (napr. ako referenciu).</p></div>
+      </div>
+    </details>
+  </section>
+
+  <!-- KONTAKT (upravené) -->
+  <section id="kontakt" class="wrap section">
+    <h2>Dopyt / kontakt</h2>
+
+    <div class="k-grid">
+      <!-- Form -->
+      <div class="card" style="padding:18px">
+        <form id="contactForm">
+          <label for="f_meno">Meno a priezvisko</label>
+          <input id="f_meno" name="meno" placeholder="Meno a priezvisko" required />
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div>
+              <label for="f_firma">Firma (nepovinné)</label>
+              <input id="f_firma" name="firma" placeholder="Názov firmy" />
+            </div>
+            <div>
+              <label for="f_tel">Telefón <span style="color:#ef4444">*</span></label>
+              <input id="f_tel" name="tel" placeholder="+421 …" required />
+            </div>
+          </div>
+
+          <label for="f_mail">E-mail</label>
+          <input id="f_mail" type="email" name="email" placeholder="vas@firma.sk" required />
+
+          <label for="f_msg">Správa</label>
+          <textarea id="f_msg" name="sprava" rows="7" placeholder="Povedzte nám viac o vašom záujme. Zaujíma vás niečo konkrétne? O aký balíček máte záujem? Kedy Vás môžeme kontaktovať?" required></textarea>
+
+          <button class="btn" type="submit">Odoslať dopyt</button>
+          <div id="formNotice" class="callout" style="display:none;margin-top:10px"></div>
+
+          <div class="policy">
+            Bez cookies tretích strán. Odoslaním formulára súhlasíte so spracovaním údajov za účelom kontaktovania.
+          </div>
+        </form>
+      </div>
+
+      <!-- Side card -->
+      <aside class="side">
+        <h3 style="margin:0 0 8px">Priamy kontakt – WhatsApp konzultácia</h3>
+        <p class="note">Na vyplnený formulár sa ozveme do 24 hodín. V prípade naliehavých žiadostí a konzultácií nás kontaktujte priamo na WhatsApp.</p>
+        <a class="wbtn" href="https://wa.me/421951265627?text=Konzult%C3%A1cia">
+          <!-- UPRAVENÉ WA SVG: lepšie proporcie -->
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path fill="currentColor"
+              d="M20.52 3.48A11 11 0 0 0 2 19.28L1 23l3.84-1A11 11 0 1 0 20.52 3.48Zm-8.05 16.9a9.1 9.1 0 0 1-4.65-1.28l-.33-.2-2.76.73.74-2.68-.21-.32a9.1 9.1 0 1 1 7.21 3.75Zm5.2-6.9c-.28-.14-1.64-.81-1.9-.9s-.44-.14-.63.14-.72.9-.9 1.09-.33.21-.61.07a7.45 7.45 0 0 1-2.2-1.36 8.25 8.25 0 0 1-1.53-1.9c-.16-.28-.02-.43.12-.57.12-.12.28-.33.42-.49.14-.16.19-.28.28-.47s.05-.35-.02-.49c-.07-.14-.63-1.5-.86-2.05-.22-.52-.44-.45-.63-.46l-.54-.01c-.18 0-.47.07-.72.35s-.95.93-.95 2.27 1 2.63 1.14 2.81 2 3.05 4.82 4.27c.67.29 1.19.46 1.6.59.67.21 1.28.18 1.76.11.54-.08 1.64-.67 1.87-1.32s.23-1.2.16-1.32-.26-.2-.54-.34Z"/>
+          </svg>
+          Napísať na WhatsApp
+        </a>
+      </aside>
+    </div>
+  </section>
+
+  <footer class="wrap" style="padding:28px 0;color:var(--muted);border-top:1px solid var(--border)">
+    © <span id="year"></span> LivePredaj.sk • Bez cookies tretích strán
   </footer>
 
-  <!-- Cookie súhlas -->
-  <div id="cookie-banner" class="cookie-banner" style="display:none" role="dialog" aria-live="polite" aria-label="Súbory cookie">
-    <p>Používame len nevyhnutné cookies a anonymnú analytiku. <a href="#" class="underline">Viac info</a></p>
-    <div class="cookie-actions">
-      <button id="cookie-accept" class="btn primary" type="button">Súhlasím</button>
-      <button id="cookie-decline" class="btn" type="button">Odmietnuť</button>
-    </div>
-  </div>
-
   <script>
-    // Rok vo footeri
-    document.getElementById('y').textContent = new Date().getFullYear();
+    // rok
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Hladký scroll s offsetom na sticky header + podpora pre klávesnicu
-    const headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')); 
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click',e=>{
-        const id = a.getAttribute('href').slice(1);
-        if(!id) return;
-        const el = document.getElementById(id);
-        if(!el) return;
-        e.preventDefault();
-        const y = el.getBoundingClientRect().top + window.scrollY - (headerH + 10);
-        window.scrollTo({top:y, behavior:'smooth'});
-        // Zvýraznenie aktívnej položky
-        document.querySelectorAll('.menu a').forEach(m=>m.classList.remove('active'));
-        if(a.closest('.menu')) a.classList.add('active');
-      });
+    // Téma toggle
+    const root = document.documentElement;
+    const btnTheme = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initial = saved || (prefersDark ? 'dark' : 'light');
+    root.setAttribute('data-theme', initial);
+    btnTheme.textContent = initial === 'dark' ? '🌙' : '☀️';
+    btnTheme.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      btnTheme.textContent = next === 'dark' ? '🌙' : '☀️';
     });
 
-    // Prevencia presahov na iOS/Android v inputoch (force 100% width)
-    const resizeInputs = () => {
-      document.querySelectorAll('input, textarea').forEach(el=>{
-        el.style.maxWidth = '100%';
+    // Scroll-spy (zvýraznenie v NAV)
+    const sections = ['ako','sluzby','faq','kontakt'];
+    const chips = [...document.querySelectorAll('.menu [data-nav]')];
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const id = e.target.id;
+          chips.forEach(c=>c.classList.toggle('active', c.dataset.nav===id || (id==='sluzby' && c.dataset.nav==='sluzby')));
+        }
       });
-    };
-    window.addEventListener('resize', resizeInputs);
-    resizeInputs();
+    },{rootMargin:'-60% 0px -35% 0px',threshold:0});
+    sections.forEach(id=>{ const el=document.getElementById(id); if(el) observer.observe(el); });
 
-    // Netlify AJAX odoslanie formulára (bez reloadu)
-    async function handleSubmit(e){
+    // Formspree
+    const FORM_ENDPOINT = 'https://formspree.io/f/xjkaendy';
+    const form = document.getElementById('contactForm');
+    const notice = document.getElementById('formNotice');
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const form = e.target;
-      const data = new URLSearchParams(new FormData(form)).toString();
-      const statusEl = document.getElementById('form-status');
-      try{
-        await fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:data });
-        form.reset();
-        if(statusEl){ statusEl.style.display='block'; statusEl.textContent='Ďakujeme, správa bola odoslaná.'; }
-      }catch(err){
-        if(statusEl){ statusEl.style.display='block'; statusEl.textContent='Ups, nepodarilo sa odoslať. Skúste znova alebo napíšte na ahoj@livepredaj.sk.'; }
-      }
-      return false;
-    }
+      const data = Object.fromEntries(new FormData(form).entries());
 
-    // Cookie banner logika
-    (function(){
-      const key='lp_cookie';
-      const banner=document.getElementById('cookie-banner');
-      const acc=document.getElementById('cookie-accept');
-      const dec=document.getElementById('cookie-decline');
-      if(!localStorage.getItem(key)){
-        banner.style.display='flex';
+      try{
+        const res = await fetch(FORM_ENDPOINT, {
+          method:'POST',
+          headers:{'Content-Type':'application/json','Accept':'application/json'},
+          body: JSON.stringify(data)
+        });
+        notice.style.display = 'block';
+        if(res.ok){
+          notice.textContent = 'Ďakujeme! Ozveme sa čoskoro.';
+          notice.style.borderColor = 'rgba(34,197,94,.35)';
+        }else{
+          notice.textContent = 'Nepodarilo sa odoslať. Skúste znova alebo napíšte na WhatsApp.';
+          notice.style.borderColor = 'rgba(239,68,68,.35)';
+        }
+      }catch(err){
+        notice.style.display = 'block';
+        notice.textContent = 'Chyba siete. Skúste neskôr.';
+        notice.style.borderColor = 'rgba(239,68,68,.35)';
       }
-      function close(v){ localStorage.setItem(key,v); banner.style.display='none'; }
-      acc?.addEventListener('click', ()=> close('accepted'));
-      dec?.addEventListener('click', ()=> close('declined'));
-    })();
+    });
   </script>
 </body>
 </html>
