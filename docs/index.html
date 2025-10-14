@@ -397,77 +397,149 @@
   </section>
 
   <!-- KONTAKT (modern card form) -->
-  <section id="kontakt" class="wrap section" aria-label="Dopyt / kontakt">
-    <h2>Dopyt / kontakt</h2>
+<section id="kontakt" class="wrap section" aria-label="Dopyt / kontakt">
+  <h2>Dopyt / kontakt</h2>
 
-    <style>
-      #kontakt{scroll-margin-top:90px}
-      #kontakt .grid{display:grid; gap:16px; grid-template-columns: 1.25fr .75fr;}
-      @media (max-width: 960px){ #kontakt .grid{ grid-template-columns: 1fr } }
-      #kontakt .card{background: var(--surface);border: 1px solid var(--border);border-radius: 18px;box-shadow: var(--shadow);padding: 18px;}
-      #kontakt form{ display:grid; gap:14px; }
-      #kontakt .row-2{ display:grid; gap:12px; grid-template-columns: 1fr 1fr; }
-      @media (max-width: 560px){ #kontakt .row-2{ grid-template-columns: 1fr } }
-      #kontakt label{ font-size: 13px; font-weight: 700; color: var(--text); display:block; margin-bottom: 6px; }
-      #kontakt input, #kontakt textarea{ width: 100%; border: 1px solid var(--border); background: color-mix(in oklab, var(--surface) 85%, transparent); color: var(--text); border-radius: 12px; padding: 12px 14px; outline: none; transition: .15s border, .15s box-shadow, .15s background; }
-      #kontakt input::placeholder, #kontakt textarea::placeholder{ color: var(--muted); }
-      #kontakt textarea{ min-height: 120px; resize: vertical; }
-      #kontakt input:focus, #kontakt textarea:focus{ border-color: color-mix(in oklab, var(--accent) 45%, var(--border)); box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 18%, transparent); background: color-mix(in oklab, var(--surface) 92%, transparent); }
-      #kontakt .btn-primary{ display:inline-flex; align-items:center; justify-content:center; gap:10px; width:100%; border-radius: 14px; border: 1px solid color-mix(in oklab, var(--accent) 60%, #000); background: var(--accent); color: #fff; font-weight: 800; padding: 14px 16px; transition:.15s transform, .15s box-shadow, .15s background; }
-      #kontakt .btn-primary:hover{ transform: translateY(-1px); box-shadow:0 12px 28px rgba(37,99,235,.25); background: var(--accent-700); }
-      #kontakt .btn-primary[disabled]{ opacity:.7; cursor:not-allowed; transform:none; box-shadow:none; }
-      #kontakt .info h3{ margin:0 0 8px; font-size:18px }
-      #kontakt .muted{ color: var(--muted); }
-      #kontakt .pill{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius: 999px; border:1px solid var(--border); background: color-mix(in oklab, var(--surface) 92%, transparent); font-weight:700; }
-      #kontakt .whatsapp{ display:inline-flex; align-items:center; justify-content:center; gap:8px; margin-top:10px; padding:10px 14px; border-radius:12px; background:#22c55e; color:#fff; font-weight:800; text-decoration:none; }
-      #kontakt .whatsapp:hover{ background:#16a34a; transform:translateY(-1px); box-shadow:0 10px 22px rgba(22,163,74,.22) }
-      #formNotice{ margin-top: 10px; display:none }
-    </style>
+  <style>
+    /* len pre túto sekciu – fix overflow pravých okrajov */
+    #kontakt, #kontakt * { box-sizing: border-box; }
+    #kontakt{scroll-margin-top:90px}
+    #kontakt .grid{display:grid; gap:16px; grid-template-columns: 1.25fr .75fr;}
+    #kontakt .grid > *{ min-width:0; } /* bráni pretekaniu obsahu v grid stĺpcoch */
+    @media (max-width: 960px){ #kontakt .grid{ grid-template-columns: 1fr } }
 
-    <div class="grid">
-      <div class="card">
-        <form id="contactForm" novalidate>
+    #kontakt .card{
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    #kontakt form{ display:grid; gap:14px; }
+    #kontakt .row-2{ display:grid; gap:12px; grid-template-columns: 1fr 1fr; }
+    @media (max-width: 560px){ #kontakt .row-2{ grid-template-columns: 1fr } }
+
+    #kontakt label{ font-size: 13px; font-weight: 700; color: var(--text); display:block; margin-bottom: 6px; }
+    #kontakt input, #kontakt textarea{
+      width: 100%;
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--surface) 85%, transparent);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 12px 14px;
+      outline: none;
+      transition: .15s border, .15s box-shadow, .15s background;
+    }
+    #kontakt input::placeholder, #kontakt textarea::placeholder{ color: var(--muted); }
+    #kontakt textarea{ min-height: 120px; resize: vertical; }
+    #kontakt input:focus, #kontakt textarea:focus{
+      border-color: color-mix(in oklab, var(--accent) 45%, var(--border));
+      box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 18%, transparent);
+      background: color-mix(in oklab, var(--surface) 92%, transparent);
+    }
+
+    #kontakt .btn-primary{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      width:100%; border-radius: 14px;
+      border: 1px solid color-mix(in oklab, var(--accent) 60%, #000);
+      background: var(--accent); color: #fff; font-weight: 800;
+      padding: 14px 16px; transition:.15s transform, .15s box-shadow, .15s background;
+    }
+    #kontakt .btn-primary:hover{ transform: translateY(-1px); box-shadow:0 12px 28px rgba(37,99,235,.25); background: var(--accent-700); }
+    #kontakt .btn-primary[disabled]{ opacity:.7; cursor:not-allowed; transform:none; box-shadow:none; }
+
+    #kontakt .info h3{ margin:0 0 8px; font-size:18px }
+    #kontakt .muted{ color: var(--muted); }
+    #kontakt .whatsapp{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      margin-top:10px; padding:10px 14px; border-radius:12px;
+      background:#22c55e; color:#fff; font-weight:800; text-decoration:none;
+    }
+    #kontakt .whatsapp:hover{ background:#16a34a; transform:translateY(-1px); box-shadow:0 10px 22px rgba(22,163,74,.22) }
+
+    /* separátny právny/pill blok nižšie */
+    #kontakt .legal{
+      max-width: var(--max);
+      margin: 14px auto 0;
+      color: var(--muted);
+      font-size: .92rem;
+      display: grid; gap: 8px;
+      border-top: 1px dashed var(--border);
+      padding-top: 10px;
+    }
+    #kontakt .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid var(--border);
+      background: color-mix(in oklab, var(--surface) 92%, transparent);
+      font-weight:700;
+      width:fit-content;
+    }
+
+    #formNotice{ margin-top: 10px; display:none }
+  </style>
+
+  <div class="grid">
+    <div class="card">
+      <form id="contactForm" novalidate>
+        <div>
+          <label for="meno">Meno a priezvisko</label>
+          <input id="meno" name="meno" placeholder="Meno a priezvisko" required />
+        </div>
+
+        <div class="row-2">
           <div>
-            <label for="meno">Meno a priezvisko</label>
-            <input id="meno" name="meno" placeholder="Meno a priezvisko" required />
-          </div>
-          <div class="row-2">
-            <div>
-              <label for="firma">Firma (nepovinné)</label>
-              <input id="firma" name="firma" placeholder="Názov firmy" />
-            </div>
-            <div>
-              <label for="tel">Telefón (nepovinné)</label>
-              <input id="tel" name="tel" placeholder="+421 ..." />
-            </div>
+            <label for="firma">Firma (nepovinné)</label>
+            <input id="firma" name="firma" placeholder="Názov firmy" />
           </div>
           <div>
-            <label for="email">E-mail</label>
-            <input id="email" type="email" name="email" placeholder="vas@firma.sk" required />
+            <label for="tel">Telefón (nepovinné)</label>
+            <input id="tel" name="tel" placeholder="+421 ..." />
           </div>
-          <div>
-            <label for="sprava">Správa</label>
-            <textarea id="sprava" name="sprava" placeholder="Čo chcete predávať? Koľko livestreamov mesačne?" required></textarea>
-          </div>
+        </div>
 
-          <button id="submitBtn" class="btn-primary" type="submit">
-            <span class="btn-text">Odoslať dopyt</span>
-            <span class="btn-loader" style="display:none">• • •</span>
-          </button>
+        <div>
+          <label for="email">E-mail</label>
+          <input id="email" type="email" name="email" placeholder="vas@firma.sk" required />
+        </div>
 
-          <div id="formNotice" class="callout"></div>
-        </form>
-      </div>
+        <div>
+          <label for="sprava">Správa</label>
+          <textarea id="sprava" name="sprava"
+            placeholder="Povedzte nám viac o vašom záujme. Zaujíma vás niečo konkrétne? O aký balíček máte záujem? Kedy Vás môžeme kontaktovať?"
+            required></textarea>
+        </div>
 
-      <aside class="card info">
-        <h3>Rýchly kontakt</h3>
-        <p class="muted">Ozveme sa zvyčajne do <strong>24 hodín</strong>. Pri naliehavých veciach píšte priamo na WhatsApp.</p>
-        <a class="whatsapp" href="https://wa.me/421951265627?text=Potrebujem%20poradi%C5%A5%20s%20%C5%BEiv%C3%BDm%20predajom">WhatsApp konzultácia</a>
-        <div style="margin-top:16px"><span class="pill">Bez cookies tretích strán</span></div>
-        <p class="muted" style="margin-top:14px; font-size:.92rem">Odoslaním formulára súhlasíte so spracovaním údajov za účelom vybavenia dopytu.</p>
-      </aside>
+        <button id="submitBtn" class="btn-primary" type="submit">
+          <span class="btn-text">Odoslať dopyt</span>
+          <span class="btn-loader" style="display:none">• • •</span>
+        </button>
+
+        <div id="formNotice" class="callout"></div>
+      </form>
     </div>
-  </section>
+
+    <aside class="card info">
+      <h3>Priamy kontakt – WhatsApp konzultácia</h3>
+      <p class="muted">
+        Na vyplnený formulár sa ozveme do <strong>24 hodín</strong>. V prípade naliehavých žiadostí
+        a konzultácií nás kontaktujte priamo na WhatsApp.
+      </p>
+      <a class="whatsapp"
+         href="https://wa.me/421951265627?text=Potrebujem%20poradi%C5%A5%20s%20%C5%BEiv%C3%BDm%20predajom">
+        WhatsApp konzultácia
+      </a>
+    </aside>
+  </div>
+
+  <!-- oddelený právny/pill blok nižšie -->
+  <div class="legal">
+    <span class="pill">Bez cookies tretích strán</span>
+    <div>Odoslaním formulára súhlasíte so spracovaním údajov za účelom vybavenia dopytu.</div>
+  </div>
+</section>
+
 
   <footer class="wrap" style="padding:28px 0;color:var(--muted);border-top:1px solid var(--border)">
     © <span id="year"></span> LivePredaj.sk • Bez cookies tretích strán
