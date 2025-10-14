@@ -482,22 +482,29 @@
 
   <div class="grid">
     <div class="card">
-      <form id="contactForm" novalidate>
+      <form id="contactForm">
         <div>
           <label for="meno">Meno a priezvisko</label>
           <input id="meno" name="meno" placeholder="Meno a priezvisko" required />
         </div>
 
-        <div class="row-2">
-          <div>
-            <label for="firma">Firma (nepovinné)</label>
-            <input id="firma" name="firma" placeholder="Názov firmy" />
-          </div>
-          <div>
-            <label for="tel">Telefón (nepovinné)</label>
-            <input id="tel" name="tel" placeholder="+421 ..." />
-          </div>
-        </div>
+       <div class="row-2">
+  <div>
+    <label for="firma">Firma (nepovinné)</label>
+    <input id="firma" name="firma" placeholder="Názov firmy" />
+  </div>
+  <div>
+    <label for="tel">Telefón</label>
+    <input
+      id="tel"
+      name="tel"
+      placeholder="+421 ..."
+      inputmode="tel"
+      autocomplete="tel"
+      required
+    />
+  </div>
+</div>
 
         <div>
           <label for="email">E-mail</label>
