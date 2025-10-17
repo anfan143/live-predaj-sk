@@ -241,6 +241,23 @@
     /* Footer brand lockup */
     .footer-brand{display:flex; align-items:center; gap:10px;}
     .footer-brand img{height:22px; width:auto;}
+    /* HERO mock obrazovka nech vytvorí vlastný stacking a oreže obsah */
+.screen{ position:relative; aspect-ratio:16/10; border:1px dashed var(--border);
+  border-radius:16px; margin:14px; padding:12px 12px 56px; display:grid;
+  place-items:center; overflow:hidden; /* NOVÉ */
+}
+
+/* Watermark – vyšší kontrast a nad ostatnými vrstvami */
+.brand-watermark{
+  position:absolute; right:14px; bottom:18px; /* posunuté vyššie */
+  width:96px; opacity:.22; /* bolo .12 – teraz jasne viditeľné */
+  pointer-events:none; filter:saturate(0.9); z-index:3; /* NOVÉ: z-index */
+}
+
+/* Footer lockup nech má trošku miesta a určite sa zobrazí */
+.footer-brand{display:flex; align-items:center; gap:10px; margin-bottom:6px;} /* +margin */
+.footer-brand img{height:24px; width:auto; display:block;}
+
   </style>
 
   <!-- Plausible -->
