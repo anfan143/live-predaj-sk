@@ -36,11 +36,6 @@
   <link rel="mask-icon" href="assets/icons/safari-pinned-tab.svg" color="#0f172a">
 
   <style>
-    /* Reset drobných pretečení na mobile (BL1) */
-    *,*::before,*::after{ box-sizing:border-box; }
-    html,body{ margin:0; padding:0; overflow-x:hidden; } /* kľúčové: žiadny horizontálny scroll */
-    img,svg{ max-width:100%; height:auto; }
-
     /* ====== Paleta ====== */
     :root{
       --bg:#0b1020; --bg-2:#0a0f1c;
@@ -57,33 +52,34 @@
       --text:#0f172a; --muted:#5b6b7f; --border:#e7eef7; --shadow:0 10px 28px rgba(2,6,23,.08);
     }
 
-    html,body{
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       background:linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%); color:var(--text);
-      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; scroll-behavior:smooth;
-    }
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; scroll-behavior:smooth;}
     a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
 
-    /* ====== NAV – kompakt (BL2) ====== */
+    /* ====== NAV – kompakt ====== */
     .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.03);
       backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid var(--border)}
     [data-theme="light"] .nav{background:rgba(255,255,255,.9)}
     .nav .inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+
     .brand{display:flex;gap:10px;align-items:center}
     /* nikdy neukazuj obe logá naraz */
     .logo-dark,.logo-light{display:none !important}
     [data-theme="dark"]  .logo-dark{display:inline-block !important}
     [data-theme="light"] .logo-light{display:inline-block !important}
+
     .brand .mark{height:38px;width:auto;display:block}
     .brand .title{font-weight:800;font-size:20px;letter-spacing:.1px;line-height:1.1}
     .brand .tagline{color:var(--muted);font-weight:600;font-size:13px;margin-top:2px}
+
     .menu{display:flex;gap:10px;align-items:center}
     .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--border);
-      border-radius:999px;background:transparent;font-weight:600;line-height:1;height:36px; white-space:nowrap;}
+      border-radius:999px;background:transparent;font-weight:600;line-height:1;height:36px}
     .chip:hover{background:color-mix(in oklab, var(--accent) 12%, var(--surface));transform:translateY(-1px);box-shadow:0 10px 24px rgba(2,6,23,.12)}
     .chip.active{border-color:color-mix(in oklab, var(--accent) 60%, transparent)}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--accent);color:var(--accent-text);font-weight:700;border:none;line-height:1;height:38px; white-space:nowrap;}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--accent);color:var(--accent-text);font-weight:700;border:none;line-height:1;height:38px}
     .btn:hover{background:var(--accent-700);transform:translateY(-1px);box-shadow:0 14px 28px rgba(37,99,235,.26)}
     .btn-green{background:#22c55e}.btn-green:hover{background:#16a34a}
     .theme{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--border);background:transparent;font-size:18px}
@@ -138,7 +134,7 @@
     @media (max-width:980px){.grid2{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}}
     @media (max-width:560px){.steps{grid-template-columns:1fr}}
 
-    /* ====== Služby – vzhľad + cena nad CTA (BL3) ====== */
+    /* ====== Služby – vzhľad + cena nad CTA ====== */
     #sluzby .grid{display:grid;gap:24px;grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
     @media (max-width:960px){#sluzby .grid{grid-template-columns:1fr}}
     #sluzby .card{
@@ -147,7 +143,6 @@
       border-radius:16px;padding:22px;
       box-shadow:0 12px 28px rgba(2,6,23,.10);
       transition:transform .18s, box-shadow .18s, border-color .18s;
-      will-change:transform;
     }
     #sluzby .card:hover{ transform:translateY(-4px) scale(1.01); box-shadow:0 22px 46px rgba(2,6,23,.16); border-color:rgba(17,24,39,.18); }
     #sluzby .card.recommended{ border-color:rgba(45,212,191,.55); box-shadow:0 24px 52px rgba(45,212,191,.18); }
@@ -179,152 +174,164 @@
     }
     #sluzby .cta:hover{ transform:translateY(-1px); box-shadow:0 10px 22px rgba(2,6,23,.18); }
 
-    /* Na mobile vypni hover-animáciu, zmenši medzery (BL4) */
-    @media (max-width:640px){
-      #sluzby .card:hover{ transform:none; box-shadow:0 12px 28px rgba(2,6,23,.10); }
-      .wrap{ padding:0 14px; }
-      #sluzby .grid{ gap:14px; }
-    }
+   /* ====== SHOWCASE – kompaktné, vľavo info boxy, vpravo 2 vertikály ====== */
+:root{
+  /* výšky pre dokonalé zarovnanie stĺpcov (desktop) */
+  --sc-col-h: 520px;
+  --sc-gap: 12px;
+  --sc-device-h: 260px;
+  --sc-info-h: 110px;
+  --sc-hdeck-h: 120px; /* spolu 260 + 110 + 120 + 2*12 = 514 ~ 520 */
+}
+#showcase{
+  padding:30px 0;
+  background:
+    radial-gradient(900px 340px at 80% 50%, rgba(37,99,235,.10), transparent 60%),
+    linear-gradient(180deg, color-mix(in oklab, var(--bg) 96%, black) 0%, var(--bg-2) 100%);
+}
+#showcase h2{margin-bottom:6px}
+#showcase .lead-strong{margin-bottom:14px}
 
-    /* ====== SHOWCASE – kompaktné, vľavo info boxy, vpravo 2 vertikály ====== */
-    :root{
-      /* výšky pre dokonalé zarovnanie stĺpcov (desktop) */
-      --sc-col-h: 520px;
-      --sc-gap: 12px;
-      --sc-device-h: 260px;
-      --sc-info-h: 110px;
-      --sc-hdeck-h: 120px; /* spolu 260 + 110 + 120 + 2*12 = 514 ~ 520 */
-    }
-    #showcase{
-      padding:30px 0;
-      background:
-        radial-gradient(900px 340px at 80% 50%, rgba(37,99,235,.10), transparent 60%),
-        linear-gradient(180deg, color-mix(in oklab, var(--bg) 96%, black) 0%, var(--bg-2) 100%);
-    }
-    #showcase h2{margin-bottom:6px}
-    #showcase .lead-strong{margin-bottom:14px}
+/* Hlavná mriežka sekcie */
+.showcase-grid{
+  display:grid;
+  grid-template-columns:1.12fr .88fr; /* ľavý | pravý stĺpec */
+  gap:18px;
+  align-items:stretch; /* oba stĺpce na rovnakú výšku */
+}
 
-    /* Hlavná mriežka sekcie */
-    .showcase-grid{
-      display:grid;
-      grid-template-columns:1.12fr .88fr; /* ľavý | pravý stĺpec */
-      gap:18px;
-      align-items:stretch; /* oba stĺpce na rovnakú výšku */
-    }
+/* ========== ĽAVÁ STRANA ========== */
+.left-stack{
+  display:grid;
+  gap:var(--sc-gap);
+  grid-template-rows: var(--sc-device-h) var(--sc-info-h) var(--sc-hdeck-h);
+  height:var(--sc-col-h);
+}
+.device{
+  position:relative;border-radius:18px;
+  border:1px solid color-mix(in oklab, var(--text) 14%, transparent);
+  background:rgba(255,255,255,.02);
+  box-shadow:0 18px 44px rgba(2,6,23,.28);
+  overflow:hidden;
+  height:100%;
+}
+.screen-area{
+  height:100%;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(2,6,23,.40),rgba(2,6,23,.22));
+}
+.device .live{
+  position:absolute;top:8px;left:8px;
+  background:color-mix(in oklab,var(--danger) 22%, #000);
+  color:#fff;padding:7px 10px;border-radius:999px;
+  font-weight:800;display:inline-flex;gap:8px;align-items:center;z-index:3
+}
+.device .live::before{content:"";width:8px;height:8px;border-radius:999px;background:#ef4444;display:inline-block}
+.tiles{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,1fr);grid-auto-rows:minmax(0,1fr);gap:8px;padding:30px 14px 14px}
+.tiles .t{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:12px}
+.tiles .host{grid-column:span 2;background:linear-gradient(180deg, rgba(244,63,94,.25), rgba(2,6,23,.1));border:1px solid rgba(244,63,94,.35);position:relative}
+.tiles .host:after{content:"Moderátor";position:absolute;left:10px;bottom:8px;font-weight:800;font-size:12px;color:#fff;opacity:.95}
+.device .platforms{position:absolute;bottom:8px;left:10px;right:10px;justify-content:flex-start}
+.device .lp{position:absolute;right:10px;bottom:8px;width:110px;opacity:.9}
 
-    /* ========== ĽAVÁ STRANA ========== */
-    .left-stack{
-      display:grid;
-      gap:var(--sc-gap);
-      grid-template-rows: var(--sc-device-h) var(--sc-info-h) var(--sc-hdeck-h);
-      height:var(--sc-col-h);
-    }
-    .device{
-      position:relative;border-radius:18px;
-      border:1px solid color-mix(in oklab, var(--text) 14%, transparent);
-      background:rgba(255,255,255,.02);
-      box-shadow:0 18px 44px rgba(2,6,23,.28);
-      overflow:hidden;
-      height:100%;
-    }
-    .screen-area{
-      height:100%;
-      display:grid;place-items:center;
-      background:linear-gradient(135deg,rgba(2,6,23,.40),rgba(2,6,23,.22));
-    }
-    .device .live{
-      position:absolute;top:8px;left:8px;
-      background:color-mix(in oklab,var(--danger) 22%, #000);
-      color:#fff;padding:7px 10px;border-radius:999px;
-      font-weight:800;display:inline-flex;gap:8px;align-items:center;z-index:3
-    }
-    .device .live::before{content:"";width:8px;height:8px;border-radius:999px;background:#ef4444;display:inline-block}
-    .tiles{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,1fr);grid-auto-rows:minmax(0,1fr);gap:8px;padding:30px 14px 14px}
-    .tiles .t{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:12px}
-    .tiles .host{grid-column:span 2;background:linear-gradient(180deg, rgba(244,63,94,.25), rgba(2,6,23,.1));border:1px solid rgba(244,63,94,.35);position:relative}
-    .tiles .host:after{content:"Moderátor";position:absolute;left:10px;bottom:8px;font-weight:800;font-size:12px;color:#fff;opacity:.95}
-    .device .platforms{position:absolute;bottom:8px;left:10px;right:10px;justify-content:flex-start}
-    .device .lp{position:absolute;right:10px;bottom:8px;width:110px;opacity:.9}
+/* info boxy – už vľavo */
+.infos{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;
+  height:100%;
+}
+.infos .info{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:14px;display:flex;flex-direction:column;justify-content:flex-start;
+}
 
-    /* info boxy – už vľavo */
-    .infos{
-      display:grid;grid-template-columns:1fr 1fr;gap:12px;
-      height:100%;
-    }
-    .infos .info{
-      background:var(--surface);border:1px solid var(--border);
-      border-radius:12px;padding:14px;display:flex;flex-direction:column;justify-content:flex-start;
-    }
+/* 2 horizontálne náhľady */
+.hdeck{display:grid;grid-template-columns:1fr 1fr;gap:12px;height:100%}
+.hcard{
+  position:relative;border-radius:16px;
+  border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
+  background:rgba(255,255,255,.02);
+  height:100%;overflow:hidden;
+}
+.hcard .mini-brand{position:absolute;right:10px;bottom:8px;width:88px;opacity:.9}
+.badge{position:absolute;left:10px;top:8px;background:#111827;color:#fff;border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:6px 9px;font-weight:800;font-size:.78rem}
+.badge.live{background:color-mix(in oklab,var(--danger) 30%, #000)}
+.badge.live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:999px;background:#ef4444;margin-right:6px}
+.badge.yt{background:color-mix(in oklab,var(--yt) 22%, #000)}
 
-    /* 2 horizontálne náhľady */
-    .hdeck{display:grid;grid-template-columns:1fr 1fr;gap:12px;height:100%}
-    .hcard{
-      position:relative;border-radius:16px;
-      border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
-      background:rgba(255,255,255,.02);
-      height:100%;overflow:hidden;
-    }
-    .hcard .mini-brand{position:absolute;right:10px;bottom:8px;width:88px;opacity:.9}
-    .badge{position:absolute;left:10px;top:8px;background:#111827;color:#fff;border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:6px 9px;font-weight:800;font-size:.78rem}
-    .badge.live{background:color-mix(in oklab,var(--danger) 30%, #000)}
-    .badge.live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:999px;background:#ef4444;margin-right:6px}
-    .badge.yt{background:color-mix(in oklab,var(--yt) 22%, #000)}
+/* ========== PRAVÁ STRANA ========== */
+/* Len dve vertikálne okná vedľa seba, oba rovnako vysoké – presne výška stĺpca */
+.right-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr; /* Facebook | Instagram */
+  gap:12px;
+  height:var(--sc-col-h);
+}
+.vcard{
+  position:relative;border-radius:16px;
+  border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
+  background:rgba(255,255,255,.02);
+  height:100%; /* natiahne sa na výšku stĺpca */
+  overflow:hidden;
+}
+.vcard .mini-brand{position:absolute;right:8px;bottom:8px;width:78px;opacity:.9}
+.badge.fb{background:color-mix(in oklab,var(--fb) 22%, #000)}
+.badge.ig{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)}
+.badge.top-right{left:auto;right:10px}
 
-    /* ========== PRAVÁ STRANA ========== */
-    .right-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr; /* Facebook | Instagram */
-      gap:12px;
-      height:var(--sc-col-h);
-    }
-    .vcard{
-      position:relative;border-radius:16px;
-      border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
-      background:rgba(255,255,255,.02);
-      height:100%; /* natiahne sa na výšku stĺpca */
-      overflow:hidden;
-    }
-    .vcard .mini-brand{position:absolute;right:8px;bottom:8px;width:78px;opacity:.9}
-    .badge.fb{background:color-mix(in oklab,var(--fb) 22%, #000)} /* modrá FB (BL5) */
-    .badge.ig{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)}
-    .badge.top-right{left:auto;right:10px}
+/* Mobil – nech sa všetko správa prirodzene (bez fixných výšok) */
+@media (max-width:980px){
+  :root{--sc-col-h:auto}
+  .showcase-grid{grid-template-columns:1fr}
+  .left-stack,.right-grid{height:auto}
+  .left-stack{grid-template-rows:auto}
+  .device{height:220px}
+  .infos{height:auto}
+  .hdeck{height:auto}
+  .vcard{height:420px}
+}
 
-    /* ====== SHOWCASE: čisté rozloženie na mobile (BL6) ====== */
-    @media (max-width: 980px){
-      /* NAV – žiadny horizontálny scroll, pekné zalomenie */
-      .nav .inner{ height:auto; padding:8px 0; flex-wrap:wrap; gap:8px; align-items:flex-start; }
-      .menu{ flex-wrap:wrap; justify-content:flex-end; width:100%; gap:8px; }
-      .brand{ flex:1 1 240px; }
-      .brand .title{ font-size:18px; }
-
-      /* Showcase: stĺpce pod seba */
-      .showcase-grid{ grid-template-columns: 1fr; gap: 14px; }
-
-      /* ľavý stĺpec – prirodzené výšky */
-      .left-stack{ grid-template-rows: auto; height: auto; gap: 12px; }
-      .device{ height: 200px; }
-      .screen-area{ height: 100%; }
-      .tiles{ padding: 22px 10px 10px; gap: 6px; }
-
-      .infos{ grid-template-columns: 1fr; gap: 10px; height: auto; }
-      .hdeck{ grid-template-columns: 1fr; gap: 10px; height: auto; }
-      .hcard{ height: 160px; }
-
-      /* pravý stĺpec – FB/IG pod seba (na menšom mobile) */
-      .right-grid{
-        grid-template-columns: 1fr;
-        gap: 10px;
-        height: auto;
-      }
-      .vcard{ height: 360px; }
-
-      /* menšie odznaky */
-      .badge{ font-size: .72rem; padding: 5px 8px; }
-    }
-    /* väčšie mobily – 2 stĺpce pre FB/IG vedľa seba */
-    @media (min-width: 560px) and (max-width: 980px){
-      .right-grid{ grid-template-columns: 1fr 1fr; }
-    }
+/* ===== Moderator + pripnutý produkt v pravých vertikálach (FB/IG) ===== */
+.vcard{ position:relative; overflow:hidden; }
+/* Silueta moderátora */
+.vcard .mod-figure{
+  position:absolute; left:50%; transform:translateX(-50%);
+  bottom:90px; width:46%; max-width:240px;
+  opacity:.55; z-index:2; pointer-events:none; filter:drop-shadow(0 6px 14px rgba(0,0,0,.25));
+}
+/* Pripnutý produkt */
+.vcard .product-pin{
+  position:absolute; left:10px; right:100px; bottom:8px;
+  display:flex; align-items:center; gap:10px;
+  background:var(--surface); border:1px solid var(--border); border-radius:12px;
+  padding:10px 12px; z-index:6;
+}
+.vcard .product-photo{
+  width:44px; height:44px; border-radius:10px; flex:0 0 auto;
+  background:linear-gradient(135deg, rgba(255,255,255,.25), rgba(255,255,255,0));
+  border:2px solid rgba(255,255,255,.35);
+}
+.vcard .product-meta{ line-height:1.15 }
+.vcard .product-title{ font-weight:800; font-size:.95rem; letter-spacing:.2px }
+.vcard .product-price{
+  display:inline-block; margin-top:4px; padding:4px 8px; border-radius:999px;
+  font-weight:800; font-size:.85rem; color:#fff;
+  background:#111827; border:1px solid rgba(255,255,255,.2);
+}
+/* Platformové akcenty */
+.vcard.fb .product-photo{ border-color: rgba(24,119,242,.8); }
+.vcard.fb .product-price{ background:#1877F2; }
+.vcard.ig .product-photo{ border-color: #d62976; }
+.vcard.ig .product-price{ background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5); }
+/* Z-indexy */
+.vcard .badge{ z-index:7; }
+.vcard .mini-brand{ z-index:4; }
+/* Mobilné jemnosti */
+@media (max-width:980px){
+  .vcard .mod-figure{ bottom:86px; width:52%; max-width:220px; opacity:.6; }
+  .vcard .product-pin{ right:10px; padding:9px 10px; }
+  .vcard .product-title{ font-size:.92rem; }
+  .vcard .product-price{ font-size:.82rem; padding:4px 8px; }
+}
 
     /* ====== FAQ ====== */
     #faq .grid{display:grid;gap:10px;grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -356,95 +363,6 @@
     /* Footer */
     .footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:6px}
     .footer-brand img{height:26px;width:auto}
-    /* ===== OPRAVA FARIEB PLATFORIEM (globálne, bez zmeny desktop layoutu) ===== */
-.badge.fb{
-  background:#1877F2 !important; 
-  color:#fff !important; 
-  border-color:rgba(255,255,255,.25) !important;
-}
-.badge.yt{
-  background:#FF0033 !important; 
-  color:#fff !important; 
-  border-color:rgba(255,255,255,.25) !important;
-}
-.badge.ig{
-  background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5) !important;
-  color:#fff !important;
-  border-color:rgba(255,255,255,.20) !important;
-}
-
-/* Aj „chips“ nech sú farebné aj na mobiloch so slabšou podporou color-mix */
-.p-chip.fb{
-  background:rgba(24,119,242,.14) !important;
-  border-color:rgba(24,119,242,.5) !important;
-  color:#1877F2 !important;
-}
-.p-chip.yt{
-  background:rgba(255,0,51,.14) !important;
-  border-color:rgba(255,0,51,.5) !important;
-  color:#FF0033 !important;
-}
-.p-chip.ig{
-  background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5) !important;
-  color:#fff !important;
-  border-color:transparent !important;
-}
-
-/* Istoty vo vrstvách (nič sa nebude nechtiac prekrývať) */
-.device .live, .badge{ z-index:5; position:absolute; }
-.mini-brand{ z-index:4; position:absolute; }
-.platforms{ z-index:3; position:absolute; }
-.tiles{ z-index:1; }
-
-/* ===== MOBILNÉ VYLEPŠENIA (max-width: 980px) ===== */
-@media (max-width:980px){
-  /* NAV – žiadne horizontálne posúvanie, všetko sa pekne zalomí */
-  .nav .inner{ height:auto; padding:8px 0; flex-wrap:wrap; gap:8px; align-items:flex-start; }
-  .menu{ flex-wrap:wrap; justify-content:flex-end; width:100%; gap:8px; }
-  .brand{ flex:1 1 240px; min-width:0; }
-  .chip,.btn{ white-space:nowrap; }
-
-  /* Typografia – kratší riadok, menej „kopy textu“ */
-  #showcase h2{ font-size:clamp(20px,5.5vw,26px); line-height:1.22; }
-  #showcase .lead-strong{ font-size:clamp(14px,3.8vw,16px); color:var(--muted); }
-
-  /* Showcase – stĺpce pod seba, konzistentné medzery */
-  .showcase-grid{ grid-template-columns:1fr; gap:14px; }
-  .left-stack{ grid-template-rows:auto; height:auto; gap:12px; }
-
-  /* Hlavné „zariadenie“ – pevný pomer strán, nič neprečnieva */
-  .device{ height:auto; aspect-ratio:16/9; }
-  .screen-area{ height:100%; }
-  .tiles{ padding:20px 10px 10px; gap:6px; }
-
-  /* Info-karty – jedna pod druhou, vyrovnané okraje */
-  .infos{ grid-template-columns:1fr; gap:10px; height:auto; }
-  .infos .info{ padding:12px; }
-
-  /* Horizontálne náhľady – kompaktné karty s pomerom 16:9 */
-  .hdeck{ grid-template-columns:1fr; gap:10px; height:auto; }
-  .hcard{ height:auto; aspect-ratio:16/9; }
-
-  /* Pravý stĺpec – vertikálne karty ako Reels (9:16), rovnaká výška */
-  .right-grid{ grid-template-columns:1fr; gap:10px; height:auto; }
-  .vcard{ height:auto; aspect-ratio:9/16; }
-
-  /* Na väčších mobiloch (šírka 560–980) daj FB/IG vedľa seba */
-}
-@media (min-width:560px) and (max-width:980px){
-  .right-grid{ grid-template-columns:1fr 1fr; }
-}
-
-/* Drobné „micro“ úpravy kariet na mobile – menej tieňa, viac vzduchu */
-@media (max-width:640px){
-  #sluzby .grid{ gap:14px; }
-  #sluzby .card{ box-shadow:0 10px 24px rgba(2,6,23,.10); }
-  #sluzby .card:hover{ transform:none; }
-  .wrap{ padding:0 16px; }
-}
-
-/* Bezpečná poistka proti horizontálnemu scrollu na niektorých mobiloch */
-html, body{ overflow-x:hidden; }
   </style>
 
   <!-- Plausible -->
@@ -654,87 +572,134 @@ html, body{ overflow-x:hidden; }
     </div>
   </section>
 
-  <!-- SHOWCASE – kompaktný blok -->
-  <section id="showcase">
-    <div class="wrap">
-      <h2>Livepredaj – spojte sa s vašimi zákazníkmi pomocou živého vysielania. Predaj vašich produktov bude jednoduchší a na dosah ruky priamo z domova.</h2>
-      <p class="lead-strong">Zákazník môže nakupovať a sledovať vysielanie cez všetky zariadenia – mobil, TV, tablet, notebook. Nakupuje priamo počas vysielania – staňte sa súčasťou Livepredaj.</p>
+ <!-- SHOWCASE – kompaktný blok -->
+<section id="showcase">
+  <div class="wrap">
+    <h2>Livepredaj – spojte sa s vašimi zákazníkmi pomocou živého vysielania. Predaj vašich produktov bude jednoduchší a na dosah ruky priamo z domova.</h2>
+    <p class="lead-strong">Zákazník môže nakupovať a sledovať vysielanie cez všetky zariadenia – mobil, TV, tablet, notebook. Nakupuje priamo počas vysielania – staňte sa súčasťou Livepredaj.</p>
 
-      <div class="showcase-grid">
-        <!-- ĽAVÁ STRANA -->
-        <div class="left-stack">
-          <!-- hlavný „TV/desktop“ stream -->
-          <div class="device">
-            <div class="live">NAŽIVO</div>
-            <div class="screen-area">
-              <div class="tiles">
-                <div class="t host"></div>
-                <div class="t"></div><div class="t"></div><div class="t"></div>
-                <div class="t"></div><div class="t"></div><div class="t"></div>
-                <div class="t"></div><div class="t"></div><div class="t"></div>
-              </div>
-            </div>
-            <div class="platforms" style="justify-content:flex-start">
-              <span class="p-chip fb">Facebook</span>
-              <span class="p-chip yt">YouTube</span>
-              <span class="p-chip ig">Instagram</span>
-              <span class="p-chip tt">TikTok</span>
-            </div>
-            <img class="lp logo-dark"  src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="livepredaj" aria-hidden="true">
-            <img class="lp logo-light" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="livepredaj" aria-hidden="true">
-          </div>
-
-          <!-- dva textové boxy -->
-          <div class="infos">
-            <div class="info">
-              <div style="display:flex;gap:10px;align-items:center;font-weight:800">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="4" y="6" width="16" height="12" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M6 10h12M6 14h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-                Produkty priamo v zázname
-              </div>
-              <p style="margin:.5rem 0 0">Oblečenie, kozmetika, parfumy, hračky a ďalšie. Položky sú počas vysielania <strong>pripnuté na nákup</strong>.</p>
-            </div>
-            <div class="info">
-              <div style="display:flex;gap:10px;align-items:center;font-weight:800">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M20 9a6 6 0 0 1 0 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-                Moderátor vedie k nákupu
-              </div>
-              <p style="margin:.5rem 0 0">Otázky v komentároch, zľavové kódy, balíčky a jasná výzva na nákup.</p>
+    <div class="showcase-grid">
+      <!-- ĽAVÁ STRANA -->
+      <div class="left-stack">
+        <!-- hlavný „TV/desktop“ stream -->
+        <div class="device">
+          <div class="live">NAŽIVO</div>
+          <div class="screen-area">
+            <div class="tiles">
+              <div class="t host"></div>
+              <div class="t"></div><div class="t"></div><div class="t"></div>
+              <div class="t"></div><div class="t"></div><div class="t"></div>
+              <div class="t"></div><div class="t"></div><div class="t"></div>
             </div>
           </div>
+          <div class="platforms" style="justify-content:flex-start">
+            <span class="p-chip fb">Facebook</span>
+            <span class="p-chip yt">YouTube</span>
+            <span class="p-chip ig">Instagram</span>
+            <span class="p-chip tt">TikTok</span>
+          </div>
+          <img class="lp logo-dark"  src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="livepredaj" aria-hidden="true">
+          <img class="lp logo-light" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="livepredaj" aria-hidden="true">
+        </div>
 
-          <!-- 2 horizontálne náhľady -->
-          <div class="hdeck">
-            <div class="hcard">
-              <span class="badge live">NAŽIVO</span>
-              <img class="mini-brand logo-dark"  src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="" aria-hidden="true">
-              <img class="mini-brand logo-light" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="" aria-hidden="true">
+        <!-- dva textové boxy (pôvodne vpravo) -->
+        <div class="infos">
+          <div class="info">
+            <div style="display:flex;gap:10px;align-items:center;font-weight:800">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="4" y="6" width="16" height="12" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M6 10h12M6 14h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              Produkty priamo v zázname
             </div>
-            <div class="hcard">
-              <span class="badge yt">YouTube</span>
-              <img class="mini-brand logo-dark"  src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="" aria-hidden="true">
-              <img class="mini-brand logo-light" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="" aria-hidden="true">
+            <p style="margin:.5rem 0 0">Oblečenie, kozmetika, parfumy, hračky a ďalšie. Položky sú počas vysielania <strong>pripnuté na nákup</strong>.</p>
+          </div>
+          <div class="info">
+            <div style="display:flex;gap:10px;align-items:center;font-weight:800">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M20 9a6 6 0 0 1 0 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              Moderátor vedie k nákupu
             </div>
+            <p style="margin:.5rem 0 0">Otázky v komentároch, zľavové kódy, balíčky a jasná výzva na nákup.</p>
           </div>
         </div>
 
-        <!-- PRAVÁ STRANA – LEN 2 VERTIKÁLY VEDĽA SEBA (FB | IG) -->
-        <div class="right-grid">
-          <div class="vcard">
+        <!-- 2 horizontálne náhľady -->
+        <div class="hdeck">
+          <div class="hcard">
             <span class="badge live">NAŽIVO</span>
-            <span class="badge fb top-right">Facebook</span>
             <img class="mini-brand logo-dark"  src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="" aria-hidden="true">
             <img class="mini-brand logo-light" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="" aria-hidden="true">
           </div>
-          <div class="vcard">
-            <span class="badge live">NAŽIVO</span>
-            <span class="badge ig top-right">Instagram</span>
+          <div class="hcard">
+            <span class="badge yt">YouTube</span>
             <img class="mini-brand logo-dark"  src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="" aria-hidden="true">
             <img class="mini-brand logo-light" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="" aria-hidden="true">
           </div>
         </div>
       </div>
+
+      <!-- PRAVÁ STRANA – LEN 2 VERTIKÁLY VEDĽA SEBA (FB | IG) -->
+      <div class="right-grid">
+        <!-- FACEBOOK -->
+        <div class="vcard fb">
+          <span class="badge live">NAŽIVO</span>
+          <span class="badge fb top-right">Facebook</span>
+
+          <!-- Silueta moderátora -->
+          <svg class="mod-figure" viewBox="0 0 200 200" aria-hidden="true">
+            <defs>
+              <linearGradient id="modFadeFb" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#c7d2fe" stop-opacity=".9"/>
+                <stop offset="1" stop-color="#94a3b8" stop-opacity=".4"/>
+              </linearGradient>
+            </defs>
+            <circle cx="100" cy="70" r="34" fill="url(#modFadeFb)"/>
+            <path d="M30 172c6-36 36-56 70-56s64 20 70 56l-140 0z" fill="url(#modFadeFb)"/>
+          </svg>
+
+          <!-- Pripnutý produkt -->
+          <div class="product-pin">
+            <div class="product-photo" aria-hidden="true"></div>
+            <div class="product-meta">
+              <div class="product-title">Pletený sveter</div>
+              <div class="product-price">29,90 €</div>
+            </div>
+          </div>
+
+          <img class="mini-brand logo-dark"  src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="" aria-hidden="true">
+          <img class="mini-brand logo-light" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="" aria-hidden="true">
+        </div>
+
+        <!-- INSTAGRAM -->
+        <div class="vcard ig">
+          <span class="badge live">NAŽIVO</span>
+          <span class="badge ig top-right">Instagram</span>
+
+          <!-- Silueta moderátorky -->
+          <svg class="mod-figure" viewBox="0 0 200 200" aria-hidden="true">
+            <defs>
+              <linearGradient id="modFadeIg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#fbcfe8" stop-opacity=".9"/>
+                <stop offset="1" stop-color="#c4b5fd" stop-opacity=".45"/>
+              </linearGradient>
+            </defs>
+            <circle cx="100" cy="70" r="34" fill="url(#modFadeIg)"/>
+            <path d="M30 172c6-36 36-56 70-56s64 20 70 56l-140 0z" fill="url(#modFadeIg)"/>
+          </svg>
+
+          <!-- Pripnutý produkt -->
+          <div class="product-pin">
+            <div class="product-photo" aria-hidden="true"></div>
+            <div class="product-meta">
+              <div class="product-title">Hydratačné sérum</div>
+              <div class="product-price">14,90 €</div>
+            </div>
+          </div>
+
+          <img class="mini-brand logo-dark"  src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="" aria-hidden="true">
+          <img class="mini-brand logo-light" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="" aria-hidden="true">
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- FAQ -->
   <section id="faq" class="wrap section" aria-label="FAQ (najčastejšie otázky)">
