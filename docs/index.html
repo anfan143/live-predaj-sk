@@ -174,9 +174,9 @@
     }
     #sluzby .cta:hover{ transform:translateY(-1px); box-shadow:0 10px 22px rgba(2,6,23,.18); }
 
-    /* ====== SHOWCASE – kompaktný, vyrovnaný blok ====== */
+    /* ====== SHOWCASE – kompaktný, zarovnaný blok ====== */
 #showcase{
-  padding:32px 0;
+  padding:30px 0;
   background:
     radial-gradient(900px 340px at 80% 50%, rgba(37,99,235,.10), transparent 60%),
     linear-gradient(180deg, color-mix(in oklab, var(--bg) 96%, black) 0%, var(--bg-2) 100%);
@@ -184,7 +184,7 @@
 #showcase h2{margin-bottom:6px}
 #showcase .lead-strong{margin-bottom:14px}
 
-/* hlavná mriežka sekcie */
+/* hlavná mriežka sekcie – 2 rovnaké stĺpce */
 .showcase-grid{
   display:grid;
   grid-template-columns:1.12fr .88fr;
@@ -200,13 +200,16 @@
 .device{
   position:relative;border-radius:18px;
   border:1px solid color-mix(in oklab, var(--text) 14%, transparent);
-  background:rgba(255,255,255,.02);box-shadow:0 18px 44px rgba(2,6,23,.28);overflow:hidden
+  background:rgba(255,255,255,.02);
+  box-shadow:0 18px 44px rgba(2,6,23,.28);
+  overflow:hidden;
 }
 .screen-area{
-  height:172px;display:grid;place-items:center;
+  height:182px; /* +10px vs predtým – jemne vyššie */
+  display:grid;place-items:center;
   background:linear-gradient(135deg,rgba(2,6,23,.40),rgba(2,6,23,.22))
 }
-@media (min-width:1200px){.screen-area{height:188px}}
+@media (min-width:1200px){.screen-area{height:198px}}
 
 .device .live{
   position:absolute;top:8px;left:8px;
@@ -226,8 +229,11 @@
 /* 2 vodorovné náhľady */
 .hdeck{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .hcard{
-  position:relative;border-radius:16px;border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
-  background:rgba(255,255,255,.02);height:108px;overflow:hidden
+  position:relative;border-radius:16px;
+  border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
+  background:rgba(255,255,255,.02);
+  height:116px; /* jemne vyššie */
+  overflow:hidden;
 }
 .hcard .mini-brand{position:absolute;right:10px;bottom:8px;width:88px;opacity:.9}
 .badge{position:absolute;left:10px;top:8px;background:#111827;color:#fff;border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:6px 9px;font-weight:800;font-size:.78rem}
@@ -235,24 +241,32 @@
 .badge.live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:999px;background:#ef4444;margin-right:6px}
 .badge.yt{background:color-mix(in oklab,var(--yt) 22%, #000)}
 
-/* PRAVÝ STĹPEC – dvojriadková mriežka s bočným stĺpcom vertikálov */
+/* PRAVÝ STĹPEC – 2 boxy hore, pod nimi 2 vertikály vedľa seba (zarovnané) */
 .right-grid{
   display:grid;
-  grid-template-columns:1fr min-content;
-  grid-template-rows:auto auto;
-  grid-template-areas:
-    "box1 vdeck"
-    "box2 vdeck";
+  grid-template-columns:1fr 1fr;  /* box1 | box2 */
+  grid-auto-rows:min-content;
   gap:12px;
   align-items:start;
 }
-.right-grid .info{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px}
-.right-grid .box1{grid-area:box1}
-.right-grid .box2{grid-area:box2}
-.vdeck{grid-area:vdeck;display:grid;gap:12px;justify-items:end}
+.right-grid .info{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px} /* nižšie o trochu */
+.right-grid .box1{grid-column:1}
+.right-grid .box2{grid-column:2}
+
+/* rad s vertikálmi – pod boxami, vedľa seba */
+.vdeck{
+  grid-column:1 / -1;   /* cez oba stĺpce */
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
 .vcard{
-  position:relative;border-radius:16px;border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
-  background:rgba(255,255,255,.02);aspect-ratio:9/16;height:214px;overflow:hidden
+  position:relative;border-radius:16px;
+  border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
+  background:rgba(255,255,255,.02);
+  aspect-ratio:9/16;
+  height:198px; /* menšie, aby nič neprečnievalo */
+  overflow:hidden;
 }
 .vcard .mini-brand{position:absolute;right:8px;bottom:8px;width:78px;opacity:.9}
 .badge.fb{background:color-mix(in oklab,var(--fb) 22%, #000)}
