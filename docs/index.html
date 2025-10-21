@@ -174,7 +174,7 @@
     }
     #sluzby .cta:hover{ transform:translateY(-1px); box-shadow:0 10px 22px rgba(2,6,23,.18); }
 
-    /* ====== SHOWCASE – kompaktný, zarovnaný blok ====== */
+    /* ====== SHOWCASE – kompaktný layout, info boxy vľavo, 2 vertikály vpravo ====== */
 #showcase{
   padding:30px 0;
   background:
@@ -184,7 +184,7 @@
 #showcase h2{margin-bottom:6px}
 #showcase .lead-strong{margin-bottom:14px}
 
-/* hlavná mriežka sekcie – 2 rovnaké stĺpce */
+/* Hlavná mriežka sekcie – ľavý & pravý stĺpec */
 .showcase-grid{
   display:grid;
   grid-template-columns:1.12fr .88fr;
@@ -195,8 +195,9 @@
   .showcase-grid{grid-template-columns:1fr}
 }
 
-/* ĽAVÝ STĹPEC (hlavný stream + 2 vodorovné náhľady) */
+/* ĽAVÝ STĹPEC (hlavný stream + info boxy + 2 vodorovné náhľady) */
 .left-stack{display:grid;gap:12px}
+
 .device{
   position:relative;border-radius:18px;
   border:1px solid color-mix(in oklab, var(--text) 14%, transparent);
@@ -205,7 +206,7 @@
   overflow:hidden;
 }
 .screen-area{
-  height:182px; /* +10px vs predtým – jemne vyššie */
+  height:182px; /* mierne vyššie */
   display:grid;place-items:center;
   background:linear-gradient(135deg,rgba(2,6,23,.40),rgba(2,6,23,.22))
 }
@@ -226,13 +227,17 @@
 .device .platforms{position:absolute;bottom:8px;left:10px;right:10px;justify-content:flex-start}
 .device .lp{position:absolute;right:10px;bottom:8px;width:110px;opacity:.9}
 
-/* 2 vodorovné náhľady */
+/* 2 informačné boxy – presunuté doľava pod hlavný stream */
+.infos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.infos .info{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px}
+
+/* 2 vodorovné náhľady (YouTube + LIVE) */
 .hdeck{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .hcard{
   position:relative;border-radius:16px;
   border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
   background:rgba(255,255,255,.02);
-  height:116px; /* jemne vyššie */
+  height:116px;
   overflow:hidden;
 }
 .hcard .mini-brand{position:absolute;right:10px;bottom:8px;width:88px;opacity:.9}
@@ -241,36 +246,25 @@
 .badge.live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:999px;background:#ef4444;margin-right:6px}
 .badge.yt{background:color-mix(in oklab,var(--yt) 22%, #000)}
 
-/* PRAVÝ STĹPEC – 2 boxy hore, pod nimi 2 vertikály vedľa seba (zarovnané) */
+/* PRAVÝ STĹPEC – 2 vertikály vedľa seba, vysoké, zarovnané */
 .right-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;  /* box1 | box2 */
-  grid-auto-rows:min-content;
+  grid-template-columns:1fr 1fr; /* FB | IG */
   gap:12px;
   align-items:start;
-}
-.right-grid .info{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px} /* nižšie o trochu */
-.right-grid .box1{grid-column:1}
-.right-grid .box2{grid-column:2}
-
-/* rad s vertikálmi – pod boxami, vedľa seba */
-.vdeck{
-  grid-column:1 / -1;   /* cez oba stĺpce */
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
 }
 .vcard{
   position:relative;border-radius:16px;
   border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
   background:rgba(255,255,255,.02);
   aspect-ratio:9/16;
-  height:198px; /* menšie, aby nič neprečnievalo */
+  height:clamp(300px, 44vw, 460px); /* vyššie, ale stále kompaktné */
   overflow:hidden;
 }
 .vcard .mini-brand{position:absolute;right:8px;bottom:8px;width:78px;opacity:.9}
 .badge.fb{background:color-mix(in oklab,var(--fb) 22%, #000)}
 .badge.ig{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)}
+.badge.top-right{left:auto;right:10px}  /* druhý roh pre FB/IG */
 
     /* ====== FAQ ====== */
     #faq .grid{display:grid;gap:10px;grid-template-columns:repeat(3,minmax(0,1fr))}
