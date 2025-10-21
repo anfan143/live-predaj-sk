@@ -174,45 +174,89 @@
     }
     #sluzby .cta:hover{ transform:translateY(-1px); box-shadow:0 10px 22px rgba(2,6,23,.18); }
 
-    /* ====== SHOWCASE – kompaktný horizontálny blok ====== */
-    #showcase{padding:36px 0;background:
-      radial-gradient(1000px 360px at 80% 50%, rgba(37,99,235,.10), transparent 60%),
-      linear-gradient(180deg, color-mix(in oklab, var(--bg) 96%, black) 0%, var(--bg-2) 100%)}
-    #showcase .grid{display:grid;grid-template-columns:1.15fr .95fr;gap:20px;align-items:start}
-    @media (max-width:980px){#showcase .grid{grid-template-columns:1fr}}
+    /* ====== SHOWCASE – kompaktný, vyrovnaný blok ====== */
+#showcase{
+  padding:32px 0;
+  background:
+    radial-gradient(900px 340px at 80% 50%, rgba(37,99,235,.10), transparent 60%),
+    linear-gradient(180deg, color-mix(in oklab, var(--bg) 96%, black) 0%, var(--bg-2) 100%);
+}
+#showcase h2{margin-bottom:6px}
+#showcase .lead-strong{margin-bottom:14px}
 
-    .device{position:relative;border-radius:18px;border:1px solid color-mix(in oklab, var(--text) 14%, transparent);
-      background:rgba(255,255,255,.02);box-shadow:0 20px 50px rgba(2,6,23,.30);overflow:hidden}
-    .screen-area{height:185px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(2,6,23,.4),rgba(2,6,23,.2))}
-    @media (min-width:1200px){.screen-area{height:200px}}
+/* hlavná mriežka sekcie */
+.showcase-grid{
+  display:grid;
+  grid-template-columns:1.12fr .88fr;
+  gap:18px;
+  align-items:start;
+}
+@media (max-width:980px){
+  .showcase-grid{grid-template-columns:1fr}
+}
 
-    .device .live{position:absolute;top:8px;left:8px;background:color-mix(in oklab,var(--danger) 22%, #000);
-      color:#fff;padding:7px 10px;border-radius:999px;font-weight:800;display:inline-flex;gap:8px;align-items:center;z-index:3}
-    .device .live::before{content:"";width:8px;height:8px;border-radius:999px;background:#ef4444;display:inline-block}
-    .tiles{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,1fr);grid-auto-rows:minmax(0,1fr);
-      gap:8px;padding:32px 14px 14px 14px;}
-    .tiles .t{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:12px}
-    .tiles .host{grid-column:span 2;background:linear-gradient(180deg, rgba(244,63,94,.25), rgba(2,6,23,.1));border:1px solid rgba(244,63,94,.35);position:relative}
-    .tiles .host:after{content:"Moderátor";position:absolute;left:10px;bottom:8px;font-weight:800;font-size:12px;color:#fff;opacity:.95}
-    .device .platforms{position:absolute;bottom:8px;left:10px;right:10px;justify-content:flex-start}
-    .device .lp{position:absolute;right:10px;bottom:8px;width:118px;opacity:.9}
+/* ĽAVÝ STĹPEC (hlavný stream + 2 vodorovné náhľady) */
+.left-stack{display:grid;gap:12px}
+.device{
+  position:relative;border-radius:18px;
+  border:1px solid color-mix(in oklab, var(--text) 14%, transparent);
+  background:rgba(255,255,255,.02);box-shadow:0 18px 44px rgba(2,6,23,.28);overflow:hidden
+}
+.screen-area{
+  height:172px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(2,6,23,.40),rgba(2,6,23,.22))
+}
+@media (min-width:1200px){.screen-area{height:188px}}
 
-    /* 2 horizontálne náhľady */
-    .hdeck{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
-    .hcard{position:relative;border-radius:16px;border:1px solid color-mix(in oklab, var(--text) 12%, transparent);background:rgba(255,255,255,.02);height:115px;overflow:hidden}
-    .hcard .mini-brand{position:absolute;right:10px;bottom:8px;width:92px;opacity:.9}
-    .badge{position:absolute;left:10px;top:8px;background:#111827;color:#fff;border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:6px 9px;font-weight:800;font-size:.78rem}
-    .badge.live{background:color-mix(in oklab,var(--danger) 30%, #000)}
-    .badge.live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:999px;background:#ef4444;margin-right:6px}
-    .badge.yt{background:color-mix(in oklab,var(--yt) 22%, #000)}
+.device .live{
+  position:absolute;top:8px;left:8px;
+  background:color-mix(in oklab,var(--danger) 22%, #000);
+  color:#fff;padding:7px 10px;border-radius:999px;
+  font-weight:800;display:inline-flex;gap:8px;align-items:center;z-index:3
+}
+.device .live::before{content:"";width:8px;height:8px;border-radius:999px;background:#ef4444;display:inline-block}
+.tiles{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,1fr);grid-auto-rows:minmax(0,1fr);gap:8px;padding:32px 14px 14px}
+.tiles .t{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:12px}
+.tiles .host{grid-column:span 2;background:linear-gradient(180deg, rgba(244,63,94,.25), rgba(2,6,23,.1));border:1px solid rgba(244,63,94,.35);position:relative}
+.tiles .host:after{content:"Moderátor";position:absolute;left:10px;bottom:8px;font-weight:800;font-size:12px;color:#fff;opacity:.95}
 
-    /* 2 vertikálne (Reels/Stories) – menšie a vpravo */
-    .vdeck{display:grid;justify-items:end;gap:12px;margin-top:12px}
-    .vcard{position:relative;border-radius:16px;border:1px solid color-mix(in oklab, var(--text) 12%, transparent);background:rgba(255,255,255,.02);
-      aspect-ratio:9/16;height:230px;overflow:hidden}
-    .vcard .mini-brand{position:absolute;right:8px;bottom:8px;width:80px;opacity:.9}
-    .badge.fb{background:color-mix(in oklab,var(--fb) 22%, #000)}
-    .badge.ig{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);}
+.device .platforms{position:absolute;bottom:8px;left:10px;right:10px;justify-content:flex-start}
+.device .lp{position:absolute;right:10px;bottom:8px;width:110px;opacity:.9}
+
+/* 2 vodorovné náhľady */
+.hdeck{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hcard{
+  position:relative;border-radius:16px;border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
+  background:rgba(255,255,255,.02);height:108px;overflow:hidden
+}
+.hcard .mini-brand{position:absolute;right:10px;bottom:8px;width:88px;opacity:.9}
+.badge{position:absolute;left:10px;top:8px;background:#111827;color:#fff;border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:6px 9px;font-weight:800;font-size:.78rem}
+.badge.live{background:color-mix(in oklab,var(--danger) 30%, #000)}
+.badge.live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:999px;background:#ef4444;margin-right:6px}
+.badge.yt{background:color-mix(in oklab,var(--yt) 22%, #000)}
+
+/* PRAVÝ STĹPEC – dvojriadková mriežka s bočným stĺpcom vertikálov */
+.right-grid{
+  display:grid;
+  grid-template-columns:1fr min-content;
+  grid-template-rows:auto auto;
+  grid-template-areas:
+    "box1 vdeck"
+    "box2 vdeck";
+  gap:12px;
+  align-items:start;
+}
+.right-grid .info{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px}
+.right-grid .box1{grid-area:box1}
+.right-grid .box2{grid-area:box2}
+.vdeck{grid-area:vdeck;display:grid;gap:12px;justify-items:end}
+.vcard{
+  position:relative;border-radius:16px;border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
+  background:rgba(255,255,255,.02);aspect-ratio:9/16;height:214px;overflow:hidden
+}
+.vcard .mini-brand{position:absolute;right:8px;bottom:8px;width:78px;opacity:.9}
+.badge.fb{background:color-mix(in oklab,var(--fb) 22%, #000)}
+.badge.ig{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)}
 
     /* ====== FAQ ====== */
     #faq .grid{display:grid;gap:10px;grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -453,90 +497,89 @@
     </div>
   </section>
 
-  <!-- SHOWCASE – kompaktný blok -->
-  <section id="showcase">
-    <div class="wrap">
-      <h2>Livepredaj – spojte sa s vašimi zákazníkmi pomocou živého vysielania. Predaj vašich produktov bude jednoduchší a na dosah ruky priamo z domova.</h2>
-      <p class="lead-strong">Zákazník môže nakupovať a sledovať vysielanie cez všetky zariadenia – mobil, TV, tablet, notebook. Nakupuje priamo počas vysielania – staňte sa súčasťou Livepredaj.</p>
+ <!-- SHOWCASE – kompaktný blok -->
+<section id="showcase">
+  <div class="wrap">
+    <h2>Livepredaj – spojte sa s vašimi zákazníkmi pomocou živého vysielania. Predaj vašich produktov bude jednoduchší a na dosah ruky priamo z domova.</h2>
+    <p class="lead-strong">Zákazník môže nakupovať a sledovať vysielanie cez všetky zariadenia – mobil, TV, tablet, notebook. Nakupuje priamo počas vysielania – staňte sa súčasťou Livepredaj.</p>
 
-      <div class="grid">
-        <!-- ĽAVÝ STĹPEC: hlavný feed + 2 horizontálne -->
-        <div>
-          <div class="device">
-            <div class="live">NAŽIVO</div>
-            <div class="screen-area">
-              <div class="tiles">
-                <div class="t host"></div>
-                <div class="t"></div><div class="t"></div><div class="t"></div>
-                <div class="t"></div><div class="t"></div><div class="t"></div>
-                <div class="t"></div><div class="t"></div><div class="t"></div>
-              </div>
-            </div>
-            <div class="platforms" style="justify-content:flex-start">
-              <span class="p-chip fb">Facebook</span>
-              <span class="p-chip yt">YouTube</span>
-              <span class="p-chip ig">Instagram</span>
-              <span class="p-chip tt">TikTok</span>
-            </div>
-            <img class="lp logo-dark"  src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="livepredaj">
-            <img class="lp logo-light" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="livepredaj">
-          </div>
-
-          <!-- 2 horizontálne (s LIVE a YouTube) -->
-          <div class="hdeck">
-            <div class="hcard">
-              <span class="badge live">NAŽIVO</span>
-              <img class="mini-brand logo-dark"  src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="">
-              <img class="mini-brand logo-light" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="">
-            </div>
-            <div class="hcard">
-              <span class="badge yt">YouTube</span>
-              <img class="mini-brand logo-dark"  src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="">
-              <img class="mini-brand logo-light" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="">
+    <div class="showcase-grid">
+      <!-- ĽAVO: hlavný feed + 2 horizontálne náhľady -->
+      <div class="left-stack">
+        <div class="device">
+          <div class="live">NAŽIVO</div>
+          <div class="screen-area">
+            <div class="tiles">
+              <div class="t host"></div>
+              <div class="t"></div><div class="t"></div><div class="t"></div>
+              <div class="t"></div><div class="t"></div><div class="t"></div>
+              <div class="t"></div><div class="t"></div><div class="t"></div>
             </div>
           </div>
+          <div class="platforms" style="justify-content:flex-start">
+            <span class="p-chip fb">Facebook</span>
+            <span class="p-chip yt">YouTube</span>
+            <span class="p-chip ig">Instagram</span>
+            <span class="p-chip tt">TikTok</span>
+          </div>
+          <img class="lp logo-dark"  src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="livepredaj">
+          <img class="lp logo-light" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="livepredaj">
         </div>
 
-        <!-- PRAVÝ STĹPEC: vysvetľujúce boxy + 2 vertikálne vpravo -->
-        <div>
-          <div class="step" style="background:var(--surface);border-color:var(--border);padding:18px">
-            <div class="hdr">
-              <span class="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M6 7h12M6 12h8M6 17h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-              </span>
-              <h3>Produkty priamo v zázname</h3>
-            </div>
-            <p>Oblečenie, kozmetika, parfumy, hračky a ďalšie. Položky sú počas vysielania <strong>pripnuté na nákup</strong>.</p>
+        <div class="hdeck">
+          <div class="hcard">
+            <span class="badge live">NAŽIVO</span>
+            <img class="mini-brand logo-dark"  src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="">
+            <img class="mini-brand logo-light" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="">
           </div>
-
-          <div class="step" style="background:var(--surface);border-color:var(--border);padding:18px;margin-top:10px">
-            <div class="hdr">
-              <span class="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h10a2 2 0 0 1 2 2v1l4-2v8l-4-2v1a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-              </span>
-              <h3>Moderátor vedie k nákupu</h3>
-            </div>
-            <p>Otázky v komentároch, zľavové kódy, balíčky a jasná výzva na nákup.</p>
+          <div class="hcard">
+            <span class="badge yt">YouTube</span>
+            <img class="mini-brand logo-dark"  src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="">
+            <img class="mini-brand logo-light" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="">
           </div>
+        </div>
+      </div>
 
-          <!-- 2 vertikálne náhľady – menšie a zarovnané vpravo -->
-          <div class="vdeck">
-            <div class="vcard">
-              <span class="badge live">NAŽIVO</span>
-              <span class="badge fb" style="right:10px;left:auto;top:8px;position:absolute">Facebook</span>
-              <img class="mini-brand logo-dark"  src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="">
-              <img class="mini-brand logo-light" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="">
-            </div>
-            <div class="vcard">
-              <span class="badge ig" style="left:auto;right:10px;top:8px;position:absolute">Instagram</span>
-              <img class="mini-brand logo-dark"  src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="">
-              <img class="mini-brand logo-light" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="">
-            </div>
+      <!-- PRAVO: vysvetľujúce boxy + bočný stĺpec vertikálov (zarovnaný doprava) -->
+      <div class="right-grid">
+        <div class="info box1">
+          <div class="hdr" style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <span class="ico" aria-hidden="true" style="width:34px;height:34px;border-radius:10px;display:inline-grid;place-items:center;background:color-mix(in oklab,var(--accent) 12%, transparent);border:1px solid color-mix(in oklab,var(--accent) 28%,transparent)">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 7h12M6 12h8M6 17h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <h3 style="margin:0">Produkty priamo v zázname</h3>
+          </div>
+          <p>Oblečenie, kozmetika, parfumy, hračky a ďalšie. Položky sú počas vysielania <strong>pripnuté na nákup</strong>.</p>
+        </div>
+
+        <div class="info box2">
+          <div class="hdr" style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <span class="ico" aria-hidden="true" style="width:34px;height:34px;border-radius:10px;display:inline-grid;place-items:center;background:color-mix(in oklab,var(--accent) 12%, transparent);border:1px solid color-mix(in oklab,var(--accent) 28%,transparent)">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h10a2 2 0 0 1 2 2v1l4-2v8l-4-2v1a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </span>
+            <h3 style="margin:0">Moderátor vedie k nákupu</h3>
+          </div>
+          <p>Otázky v komentároch, zľavové kódy, balíčky a jasná výzva na nákup.</p>
+        </div>
+
+        <!-- bočný stĺpec s 2 vertikálmi (Reels/Stories) -->
+        <div class="vdeck">
+          <div class="vcard">
+            <span class="badge live">NAŽIVO</span>
+            <span class="badge fb" style="right:10px;left:auto;top:8px;position:absolute">Facebook</span>
+            <img class="mini-brand logo-dark"  src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="">
+            <img class="mini-brand logo-light" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="">
+          </div>
+          <div class="vcard">
+            <span class="badge ig" style="left:auto;right:10px;top:8px;position:absolute">Instagram</span>
+            <img class="mini-brand logo-dark"  src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="">
+            <img class="mini-brand logo-light" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="">
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- FAQ -->
   <section id="faq" class="wrap section" aria-label="FAQ (najčastejšie otázky)">
