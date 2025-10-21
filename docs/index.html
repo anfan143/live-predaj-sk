@@ -82,7 +82,7 @@
     .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--accent);color:var(--accent-text);font-weight:700;border:none;line-height:1;height:38px}
     .btn:hover{background:var(--accent-700);transform:translateY(-1px);box-shadow:0 14px 28px rgba(37,99,235,.26)}
     .btn-green{background:#22c55e}.btn-green:hover{background:#16a34a}
-    .theme{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--border);background:transparent;font-size:18px}
+    .theme{display:inline-grid;place-items:center;width:38px;height:38px;border:1px solid var(--border);background:transparent;font-size:18px}
     .theme:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(2,6,23,.12)}
 
     /* ====== HERO ====== */
@@ -256,7 +256,7 @@
 .badge{position:absolute;left:10px;top:8px;background:#111827;color:#fff;border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:6px 9px;font-weight:800;font-size:.78rem}
 .badge.live{background:color-mix(in oklab,var(--danger) 30%, #000)}
 .badge.live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:999px;background:#ef4444;margin-right:6px}
-.badge.yt{background:color-mix(in oklab,var(--yt) 22%, #000)}
+.badge.yt{background:var(--yt)} /* červený YouTube badge */
 
 /* ========== PRAVÁ STRANA ========== */
 /* Len dve vertikálne okná vedľa seba, oba rovnako vysoké – presne výška stĺpca */
@@ -274,9 +274,41 @@
   overflow:hidden;
 }
 .vcard .mini-brand{position:absolute;right:8px;bottom:8px;width:78px;opacity:.9}
-.badge.fb{background:color-mix(in oklab,var(--fb) 22%, #000)}
+.badge.fb{background:var(--fb)} /* modrý Facebook badge */
 .badge.ig{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)}
 .badge.top-right{left:auto;right:10px}
+
+/* Moderátor a pripnutý produkt v pravých vertikálnych oknách */
+.vcard .tag-moderator{
+  position:absolute;left:10px;top:42px;color:#fff;font-weight:800;font-size:.78rem;
+  padding:6px 10px;border-radius:10px;
+  background:linear-gradient(90deg, rgba(244,63,94,.55), rgba(244,63,94,.28));
+  border:1px solid rgba(255,255,255,.18)
+}
+.vcard .mod-figure{
+  position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);
+  width:56%;max-width:220px;opacity:.92;
+  filter:drop-shadow(0 10px 18px rgba(2,6,23,.35))
+}
+.vcard .mod-figure .head{fill:rgba(255,255,255,.88)}
+.vcard .mod-figure .body{fill:rgba(255,255,255,.75)}
+.vcard .pinned{
+  position:absolute;left:10px;right:10px;bottom:10px;display:flex;gap:10px;align-items:center;
+  padding:10px;border-radius:12px;backdrop-filter:blur(2px);
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18)
+}
+.pinned .p-thumb{
+  width:56px;height:56px;border-radius:10px;
+  background:linear-gradient(135deg,rgba(255,255,255,.55),rgba(255,255,255,.25));
+  border:1px solid rgba(255,255,255,.28)
+}
+.pinned .p-meta{line-height:1.15}
+.pinned .p-name{font-weight:800}
+.pinned .p-note{font-size:.82rem;opacity:.8}
+.pinned .p-price{
+  margin-left:auto;font-weight:900;padding:6px 10px;border-radius:10px;
+  background:rgba(17,24,39,.85);color:#fff;border:1px solid rgba(255,255,255,.18)
+}
 
 /* Mobil – nech sa všetko správa prirodzene (bez fixných výšok) */
 @media (max-width:980px){
@@ -594,15 +626,52 @@
 
       <!-- PRAVÁ STRANA – LEN 2 VERTIKÁLY VEDĽA SEBA (FB | IG) -->
       <div class="right-grid">
+        <!-- Facebook vertikál -->
         <div class="vcard">
           <span class="badge live">NAŽIVO</span>
           <span class="badge fb top-right">Facebook</span>
+          <span class="tag-moderator">Moderátor</span>
+
+          <!-- silueta moderátora -->
+          <svg class="mod-figure" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle class="head" cx="60" cy="36" r="18"/>
+            <path class="body" d="M20,112 C24,78 44,64 60,64 C76,64 96,78 100,112 L20,112 Z"/>
+          </svg>
+
+          <!-- pripnutý produkt -->
+          <div class="pinned">
+            <div class="p-thumb" aria-hidden="true"></div>
+            <div class="p-meta">
+              <div class="p-name">Pánska bunda</div>
+              <div class="p-note">Veľkosti S–XL • skladom</div>
+            </div>
+            <div class="p-price">39,90 €</div>
+          </div>
+
           <img class="mini-brand logo-dark"  src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="" aria-hidden="true">
           <img class="mini-brand logo-light" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="" aria-hidden="true">
         </div>
+
+        <!-- Instagram vertikál -->
         <div class="vcard">
           <span class="badge live">NAŽIVO</span>
           <span class="badge ig top-right">Instagram</span>
+          <span class="tag-moderator">Moderátor</span>
+
+          <svg class="mod-figure" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle class="head" cx="60" cy="36" r="18"/>
+            <path class="body" d="M20,112 C24,78 44,64 60,64 C76,64 96,78 100,112 L20,112 Z"/>
+          </svg>
+
+          <div class="pinned">
+            <div class="p-thumb" aria-hidden="true"></div>
+            <div class="p-meta">
+              <div class="p-name">Dámske šaty</div>
+              <div class="p-note">Novinka • limitované</div>
+            </div>
+            <div class="p-price">54,90 €</div>
+          </div>
+
           <img class="mini-brand logo-dark"  src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="" aria-hidden="true">
           <img class="mini-brand logo-light" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="" aria-hidden="true">
         </div>
