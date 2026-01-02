@@ -8,7 +8,17 @@
   <meta property="og:title" content="LivePredaj.sk – TikTok, Facebook, YouTube" />
   <meta property="og:description" content="Spustíme vám predaj naživo: obsah, moderovanie, technika, klipy, reporting." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://livepredaj.sk/" />
   <meta property="og:image" content="assets/social/og-1200x630.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="LivePredaj.sk – predaj naživo na TikTok, Facebook, YouTube a Instagram." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="LivePredaj.sk – TikTok, Facebook, YouTube" />
+  <meta name="twitter:description" content="Spustíme vám predaj naživo: obsah, moderovanie, technika, klipy, reporting." />
+  <meta name="twitter:image" content="assets/social/og-1200x630.png" />
+  <meta name="twitter:image:alt" content="LivePredaj.sk – predaj naživo na TikTok, Facebook, YouTube a Instagram." />
+  <link rel="canonical" href="https://livepredaj.sk/" />
   <meta name="theme-color" content="#0f172a" />
 
   <!-- Pre-paint témy (žiadne prebliknutie log) -->
@@ -26,6 +36,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Preload primary brand marks (LCP support) -->
+  <link rel="preload" as="image" href="assets/brand/livepredaj-logo-mark-dark.svg?v=11" />
+  <link rel="preload" as="image" href="assets/brand/livepredaj-logo-mark-light.svg?v=11" />
 
   <!-- Icons / Favicons -->
   <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png" />
@@ -90,6 +104,9 @@
     .chip.active{border-color:color-mix(in oklab, var(--accent) 60%, transparent)}
     .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--accent);color:var(--accent-text);font-weight:700;border:none;line-height:1;height:38px}
     .btn:hover{background:var(--accent-700);transform:translateY(-1px);box-shadow:0 14px 28px rgba(37,99,235,.26)}
+    .btn.primary{box-shadow:0 16px 32px rgba(37,99,235,.32)}
+    .btn.primary:hover{box-shadow:0 18px 36px rgba(37,99,235,.38)}
+    .btn:disabled{opacity:.72;cursor:not-allowed;transform:none;box-shadow:none}
     .btn-green{background:#22c55e}.btn-green:hover{background:#16a34a}
     .theme{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--border);background:transparent;font-size:18px}
     .theme:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(2,6,23,.12)}
@@ -112,6 +129,13 @@
     .em-blue{color:var(--brand-blue)} .em-green{color:var(--brand-green)}
     .lead{font-size:18px;color:var(--muted)}
     .callout{margin-top:14px;padding:12px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--border);font-weight:600}
+    .trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .trust-item{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:12px;background:var(--surface);border:1px solid var(--border);font-weight:700;color:var(--text)}
+    .trust-item span{color:var(--muted);font-weight:600}
+    .proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+    .proof-item{padding:12px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--border);font-weight:700;color:var(--text)}
+    .proof-item span{display:block;color:var(--muted);font-weight:600;margin-top:4px}
+    @media (max-width:900px){.proof{grid-template-columns:1fr}}
     .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 
     .card{background:var(--surface);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow)}
@@ -163,17 +187,42 @@
       box-shadow:0 12px 28px rgba(2,6,23,.10);
       transition:transform .18s, box-shadow .18s, border-color .18s;
     }
+    #sluzby .pill{
+      display:inline-flex;align-items:center;gap:6px;
+      padding:6px 10px;border-radius:999px;
+      font-size:.78rem;font-weight:800;letter-spacing:.2px;
+      color:#0f172a;background:rgba(16,185,129,.16);
+      border:1px solid rgba(16,185,129,.4);
+      margin-bottom:10px;
+    }
     #sluzby .card:hover{ transform:translateY(-4px) scale(1.01); box-shadow:0 22px 46px rgba(2,6,23,.16); border-color:rgba(17,24,39,.18); }
     #sluzby .card.recommended{ border-color:rgba(45,212,191,.55); box-shadow:0 24px 52px rgba(45,212,191,.18); }
     [data-theme="dark"] #sluzby .card{ background:var(--surface)!important; border-color:var(--border)!important; }
     [data-theme="dark"] #sluzby h3,[data-theme="dark"] #sluzby strong{ color:#fff!important; }
     [data-theme="dark"] #sluzby .sub,[data-theme="dark"] #sluzby .micro,[data-theme="dark"] #sluzby .result,[data-theme="dark"] #sluzby .card p,[data-theme="dark"] #sluzby .card li{ color:#e5e7eb!important; }
+    [data-theme="dark"] #sluzby .pill{
+      color:#ecfeff;background:rgba(16,185,129,.18);border-color:rgba(16,185,129,.4);
+    }
     #sluzby h3{ margin:0 0 6px; font-weight:800; color:#0f172a; }
     #sluzby .sub{ margin:2px 0 10px; color:#374151; font-weight:700; }
     #sluzby ul{ margin:10px 0 0; padding-left:18px; }
     #sluzby li{ margin:6px 0; color:#0f172a; }
     #sluzby .result{ margin-top:10px; font-weight:700; color:#0f172a; font-style:italic; }
     #sluzby .micro{ margin-top:6px; font-size:.95rem; color:#5b6472; }
+    #sluzby .fit{
+      margin:10px 0 6px;
+      padding:8px 10px;
+      border-radius:12px;
+      background:rgba(37,99,235,.08);
+      border:1px solid rgba(37,99,235,.18);
+      color:#0f172a;
+      font-weight:700;
+    }
+    [data-theme="dark"] #sluzby .fit{
+      background:rgba(37,99,235,.16);
+      border-color:rgba(59,130,246,.35);
+      color:#e5e7eb;
+    }
     #sluzby .footer{ margin-top:auto; }
     #sluzby .footer .price{display:block;margin-top:10px;margin-bottom:10px;} /* <- cena vždy nad CTA */
     #sluzby .price{
@@ -428,8 +477,20 @@
 
         <div class="callout">Prvé vysielanie vieme spustiť do <strong>7 dní</strong> od kontaktovania.</div>
 
+        <div class="trust" aria-label="Rýchle výhody LivePredaj">
+          <div class="trust-item">⚡ <strong>Rýchly štart</strong> <span>do 7 dní</span></div>
+          <div class="trust-item">📡 <strong>Multi‑platform</strong> <span>TikTok • FB • YT • IG</span></div>
+          <div class="trust-item">📊 <strong>Reporting</strong> <span>výsledky & odporúčania</span></div>
+        </div>
+
+        <div class="proof" aria-label="Čo dostanete v praxi">
+          <div class="proof-item">🎬 Klipy po vysielaní <span>reels/shorts pre ďalší dosah</span></div>
+          <div class="proof-item">🎤 Moderovanie a technika <span>podľa dohody s vaším tímom</span></div>
+          <div class="proof-item">🧾 Report po vysielaní <span>prehľad výkonu a ďalšie kroky</span></div>
+        </div>
+
         <div class="cta">
-          <a class="btn" href="#cennik">Spustiť pilot do 7 dní</a>
+          <a class="btn primary" href="#cennik">Spustiť pilot do 7 dní</a>
           <a class="btn btn-green" href="https://wa.me/421951265627?text=Konzult%C3%A1cia%20k%20pilotn%C3%A9mu%20live">WhatsApp konzultácia</a>
           <a class="chip" href="#ako">Ako to funguje</a>
         </div>
@@ -550,6 +611,7 @@
               <li>Základ: svetlá, mikrofón, kamera</li>
               <li>Krátke zaučenie pred prvým vysielaním</li>
             </ul>
+            <p class="fit"><strong>Ideálne pre:</strong> prvé spustenie bez skúseností.</p>
             <p class="result"><em>Výsledok:</em> Spustíte prvé vysielanie pokojne a bez chaosu.</p>
           </div>
           <div class="footer">
@@ -561,6 +623,7 @@
 
         <article class="card recommended">
           <div>
+            <span class="pill">Najobľúbenejší balík</span>
             <h3>Štandard</h3>
             <p class="sub">Štart + pomoc s ponukou a priebehom predaja.</p>
             <ul>
@@ -568,6 +631,7 @@
               <li>Plán vysielania krok za krokom</li>
               <li>Podpora počas vysielania (odpovede/moderovanie podľa dohody)</li>
             </ul>
+            <p class="fit"><strong>Ideálne pre:</strong> stabilný mesačný predaj.</p>
             <p class="result"><em>Výsledok:</em> Vysielanie má hlavu a pätu – viete, čo kedy povedať a ako viesť k nákupu.</p>
           </div>
           <div class="footer">
@@ -586,6 +650,7 @@
               <li>Moderovanie naším tímom a možnosť využiť štúdio</li>
               <li>Krátke videá po vysielaní (reels/shorts) + odporúčania</li>
             </ul>
+            <p class="fit"><strong>Ideálne pre:</strong> plný servis a škálovanie predaja.</p>
             <p class="result"><em>Výsledok:</em> Kompletný servis od A po Z – vysielame, vyhodnocujeme a posúvame predaj ďalej.</p>
           </div>
           <div class="footer">
@@ -781,7 +846,7 @@
           <label for="f_msg">Správa</label>
           <textarea id="f_msg" name="sprava" rows="7" placeholder="Čo chcete predávať? Ktorý balík zvažujete? Kedy vás môžeme kontaktovať?" required></textarea>
 
-          <button class="btn" type="submit">Odoslať dopyt</button>
+          <button id="submitBtn" class="btn" type="submit">Odoslať dopyt</button>
           <div id="formNotice" class="callout" style="display:none;margin-top:10px"></div>
 
           <div class="policy">
@@ -849,10 +914,16 @@
     const FORM_ENDPOINT = 'https://formspree.io/f/xjkaendy';
     const form = document.getElementById('contactForm');
     const notice = document.getElementById('formNotice');
+    const submitBtn = document.getElementById('submitBtn');
+    const submitLabel = submitBtn ? submitBtn.textContent : '';
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const data = Object.fromEntries(new FormData(form).entries());
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Odosielam…';
+      }
       try{
         const res = await fetch(FORM_ENDPOINT, {
           method:'POST',
@@ -863,6 +934,7 @@
         if(res.ok){
           notice.textContent = 'Ďakujeme! Ozveme sa čoskoro.';
           notice.style.borderColor = 'rgba(34,197,94,.35)';
+          form.reset();
         }else{
           notice.textContent = 'Nepodarilo sa odoslať. Skúste znova alebo napíšte na WhatsApp.';
           notice.style.borderColor = 'rgba(239,68,68,.35)';
@@ -871,6 +943,11 @@
         notice.style.display = 'block';
         notice.textContent = 'Chyba siete. Skúste neskôr.';
         notice.style.borderColor = 'rgba(239,68,68,.35)';
+      }finally{
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = submitLabel;
+        }
       }
     });
   </script>
