@@ -139,14 +139,14 @@
     .em-blue{color:var(--brand-blue)} .em-green{color:var(--brand-green)}
     .lead{font-size:18px;color:var(--muted)}
     .callout{margin-top:14px;padding:12px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--border);font-weight:600}
-    .trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-    .trust-item{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:12px;background:var(--surface);border:1px solid var(--border);font-weight:700;color:var(--text)}
-    .trust-item span{color:var(--muted);font-weight:600}
-    .proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
-    .proof-item{padding:12px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--border);font-weight:700;color:var(--text)}
-    .proof-item span{display:block;color:var(--muted);font-weight:600;margin-top:4px}
-    @media (max-width:900px){.proof{grid-template-columns:1fr}}
+    .benefits{margin-top:12px}
+    .benefit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .benefit-card{padding:12px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--border);font-weight:700;color:var(--text);min-height:72px}
+    .benefit-card span{display:block;color:var(--muted);font-weight:600;margin-top:4px}
+    @media (max-width:980px){.benefit-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:560px){.benefit-grid{grid-template-columns:1fr}}
     .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .cta-bar{margin-top:14px;padding:12px;border-radius:16px;background:var(--surface-2);border:1px solid var(--border)}
 
     .card{background:var(--surface);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow)}
     .screen{position:relative;aspect-ratio:16/10;border:1px dashed var(--border);border-radius:16px;margin:12px;padding:10px 10px 52px;display:grid;place-items:center;overflow:hidden}
@@ -491,19 +491,18 @@
 
         <div class="callout">Prvé vysielanie vieme spustiť do <strong>7 dní</strong> od kontaktovania.</div>
 
-        <div class="trust" aria-label="Rýchle výhody LivePredaj">
-          <div class="trust-item">⚡ <strong>Rýchly štart</strong> <span>do 7 dní</span></div>
-          <div class="trust-item">📡 <strong>Multi‑platform</strong> <span>TikTok • FB • YT • IG</span></div>
-          <div class="trust-item">📊 <strong>Reporting</strong> <span>výsledky & odporúčania</span></div>
+        <div class="benefits" aria-label="Prečo LivePredaj">
+          <div class="benefit-grid">
+            <div class="benefit-card">⚡ <strong>Rýchly štart</strong> <span>do 7 dní</span></div>
+            <div class="benefit-card">📡 <strong>Multi‑platform</strong> <span>TikTok • FB • YT • IG</span></div>
+            <div class="benefit-card">📊 <strong>Reporting</strong> <span>výsledky & odporúčania</span></div>
+            <div class="benefit-card">🎬 <strong>Klipy po vysielaní</strong> <span>reels/shorts pre ďalší dosah</span></div>
+            <div class="benefit-card">🎤 <strong>Moderovanie a technika</strong> <span>podľa dohody s vaším tímom</span></div>
+            <div class="benefit-card">🧾 <strong>Report po vysielaní</strong> <span>prehľad výkonu a ďalšie kroky</span></div>
+          </div>
         </div>
 
-        <div class="proof" aria-label="Čo dostanete v praxi">
-          <div class="proof-item">🎬 Klipy po vysielaní <span>reels/shorts pre ďalší dosah</span></div>
-          <div class="proof-item">🎤 Moderovanie a technika <span>podľa dohody s vaším tímom</span></div>
-          <div class="proof-item">🧾 Report po vysielaní <span>prehľad výkonu a ďalšie kroky</span></div>
-        </div>
-
-        <div class="cta">
+        <div class="cta cta-bar">
           <a class="btn primary" href="#cennik">Spustiť pilot do 7 dní</a>
           <a class="btn btn-green" href="https://wa.me/421951265627?text=Konzult%C3%A1cia%20k%20pilotn%C3%A9mu%20live">WhatsApp konzultácia</a>
           <a class="chip" href="#ako">Ako to funguje</a>
