@@ -226,6 +226,13 @@
       box-shadow:0 12px 28px rgba(2,6,23,.10);
       transition:transform .18s, box-shadow .18s, border-color .18s;
     }
+    #sluzby .services-intro{display:flex;flex-direction:column;gap:12px;margin:8px 0 16px}
+    #sluzby .services-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    #sluzby .services-point{display:flex;gap:10px;align-items:flex-start;padding:12px;border-radius:14px;background:var(--surface);border:1px solid var(--border);font-weight:700}
+    #sluzby .services-point span{display:block;color:var(--muted);font-weight:600;margin-top:4px}
+    #sluzby .services-ico{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;background:color-mix(in oklab,var(--accent) 14%,transparent);border:1px solid color-mix(in oklab,var(--accent) 28%,transparent);font-weight:800}
+    #sluzby .card h3{display:flex;align-items:center;gap:10px}
+    #sluzby .card .cta{width:100%;justify-content:center}
     #sluzby .pill{
       display:inline-flex;align-items:center;gap:6px;
       padding:6px 10px;border-radius:999px;
@@ -241,6 +248,9 @@
     [data-theme="dark"] #sluzby .sub,[data-theme="dark"] #sluzby .micro,[data-theme="dark"] #sluzby .result,[data-theme="dark"] #sluzby .card p,[data-theme="dark"] #sluzby .card li{ color:#e5e7eb!important; }
     [data-theme="dark"] #sluzby .pill{
       color:#ecfeff;background:rgba(16,185,129,.18);border-color:rgba(16,185,129,.4);
+    }
+    @media (max-width:960px){
+      #sluzby .services-points{grid-template-columns:1fr}
     }
     #sluzby h3{ margin:0 0 6px; font-weight:800; color:#0f172a; }
     #sluzby .sub{ margin:2px 0 10px; color:#374151; font-weight:700; }
@@ -644,6 +654,22 @@
     <div class="wrap inner">
       <h2>Služby</h2>
       <p>Vyberte si balík, ktorý potrebujete. Služby prispôsobíme vašim potrebám.</p>
+      <div class="services-intro" aria-label="Prehľad služieb">
+        <div class="services-points">
+          <div class="services-point">
+            <div class="services-ico">🧭</div>
+            <div>Jasný plán <span>scenár, produkty, zľavy</span></div>
+          </div>
+          <div class="services-point">
+            <div class="services-ico">🎥</div>
+            <div>Technika + podpora <span>pred aj počas vysielania</span></div>
+          </div>
+          <div class="services-point">
+            <div class="services-ico">📈</div>
+            <div>Výsledky <span>report a odporúčania</span></div>
+          </div>
+        </div>
+      </div>
 
       <div class="grid">
         <article class="card">
