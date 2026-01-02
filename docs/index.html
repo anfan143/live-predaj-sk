@@ -208,6 +208,11 @@
     .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
     .step{background:var(--surface-2);border:1px solid var(--border);border-radius:18px;padding:18px;transition:.2s ease;position:relative}
     .step:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(2,6,23,.28)}
+    .step::before{
+      content:"";
+      position:absolute;left:0;right:0;top:0;height:4px;border-radius:18px 18px 0 0;
+      background:linear-gradient(90deg, rgba(37,99,235,.35), rgba(16,185,129,.35));
+    }
     .hdr{display:flex;align-items:center;gap:10px;margin-bottom:8px}
     .ico{width:34px;height:34px;border-radius:10px;display:inline-grid;place-items:center;background:color-mix(in oklab,var(--accent) 12%, transparent);border:1px solid color-mix(in oklab,var(--accent) 28%,transparent)}
     .ico svg{width:18px;height:18px}
@@ -240,21 +245,6 @@
     #sluzby .card h3{display:flex;align-items:center;gap:10px}
     #sluzby .card .cta{width:100%;justify-content:center}
     #sluzby .plan-icon{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:10px;background:color-mix(in oklab,var(--accent) 14%,transparent);border:1px solid color-mix(in oklab,var(--accent) 28%,transparent);font-size:14px}
-    #sluzby .pill{
-      display:inline-flex;align-items:center;gap:6px;
-      padding:6px 10px;border-radius:999px;
-      font-size:.78rem;font-weight:800;letter-spacing:.2px;
-      color:#0f172a;background:rgba(16,185,129,.16);
-      border:1px solid rgba(16,185,129,.4);
-      margin-bottom:10px;
-    }
-    #sluzby .services-intro{display:flex;flex-direction:column;gap:12px;margin:8px 0 16px}
-    #sluzby .services-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-    #sluzby .services-point{display:flex;gap:10px;align-items:flex-start;padding:12px;border-radius:14px;background:var(--surface);border:1px solid var(--border);font-weight:700}
-    #sluzby .services-point span{display:block;color:var(--muted);font-weight:600;margin-top:4px}
-    #sluzby .services-ico{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;background:color-mix(in oklab,var(--accent) 14%,transparent);border:1px solid color-mix(in oklab,var(--accent) 28%,transparent);font-weight:800}
-    #sluzby .card h3{display:flex;align-items:center;gap:10px}
-    #sluzby .card .cta{width:100%;justify-content:center}
     #sluzby .pill{
       display:inline-flex;align-items:center;gap:6px;
       padding:6px 10px;border-radius:999px;
@@ -480,7 +470,8 @@
     /* ====== FAQ ====== */
     #faq .grid{display:grid;gap:10px;grid-template-columns:repeat(3,minmax(0,1fr))}
     @media (max-width:960px){#faq .grid{grid-template-columns:1fr}}
-    #faq .qa{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px}
+    #faq .qa{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px;position:relative;overflow:hidden}
+    #faq .qa::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg, rgba(37,99,235,.4), rgba(16,185,129,.35))}
     #faq h3{margin:0 0 4px;font-size:17px}
     #faq p{margin:0;color:var(--muted);line-height:1.45}
     #faq .hl{color:var(--brand-blue);font-weight:700}
