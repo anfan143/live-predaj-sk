@@ -435,6 +435,10 @@
     #kontakt .wbtn{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#0b1b0f;font-weight:800;border:none;border-radius:12px;padding:12px 16px}
     #kontakt .note{margin-top:10px;color:var(--muted)}
     #kontakt .policy{margin-top:16px;color:var(--muted);font-size:.95rem}
+    #kontakt .next-steps{margin-top:16px;display:grid;gap:10px}
+    #kontakt .next-step{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:12px;background:var(--surface-2);border:1px solid var(--border)}
+    #kontakt .next-step strong{display:block}
+    #kontakt .step-num{width:26px;height:26px;border-radius:9px;display:grid;place-items:center;background:color-mix(in oklab,var(--accent) 18%,transparent);border:1px solid color-mix(in oklab,var(--accent) 32%,transparent);font-weight:800}
     .k-mini-brand img{height:22px;width:auto;display:inline-block}
     .k-mini-brand{margin-top:14px;display:flex;align-items:center;gap:8px}
 
@@ -874,6 +878,30 @@
           </svg>
           Napísať na WhatsApp
         </a>
+
+        <div class="next-steps" aria-label="Ako pokračujeme po odoslaní dopytu">
+          <div class="next-step">
+            <span class="step-num">1</span>
+            <div>
+              <strong>Ozveme sa do 24 hodín</strong>
+              <span class="note">Krátky úvodný hovor a zistenie potrieb.</span>
+            </div>
+          </div>
+          <div class="next-step">
+            <span class="step-num">2</span>
+            <div>
+              <strong>Navrhneme scenár a plán</strong>
+              <span class="note">Vyberieme produkty, zľavy a formát vysielania.</span>
+            </div>
+          </div>
+          <div class="next-step">
+            <span class="step-num">3</span>
+            <div>
+              <strong>Spustíme pilotné vysielanie</strong>
+              <span class="note">Technika, moderovanie a reporting podľa balíka.</span>
+            </div>
+          </div>
+        </div>
 
         <div class="k-mini-brand">
           <img class="logo-dark"  loading="lazy" src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="LivePredaj" />
