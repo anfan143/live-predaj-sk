@@ -225,6 +225,28 @@
       border-radius:16px;padding:22px;
       box-shadow:0 12px 28px rgba(2,6,23,.10);
       transition:transform .18s, box-shadow .18s, border-color .18s;
+      position:relative;overflow:hidden;
+    }
+    #sluzby .card::before{
+      content:"";
+      position:absolute;left:0;right:0;top:0;height:4px;
+      background:linear-gradient(90deg, rgba(37,99,235,.35), rgba(16,185,129,.35));
+    }
+    #sluzby .services-intro{display:flex;flex-direction:column;gap:12px;margin:8px 0 16px}
+    #sluzby .services-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    #sluzby .services-point{display:flex;gap:10px;align-items:flex-start;padding:12px;border-radius:14px;background:var(--surface);border:1px solid var(--border);font-weight:700}
+    #sluzby .services-point span{display:block;color:var(--muted);font-weight:600;margin-top:4px}
+    #sluzby .services-ico{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;background:color-mix(in oklab,var(--accent) 14%,transparent);border:1px solid color-mix(in oklab,var(--accent) 28%,transparent);font-weight:800}
+    #sluzby .card h3{display:flex;align-items:center;gap:10px}
+    #sluzby .card .cta{width:100%;justify-content:center}
+    #sluzby .plan-icon{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:10px;background:color-mix(in oklab,var(--accent) 14%,transparent);border:1px solid color-mix(in oklab,var(--accent) 28%,transparent);font-size:14px}
+    #sluzby .pill{
+      display:inline-flex;align-items:center;gap:6px;
+      padding:6px 10px;border-radius:999px;
+      font-size:.78rem;font-weight:800;letter-spacing:.2px;
+      color:#0f172a;background:rgba(16,185,129,.16);
+      border:1px solid rgba(16,185,129,.4);
+      margin-bottom:10px;
     }
     #sluzby .services-intro{display:flex;flex-direction:column;gap:12px;margin:8px 0 16px}
     #sluzby .services-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
@@ -242,8 +264,13 @@
       margin-bottom:10px;
     }
     #sluzby .card:hover{ transform:translateY(-4px) scale(1.01); box-shadow:0 22px 46px rgba(2,6,23,.16); border-color:rgba(17,24,39,.18); }
-    #sluzby .card.recommended{ border-color:rgba(45,212,191,.55); box-shadow:0 24px 52px rgba(45,212,191,.18); }
+    #sluzby .card.recommended{
+      border-color:rgba(45,212,191,.55);
+      box-shadow:0 24px 52px rgba(45,212,191,.18);
+      background:linear-gradient(180deg, rgba(16,185,129,.08), rgba(255,255,255,1) 36%);
+    }
     [data-theme="dark"] #sluzby .card{ background:var(--surface)!important; border-color:var(--border)!important; }
+    [data-theme="dark"] #sluzby .card.recommended{background:linear-gradient(180deg, rgba(16,185,129,.18), rgba(15,23,42,.92) 36%)!important;}
     [data-theme="dark"] #sluzby h3,[data-theme="dark"] #sluzby strong{ color:#fff!important; }
     [data-theme="dark"] #sluzby .sub,[data-theme="dark"] #sluzby .micro,[data-theme="dark"] #sluzby .result,[data-theme="dark"] #sluzby .card p,[data-theme="dark"] #sluzby .card li{ color:#e5e7eb!important; }
     [data-theme="dark"] #sluzby .pill{
@@ -255,7 +282,7 @@
     #sluzby h3{ margin:0 0 6px; font-weight:800; color:#0f172a; }
     #sluzby .sub{ margin:2px 0 10px; color:#374151; font-weight:700; }
     #sluzby ul{ margin:10px 0 0; padding-left:18px; }
-    #sluzby li{ margin:6px 0; color:#0f172a; }
+    #sluzby li{ margin:4px 0; color:#0f172a; }
     #sluzby .result{ margin-top:10px; font-weight:700; color:#0f172a; font-style:italic; }
     #sluzby .micro{ margin-top:6px; font-size:.95rem; color:#5b6472; }
     #sluzby .fit{
@@ -674,7 +701,7 @@
       <div class="grid">
         <article class="card">
           <div>
-            <h3>Štart</h3>
+            <h3><span class="plan-icon" aria-hidden="true">🚀</span> Štart</h3>
             <p class="sub">Rýchle nastavenie a prvé vysielanie bez stresu.</p>
             <ul>
               <li>Nastavenie techniky a účtov</li>
@@ -694,7 +721,7 @@
         <article class="card recommended">
           <div>
             <span class="pill">Najobľúbenejší balík</span>
-            <h3>Štandard</h3>
+            <h3><span class="plan-icon" aria-hidden="true">⭐</span> Štandard</h3>
             <p class="sub">Štart + pomoc s ponukou a priebehom predaja.</p>
             <ul>
               <li>Výber produktov a zliav, ktoré dávajú zmysel</li>
@@ -713,7 +740,7 @@
 
         <article class="card">
           <div>
-            <h3>Komplet</h3>
+            <h3><span class="plan-icon" aria-hidden="true">🏆</span> Komplet</h3>
             <p class="sub">Štart + Štandard + moderovanie/štúdio + výsledky.</p>
             <ul>
               <li>Prepojenie s e-shopom (pripnuté produkty, objednávky, výsledky)</li>
