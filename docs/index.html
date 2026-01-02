@@ -173,8 +173,37 @@
     /* ====== Sekcie ====== */
     .section{padding:46px 0}
     .section h2{font-size:clamp(24px,2.8vw,36px);margin:0 0 10px}
+    .section h2::after{
+      content:"";
+      display:block;
+      width:56px;height:4px;border-radius:999px;
+      margin-top:10px;
+      background:linear-gradient(90deg,var(--accent),color-mix(in oklab,var(--accent) 40%,transparent));
+    }
     .section .lead-strong{color:var(--text);font-weight:600;margin:0 0 18px}
     #ako,#sluzby,#cennik,#showcase,#faq,#kontakt{scroll-margin-top:84px}
+    .section-panel{position:relative;padding:56px 0}
+    .section-panel::before{
+      content:"";
+      position:absolute;left:0;right:0;top:0;height:1px;
+      background:linear-gradient(90deg,transparent,var(--border),transparent);
+    }
+    .section-panel::after{
+      content:"";
+      position:absolute;left:0;right:0;bottom:0;height:1px;
+      background:linear-gradient(90deg,transparent,var(--border),transparent);
+    }
+    .section-panel .wrap{
+      background:color-mix(in oklab,var(--surface) 82%, transparent);
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:28px 22px;
+      box-shadow:0 16px 36px rgba(2,6,23,.12);
+    }
+    @media (max-width:900px){
+      .section-panel{padding:44px 0}
+      .section-panel .wrap{padding:22px 16px}
+    }
 
     .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
     .step{background:var(--surface-2);border:1px solid var(--border);border-radius:18px;padding:18px;transition:.2s ease;position:relative}
@@ -536,7 +565,8 @@
   </header>
 
   <!-- AKO TO FUNGUJE -->
-  <section id="ako" class="wrap section">
+  <section id="ako" class="section section-panel">
+    <div class="wrap">
     <h2>Ako to funguje</h2>
     <p class="lead-strong">Predaj naživo bez zložitého nastavovania. <strong>My pripravíme</strong> všetko, vy sa sústredíte na <strong>produkty a zákazníkov</strong>.</p>
 
@@ -605,10 +635,11 @@
         <p>Dosah, interakcie, objednávky a odporúčania na ďalší rast.</p>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- SLUŽBY / CENNÍK -->
-  <section id="sluzby" aria-label="Služby">
+  <section id="sluzby" class="section-panel" aria-label="Služby">
     <a id="cennik"></a>
     <div class="wrap inner">
       <h2>Služby</h2>
@@ -806,8 +837,9 @@
 </section>
 
   <!-- FAQ -->
-  <section id="faq" class="wrap section" aria-label="FAQ (najčastejšie otázky)">
-    <h2>FAQ (najčastejšie otázky)</h2>
+  <section id="faq" class="section section-panel" aria-label="FAQ (najčastejšie otázky)">
+    <div class="wrap">
+      <h2>FAQ (najčastejšie otázky)</h2>
 
     <div class="grid">
       <div class="qa"><h3>1) Nikdy sme nevysielali. Zvládneme to?</h3><p>Áno. V balíku <span class="hl">Štart</span> vás rýchlo zaučíme a prvé vysielanie urobíme spolu – krok za krokom.</p></div>
@@ -830,11 +862,13 @@
         <div class="qa"><h3>13) Kto vlastní obsah?</h3><p>Obsah je <span class="hl">váš</span>. My ho použijeme iba s vaším <span class="hl">súhlasom</span>.</p></div>
       </div>
     </details>
+    </div>
   </section>
 
   <!-- KONTAKT -->
-  <section id="kontakt" class="wrap section">
-    <h2>Dopyt / kontakt</h2>
+  <section id="kontakt" class="section section-panel">
+    <div class="wrap">
+      <h2>Dopyt / kontakt</h2>
 
     <div class="k-grid">
       <div class="card" style="padding:18px">
@@ -907,6 +941,7 @@
           <img class="logo-light" loading="lazy" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="LivePredaj" />
         </div>
       </aside>
+    </div>
     </div>
   </section>
 
