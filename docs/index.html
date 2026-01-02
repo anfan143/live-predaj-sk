@@ -193,11 +193,22 @@
       box-shadow:0 12px 28px rgba(2,6,23,.10);
       transition:transform .18s, box-shadow .18s, border-color .18s;
     }
+    #sluzby .pill{
+      display:inline-flex;align-items:center;gap:6px;
+      padding:6px 10px;border-radius:999px;
+      font-size:.78rem;font-weight:800;letter-spacing:.2px;
+      color:#0f172a;background:rgba(16,185,129,.16);
+      border:1px solid rgba(16,185,129,.4);
+      margin-bottom:10px;
+    }
     #sluzby .card:hover{ transform:translateY(-4px) scale(1.01); box-shadow:0 22px 46px rgba(2,6,23,.16); border-color:rgba(17,24,39,.18); }
     #sluzby .card.recommended{ border-color:rgba(45,212,191,.55); box-shadow:0 24px 52px rgba(45,212,191,.18); }
     [data-theme="dark"] #sluzby .card{ background:var(--surface)!important; border-color:var(--border)!important; }
     [data-theme="dark"] #sluzby h3,[data-theme="dark"] #sluzby strong{ color:#fff!important; }
     [data-theme="dark"] #sluzby .sub,[data-theme="dark"] #sluzby .micro,[data-theme="dark"] #sluzby .result,[data-theme="dark"] #sluzby .card p,[data-theme="dark"] #sluzby .card li{ color:#e5e7eb!important; }
+    [data-theme="dark"] #sluzby .pill{
+      color:#ecfeff;background:rgba(16,185,129,.18);border-color:rgba(16,185,129,.4);
+    }
     #sluzby h3{ margin:0 0 6px; font-weight:800; color:#0f172a; }
     #sluzby .sub{ margin:2px 0 10px; color:#374151; font-weight:700; }
     #sluzby ul{ margin:10px 0 0; padding-left:18px; }
@@ -597,6 +608,7 @@
 
         <article class="card recommended">
           <div>
+            <span class="pill">Najobľúbenejší balík</span>
             <h3>Štandard</h3>
             <p class="sub">Štart + pomoc s ponukou a priebehom predaja.</p>
             <ul>
