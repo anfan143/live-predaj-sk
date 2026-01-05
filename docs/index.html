@@ -132,7 +132,7 @@
     }
 
     /* ====== HERO ====== */
-    .hero{padding:56px 0 18px;position:relative;overflow:hidden}
+    .hero{padding:64px 0 28px;position:relative;overflow:hidden}
     .hero::before{
       content:"";
       position:absolute;
@@ -154,20 +154,20 @@
       pointer-events:none;
     }
     .kicker{display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border-radius:999px;border:1px solid color-mix(in oklab, var(--danger) 40%, transparent);background:color-mix(in oklab, var(--danger) 18%, transparent);color:var(--danger);font-weight:800;letter-spacing:.2px}
-    .grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center}
-    .hero-content{position:relative;z-index:2;max-width:620px}
-    h1{font-size:clamp(28px,4vw,50px);line-height:1.12;margin:12px 0 12px}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+    .hero-content{position:relative;z-index:2;max-width:640px}
+    h1{font-size:clamp(30px,4vw,54px);line-height:1.1;margin:12px 0 12px}
     .em-blue{color:var(--brand-blue)} .em-green{color:var(--brand-green)}
     .lead{font-size:18px;color:var(--muted)}
     .hero .lead{max-width:560px}
     .callout{margin-top:14px;padding:12px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--border);font-weight:600}
-    .benefits{margin-top:10px;max-width:600px}
-    .benefit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .benefits{margin-top:14px;max-width:620px}
+    .benefit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
     .benefit-card{
-      padding:10px 12px;border-radius:14px;
+      padding:12px 14px;border-radius:14px;
       background:linear-gradient(180deg, color-mix(in oklab, var(--surface) 92%, transparent), color-mix(in oklab, var(--surface) 72%, transparent));
       border:1px solid color-mix(in oklab, var(--border) 70%, transparent);
-      font-weight:700;color:var(--text);min-height:58px;
+      font-weight:700;color:var(--text);min-height:70px;
       box-shadow:0 10px 20px rgba(2,6,23,.06);
     }
     .benefit-card strong{display:block}
@@ -176,7 +176,7 @@
     @media (max-width:980px){.benefit-grid{grid-template-columns:1fr 1fr}}
     @media (max-width:560px){.benefit-grid{grid-template-columns:1fr 1fr}}
     @media (max-width:360px){.benefit-grid{grid-template-columns:1fr}}
-    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
     .cta-bar{margin-top:14px;padding:10px;border-radius:16px;background:var(--surface-2);border:1px solid var(--border)}
     @media (max-width:640px){
       .cta-bar{flex-direction:column;align-items:stretch}
@@ -184,7 +184,8 @@
     }
 
     .card{background:var(--surface);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow)}
-    .hero-card{position:relative;overflow:hidden}
+    .hero-preview{display:flex;flex-direction:column;gap:14px}
+    .hero-card{position:relative;overflow:hidden;box-shadow:0 24px 50px rgba(15,23,42,.12)}
     .hero-card::before{
       content:"";
       position:absolute;
@@ -212,7 +213,15 @@
     .p-chip.ig{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);color:#fff;border-color:transparent}
     .p-chip.tt{background:color-mix(in oklab, var(--tt) 10%, #fff);border-color:color-mix(in oklab, var(--tt) 28%, transparent);color:var(--tt)}
 
-    .hero-checks{padding:10px 16px 16px}
+    .hero-checks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .hero-checks .bullet{
+      margin:0;
+      padding:12px;
+      background:color-mix(in oklab, var(--surface) 90%, transparent);
+      border:1px solid var(--border);
+      border-radius:14px;
+      box-shadow:0 10px 20px rgba(2,6,23,.08);
+    }
     .bullet{display:flex;align-items:flex-start;gap:10px;margin:8px 0;color:var(--text)}
     .bullet .dot{width:20px;height:20px;border-radius:8px;display:grid;place-items:center;background:color-mix(in oklab,var(--accent) 16%,transparent);border:1px solid color-mix(in oklab,var(--accent) 28%,transparent)}
     #step-live .bullet{margin:6px 0;line-height:1.45}
@@ -273,26 +282,20 @@
     @media (max-width:980px){.grid2{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}}
     @media (max-width:560px){.steps{grid-template-columns:1fr}}
     @media (min-width:1024px){
-      .hero{padding:72px 0 36px}
-      .hero .grid2{gap:28px;align-items:center}
-      .hero-content{max-width:640px}
-      .hero h1{font-size:clamp(36px,3.6vw,54px);letter-spacing:-.01em}
+      .hero{padding:88px 0 48px}
+      .hero .grid2{gap:36px;align-items:center}
+      .hero h1{font-size:clamp(38px,3.8vw,58px);letter-spacing:-.01em}
       .hero .lead{font-size:18px}
-      .benefit-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-      .benefit-card{padding:12px 14px;min-height:74px}
-      .cta-bar{padding:12px 12px}
-      .hero-checks{
-        display:grid;
-        grid-template-columns:repeat(3,minmax(0,1fr));
-        gap:10px;
-      }
-      .hero-checks .bullet{
-        margin:0;
-        background:color-mix(in oklab, var(--surface) 90%, transparent);
-        border:1px solid var(--border);
-        border-radius:12px;
-        padding:10px;
-      }
+      .benefit-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+      .benefit-card{min-height:78px}
+      .cta-bar{padding:12px 14px}
+    }
+    @media (max-width:980px){
+      .hero-preview{gap:12px}
+      .hero-checks{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media (max-width:560px){
+      .hero-checks{grid-template-columns:1fr}
     }
 
     /* ====== Služby – vzhľad + cena nad CTA ====== */
@@ -676,6 +679,12 @@
 
         <div class="callout">Prvé vysielanie vieme spustiť do <strong>7 dní</strong> od kontaktovania.</div>
 
+        <div class="cta cta-bar">
+          <a class="btn primary" href="#cennik">Spustiť pilot do 7 dní</a>
+          <a class="btn btn-green" href="https://wa.me/421951265627?text=Konzult%C3%A1cia%20k%20pilotn%C3%A9mu%20live">WhatsApp konzultácia</a>
+          <a class="chip" href="#ako">Ako to funguje</a>
+        </div>
+
         <div class="benefits" aria-label="Prečo LivePredaj">
           <div class="benefit-grid">
             <div class="benefit-card">⚡ <strong>Rýchly štart</strong> <span>do 7 dní</span></div>
@@ -686,28 +695,24 @@
             <div class="benefit-card">🧾 <strong>Report po vysielaní</strong> <span>prehľad výkonu a ďalšie kroky</span></div>
           </div>
         </div>
-
-        <div class="cta cta-bar">
-          <a class="btn primary" href="#cennik">Spustiť pilot do 7 dní</a>
-          <a class="btn btn-green" href="https://wa.me/421951265627?text=Konzult%C3%A1cia%20k%20pilotn%C3%A9mu%20live">WhatsApp konzultácia</a>
-          <a class="chip" href="#ako">Ako to funguje</a>
-        </div>
       </div>
 
-      <div class="card hero-card" style="position:relative;padding:6px">
-        <span class="live-dot"><span style="display:inline-block;width:8px;height:8px;border-radius:999px;background:var(--danger)"></span>NAŽIVO</span>
-        <div class="screen">
-          <!-- vodotlač – celé logo vľavo hore -->
-          <img class="brand-watermark logo-dark"  loading="lazy" src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="" aria-hidden="true" />
-          <img class="brand-watermark logo-light" loading="lazy" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="" aria-hidden="true" />
+      <div class="hero-preview">
+        <div class="card hero-card" style="position:relative;padding:6px">
+          <span class="live-dot"><span style="display:inline-block;width:8px;height:8px;border-radius:999px;background:var(--danger)"></span>NAŽIVO</span>
+          <div class="screen">
+            <!-- vodotlač – celé logo vľavo hore -->
+            <img class="brand-watermark logo-dark"  loading="lazy" src="assets/brand/livepredaj-logo-full-dark.svg?v=11"  alt="" aria-hidden="true" />
+            <img class="brand-watermark logo-light" loading="lazy" src="assets/brand/livepredaj-logo-full-light.svg?v=11" alt="" aria-hidden="true" />
 
-          <div style="text-align:center;font-weight:800;color:var(--muted)">Ukážka živého predaja</div>
+            <div style="text-align:center;font-weight:800;color:var(--muted)">Ukážka živého predaja</div>
 
-          <div class="platforms" style="position:absolute;bottom:10px;left:12px;right:12px;">
-            <span class="p-chip fb">Facebook</span>
-            <span class="p-chip yt">YouTube</span>
-            <span class="p-chip ig">Instagram</span>
-            <span class="p-chip tt">TikTok</span>
+            <div class="platforms" style="position:absolute;bottom:10px;left:12px;right:12px;">
+              <span class="p-chip fb">Facebook</span>
+              <span class="p-chip yt">YouTube</span>
+              <span class="p-chip ig">Instagram</span>
+              <span class="p-chip tt">TikTok</span>
+            </div>
           </div>
         </div>
 
