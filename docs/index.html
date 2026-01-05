@@ -165,19 +165,23 @@
       justify-content:center;
     }
     .hero-panel{
-      padding:28px;
-      border-radius:26px;
+      padding:26px;
+      border-radius:24px;
       background:color-mix(in oklab, var(--surface) 92%, transparent);
       border:1px solid var(--border);
       box-shadow:0 24px 56px rgba(15,23,42,.18);
       backdrop-filter:blur(10px);
+      min-height:520px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
     }
     h1{font-size:clamp(32px,4.2vw,60px);line-height:1.08;margin:12px 0 14px;letter-spacing:-.02em}
     .em-blue{color:var(--brand-blue)} .em-green{color:var(--brand-green)}
     .lead{font-size:18px;color:var(--muted)}
     .hero .lead{max-width:560px}
-    .callout{margin-top:16px;padding:12px 16px;border-radius:16px;background:var(--surface);border:1px solid var(--border);font-weight:600}
-    .benefits{margin-top:18px;max-width:620px}
+    .callout{margin-top:14px;padding:12px 16px;border-radius:16px;background:var(--surface);border:1px solid var(--border);font-weight:600}
+    .benefits{margin-top:22px}
     .benefit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
     .benefit-card{
       padding:12px 14px;border-radius:14px;
@@ -192,7 +196,7 @@
     @media (max-width:980px){.benefit-grid{grid-template-columns:1fr 1fr}}
     @media (max-width:560px){.benefit-grid{grid-template-columns:1fr 1fr}}
     @media (max-width:360px){.benefit-grid{grid-template-columns:1fr}}
-    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
     .cta-bar{margin-top:16px;padding:14px;border-radius:18px;background:var(--surface-2);border:1px solid var(--border)}
     @media (max-width:640px){
       .cta-bar{flex-direction:column;align-items:stretch}
@@ -302,17 +306,20 @@
     .step p{margin:10px 0 0;color:var(--muted)}
     @media (max-width:980px){.grid2{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}}
     @media (max-width:560px){.steps{grid-template-columns:1fr}}
+    .hero-bottom{margin-top:22px}
+    .hero-bottom .benefit-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+
     @media (min-width:1024px){
-      .hero{padding:96px 0 56px}
-      .hero .grid2{gap:44px;align-items:center}
+      .hero{padding:80px 0 48px}
+      .hero .grid2{gap:44px;align-items:stretch}
       .hero h1{font-size:clamp(40px,4vw,62px);letter-spacing:-.015em}
       .hero .lead{font-size:18px}
-      .benefit-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
       .benefit-card{min-height:82px}
       .cta-bar{padding:14px 16px}
     }
     @media (max-width:980px){
       .hero-panel{padding:22px}
+      .hero-panel{min-height:auto}
       .hero-preview{gap:12px}
       .hero-card{transform:none}
       .hero-checks{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -708,16 +715,6 @@
           <a class="chip" href="#ako">Ako to funguje</a>
         </div>
 
-        <div class="benefits" aria-label="Prečo LivePredaj">
-          <div class="benefit-grid">
-            <div class="benefit-card">⚡ <strong>Rýchly štart</strong> <span>do 7 dní</span></div>
-            <div class="benefit-card">📡 <strong>Multi‑platform</strong> <span>TikTok • FB • YT • IG</span></div>
-            <div class="benefit-card">📊 <strong>Reporting</strong> <span>výsledky & odporúčania</span></div>
-            <div class="benefit-card">🎬 <strong>Klipy po vysielaní</strong> <span>reels/shorts pre ďalší dosah</span></div>
-            <div class="benefit-card">🎤 <strong>Moderovanie a technika</strong> <span>podľa dohody s vaším tímom</span></div>
-            <div class="benefit-card">🧾 <strong>Report po vysielaní</strong> <span>prehľad výkonu a ďalšie kroky</span></div>
-          </div>
-        </div>
       </div>
 
       <div class="hero-preview hero-panel">
@@ -744,6 +741,17 @@
           <div class="bullet"><span class="dot">✓</span><span>Nákup <strong>z pohodlia domova</strong></span></div>
           <div class="bullet"><span class="dot">✓</span><span>Nákup prebehne počas vysielania – <strong>live predaj</strong></span></div>
         </div>
+      </div>
+    </div>
+
+    <div class="hero-bottom benefits" aria-label="Prečo LivePredaj">
+      <div class="benefit-grid">
+        <div class="benefit-card">⚡ <strong>Rýchly štart</strong> <span>do 7 dní</span></div>
+        <div class="benefit-card">📡 <strong>Multi‑platform</strong> <span>TikTok • FB • YT • IG</span></div>
+        <div class="benefit-card">📊 <strong>Reporting</strong> <span>výsledky & odporúčania</span></div>
+        <div class="benefit-card">🎬 <strong>Klipy po vysielaní</strong> <span>reels/shorts pre ďalší dosah</span></div>
+        <div class="benefit-card">🎤 <strong>Moderovanie a technika</strong> <span>podľa dohody s vaším tímom</span></div>
+        <div class="benefit-card">🧾 <strong>Report po vysielaní</strong> <span>prehľad výkonu a ďalšie kroky</span></div>
       </div>
     </div>
   </header>
