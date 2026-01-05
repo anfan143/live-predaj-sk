@@ -88,6 +88,7 @@
     .nav .inner{display:flex;align-items:center;justify-content:space-between;height:64px}
 
     .brand{display:flex;gap:10px;align-items:center}
+    .brand-link{display:flex;align-items:center;gap:10px}
     /* nikdy neukazuj obe logá naraz */
     .logo-dark,.logo-light{display:none !important}
     [data-theme="dark"]  .logo-dark{display:inline-block !important}
@@ -101,7 +102,11 @@
     .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--border);
       border-radius:999px;background:transparent;font-weight:600;line-height:1;height:36px}
     .chip:hover{background:color-mix(in oklab, var(--accent) 12%, var(--surface));transform:translateY(-1px);box-shadow:0 10px 24px rgba(2,6,23,.12)}
-    .chip.active{border-color:color-mix(in oklab, var(--accent) 60%, transparent)}
+    .chip.active{
+      border-color:color-mix(in oklab, var(--accent) 70%, transparent);
+      background:color-mix(in oklab, var(--accent) 12%, var(--surface));
+      box-shadow:0 10px 24px rgba(37,99,235,.18);
+    }
     .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--accent);color:var(--accent-text);font-weight:700;border:none;line-height:1;height:38px}
     .btn:hover{background:var(--accent-700);transform:translateY(-1px);box-shadow:0 14px 28px rgba(37,99,235,.26)}
     .btn.primary{box-shadow:0 16px 32px rgba(37,99,235,.32)}
@@ -176,11 +181,12 @@
       flex-direction:column;
       justify-content:center;
     }
-    h1{font-size:clamp(32px,4.2vw,60px);line-height:1.08;margin:12px 0 14px;letter-spacing:-.02em}
+    .hero-content .kicker{margin-bottom:10px}
+    h1{font-size:clamp(32px,4.2vw,60px);line-height:1.06;margin:10px 0 12px;letter-spacing:-.02em}
     .em-blue{color:var(--brand-blue)} .em-green{color:var(--brand-green)}
     .lead{font-size:18px;color:var(--muted)}
-    .hero .lead{max-width:560px}
-    .callout{margin-top:14px;padding:12px 16px;border-radius:16px;background:var(--surface);border:1px solid var(--border);font-weight:600}
+    .hero .lead{max-width:560px;margin:10px 0 0}
+    .callout{margin-top:12px;padding:12px 16px;border-radius:16px;background:var(--surface);border:1px solid var(--border);font-weight:600}
     .benefits{margin-top:22px}
     .benefit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
     .benefit-card{
@@ -196,8 +202,15 @@
     @media (max-width:980px){.benefit-grid{grid-template-columns:1fr 1fr}}
     @media (max-width:560px){.benefit-grid{grid-template-columns:1fr 1fr}}
     @media (max-width:360px){.benefit-grid{grid-template-columns:1fr}}
-    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
-    .cta-bar{margin-top:16px;padding:14px;border-radius:18px;background:var(--surface-2);border:1px solid var(--border)}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+    .cta-bar{margin-top:14px;padding:12px 14px;border-radius:18px;background:var(--surface-2);border:1px solid var(--border);align-items:center}
+    .hero .cta-bar .btn,
+    .hero .cta-bar .btn-green,
+    .hero .cta-bar .chip{
+      height:44px;
+      padding:12px 16px;
+      border-radius:14px;
+    }
     @media (max-width:640px){
       .cta-bar{flex-direction:column;align-items:stretch}
       .cta-bar .btn,.cta-bar .btn-green,.cta-bar .chip{width:100%;justify-content:center}
@@ -675,18 +688,18 @@
   <!-- Plausible -->
   <script defer data-domain="anfan143.github.io" src="https://plausible.io/js/plausible.js"></script>
 </head>
-<body>
+<body id="top">
   <!-- NAV -->
   <nav class="nav">
     <div class="wrap inner">
-      <div class="brand">
+      <a class="brand brand-link" href="#top" aria-label="Späť na začiatok">
         <img class="logo-dark mark"  src="assets/brand/livepredaj-logo-mark-dark.svg?v=11"  alt="LivePredaj logo" decoding="async" fetchpriority="high" />
         <img class="logo-light mark" src="assets/brand/livepredaj-logo-mark-light.svg?v=11" alt="LivePredaj logo" decoding="async" fetchpriority="high" />
         <div>
           <div class="title">LIVE predaj pre vaše produkty</div>
           <div class="tagline">Vaša cesta k zákazníkovi</div>
         </div>
-      </div>
+      </a>
       <div class="menu">
         <a class="chip" href="#ako" data-nav="ako">Ako to funguje</a>
         <a class="chip" href="#sluzby" data-nav="sluzby">Služby</a>
