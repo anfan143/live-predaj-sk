@@ -129,6 +129,28 @@
       border-color:color-mix(in oklab, var(--accent) 50%, var(--border));
     }
 
+    /* Back to top */
+    .to-top{
+      position:fixed;
+      right:22px;
+      bottom:22px;
+      width:46px;
+      height:46px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:color-mix(in oklab, var(--surface) 92%, transparent);
+      color:var(--text);
+      display:grid;
+      place-items:center;
+      box-shadow:0 12px 26px rgba(2,6,23,.18);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .2s ease, transform .2s ease;
+      z-index:90;
+    }
+    .to-top.show{opacity:1;pointer-events:auto;transform:translateY(-2px)}
+    .to-top:hover{transform:translateY(-4px)}
+
     /* NAV: mobilné zalomenie (nové) */
     @media (max-width: 760px){
       .nav .inner{ flex-wrap:wrap; height:auto; row-gap:8px; padding:8px 0 }
@@ -728,6 +750,8 @@
     </div>
   </nav>
 
+  <button id="toTop" class="to-top" aria-label="Späť na začiatok" title="Späť na začiatok">↑</button>
+
   <!-- HERO -->
   <header class="wrap hero">
     <div class="grid2">
@@ -1246,11 +1270,33 @@
       entries.forEach(e=>{
         if(e.isIntersecting){
           const id = e.target.id;
-          chips.forEach(c=>c.classList.toggle('active', c.dataset.nav===id || (id==='sluzby' && c.dataset.nav==='sluzby')));
+          chips.forEach(c=>{
+            const active = c.dataset.nav===id || (id==='sluzby' && c.dataset.nav==='sluzby');
+            c.classList.toggle('active', active);
+            if (active) {
+              c.setAttribute('aria-current', 'page');
+            } else {
+              c.removeAttribute('aria-current');
+            }
+          });
         }
       });
     },{rootMargin:'-60% 0px -35% 0px',threshold:0});
     sections.forEach(id=>{ const el=document.getElementById(id); if(el) observer.observe(el); });
+
+    // Back to top button
+    const toTop = document.getElementById('toTop');
+    const toggleTop = () => {
+      if (!toTop) return;
+      toTop.classList.toggle('show', window.scrollY > 520);
+    };
+    window.addEventListener('scroll', toggleTop, { passive: true });
+    toggleTop();
+    if (toTop) {
+      toTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
 
     // Formspree
     const FORM_ENDPOINT = 'https://formspree.io/f/xjkaendy';
