@@ -83,8 +83,9 @@
     .wrap{ max-width:var(--max); margin:0 auto; padding:0 18px }
 
     /* ====== NAV – kompakt ====== */
-    .nav{position:fixed;top:0;left:0;right:0;z-index:80;background:rgba(255,255,255,.08);
+    .nav{position:fixed;top:0;left:0;right:0;z-index:80;background:color-mix(in oklab, var(--surface) 55%, rgba(37,99,235,.08));
       backdrop-filter:saturate(180%) blur(14px); border-bottom:1px solid var(--border); box-shadow:0 12px 26px rgba(2,6,23,.10)}
+    [data-theme="light"] .nav{background:rgba(255,255,255,.92)}
     [data-theme="light"] .nav{background:rgba(255,255,255,.9)}
     .nav .inner{display:flex;align-items:center;justify-content:space-between;height:64px}
 
@@ -139,6 +140,19 @@
 
     /* ====== HERO ====== */
     .hero{padding:72px 0 40px;position:relative;overflow:hidden}
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto -5% -30% -5%;
+      height:220px;
+      background:
+        radial-gradient(50% 80% at 15% 40%, rgba(37,99,235,.18), transparent 70%),
+        radial-gradient(50% 80% at 85% 50%, rgba(16,185,129,.18), transparent 70%),
+        linear-gradient(90deg, rgba(37,99,235,.12), rgba(16,185,129,.12));
+      opacity:.8;
+      filter:blur(8px);
+      pointer-events:none;
+    }
     .hero::before{
       content:"";
       position:absolute;
@@ -173,7 +187,7 @@
     .hero-panel{
       padding:26px;
       border-radius:24px;
-      background:color-mix(in oklab, var(--surface) 92%, transparent);
+      background:linear-gradient(160deg, color-mix(in oklab, var(--surface) 92%, transparent), color-mix(in oklab, var(--surface) 78%, transparent));
       border:1px solid var(--border);
       box-shadow:0 24px 56px rgba(15,23,42,.18);
       backdrop-filter:blur(10px);
