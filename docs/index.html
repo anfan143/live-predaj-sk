@@ -77,13 +77,14 @@
       scroll-behavior:smooth;
       overflow-x:hidden;               /* zabráni horizontálnemu scrollu */
     }
+    body{padding-top:72px}
     img{ max-width:100%; height:auto; display:block }
     a{ color:inherit; text-decoration:none }
     .wrap{ max-width:var(--max); margin:0 auto; padding:0 18px }
 
     /* ====== NAV – kompakt ====== */
-    .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.03);
-      backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid var(--border)}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:80;background:rgba(255,255,255,.08);
+      backdrop-filter:saturate(180%) blur(14px); border-bottom:1px solid var(--border); box-shadow:0 12px 26px rgba(2,6,23,.10)}
     [data-theme="light"] .nav{background:rgba(255,255,255,.9)}
     .nav .inner{display:flex;align-items:center;justify-content:space-between;height:64px}
 
@@ -186,8 +187,8 @@
     .em-blue{color:var(--brand-blue)} .em-green{color:var(--brand-green)}
     .lead{font-size:18px;color:var(--muted)}
     .hero .lead{max-width:560px;margin:10px 0 0}
-    .callout{margin-top:12px;padding:12px 16px;border-radius:16px;background:var(--surface);border:1px solid var(--border);font-weight:600}
-    .benefits{margin-top:22px}
+    .callout{margin-top:10px;padding:12px 16px;border-radius:16px;background:var(--surface);border:1px solid var(--border);font-weight:600}
+    .benefits{margin-top:18px}
     .benefit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
     .benefit-card{
       padding:12px 14px;border-radius:14px;
@@ -202,8 +203,8 @@
     @media (max-width:980px){.benefit-grid{grid-template-columns:1fr 1fr}}
     @media (max-width:560px){.benefit-grid{grid-template-columns:1fr 1fr}}
     @media (max-width:360px){.benefit-grid{grid-template-columns:1fr}}
-    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
-    .cta-bar{margin-top:14px;padding:12px 14px;border-radius:18px;background:var(--surface-2);border:1px solid var(--border);align-items:center}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+    .cta-bar{margin-top:12px;padding:12px 14px;border-radius:18px;background:var(--surface-2);border:1px solid var(--border);align-items:center}
     .hero .cta-bar .btn,
     .hero .cta-bar .btn-green,
     .hero .cta-bar .chip{
@@ -696,7 +697,7 @@
         <img class="logo-dark mark"  src="assets/brand/livepredaj-logo-mark-dark.svg?v=11"  alt="LivePredaj logo" decoding="async" fetchpriority="high" />
         <img class="logo-light mark" src="assets/brand/livepredaj-logo-mark-light.svg?v=11" alt="LivePredaj logo" decoding="async" fetchpriority="high" />
         <div>
-          <div class="title">LIVE predaj pre vaše produkty</div>
+          <div class="title">Live predaj pre vaše produkty</div>
           <div class="tagline">Vaša cesta k zákazníkovi</div>
         </div>
       </a>
@@ -717,10 +718,10 @@
     <div class="grid2">
       <div class="hero-content hero-panel">
         <span class="kicker">LIVE SHOPPING → PREDAJ NAŽIVO</span>
-        <h1>Zvýšte <span class="em-blue">tržby</span> a <span class="em-green">komunitu</span> vďaka pravidelnému živému vysielaniu na Facebooku, YouTube, Instagrame a TikToku.</h1>
-        <p class="lead">Postaráme sa o prípravu a podporu, vy ste v centre pozornosti. Pomôžeme osloviť nových zákazníkov a premeniť sledovateľov na kupujúcich.</p>
+        <h1>Zvýšte <span class="em-blue">tržby</span> a <span class="em-green">komunitu</span> pravidelným živým predajom na Facebooku, YouTube, Instagrame a TikToku.</h1>
+        <p class="lead">Postaráme sa o prípravu aj podporu, vy ste v centre pozornosti. Pomôžeme vám osloviť nových zákazníkov a premeniť sledovateľov na kupujúcich.</p>
 
-        <div class="callout">Prvé vysielanie vieme spustiť do <strong>7 dní</strong> od kontaktovania.</div>
+        <div class="callout">Prvé vysielanie vieme spustiť do <strong>7 dní</strong> od úvodného kontaktu.</div>
 
         <div class="cta cta-bar">
           <a class="btn primary" href="#cennik">Spustiť pilot do 7 dní</a>
@@ -760,8 +761,8 @@
     <div class="hero-bottom benefits" aria-label="Prečo LivePredaj">
       <div class="benefit-grid">
         <div class="benefit-card">⚡ <strong>Rýchly štart</strong> <span>do 7 dní</span></div>
-        <div class="benefit-card">📡 <strong>Multi‑platform</strong> <span>TikTok • FB • YT • IG</span></div>
-        <div class="benefit-card">📊 <strong>Reporting</strong> <span>výsledky & odporúčania</span></div>
+        <div class="benefit-card">📡 <strong>Multiplatforma</strong> <span>TikTok • FB • YT • IG</span></div>
+        <div class="benefit-card">📊 <strong>Reporting</strong> <span>výsledky a odporúčania</span></div>
         <div class="benefit-card">🎬 <strong>Klipy po vysielaní</strong> <span>reels/shorts pre ďalší dosah</span></div>
         <div class="benefit-card">🎤 <strong>Moderovanie a technika</strong> <span>podľa dohody s vaším tímom</span></div>
         <div class="benefit-card">🧾 <strong>Report po vysielaní</strong> <span>prehľad výkonu a ďalšie kroky</span></div>
@@ -931,8 +932,8 @@
  <!-- SHOWCASE – kompaktný blok -->
 <section id="showcase">
   <div class="wrap">
-    <h2>Livepredaj – spojte sa s vašimi zákazníkmi pomocou živého vysielania. Predaj vašich produktov bude jednoduchší a na dosah ruky priamo z domova.</h2>
-    <p class="lead-strong">Zákazník môže nakupovať a sledovať vysielanie cez všetky zariadenia – mobil, TV, tablet, notebook. Nakupuje priamo počas vysielania – staňte sa súčasťou Livepredaj.</p>
+    <h2>LivePredaj – spojte sa so zákazníkmi cez živé vysielanie. Predaj vašich produktov bude jednoduchší a dostupný priamo z domu.</h2>
+    <p class="lead-strong">Zákazník môže nakupovať a sledovať vysielanie na všetkých zariadeniach – mobil, TV, tablet, notebook. Nakupuje priamo počas vysielania – staňte sa súčasťou LivePredaj.</p>
 
     <div class="showcase-grid">
       <!-- ĽAVÁ STRANA -->
