@@ -116,6 +116,16 @@
     .btn-green{background:#22c55e}.btn-green:hover{background:#16a34a}
     .theme{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--border);background:transparent;font-size:18px}
     .theme:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(2,6,23,.12)}
+    .chip:focus-visible,.btn:focus-visible,.theme:focus-visible{
+      outline:2px solid color-mix(in oklab, var(--accent) 70%, white);
+      outline-offset:2px;
+      box-shadow:0 0 0 4px color-mix(in oklab, var(--accent) 25%, transparent);
+    }
+    #kontakt input:focus-visible,#kontakt textarea:focus-visible{
+      outline:2px solid color-mix(in oklab, var(--accent) 70%, white);
+      outline-offset:2px;
+      border-color:color-mix(in oklab, var(--accent) 50%, var(--border));
+    }
 
     /* NAV: mobilné zalomenie (nové) */
     @media (max-width: 760px){
@@ -1119,24 +1129,24 @@
       <div class="card" style="padding:18px">
         <form id="contactForm">
           <label for="f_meno">Meno a priezvisko</label>
-          <input id="f_meno" name="meno" placeholder="Meno a priezvisko" required />
+          <input id="f_meno" name="meno" placeholder="Meno a priezvisko" autocomplete="name" required />
 
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
             <div>
               <label for="f_firma">Firma (nepovinné)</label>
-              <input id="f_firma" name="firma" placeholder="Názov firmy" />
+              <input id="f_firma" name="firma" placeholder="Názov firmy" autocomplete="organization" />
             </div>
             <div>
               <label for="f_tel">Telefón <span style="color:#ef4444">*</span></label>
-              <input id="f_tel" name="tel" placeholder="+421 …" required />
+              <input id="f_tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="+421 …" required />
             </div>
           </div>
 
           <label for="f_mail">E-mail</label>
-          <input id="f_mail" type="email" name="email" placeholder="vas@firma.sk" required />
+          <input id="f_mail" type="email" name="email" autocomplete="email" placeholder="vas@firma.sk" required />
 
           <label for="f_msg">Správa</label>
-          <textarea id="f_msg" name="sprava" rows="7" placeholder="Čo chcete predávať? Ktorý balík zvažujete? Kedy vás môžeme kontaktovať?" required></textarea>
+          <textarea id="f_msg" name="sprava" rows="7" autocomplete="off" placeholder="Čo chcete predávať? Ktorý balík zvažujete? Kedy vás môžeme kontaktovať?" required></textarea>
 
           <button id="submitBtn" class="btn" type="submit">Odoslať dopyt</button>
           <div id="formNotice" class="callout" style="display:none;margin-top:10px"></div>
