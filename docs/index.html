@@ -108,6 +108,17 @@
       border-color:color-mix(in oklab, var(--accent) 70%, transparent);
       background:color-mix(in oklab, var(--accent) 12%, var(--surface));
       box-shadow:0 10px 24px rgba(37,99,235,.18);
+      position:relative;
+    }
+    .chip.active::after{
+      content:"";
+      position:absolute;
+      left:10px;
+      right:10px;
+      bottom:4px;
+      height:2px;
+      border-radius:999px;
+      background:color-mix(in oklab, var(--accent) 70%, transparent);
     }
     .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:linear-gradient(180deg, var(--accent), var(--accent-700));color:var(--accent-text);font-weight:700;border:none;line-height:1;height:38px}
     .btn:hover{background:linear-gradient(180deg, var(--accent-700), #1e40af);transform:translateY(-1px);box-shadow:0 14px 28px rgba(37,99,235,.26)}
@@ -128,6 +139,28 @@
       outline-offset:2px;
       border-color:color-mix(in oklab, var(--accent) 50%, var(--border));
     }
+
+    /* Back to top */
+    .to-top{
+      position:fixed;
+      right:22px;
+      bottom:22px;
+      width:46px;
+      height:46px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:color-mix(in oklab, var(--surface) 92%, transparent);
+      color:var(--text);
+      display:grid;
+      place-items:center;
+      box-shadow:0 12px 26px rgba(2,6,23,.18);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .2s ease, transform .2s ease;
+      z-index:90;
+    }
+    .to-top.show{opacity:1;pointer-events:auto;transform:translateY(-2px)}
+    .to-top:hover{transform:translateY(-4px)}
 
     /* Back to top */
     .to-top{
@@ -932,7 +965,7 @@
     <a id="cennik"></a>
     <div class="wrap inner">
       <h2>Služby</h2>
-      <p>Vyberte si balík, ktorý potrebujete. Služby prispôsobíme vašim potrebám.</p>
+      <p>Vyberte si balík. Všetko prispôsobíme vašim potrebám.</p>
       <div class="services-intro" aria-label="Prehľad služieb">
         <div class="services-points">
           <div class="services-point">
@@ -941,7 +974,7 @@
           </div>
           <div class="services-point">
             <div class="services-ico">🎥</div>
-            <div>Technika + podpora <span>pred aj počas vysielania</span></div>
+            <div>Technika + podpora <span>počas vysielania</span></div>
           </div>
           <div class="services-point">
             <div class="services-ico">📈</div>
@@ -954,14 +987,14 @@
         <article class="card">
           <div>
             <h3><span class="plan-icon" aria-hidden="true">🚀</span> Štart</h3>
-            <p class="sub">Rýchle nastavenie a prvé vysielanie bez stresu.</p>
+            <p class="sub">Rýchly štart bez stresu.</p>
             <ul>
               <li>Nastavenie techniky a účtov</li>
-              <li>Základ: svetlá, mikrofón, kamera</li>
+              <li>Svetlá, mikrofón, kamera</li>
               <li>Krátke zaučenie</li>
             </ul>
-            <p class="fit"><strong>Ideálne pre:</strong> prvé spustenie bez skúseností.</p>
-            <p class="result"><em>Výsledok:</em> Spustíte prvé vysielanie bez chaosu.</p>
+            <p class="fit"><strong>Ideálne pre:</strong> prvé spustenie.</p>
+            <p class="result"><em>Výsledok:</em> Spustíte prvé vysielanie hladko.</p>
           </div>
           <div class="footer">
             <div class="price">Cena: od 159 €</div>
@@ -974,14 +1007,14 @@
           <div>
             <span class="pill">Najobľúbenejší balík</span>
             <h3><span class="plan-icon" aria-hidden="true">⭐</span> Štandard</h3>
-            <p class="sub">Štart + pomoc s ponukou a priebehom predaja.</p>
+            <p class="sub">Štart + pomoc s ponukou a priebehom.</p>
             <ul>
-              <li>Výber produktov a zliav, ktoré dávajú zmysel</li>
+              <li>Výber produktov a zliav</li>
               <li>Plán vysielania krok za krokom</li>
-              <li>Podpora počas vysielania podľa dohody</li>
+              <li>Podpora počas vysielania</li>
             </ul>
             <p class="fit"><strong>Ideálne pre:</strong> stabilný mesačný predaj.</p>
-            <p class="result"><em>Výsledok:</em> Vysielanie má hlavu a pätu – viete, čo kedy povedať a ako viesť k nákupu.</p>
+            <p class="result"><em>Výsledok:</em> Viete, čo kedy povedať a ako viesť k nákupu.</p>
           </div>
           <div class="footer">
             <div class="price">Cena: od 289 €</div>
@@ -993,14 +1026,14 @@
         <article class="card">
           <div>
             <h3><span class="plan-icon" aria-hidden="true">🏆</span> Komplet</h3>
-            <p class="sub">Štart + Štandard + moderovanie/štúdio + výsledky.</p>
+            <p class="sub">Štart + Štandard + moderovanie/štúdio.</p>
             <ul>
-              <li>Prepojenie s e-shopom (pripnuté produkty, objednávky, výsledky)</li>
-              <li>Moderovanie naším tímom a možnosť využiť štúdio</li>
-              <li>Krátke videá po vysielaní (reels/shorts)</li>
+              <li>Prepojenie s e-shopom (produkty, objednávky)</li>
+              <li>Moderovanie naším tímom alebo štúdio</li>
+              <li>Klipy po vysielaní (reels/shorts)</li>
             </ul>
-            <p class="fit"><strong>Ideálne pre:</strong> plný servis a škálovanie predaja.</p>
-            <p class="result"><em>Výsledok:</em> Kompletný servis od A po Z – vysielame, vyhodnocujeme a posúvame predaj ďalej.</p>
+            <p class="fit"><strong>Ideálne pre:</strong> plný servis a škálovanie.</p>
+            <p class="result"><em>Výsledok:</em> Kompletný servis od A po Z.</p>
           </div>
           <div class="footer">
             <div class="price">Cena: od 599 €</div>
