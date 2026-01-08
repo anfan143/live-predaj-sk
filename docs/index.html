@@ -316,6 +316,28 @@
     .to-top.show{opacity:1;pointer-events:auto;transform:translateY(-2px)}
     .to-top:hover{transform:translateY(-4px)}
 
+    /* Back to top */
+    .to-top{
+      position:fixed;
+      right:22px;
+      bottom:22px;
+      width:46px;
+      height:46px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:color-mix(in oklab, var(--surface) 92%, transparent);
+      color:var(--text);
+      display:grid;
+      place-items:center;
+      box-shadow:0 12px 26px rgba(2,6,23,.18);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .2s ease, transform .2s ease;
+      z-index:90;
+    }
+    .to-top.show{opacity:1;pointer-events:auto;transform:translateY(-2px)}
+    .to-top:hover{transform:translateY(-4px)}
+
     /* NAV: mobilné zalomenie (nové) */
     @media (max-width: 760px){
       .nav .inner{ flex-wrap:wrap; height:auto; row-gap:8px; padding:8px 0 }
@@ -838,6 +860,156 @@
       #sluzby .price{font-size:1.18rem}
     }
 
+    /* ====== Pre koho ====== */
+    #prekoho .grid{
+      display:grid;
+      gap:16px;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      align-items:start;
+    }
+    #prekoho .card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    #prekoho h3{margin:0 0 10px;font-size:18px}
+    #prekoho ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+    #prekoho li{
+      position:relative;
+      padding:10px 12px 10px 40px;
+      border-radius:12px;
+      background:color-mix(in oklab, var(--accent) 6%, var(--surface));
+      border:1px solid color-mix(in oklab, var(--accent) 18%, transparent);
+      font-weight:600;
+      color:var(--text);
+    }
+    #prekoho li::before{
+      content:"";
+      position:absolute;
+      left:12px;
+      top:12px;
+      width:12px;
+      height:12px;
+      border-radius:4px;
+      background:color-mix(in oklab, var(--accent) 65%, transparent);
+    }
+    #prekoho .note{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-weight:600;
+    }
+    @media (max-width:960px){#prekoho .grid{grid-template-columns:1fr}}
+
+    /* ====== Čo zabezpečujem ====== */
+    #co-zabezpecujem .grid{
+      display:grid;
+      gap:16px;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      align-items:start;
+    }
+    #co-zabezpecujem .card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    #co-zabezpecujem h3{margin:0 0 10px;font-size:18px}
+    #co-zabezpecujem ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+    #co-zabezpecujem li{
+      position:relative;
+      padding:10px 12px 10px 36px;
+      border-radius:12px;
+      background:color-mix(in oklab, var(--accent) 6%, var(--surface));
+      border:1px solid color-mix(in oklab, var(--accent) 18%, transparent);
+      font-weight:600;
+      color:var(--text);
+    }
+    #co-zabezpecujem li::before{
+      content:"";
+      position:absolute;
+      left:12px;
+      top:12px;
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:color-mix(in oklab, var(--accent) 65%, transparent);
+    }
+    #co-zabezpecujem .outro{
+      margin-top:14px;
+      color:var(--muted);
+      font-weight:600;
+    }
+    @media (max-width:1100px){#co-zabezpecujem .grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:760px){#co-zabezpecujem .grid{grid-template-columns:1fr}}
+
+    /* ====== Pilot ====== */
+    #pilot .grid{
+      display:grid;
+      gap:16px;
+      grid-template-columns:1.2fr .8fr;
+      align-items:start;
+    }
+    #pilot .card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    #pilot ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+    #pilot li{
+      position:relative;
+      padding:10px 12px 10px 36px;
+      border-radius:12px;
+      background:color-mix(in oklab, var(--accent) 6%, var(--surface));
+      border:1px solid color-mix(in oklab, var(--accent) 18%, transparent);
+      font-weight:600;
+      color:var(--text);
+    }
+    #pilot li::before{
+      content:"";
+      position:absolute;
+      left:12px;
+      top:12px;
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:color-mix(in oklab, var(--accent) 65%, transparent);
+    }
+    #pilot .cta{margin-top:14px}
+    #pilot .cta .btn{width:100%;justify-content:center}
+    @media (max-width:1000px){#pilot .grid{grid-template-columns:1fr}}
+    @media (min-width:1024px){
+      #sluzby .grid{gap:28px}
+      #sluzby .card{
+        padding:28px;
+        border-radius:22px;
+        background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.9));
+      }
+      [data-theme="dark"] #sluzby .card{
+        background:linear-gradient(180deg, rgba(15,23,42,.92), rgba(15,23,42,.82))!important;
+      }
+      #sluzby ul{
+        list-style:none;
+        padding:0;
+        display:grid;
+        gap:8px;
+        margin-top:12px;
+      }
+      #sluzby li{
+        margin:0;
+        padding:8px 10px;
+        border-radius:12px;
+        border:1px solid var(--border);
+        background:color-mix(in oklab, var(--surface) 90%, transparent);
+        font-weight:600;
+      }
+      #sluzby .price{font-size:1.18rem}
+    }
+
    /* ====== SHOWCASE – kompaktné, vľavo info boxy, vpravo 2 vertikály ====== */
 :root{
   /* výšky pre dokonalé zarovnanie stĺpcov (desktop) */
@@ -1213,6 +1385,35 @@
         </div>
       </div>
       <p class="outro">Klient sa môže sústrediť na produkty a zákazníkov – techniku a priebeh rieši LivePredaj.</p>
+    </div>
+  </section>
+
+  <section id="pilot" class="section section-panel" aria-label="Pilotné live vysielanie">
+    <div class="wrap">
+      <h2>Pilotné live vysielanie</h2>
+      <p class="lead-strong">Pilotné vysielanie slúži na overenie, či je live predaj vhodný pre váš typ produktov a publikum. Je to jednorazová spolupráca bez dlhodobých záväzkov.</p>
+      <div class="grid">
+        <div class="card">
+          <ul>
+            <li>jedno live vysielanie v trvaní približne 60 minút</li>
+            <li>kompletná príprava a technické zabezpečenie</li>
+            <li>vysielanie na vybranej sociálnej platforme (Facebook / Instagram / YouTube)</li>
+            <li>záznam z vysielania</li>
+            <li>výber a príprava krátkych klipov na ďalšie použitie</li>
+          </ul>
+          <div class="cta">
+            <a class="btn primary" href="#kontakt">Nezáväzne prebrať pilot</a>
+          </div>
+        </div>
+        <div class="card">
+          <p class="lead-strong">Pilot je vhodný pre predajcov, ktorí:</p>
+          <ul>
+            <li>ešte nemajú skúsenosť s live predajom</li>
+            <li>alebo ho robili bez jasného výsledku</li>
+            <li>chcú si formát vyskúšať pred ďalším rozhodnutím</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
